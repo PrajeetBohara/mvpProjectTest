@@ -3,13 +3,43 @@
     x:Class="Dashboard.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Dashboard"
-    Shell.FlyoutBehavior="Disabled"
-    Title="Dashboard">
+    xmlns:pages="clr-namespace:Dashboard.Pages"
+    Shell.FlyoutBehavior="Flyout">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <!-- Flyout header (optional) -->
+    <FlyoutHeader>
+        <Grid Padding="16" BackgroundColor="#111318">
+            <Label Text="ENCS Dashboard"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="20" />
+        </Grid>
+    </FlyoutHeader>
+
+    <!-- Flyout items (side menu options) -->
+    <FlyoutItem Title="Home" Route="Home">
+        <ShellContent Title="Home" ContentTemplate="{DataTemplate pages:HomePage}" />
+    </FlyoutItem>
+
+    <!-- Placeholder routes we’ll build later -->
+    <FlyoutItem Title="Student Clubs" Route="Clubs">
+        <ShellContent Title="Student Clubs">
+            <ContentPage>
+                <Grid Padding="24">
+                    <Label Text="Student Clubs Page (placeholder)" TextColor="White" />
+                </Grid>
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Faculty Directory" Route="Faculty">
+        <ShellContent Title="Faculty Directory">
+            <ContentPage>
+                <Grid Padding="24">
+                    <Label Text="Faculty Directory Page (placeholder)" TextColor="White" />
+                </Grid>
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
 
 </Shell>

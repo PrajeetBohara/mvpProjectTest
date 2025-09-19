@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Dashboard.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global Top Bar -->
+        <controls:TopBar />
+
+        <!-- Page body placeholder -->
+        <Grid Grid.Row="1" Padding="24">
+            <Label Text="Home Dashboard Content"
+                   TextColor="White"
+                   FontSize="24" />
+        </Grid>
+    </Grid>
+</ContentPage>

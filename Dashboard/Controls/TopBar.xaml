@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Dashboard.Controls.TopBar"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{DynamicResource TopBarBackground}"
+    HeightRequest="72"
+    Padding="16,12"
+    >
+    <!-- Layout: [Menu] [Home] [Logo Text] [Search] [Weather] [Clock] -->
+    <Grid ColumnDefinitions="Auto,16,Auto,24,*,24,2*,24,Auto,24,Auto" RowDefinitions="Auto">
+        <!-- 1) Menu icon (three lines) -->
+        <Grid Grid.Column="0">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnMenuTapped" />
+            </Grid.GestureRecognizers>
+            <!-- Simple hamburger using three BoxViews so it's cross-platform -->
+            <VerticalStackLayout Spacing="4" WidthRequest="28" HorizontalOptions="Start" VerticalOptions="Center">
+                <BoxView HeightRequest="3" CornerRadius="2" BackgroundColor="{DynamicResource TopBarForeground}" />
+                <BoxView HeightRequest="3" CornerRadius="2" BackgroundColor="{DynamicResource TopBarForeground}" />
+                <BoxView HeightRequest="3" CornerRadius="2" BackgroundColor="{DynamicResource TopBarForeground}" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- 2) Home button (icon + text) -->
+        <VerticalStackLayout Grid.Column="2" Spacing="2" HorizontalOptions="Start" VerticalOptions="Center">
+            <Grid>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHomeTapped" />
+                </Grid.GestureRecognizers>
+                <!-- simple home icon: triangle + square -->
+                <Grid WidthRequest="28" HeightRequest="24">
+                    <Polygon Points="14,0 28,12 0,12" Fill="{DynamicResource TopBarForeground}" />
+                    <Rectangle Fill="{DynamicResource TopBarForeground}" WidthRequest="14" HeightRequest="10" TranslationX="7" TranslationY="12" />
+                </Grid>
+            </Grid>
+            <Label Text="Home"
+                   FontSize="10"
+                   TextColor="{DynamicResource TopBarForeground}"
+                   HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+
+        <!-- 3) Logo text -->
+        <Label Grid.Column="4"
+               Text="Department of Engineering &amp; Computer Science"
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="{DynamicResource TopBarForeground}"
+               VerticalTextAlignment="Center" />
+
+        <!-- 4) Search box (placeholder only for now) -->
+        <Grid Grid.Column="6" RowDefinitions="Auto" ColumnDefinitions="Auto,*" VerticalOptions="Center">
+            <Image Source="search.png"
+                   WidthRequest="18"
+                   HeightRequest="18"
+                   Margin="8,0"
+                   VerticalOptions="Center"
+                   IsVisible="False" />
+            <Entry Grid.ColumnSpan="2"
+                   x:Name="SearchEntry"
+                   Placeholder="Search on this page…"
+                   ClearButtonVisibility="WhileEditing"
+                   BackgroundColor="{DynamicResource TopBarSearchBackground}"
+                   TextColor="{DynamicResource TopBarForeground}"
+                   PlaceholderColor="{DynamicResource TopBarPlaceholder}"
+                   HeightRequest="40"
+                   Padding="12,8"
+                   />
+        </Grid>
+
+        <!-- 5) Weather placeholder -->
+        <Label Grid.Column="8"
+               x:Name="WeatherLabel"
+               Text="72°F • Partly Cloudy"
+               FontSize="14"
+               TextColor="{DynamicResource TopBarForeground}"
+               VerticalTextAlignment="Center" />
+
+        <!-- 6) Clock -->
+        <Label Grid.Column="10"
+               x:Name="ClockLabel"
+               Text="--:--"
+               FontSize="16"
+               FontAttributes="Bold"
+               TextColor="{DynamicResource TopBarForeground}"
+               VerticalTextAlignment="Center" />
+    </Grid>
+</ContentView>

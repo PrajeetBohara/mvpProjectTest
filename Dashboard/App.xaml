@@ -4,6 +4,22 @@
              xmlns:local="clr-namespace:Dashboard"
              x:Class="Dashboard.App">
     <Application.Resources>
+
+        <Color x:Key="ColorTopBarBg">#111318</Color>
+        <Color x:Key="ColorTopBarFg">#FFFFFF</Color>
+        <Color x:Key="ColorTopBarSearchBg">#1C2028</Color>
+        <Color x:Key="ColorTopBarPlaceholder">#99FFFFFF</Color>
+
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="#0B0D11" />
+        </Style>
+
+        <!-- dynamic resources used by TopBar -->
+        <SolidColorBrush x:Key="TopBarBackground" Color="{StaticResource ColorTopBarBg}" />
+        <SolidColorBrush x:Key="TopBarForeground" Color="{StaticResource ColorTopBarFg}" />
+        <SolidColorBrush x:Key="TopBarSearchBackground" Color="{StaticResource ColorTopBarSearchBg}" />
+        <SolidColorBrush x:Key="TopBarPlaceholder" Color="{StaticResource ColorTopBarPlaceholder}" />
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
