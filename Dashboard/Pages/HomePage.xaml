@@ -6,10 +6,10 @@
     xmlns:controls="clr-namespace:Dashboard.Controls">
 
     <Grid RowDefinitions="Auto,*">
-        <!-- Global Top Bar -->
-        <controls:TopBar />
-
-        <!-- Page body placeholder -->
+        <!-- Global TopBar - Always Visible on Top -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Page body content -->
         <Grid Grid.Row="1" Padding="24">
             <Label Text="Home Dashboard Content"
                    TextColor="White"

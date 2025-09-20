@@ -4,9 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:Dashboard.Pages"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
     Shell.FlyoutBehavior="Flyout">
 
-    <!-- Flyout header (optional) -->
+    <!-- Flyout header (optional) 
     <FlyoutHeader>
         <Grid Padding="16" BackgroundColor="#111318">
             <Label Text="ENCS Dashboard"
@@ -15,18 +16,22 @@
                    FontSize="20" />
         </Grid>
     </FlyoutHeader>
+    -->
 
     <!-- Flyout items (side menu options) -->
     <FlyoutItem Title="Home" Route="Home">
         <ShellContent Title="Home" ContentTemplate="{DataTemplate pages:HomePage}" />
     </FlyoutItem>
 
-    <!-- Placeholder routes we’ll build later -->
+    <!-- Placeholder routes we'll build later -->
     <FlyoutItem Title="Student Clubs" Route="Clubs">
         <ShellContent Title="Student Clubs">
             <ContentPage>
-                <Grid Padding="24">
-                    <Label Text="Student Clubs Page (placeholder)" TextColor="White" />
+                <Grid RowDefinitions="Auto,*">
+                    <controls:TopBar Grid.Row="0" />
+                    <Grid Grid.Row="1" Padding="24">
+                        <Label Text="Student Clubs Page (placeholder)" TextColor="White" />
+                    </Grid>
                 </Grid>
             </ContentPage>
         </ShellContent>
@@ -35,8 +40,11 @@
     <FlyoutItem Title="Faculty Directory" Route="Faculty">
         <ShellContent Title="Faculty Directory">
             <ContentPage>
-                <Grid Padding="24">
-                    <Label Text="Faculty Directory Page (placeholder)" TextColor="White" />
+                <Grid RowDefinitions="Auto,*">
+                    <controls:TopBar Grid.Row="0" />
+                    <Grid Grid.Row="1" Padding="24">
+                        <Label Text="Faculty Directory Page (placeholder)" TextColor="White" />
+                    </Grid>
                 </Grid>
             </ContentPage>
         </ShellContent>
