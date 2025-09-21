@@ -52,17 +52,13 @@
         </ShellContent>
     </FlyoutItem>
 
-    <FlyoutItem Title="Faculty Directory" Route="Faculty">
-        <ShellContent Title="ENCS Clubs and Organizations">
-            <ContentPage>
-                <Grid RowDefinitions="Auto,*">
-                    <controls:TopBar Grid.Row="0" />
-                    <Grid Grid.Row="1" Padding="24">
-                        <Label Text="Faculty Directory Page (placeholder)" TextColor="White" />
-                    </Grid>
-                </Grid>
-            </ContentPage>
-        </ShellContent>
+    <!-- Additional routes for View All pages -->
+    <FlyoutItem Title="All Events" Route="AllEvents">
+        <ShellContent Title="All Events" ContentTemplate="{DataTemplate pages:AllEventsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="All Announcements" Route="AllAnnouncements">
+        <ShellContent Title="All Announcements" ContentTemplate="{DataTemplate pages:AllAnnouncementsPage}" />
     </FlyoutItem>
 
 </Shell>

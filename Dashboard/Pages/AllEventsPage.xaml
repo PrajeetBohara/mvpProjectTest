@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Dashboard.Pages.AllEventsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Title="All Events">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar - Always Visible on Top -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Main Content Area -->
+        <Grid Grid.Row="1" Padding="20">
+            
+            <!-- Page Header -->
+            <VerticalStackLayout Spacing="20">
+                <Label Text="📅 All Upcoming Events"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+                
+                <!-- Events List -->
+                <ScrollView>
+                    <VerticalStackLayout Spacing="15">
+                        
+                        <!-- Event 1 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Engineering Career Fair"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="Friday, September 27, 2024 • 10:00 AM - 4:00 PM"
+                                       FontSize="16"
+                                       TextColor="#4CAF50" />
+                                <Label Text="Main Campus Auditorium"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC" />
+                                <Label Text="Join us for the annual Engineering Career Fair featuring top companies looking to hire engineering students. Bring your resume and dress professionally."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Event 2 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="CS Department Meeting"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="Monday, September 30, 2024 • 2:00 PM - 3:30 PM"
+                                       FontSize="16"
+                                       TextColor="#FF9800" />
+                                <Label Text="Computer Science Building, Room 201"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC" />
+                                <Label Text="Monthly department meeting to discuss curriculum updates, new courses, and student feedback."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Event 3 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Student Club Expo"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="Wednesday, October 2, 2024 • 1:00 PM - 5:00 PM"
+                                       FontSize="16"
+                                       TextColor="#2196F3" />
+                                <Label Text="Student Center, Main Hall"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC" />
+                                <Label Text="Discover all the student clubs and organizations on campus. Sign up for clubs that interest you and meet new people."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Event 4 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Guest Speaker: AI in Engineering"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="Friday, October 4, 2024 • 3:00 PM - 4:30 PM"
+                                       FontSize="16"
+                                       TextColor="#E91E63" />
+                                <Label Text="Engineering Building, Lecture Hall A"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC" />
+                                <Label Text="Dr. Sarah Johnson from TechCorp will discuss the latest developments in artificial intelligence and its applications in engineering."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Event 5 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Hackathon 2024"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="Saturday, October 5, 2024 • 9:00 AM - 9:00 PM"
+                                       FontSize="16"
+                                       TextColor="#9C27B0" />
+                                <Label Text="Computer Science Building, Labs 1-4"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC" />
+                                <Label Text="24-hour coding competition with prizes for the best projects. Teams of 2-4 students. Registration required."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Event 6 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Research Symposium"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="Tuesday, October 8, 2024 • 10:00 AM - 2:00 PM"
+                                       FontSize="16"
+                                       TextColor="#00BCD4" />
+                                <Label Text="Library Conference Center"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC" />
+                                <Label Text="Showcase of student research projects and faculty presentations. Open to all students and faculty."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                    </VerticalStackLayout>
+                </ScrollView>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
