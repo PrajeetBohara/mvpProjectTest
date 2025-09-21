@@ -9,11 +9,258 @@
         <!-- Global TopBar - Always Visible on Top -->
         <controls:TopBar Grid.Row="0" />
         
-        <!-- Page body content -->
-        <Grid Grid.Row="1" Padding="24">
-            <Label Text="Home Dashboard Content"
-                   TextColor="White"
-                   FontSize="24" />
+        <!-- Main Content Area -->
+        <Grid Grid.Row="1" Padding="20" RowDefinitions="*,Auto" ColumnDefinitions="2*,1*">
+            
+            <!-- Left Side: Slideshow and Announcements -->
+            <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="2*,1*" ColumnDefinitions="*">
+                
+                <!-- Slideshow Section (Center) -->
+                <Frame Grid.Row="0" Grid.Column="0"
+                       BackgroundColor="#1C2028"
+                       CornerRadius="12"
+                       Padding="0"
+                       HasShadow="True"
+                       Margin="0,0,0,20">
+                    <Grid>
+                        <!-- Slideshow Placeholder -->
+                        <Frame BackgroundColor="#2A2F3A" 
+                               CornerRadius="12"
+                               Padding="0"
+                               HasShadow="False"
+                               Margin="2">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSlideshowTapped" />
+                            </Frame.GestureRecognizers>
+                            
+                            <!-- Placeholder for University image -->
+                            <Image Source="dotnet_bot.png"
+                                   Aspect="AspectFill"
+                                   Opacity="0.3" />
+                            
+                            <!-- Slideshow Content Overlay -->
+                            <VerticalStackLayout VerticalOptions="Center" 
+                                                HorizontalOptions="Center"
+                                                Spacing="10">
+                                <Label Text="📸"
+                                       FontSize="48"
+                                       TextColor="White"
+                                       HorizontalOptions="Center" />
+                                <Label Text="Image Slideshow"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center" />
+                                <Label Text="Tap to view gallery"
+                                       FontSize="12"
+                                       TextColor="#CCCCCC"
+                                       HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                            
+                            <!-- Navigation Dots (Placeholder) -->
+                            <HorizontalStackLayout HorizontalOptions="Center" 
+                                                 VerticalOptions="End"
+                                                 Spacing="8"
+                                                 Margin="0,0,0,20">
+                                <BoxView WidthRequest="8" HeightRequest="8" 
+                                         CornerRadius="4" BackgroundColor="White" />
+                                <BoxView WidthRequest="8" HeightRequest="8" 
+                                         CornerRadius="4" BackgroundColor="#666666" />
+                                <BoxView WidthRequest="8" HeightRequest="8" 
+                                         CornerRadius="4" BackgroundColor="#666666" />
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </Grid>
+                </Frame>
+                
+                <!-- Announcements Section (Below Slideshow) -->
+                <Frame Grid.Row="1" Grid.Column="0"
+                       BackgroundColor="#1C2028"
+                       CornerRadius="12"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="📢 Latest Announcements"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                        
+                        <!-- Announcement Items -->
+                        <VerticalStackLayout Spacing="10">
+                            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                                <Label Grid.Row="0" Grid.Column="0" Text="•" 
+                                       TextColor="#4CAF50" FontSize="16" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="New semester registration opens Monday"
+                                       TextColor="White" FontSize="14" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="2 hours ago"
+                                       TextColor="#CCCCCC" FontSize="12" 
+                                       Margin="0,2,0,0" />
+                            </Grid>
+                            
+                            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                                <Label Grid.Row="0" Grid.Column="0" Text="•" 
+                                       TextColor="#FF9800" FontSize="16" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="Engineering Career Fair next Friday"
+                                       TextColor="White" FontSize="14" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="1 day ago"
+                                       TextColor="#CCCCCC" FontSize="12" 
+                                       Margin="0,2,0,0" />
+                            </Grid>
+                            
+                            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                                <Label Grid.Row="0" Grid.Column="0" Text="•" 
+                                       TextColor="#2196F3" FontSize="16" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="Library extended hours for finals"
+                                       TextColor="White" FontSize="14" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="3 days ago"
+                                       TextColor="#CCCCCC" FontSize="12" 
+                                       Margin="0,2,0,0" />
+                            </Grid>
+                        </VerticalStackLayout>
+                        
+                        <Button Text="View All Announcements"
+                                BackgroundColor="#2A2F3A"
+                                TextColor="White"
+                                CornerRadius="8"
+                                FontSize="14"
+                                Clicked="OnViewAllAnnouncementsClicked" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+            
+            <!-- Right Side: Upcoming Events -->
+            <Frame Grid.Row="0" Grid.Column="1"
+                   BackgroundColor="#1C2028"
+                   CornerRadius="12"
+                   Padding="20"
+                   HasShadow="True"
+                   Margin="20,0,0,0">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="📅 Upcoming Events"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="White" />
+                    
+                    <!-- Event Items -->
+                    <VerticalStackLayout Spacing="12">
+                        <Frame BackgroundColor="#2A2F3A" 
+                               CornerRadius="8" 
+                               Padding="15"
+                               HasShadow="False">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Engineering Career Fair"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="Friday, Sep 27 • 10:00 AM"
+                                       FontSize="12"
+                                       TextColor="#4CAF50" />
+                                <Label Text="Main Campus Auditorium"
+                                       FontSize="12"
+                                       TextColor="#CCCCCC" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <Frame BackgroundColor="#2A2F3A" 
+                               CornerRadius="8" 
+                               Padding="15"
+                               HasShadow="False">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="CS Department Meeting"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="Monday, Sep 30 • 2:00 PM"
+                                       FontSize="12"
+                                       TextColor="#FF9800" />
+                                <Label Text="Computer Science Building"
+                                       FontSize="12"
+                                       TextColor="#CCCCCC" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <Frame BackgroundColor="#2A2F3A" 
+                               CornerRadius="8" 
+                               Padding="15"
+                               HasShadow="False">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Student Club Expo"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="Wednesday, Oct 2 • 1:00 PM"
+                                       FontSize="12"
+                                       TextColor="#2196F3" />
+                                <Label Text="Student Center"
+                                       FontSize="12"
+                                       TextColor="#CCCCCC" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </VerticalStackLayout>
+                    
+                    <Button Text="View All Events"
+                            BackgroundColor="#2A2F3A"
+                            TextColor="White"
+                            CornerRadius="8"
+                            FontSize="14"
+                            Clicked="OnViewAllEventsClicked" />
+                </VerticalStackLayout>
+            </Frame>
+            
+            <!-- Bottom Row: Maps and University Logo -->
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                  ColumnDefinitions="Auto,*" 
+                  VerticalOptions="End"
+                  Margin="0,20,0,0">
+                
+                <!-- Maps Section (Bottom Left) -->
+                <Frame Grid.Column="0"
+                       BackgroundColor="#1C2028"
+                       CornerRadius="12"
+                       Padding="20"
+                       HasShadow="True"
+                       WidthRequest="200"
+                       HeightRequest="120">
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMapsTapped" />
+                        </Grid.GestureRecognizers>
+                        
+                        <VerticalStackLayout VerticalOptions="Center" 
+                                            HorizontalOptions="Center"
+                                            Spacing="10">
+                            <Label Text="🗺️"
+                                   FontSize="32"
+                                   TextColor="White"
+                                   HorizontalOptions="Center" />
+                            <Label Text="Campus Maps"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center" />
+                            <Label Text="Tap to explore"
+                                   FontSize="12"
+                                   TextColor="#CCCCCC"
+                                   HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+                
+                <!-- University Logo (Bottom Right) - Transparent -->
+                <Grid Grid.Column="1"
+                      HorizontalOptions="End"
+                      VerticalOptions="End"
+                      WidthRequest="80"
+                      HeightRequest="80">
+                    <!-- McNeese Logo - Only the image, no background -->
+                    <Image Source="mcneeselogo.png"
+                           WidthRequest="200"
+                           HeightRequest="200"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </ContentPage>
