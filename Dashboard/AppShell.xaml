@@ -52,4 +52,17 @@
         </ShellContent>
     </FlyoutItem>
 
+    <FlyoutItem Title="Faculty Directory" Route="Faculty">
+        <ShellContent Title="ENCS Clubs and Organizations">
+            <ContentPage>
+                <Grid RowDefinitions="Auto,*">
+                    <controls:TopBar Grid.Row="0" />
+                    <Grid Grid.Row="1" Padding="24">
+                        <Label Text="Faculty Directory Page (placeholder)" TextColor="White" />
+                    </Grid>
+                </Grid>
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
+
 </Shell>
