@@ -46,8 +46,10 @@ public partial class HomePage : ContentPage
     {
         try
         {
-            // TODO: Navigate to announcements page
-            await DisplayAlert("Announcements", "Opening all announcements...", "OK");
+            if (Shell.Current != null)
+            {
+                await Shell.Current.GoToAsync("//AllAnnouncements");
+            }
         }
         catch (Exception ex)
         {
@@ -63,8 +65,10 @@ public partial class HomePage : ContentPage
     {
         try
         {
-            // TODO: Navigate to events page
-            await DisplayAlert("Events", "Opening events calendar...", "OK");
+            if (Shell.Current != null)
+            {
+                await Shell.Current.GoToAsync("//AllEvents");
+            }
         }
         catch (Exception ex)
         {
@@ -72,21 +76,38 @@ public partial class HomePage : ContentPage
         }
     }
 
-    /// <summary>
-    /// Handles maps section tap to open campus maps.
-    /// For Smart TV Kiosk: Navigate to interactive campus maps page.
-    /// </summary>
-    private async void OnMapsTapped(object sender, EventArgs e)
-    {
-        try
-        {
-            // TODO: Navigate to maps page
-            await DisplayAlert("Campus Maps", "Opening interactive campus maps...", "OK");
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"Error opening maps: {ex.Message}");
-        }
-    }
+            /// <summary>
+            /// Handles maps section tap to open campus maps.
+            /// For Smart TV Kiosk: Navigate to interactive campus maps page.
+            /// </summary>
+            private async void OnMapsTapped(object sender, EventArgs e)
+            {
+                try
+                {
+                    // TODO: Navigate to maps page
+                    await DisplayAlert("Campus Maps", "Opening interactive campus maps...", "OK");
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error opening maps: {ex.Message}");
+                }
+            }
+
+            /// <summary>
+            /// Handles stats section tap to open detailed statistics.
+            /// For Smart TV Kiosk: Navigate to detailed stats and accreditation page.
+            /// </summary>
+            private async void OnStatsTapped(object sender, EventArgs e)
+            {
+                try
+                {
+                    // TODO: Navigate to detailed stats page
+                    await DisplayAlert("Statistics & Accreditation", "Opening detailed statistics and accreditation information...", "OK");
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error opening stats: {ex.Message}");
+                }
+            }
     #endregion
 }

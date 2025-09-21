@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Dashboard.Pages.AllAnnouncementsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Title="All Announcements">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar - Always Visible on Top -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Main Content Area -->
+        <Grid Grid.Row="1" Padding="20">
+            
+            <!-- Page Header -->
+            <VerticalStackLayout Spacing="20">
+                <Label Text="📢 All Announcements"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+                
+                <!-- Announcements List -->
+                <ScrollView>
+                    <VerticalStackLayout Spacing="15">
+                        
+                        <!-- Announcement 1 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="•" 
+                                           TextColor="#4CAF50" FontSize="20" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="New semester registration opens Monday"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="Posted 2 hours ago"
+                                           FontSize="14"
+                                           TextColor="#CCCCCC" 
+                                           Margin="0,5,0,0" />
+                                </Grid>
+                                <Label Text="Registration for Spring 2025 semester begins Monday, September 23rd at 8:00 AM. All students must register through the student portal. Early registration is recommended for popular courses."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap"
+                                       Margin="0,10,0,0" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Announcement 2 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="•" 
+                                           TextColor="#FF9800" FontSize="20" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Engineering Career Fair next Friday"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="Posted 1 day ago"
+                                           FontSize="14"
+                                           TextColor="#CCCCCC" 
+                                           Margin="0,5,0,0" />
+                                </Grid>
+                                <Label Text="The annual Engineering Career Fair will be held on Friday, September 27th from 10:00 AM to 4:00 PM in the Main Campus Auditorium. Over 50 companies will be present. Bring multiple copies of your resume and dress professionally."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap"
+                                       Margin="0,10,0,0" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Announcement 3 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="•" 
+                                           TextColor="#2196F3" FontSize="20" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Library extended hours for finals"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="Posted 3 days ago"
+                                           FontSize="14"
+                                           TextColor="#CCCCCC" 
+                                           Margin="0,5,0,0" />
+                                </Grid>
+                                <Label Text="The library will have extended hours during finals week (December 9-15). Hours will be 7:00 AM to 2:00 AM Monday through Thursday, and 7:00 AM to 10:00 PM Friday through Sunday. Study rooms are available for group study sessions."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap"
+                                       Margin="0,10,0,0" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Announcement 4 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="•" 
+                                           TextColor="#E91E63" FontSize="20" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Student parking permits now available"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="Posted 4 days ago"
+                                           FontSize="14"
+                                           TextColor="#CCCCCC" 
+                                           Margin="0,5,0,0" />
+                                </Grid>
+                                <Label Text="Student parking permits for the 2024-2025 academic year are now available for purchase online. Permits cost $150 for the full year or $75 per semester. Parking enforcement begins September 30th."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap"
+                                       Margin="0,10,0,0" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Announcement 5 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="•" 
+                                           TextColor="#9C27B0" FontSize="20" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="New computer lab hours posted"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="Posted 1 week ago"
+                                           FontSize="14"
+                                           TextColor="#CCCCCC" 
+                                           Margin="0,5,0,0" />
+                                </Grid>
+                                <Label Text="The computer labs in the Engineering Building have new operating hours. Labs 1-3 are open 24/7 with student ID access. Lab 4 (specialized software) is open Monday-Friday 8:00 AM to 10:00 PM and weekends 10:00 AM to 6:00 PM."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap"
+                                       Margin="0,10,0,0" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Announcement 6 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="•" 
+                                           TextColor="#00BCD4" FontSize="20" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="WiFi upgrade completed"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="Posted 1 week ago"
+                                           FontSize="14"
+                                           TextColor="#CCCCCC" 
+                                           Margin="0,5,0,0" />
+                                </Grid>
+                                <Label Text="The campus WiFi network has been upgraded to provide faster and more reliable internet access. All buildings now have enhanced coverage. Students should reconnect to the 'McNeese-Student' network using their student credentials."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap"
+                                       Margin="0,10,0,0" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Announcement 7 -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="•" 
+                                           TextColor="#FF5722" FontSize="20" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Student ID card replacement"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="Posted 2 weeks ago"
+                                           FontSize="14"
+                                           TextColor="#CCCCCC" 
+                                           Margin="0,5,0,0" />
+                                </Grid>
+                                <Label Text="Students who need to replace their ID cards can do so at the Student Services office in the Student Center. Replacement cost is $15. New cards will be ready within 24 hours. Bring a valid photo ID for verification."
+                                       FontSize="14"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap"
+                                       Margin="0,10,0,0" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                    </VerticalStackLayout>
+                </ScrollView>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
