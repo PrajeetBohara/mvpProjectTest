@@ -112,15 +112,26 @@
             </Grid>
         </Frame>
 
-        <!-- 5) Weather Information (Single line) -->
-        <Label Grid.Column="8"
-               x:Name="WeatherLabel"
-               Text="72°F • Partly Cloudy"
-               FontSize="14"
-               FontAttributes="Bold"
-               TextColor="{DynamicResource TopBarForeground}"
-               VerticalTextAlignment="Center"
-               HorizontalTextAlignment="End" />
+        <!-- 5) Weather Information (Icon + Text) -->
+        <Grid Grid.Column="8" 
+              ColumnDefinitions="Auto,Auto" 
+              VerticalOptions="Center"
+              HorizontalOptions="End">
+            <Image x:Name="WeatherIcon"
+                   Grid.Column="0"
+                   WidthRequest="24"
+                   HeightRequest="24"
+                   Margin="0,0,8,0"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   x:Name="WeatherLabel"
+                   Text="72°F • Partly Cloudy"
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   TextColor="{DynamicResource TopBarForeground}"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="End" />
+        </Grid>
 
         <!-- 6) Clock (Single line) -->
         <Label Grid.Column="10"
