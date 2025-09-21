@@ -11,7 +11,8 @@
             <Color x:Key="ColorTopBarPlaceholder">#99FFFFFF</Color>
 
             <Style TargetType="ContentPage">
-                <Setter Property="BackgroundColor" Value="#0B0D11" />
+                <!---Used by content pages like faculty page, student orgs page-->
+                <Setter Property="BackgroundColor" Value="White" />
             </Style>
 
             <!-- dynamic resources used by TopBar -->
