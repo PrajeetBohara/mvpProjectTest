@@ -6,7 +6,7 @@
         {
             InitializeComponent();
 
-            // Ensure a global route alias for home navigation
+            // A global route alias for home navigation
             Routing.RegisterRoute("//Home", typeof(Pages.HomePage));
         }
     }

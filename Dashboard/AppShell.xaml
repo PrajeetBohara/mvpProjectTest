@@ -9,7 +9,7 @@
     Shell.NavBarIsVisible="False"
     Shell.TabBarIsVisible="False">
 
-    <!-- Flyout header (optional) 
+    <!-- Flyout header (optional for future use) 
     <FlyoutHeader>
         <Grid Padding="16" BackgroundColor="#111318">
             <Label Text="ENCS Dashboard"
@@ -20,12 +20,12 @@
     </FlyoutHeader>
     -->
 
-    <!-- Flyout items (side menu options) -->
+    <!-- Flyout items  -->
     <FlyoutItem Title="Home" Route="Home">
         <ShellContent Title="Home" ContentTemplate="{DataTemplate pages:HomePage}" />
     </FlyoutItem>
 
-    <!-- Placeholder routes we'll build later -->
+    <!-- Placeholder routes we'll build them later -->
     <FlyoutItem Title="Student Clubs" Route="Clubs">
         <ShellContent Title="Student Clubs">
             <ContentPage>
