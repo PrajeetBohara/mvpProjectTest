@@ -1,7 +1,7 @@
-Tasks Done: JAEL RUIZ (Backend)
+Jael Ruiz (Backend)
 We can invite clients as the developer in our Supabase backend incase they want to see the backend tables and policies
 
-Taks done:
+Tasks done:
 1. Created new project.
 
 2. Ran Schema Script (scripts are in "supabase_schema.sql" file)
