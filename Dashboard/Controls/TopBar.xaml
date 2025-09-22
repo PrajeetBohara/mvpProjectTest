@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!---Code written by Prajeet Bohara iwth the help of contenview template provided by .NET MAUI
+This code file gives UI for the top navigation bar that will be present throughout all the pages-->
+    
+<!-- DynamicResouce are used from the app.xaml files which is the global resource file for the project-->
+
 <ContentView
     x:Class="Dashboard.Controls.TopBar"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -7,12 +12,12 @@
     HeightRequest="80"
     Padding="20,16,20,16">
     
-    <!-- Main Grid Layout: All elements in one horizontal row -->
-    <Grid ColumnDefinitions="Auto,20,Auto,20,*,20,Auto,20,Auto,20,Auto" 
+    <!-- Main Grid Layout for the icons: All elements in one horizontal row at the top bar -->
+    <Grid ColumnDefinitions="Auto,12,Auto,12,Auto,*,20,Auto,20,Auto,20,Auto" 
           RowDefinitions="Auto" 
           VerticalOptions="Center">
         
-        <!-- 1) Hamburger Menu Icon -->
+        <!-- Hamburger Menu Icon -->
         <Grid Grid.Column="0" 
               WidthRequest="40" 
               HeightRequest="40" 
@@ -20,7 +25,7 @@
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnMenuTapped" />
             </Grid.GestureRecognizers>
-            <!-- Professional hamburger icon -->
+       
             <VerticalStackLayout Spacing="3" 
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center">
@@ -39,7 +44,7 @@
             </VerticalStackLayout>
         </Grid>
 
-        <!-- 2) Home Button (Horizontal layout - icon and text side by side) -->
+        <!-- Home Icon -->
         <Grid Grid.Column="2" 
               WidthRequest="80" 
               HeightRequest="40" 
@@ -49,7 +54,7 @@
             </Grid.GestureRecognizers>
             <Grid ColumnDefinitions="Auto,Auto" 
                   VerticalOptions="Center">
-                <!-- Home icon -->
+  
                 <Grid Grid.Column="0"
                       WidthRequest="24" 
                       HeightRequest="24" 
@@ -61,6 +66,7 @@
                           Stroke="{DynamicResource TopBarBackground}" 
                           StrokeThickness="1" />
                 </Grid>
+                <!--We are not using text for now. We will leave this for now so that it can be used in the future-->
                 <!-- Home text 
                 <Label Grid.Column="1"
                        Text="Home"
@@ -71,18 +77,20 @@
             </Grid>
         </Grid>
 
-        <!-- 3) Department Title (Center, flexible width) -->
+        <!-- Department Title -->
         <Label Grid.Column="4"
                Text="Department of Engineering &amp; Computer Science"
-               FontSize="16"
+               FontSize="{OnPlatform Default=14, Android=12, iOS=12}"
                FontAttributes="Bold"
                TextColor="{DynamicResource TopBarForeground}"
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="Start"
-               LineBreakMode="TailTruncation" />
+               LineBreakMode="TailTruncation"
+               WidthRequest="280"
+               MaxLines="1" />
 
-        <!-- 4) Search Bar -->
-        <Frame Grid.Column="6"
+        <!-- Search Bar Placeholder. The functionality has not been implemented yet -->
+        <Frame Grid.Column="7"
                BackgroundColor="{DynamicResource TopBarSearchBackground}"
                CornerRadius="20"
                Padding="0"
@@ -98,7 +106,7 @@
                        TextColor="{DynamicResource TopBarPlaceholder}"
                        VerticalTextAlignment="Center"
                        Margin="12,0,8,0" />
-                <!-- Search Entry -->
+                <!-- Search Entry Bar-->
                 <Entry Grid.Column="1"
                        x:Name="SearchEntry"
                        Placeholder="Search..."
@@ -112,8 +120,8 @@
             </Grid>
         </Frame>
 
-        <!-- 5) Weather Information (Icon + Text) -->
-        <Grid Grid.Column="8" 
+        <!-- Weather Information (Icon + Text) -->
+        <Grid Grid.Column="9" 
               ColumnDefinitions="Auto,Auto" 
               VerticalOptions="Center"
               HorizontalOptions="End">
@@ -133,8 +141,8 @@
                    HorizontalTextAlignment="End" />
         </Grid>
 
-        <!-- 6) Clock (Single line) -->
-        <Label Grid.Column="10"
+        <!-- Current time-->
+        <Label Grid.Column="11"
                x:Name="ClockLabel"
                Text="04:16 PM • Sep 19"
                FontSize="14"
