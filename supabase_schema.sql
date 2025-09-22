@@ -1,13 +1,11 @@
--- =============================================
+Code written by JAEL RUIZ with the help of supabase documentation on queries
+
 -- DASHBOARD DATABASE SCHEMA FOR SUPABASE
--- =============================================
 
 -- Enable necessary extensions
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- =============================================
 -- CORE TABLES
--- =============================================
 
 -- Users table (extends Supabase auth.users)
 CREATE TABLE public.profiles (
@@ -160,9 +158,9 @@ CREATE TABLE public.sponsors (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- =============================================
--- INDEXES FOR PERFORMANCE
--- =============================================
+...................................................
+INDEXES FOR PERFORMANCE
+..................................................
 
 CREATE INDEX idx_events_date ON public.events(event_date);
 CREATE INDEX idx_events_club ON public.events(club_id);
@@ -171,9 +169,9 @@ CREATE INDEX idx_projects_status ON public.projects(status);
 CREATE INDEX idx_gallery_category ON public.gallery(category);
 CREATE INDEX idx_faculty_active ON public.faculty(is_active);
 
--- =============================================
--- ROW LEVEL SECURITY (RLS)
--- =============================================
+................................................
+ROW LEVEL SECURITY (RLS)
+...............................................
 
 -- Enable RLS on all tables
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
@@ -186,9 +184,9 @@ ALTER TABLE public.gallery ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.courses ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.sponsors ENABLE ROW LEVEL SECURITY;
 
--- =============================================
--- RLS POLICIES
--- =============================================
+................................................
+RLS POLICIES
+...............................................
 
 -- Profiles: Users can read all profiles, update their own
 CREATE POLICY "Public profiles are viewable by everyone" ON public.profiles
@@ -229,9 +227,9 @@ CREATE POLICY "Courses are publicly readable" ON public.courses
 CREATE POLICY "Sponsors are publicly readable" ON public.sponsors
     FOR SELECT USING (is_active = true);
 
--- =============================================
--- FUNCTIONS
--- =============================================
+.................................................
+FUNCTIONS
+.................................................
 
 -- Function to update updated_at timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()
