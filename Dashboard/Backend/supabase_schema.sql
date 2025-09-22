@@ -1,4 +1,4 @@
-Code written by JAEL RUIZ with the help of supabase documentation on queries
+Code written by Jael Ruiz with the help of supabase documentation on queries
 
 -- DASHBOARD DATABASE SCHEMA FOR SUPABASE
 
