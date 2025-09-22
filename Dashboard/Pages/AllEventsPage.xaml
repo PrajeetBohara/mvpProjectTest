@@ -7,7 +7,7 @@
     Title="All Events">
 
     <Grid RowDefinitions="Auto,*">
-        <!-- Global TopBar - Always Visible on Top -->
+        <!-- Global TopBar that is always visible on top -->
         <controls:TopBar Grid.Row="0" />
         
         <!-- Main Content Area -->
@@ -21,7 +21,7 @@
                        TextColor="White"
                        HorizontalOptions="Center" />
                 
-                <!-- Events List -->
+                <!-- Events List (Hardcoded for now. We might fetch it from the backend later on -->
                 <ScrollView>
                     <VerticalStackLayout Spacing="15">
                         

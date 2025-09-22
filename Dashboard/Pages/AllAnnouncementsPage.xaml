@@ -7,7 +7,7 @@
     Title="All Announcements">
 
     <Grid RowDefinitions="Auto,*">
-        <!-- Global TopBar - Always Visible on Top -->
+        <!-- Global TopBar which is always visible on Top -->
         <controls:TopBar Grid.Row="0" />
         
         <!-- Main Content Area -->
@@ -21,7 +21,7 @@
                        TextColor="White"
                        HorizontalOptions="Center" />
                 
-                <!-- Announcements List -->
+                <!-- Announcements List (Hardcoded, will fetch from backend later)-->
                 <ScrollView>
                     <VerticalStackLayout Spacing="15">
                         

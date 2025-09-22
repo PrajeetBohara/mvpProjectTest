@@ -1,11 +1,11 @@
+//Code written by Prajeet Bohara
+
 using Microsoft.Maui.Controls;
 
 namespace Dashboard.Pages;
 
 /// <summary>
-/// HomePage for the Smart TV Kiosk Dashboard.
-/// Features: Slideshow, Upcoming Events, Announcements, Campus Maps, and University Logo.
-/// Layout: TopBar (always visible) + Main content with 5 key sections.
+/// Control behind the HomePage xaml file.
 /// </summary>
 public partial class HomePage : ContentPage
 {
@@ -23,13 +23,12 @@ public partial class HomePage : ContentPage
     #region Event Handlers
     /// <summary>
     /// Handles slideshow tap to open image gallery.
-    /// For Smart TV Kiosk: Opens full-screen image slideshow.
+    /// Later on for Smart it will open full-screen image slideshow.
     /// </summary>
     private async void OnSlideshowTapped(object sender, EventArgs e)
     {
         try
         {
-            // TODO: Navigate to full-screen slideshow/gallery
             await DisplayAlert("Slideshow", "Opening image gallery...", "OK");
         }
         catch (Exception ex)
@@ -40,7 +39,7 @@ public partial class HomePage : ContentPage
 
     /// <summary>
     /// Handles "View All Announcements" button tap.
-    /// For Smart TV Kiosk: Navigate to dedicated announcements page.
+    /// On tapping view all, it will route to the all announcements page.
     /// </summary>
     private async void OnViewAllAnnouncementsClicked(object sender, EventArgs e)
     {
@@ -59,7 +58,7 @@ public partial class HomePage : ContentPage
 
     /// <summary>
     /// Handles "View All Events" button tap.
-    /// For Smart TV Kiosk: Navigate to dedicated events calendar page.
+    /// On tapping view all, it will route to the all events page.
     /// </summary>
     private async void OnViewAllEventsClicked(object sender, EventArgs e)
     {
@@ -77,14 +76,13 @@ public partial class HomePage : ContentPage
     }
 
             /// <summary>
-            /// Handles maps section tap to open campus maps.
-            /// For Smart TV Kiosk: Navigate to interactive campus maps page.
+            /// Handles maps section tap to open maps for Drew Hall and ETL.
+            /// Placeholder for now
             /// </summary>
             private async void OnMapsTapped(object sender, EventArgs e)
             {
                 try
                 {
-                    // TODO: Navigate to maps page
                     await DisplayAlert("Campus Maps", "Opening interactive campus maps...", "OK");
                 }
                 catch (Exception ex)
@@ -93,21 +91,21 @@ public partial class HomePage : ContentPage
                 }
             }
 
-            /// <summary>
-            /// Handles stats section tap to open detailed statistics.
-            /// For Smart TV Kiosk: Navigate to detailed stats and accreditation page.
-            /// </summary>
-            private async void OnStatsTapped(object sender, EventArgs e)
-            {
-                try
-                {
-                    // TODO: Navigate to detailed stats page
-                    await DisplayAlert("Statistics & Accreditation", "Opening detailed statistics and accreditation information...", "OK");
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Error opening stats: {ex.Message}");
-                }
-            }
+            ///// <summary>
+            ///// Handles stats section tap to open detailed statistics.
+            ///// We are not using it right now. This is kept for future reference
+            ///// </summary>
+            //private async void OnStatsTapped(object sender, EventArgs e)
+            //{
+            //    try
+            //    {
+            //        // TODO: Navigate to detailed stats page
+            //        await DisplayAlert("Statistics & Accreditation", "Opening detailed statistics and accreditation information...", "OK");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        System.Diagnostics.Debug.WriteLine($"Error opening stats: {ex.Message}");
+            //    }
+            //}
     #endregion
 }
