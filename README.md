@@ -130,6 +130,11 @@ d. Weather Integration
 - .NET 8.0 SDK
 - Platform SDKs (Android, iOS, Windows as needed)
 
+6. Running the program
+- Use Visual Studio 2022 
+- Build the project file first
+- Choose an emulator or physical device in the execution section
+- Run the program
 
 6. License & Academic Use
 
@@ -140,6 +145,8 @@ This project is developed as part of the McNeese State University Senior Design 
 Development Team:
 - Prajeet Bohara 
 - Jael Ruiz 
+
+GitHub Repository Link: https://github.com/PrajeetBohara/Interactive-Dashboard-for-ENCS-LNG
 
 Academic Supervisor: Dr. Jennifer Lavergne
 Institution: McNeese State University, Department of Engineering & Computer Science
