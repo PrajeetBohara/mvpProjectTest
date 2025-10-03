@@ -272,7 +272,7 @@
                     </ScrollView>
                 </Frame>
                 
-                <!-- Transparent McNeese logo -->
+                <!-- Transparent McNeese logo 
                 <Grid Grid.Row="0" Grid.Column="2"
                       Margin="5,10,0,0">
                     <VerticalStackLayout VerticalOptions="Center" 
@@ -294,7 +294,7 @@
                                TextColor="#CCCCCC"
                                HorizontalOptions="Center"
                                HorizontalTextAlignment="Center" />
-                    </VerticalStackLayout>
+                    </VerticalStackLayout>-->
                 </Grid>
             </Grid>
         </Grid>
