@@ -5,7 +5,7 @@ This code file gives UI for the top navigation bar that will be present througho
 <!-- DynamicResouce are used from the app.xaml files which is the global resource file for the project-->
 
 <ContentView
-    x:Class="Dashboard"
+    x:Class="Dashboard.Controls.TopBar"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     BackgroundColor="{DynamicResource TopBarBackground}"

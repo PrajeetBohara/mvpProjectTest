@@ -97,7 +97,7 @@
                        CornerRadius="12"
                        Padding="16"
                        HasShadow="True"
-                       Margin="10,0,0,0">
+                       Margin="10,0,10,0">
                     <ScrollView>
                         <VerticalStackLayout Spacing="8">
                             <Label Text="📅 Upcoming Events"
@@ -212,7 +212,7 @@
                 <!-- Announcements Placeholder -->
                 <Frame Grid.Row="0" Grid.Column="1"
                        BackgroundColor="#1C2028"
-                       CornerRadius="12"
+                       CornerRadius="2"
                        Padding="16"
                        HasShadow="True"
                        Margin="5,10,5,0">
@@ -272,6 +272,7 @@
                     </ScrollView>
                 </Frame>
                 
+                <!--Removed McNeese Logo-->
                 <!-- Transparent McNeese logo 
                 <Grid Grid.Row="0" Grid.Column="2"
                       Margin="5,10,0,0">
@@ -294,8 +295,8 @@
                                TextColor="#CCCCCC"
                                HorizontalOptions="Center"
                                HorizontalTextAlignment="Center" />
-                    </VerticalStackLayout>-->
-                </Grid>
+                    </VerticalStackLayout>
+                </Grid>-->
             </Grid>
         </Grid>
     </Grid>
