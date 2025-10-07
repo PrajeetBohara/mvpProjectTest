@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--Code written by Prajeet Bohara with the help of contentpage template provided by .NET MAUI framework-->
+<!-- Code written by Prajeet Bohara with the help of ContentPage template provided by .NET MAUI framework -->
 <ContentPage
     x:Class="Dashboard.Pages.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:Dashboard.Controls">
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False">
 
     <Grid RowDefinitions="Auto,*">
         <!-- Global TopBar (Always visible) -->
         <controls:TopBar Grid.Row="0" />
-        
-        <!-- Main Content Area with Background Image -->
-        <Grid Grid.Row="1" Padding="10" RowDefinitions="3*,1*" ColumnDefinitions="3*,1*">
-            
-            <!-- Background custom transparent image -->
+
+        <!-- Main 2x2 area -->
+        <Grid Grid.Row="1"
+              Padding="10"
+              RowDefinitions="3*,1*"
+              ColumnDefinitions="3*,1*">
+
+            <!-- Background watermark -->
             <Image Source="mcneeselogo.png"
                    Aspect="AspectFill"
                    Opacity="0.1"
                    Grid.RowSpan="2"
                    Grid.ColumnSpan="2" />
-            
-            <!-- Slideshow for images and videos -->
-            <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*" ColumnDefinitions="*">
-                
-                <!-- Projects & Pictures Slideshow Section -->
-                <Frame Grid.Row="0" Grid.Column="0"
-                       BackgroundColor="#1C2028"
+
+            <!-- ====================== TOP-LEFT: Slideshow ====================== -->
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Frame BackgroundColor="#1C2028"
                        CornerRadius="12"
                        Padding="0"
                        HasShadow="True"
                        Margin="0,0,10,10">
                     <Grid>
-                        <!-- Slideshow Placeholder -->
-                        <Frame BackgroundColor="#2A2F3A" 
+                        <Frame BackgroundColor="#2A2F3A"
                                CornerRadius="12"
                                Padding="0"
                                HasShadow="False"
@@ -40,77 +41,99 @@
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnSlideshowTapped" />
                             </Frame.GestureRecognizers>
-                            
-                            <!-- Placeholder for Projects/Pictures -->
+
                             <Image Source="dotnet_bot.png"
                                    Aspect="AspectFill"
                                    Opacity="0.3" />
-                            
-                            <!-- Slide SHOW Content Overlay -->
-                            <VerticalStackLayout VerticalOptions="Center" 
-                                                HorizontalOptions="Center"
-                                                Spacing="15">
+
+                            <VerticalStackLayout VerticalOptions="Center"
+                                                 HorizontalOptions="Center"
+                                                 Spacing="15">
                                 <Label Text="🎬"
                                        FontSize="{OnPlatform Default=80, Android=70, iOS=70}"
-                                       TextColor="White"
-                                       HorizontalOptions="Center" />
+                                       TextColor="White" />
                                 <Label Text="Slide SHOW"
                                        FontSize="{OnPlatform Default=36, Android=32, iOS=32}"
                                        FontAttributes="Bold"
-                                       TextColor="White"
-                                       HorizontalOptions="Center" />
+                                       TextColor="White" />
                                 <Label Text="Student Projects &amp; Achievements"
                                        FontSize="{OnPlatform Default=18, Android=16, iOS=16}"
-                                       TextColor="#CCCCCC"
-                                       HorizontalOptions="Center" />
+                                       TextColor="#CCCCCC" />
                                 <Label Text="Tap to view slideshow"
                                        FontSize="{OnPlatform Default=16, Android=14, iOS=14}"
-                                       TextColor="#4CAF50"
-                                       HorizontalOptions="Center" />
+                                       TextColor="#4CAF50" />
                             </VerticalStackLayout>
-                            
-                            <!-- Navigation Dots (Placeholder) -->
-                            <HorizontalStackLayout HorizontalOptions="Center" 
-                                                 VerticalOptions="End"
-                                                 Spacing="12"
-                                                 Margin="0,0,0,30">
-                                <BoxView WidthRequest="12" HeightRequest="12" 
-                                         CornerRadius="6" BackgroundColor="White" />
-                                <BoxView WidthRequest="12" HeightRequest="12" 
-                                         CornerRadius="6" BackgroundColor="#666666" />
-                                <BoxView WidthRequest="12" HeightRequest="12" 
-                                         CornerRadius="6" BackgroundColor="#666666" />
-                                <BoxView WidthRequest="12" HeightRequest="12" 
-                                         CornerRadius="6" BackgroundColor="#666666" />
+
+                            <HorizontalStackLayout HorizontalOptions="Center"
+                                                   VerticalOptions="End"
+                                                   Spacing="12"
+                                                   Margin="0,0,0,30">
+                                <BoxView WidthRequest="12" HeightRequest="12" CornerRadius="6" BackgroundColor="White" />
+                                <BoxView WidthRequest="12" HeightRequest="12" CornerRadius="6" BackgroundColor="#666666" />
+                                <BoxView WidthRequest="12" HeightRequest="12" CornerRadius="6" BackgroundColor="#666666" />
+                                <BoxView WidthRequest="12" HeightRequest="12" CornerRadius="6" BackgroundColor="#666666" />
                             </HorizontalStackLayout>
                         </Frame>
                     </Grid>
                 </Frame>
             </Grid>
-            
-            <!-- Upcoming Events Section (20% width so that slideshow takes more space) -->
-            <Grid Grid.Row="0" Grid.Column="1" RowDefinitions="*" ColumnDefinitions="*">
-                
-                <!-- Events Section (Full Right Side) -->
-                <Frame Grid.Row="0" Grid.Column="0"
+
+            <!-- ====================== LEFT-BOTTOM: Maps (far left like before) ====================== -->
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Frame BackgroundColor="Transparent"
+                       CornerRadius="12"
+                       Padding="16"
+                       HasShadow="False"
+                       Margin="0,10,10,0"
+                       HorizontalOptions="Start">
+
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMapsTapped" />
+                        </Grid.GestureRecognizers>
+
+                        <VerticalStackLayout VerticalOptions="Center"
+                                             HorizontalOptions="Center"
+                                             Spacing="8">
+                            <Label Text="🗺️"
+                                   FontSize="{OnPlatform Default=48, Android=56, iOS=48}"
+                                   HorizontalOptions="Center" />
+                            <Label Text="Maps"
+                                   FontSize="{OnPlatform Default=20, Android=18, iOS=18}"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center"
+                                   TextColor="Black" />
+                            <Label Text="Tap to explore"
+                                   FontSize="{OnPlatform Default=14, Android=12, iOS=12}"
+                                   HorizontalOptions="Center"
+                                   TextColor="#333333" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+            </Grid>
+
+            <!-- ====================== RIGHT SIDE CONTAINER (spans both rows) ====================== -->
+            <!-- Makes Events a bit shorter and Announcements taller -->
+            <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+                  RowDefinitions="1*,1.5*">
+                <!-- adjust ratios as you like -->
+
+                <!-- TOP-RIGHT: Upcoming Events (slightly smaller) -->
+                <Frame Grid.Row="0"
                        BackgroundColor="#1C2028"
                        CornerRadius="12"
                        Padding="16"
                        HasShadow="True"
-                       Margin="10,0,10,0">
+                       Margin="10,0,10,6">
                     <ScrollView>
                         <VerticalStackLayout Spacing="8">
                             <Label Text="📅 Upcoming Events"
                                    FontSize="{OnPlatform Default=14, Android=12, iOS=12}"
                                    FontAttributes="Bold"
                                    TextColor="White" />
-                            
-                            <!-- Event Items - Compact for 20% width -->
+
                             <VerticalStackLayout Spacing="6">
-                                <Frame BackgroundColor="#2A2F3A" 
-                                       CornerRadius="6" 
-                                       Padding="6"
-                                       HasShadow="False">
+                                <Frame BackgroundColor="#2A2F3A" CornerRadius="6" Padding="6" HasShadow="False">
                                     <VerticalStackLayout Spacing="3">
                                         <Label Text="Engineering Career Fair"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
@@ -124,11 +147,8 @@
                                                TextColor="#4CAF50" />
                                     </VerticalStackLayout>
                                 </Frame>
-                                
-                                <Frame BackgroundColor="#2A2F3A" 
-                                       CornerRadius="6" 
-                                       Padding="6"
-                                       HasShadow="False">
+
+                                <Frame BackgroundColor="#2A2F3A" CornerRadius="6" Padding="6" HasShadow="False">
                                     <VerticalStackLayout Spacing="3">
                                         <Label Text="CS Department Meeting"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
@@ -142,11 +162,8 @@
                                                TextColor="#FF9800" />
                                     </VerticalStackLayout>
                                 </Frame>
-                                
-                                <Frame BackgroundColor="#2A2F3A" 
-                                       CornerRadius="6" 
-                                       Padding="6"
-                                       HasShadow="False">
+
+                                <Frame BackgroundColor="#2A2F3A" CornerRadius="6" Padding="6" HasShadow="False">
                                     <VerticalStackLayout Spacing="3">
                                         <Label Text="Student Club Expo"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
@@ -161,7 +178,7 @@
                                     </VerticalStackLayout>
                                 </Frame>
                             </VerticalStackLayout>
-                            
+
                             <Button Text="View All Events"
                                     BackgroundColor="#2A2F3A"
                                     TextColor="White"
@@ -171,99 +188,54 @@
                         </VerticalStackLayout>
                     </ScrollView>
                 </Frame>
-            </Grid>
-            
-            <!-- Bottom Row: Maps + Announcements + Logo -->
-            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
-                  ColumnDefinitions="1*,2*,1*" 
-                  RowDefinitions="*">
-                <!-- Maps Placeholder-->
-                <Frame Grid.Row="0" Grid.Column="0"
+
+                <!-- BOTTOM-RIGHT: Announcements (expanded upward) -->
+                <Frame Grid.Row="1"
                        BackgroundColor="#1C2028"
                        CornerRadius="12"
                        Padding="16"
                        HasShadow="True"
-                       Margin="0,10,5,0">
-                    <Grid>
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnMapsTapped" />
-                        </Grid.GestureRecognizers>
-                        
-                        <VerticalStackLayout VerticalOptions="Center" 
-                                            HorizontalOptions="Center"
-                                            Spacing="8">
-                            <Label Text="🗺️"
-                                   FontSize="{OnPlatform Default=32, Android=28, iOS=28}"
-                                   TextColor="White"
-                                   HorizontalOptions="Center" />
-                            <Label Text="Maps"
-                                   FontSize="{OnPlatform Default=16, Android=14, iOS=14}"
-                                   FontAttributes="Bold"
-                                   TextColor="White"
-                                   HorizontalOptions="Center" />
-                            <Label Text="Tap to explore"
-                                   FontSize="{OnPlatform Default=12, Android=10, iOS=10}"
-                                   TextColor="#CCCCCC"
-                                   HorizontalOptions="Center" />
-                        </VerticalStackLayout>
-                    </Grid>
-                </Frame>
-                
-                <!-- Announcements Placeholder -->
-                <Frame Grid.Row="0" Grid.Column="1"
-                       BackgroundColor="#1C2028"
-                       CornerRadius="2"
-                       Padding="16"
-                       HasShadow="True"
-                       Margin="5,10,5,0">
+                       Margin="10,6,10,0">
                     <ScrollView>
                         <VerticalStackLayout Spacing="12">
-                            <Label Text="📢 Announcements" 
-                                   TextColor="White" 
+                            <Label Text="📢 Announcements"
+                                   TextColor="White"
                                    FontAttributes="Bold"
                                    FontSize="{OnPlatform Default=16, Android=14, iOS=14}"
                                    HorizontalOptions="Center" />
-                            
-                            <!-- Announcement Items (hardcoded for now, we will be fetching from backend later on -->
+
                             <VerticalStackLayout Spacing="8">
-                                <!-- Announcement 1 -->
-                                <Frame BackgroundColor="#2A2F3A" 
-                                       CornerRadius="8"
-                                       Padding="12">
+                                <Frame BackgroundColor="#2A2F3A" CornerRadius="8" Padding="12">
                                     <VerticalStackLayout Spacing="4">
-                                        <Label Text="Spring 2024 Registration" 
-                                               TextColor="#4CAF50" 
+                                        <Label Text="Spring 2024 Registration"
+                                               TextColor="#4CAF50"
                                                FontSize="{OnPlatform Default=12, Android=10, iOS=10}" />
-                                        <Label Text="Registration opens Nov 1st" 
-                                               TextColor="White" 
+                                        <Label Text="Registration opens Nov 1st"
+                                               TextColor="White"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}" />
-                                        <Label Text="2 hours ago" 
-                                               TextColor="#CCCCCC" 
+                                        <Label Text="2 hours ago"
+                                               TextColor="#CCCCCC"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}" />
                                     </VerticalStackLayout>
                                 </Frame>
-                                
-                                <!-- Announcement 2 -->
-                                <Frame BackgroundColor="#2A2F3A" 
-                                       CornerRadius="8"
-                                       Padding="12">
+
+                                <Frame BackgroundColor="#2A2F3A" CornerRadius="8" Padding="12">
                                     <VerticalStackLayout Spacing="4">
-                                        <Label Text="New Computer Lab Equipment" 
-                                               TextColor="#FF9800" 
+                                        <Label Text="New Computer Lab Equipment"
+                                               TextColor="#FF9800"
                                                FontSize="{OnPlatform Default=12, Android=10, iOS=10}" />
-                                        <Label Text="High-performance workstations available" 
-                                               TextColor="White" 
+                                        <Label Text="High-performance workstations available"
+                                               TextColor="White"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}" />
-                                        <Label Text="1 day ago" 
-                                               TextColor="#CCCCCC" 
+                                        <Label Text="1 day ago"
+                                               TextColor="#CCCCCC"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}" />
                                     </VerticalStackLayout>
                                 </Frame>
                             </VerticalStackLayout>
-                            
-                            <!-- View All Button -->
-                            <Button Text="View All Announcements" 
-                                    BackgroundColor="#FF9800" 
+
+                            <Button Text="View All Announcements"
+                                    BackgroundColor="#FF9800"
                                     TextColor="White"
                                     FontSize="{OnPlatform Default=9, Android=8, iOS=8}"
                                     CornerRadius="6"
@@ -271,33 +243,9 @@
                         </VerticalStackLayout>
                     </ScrollView>
                 </Frame>
-                
-                <!--Removed McNeese Logo-->
-                <!-- Transparent McNeese logo 
-                <Grid Grid.Row="0" Grid.Column="2"
-                      Margin="5,10,0,0">
-                    <VerticalStackLayout VerticalOptions="Center" 
-                                        HorizontalOptions="Center"
-                                        Spacing="8">
-                        <Image Source="mcneeselogo.png"
-                               WidthRequest="140"
-                               HeightRequest="140"
-                               Aspect="AspectFit"
-                               Opacity="0.8" />
-                        <Label Text="McNeese State University"
-                               FontSize="{OnPlatform Default=12, Android=10, iOS=10}"
-                               FontAttributes="Bold"
-                               TextColor="White"
-                               HorizontalOptions="Center"
-                               HorizontalTextAlignment="Center" />
-                        <Label Text="Engineering &amp; Computer Science"
-                               FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
-                               TextColor="#CCCCCC"
-                               HorizontalOptions="Center"
-                               HorizontalTextAlignment="Center" />
-                    </VerticalStackLayout>
-                </Grid>-->
             </Grid>
+            <!-- ====================== END RIGHT SIDE ====================== -->
+
         </Grid>
     </Grid>
 </ContentPage>
