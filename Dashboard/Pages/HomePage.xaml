@@ -96,17 +96,13 @@
                                              HorizontalOptions="Center"
                                              Spacing="8">
                             <Label Text="🗺️"
-                                   FontSize="{OnPlatform Default=48, Android=56, iOS=48}"
+                                   FontSize="{OnPlatform Default=48, Android=36, iOS=48}"
                                    HorizontalOptions="Center" />
                             <Label Text="Maps"
-                                   FontSize="{OnPlatform Default=20, Android=18, iOS=18}"
+                                   FontSize="{OnPlatform Default=20, Android=8, iOS=18}"
                                    FontAttributes="Bold"
                                    HorizontalOptions="Center"
                                    TextColor="Black" />
-                            <Label Text="Tap to explore"
-                                   FontSize="{OnPlatform Default=14, Android=12, iOS=12}"
-                                   HorizontalOptions="Center"
-                                   TextColor="#333333" />
                         </VerticalStackLayout>
                     </Grid>
                 </Frame>
@@ -239,6 +235,8 @@
                                     TextColor="White"
                                     FontSize="{OnPlatform Default=9, Android=8, iOS=8}"
                                     CornerRadius="6"
+                                    HeightRequest="35"
+                                    
                                     Clicked="OnViewAllAnnouncementsClicked" />
                         </VerticalStackLayout>
                     </ScrollView>
