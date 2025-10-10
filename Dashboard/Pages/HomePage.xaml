@@ -189,13 +189,13 @@
                 <Frame Grid.Row="1"
                        BackgroundColor="#1C2028"
                        CornerRadius="12"
-                       Padding="16"
+                       Padding="12"
                        HasShadow="True"
-                       Margin="10,6,10,0">
+                       Margin="16,6,8,0">
                     <ScrollView>
                         <VerticalStackLayout Spacing="12">
                             <Label Text="📢 Announcements"
-                                   TextColor="White"
+                                   TextColor="Black"
                                    FontAttributes="Bold"
                                    FontSize="{OnPlatform Default=16, Android=14, iOS=14}"
                                    HorizontalOptions="Center" />
