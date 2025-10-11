@@ -217,7 +217,7 @@
 
                                 <Frame BackgroundColor="#2A2F3A" CornerRadius="8" Padding="12">
                                     <VerticalStackLayout Spacing="4">
-                                        <Label Text="New Computer Lab Equipment"
+                                        <Label Text="Lab Equipment"
                                                TextColor="#FF9800"
                                                FontSize="{OnPlatform Default=12, Android=10, iOS=10}" />
                                         <Label Text="High-performance workstations available"
