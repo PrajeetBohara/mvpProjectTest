@@ -53,17 +53,9 @@
     </FlyoutItem>
 
     <FlyoutItem Title="E-Week" Route="E-Week">
-        <ShellContent Title="E-Week">
-            <ContentPage>
-                <Grid RowDefinitions="Auto,*">
-                    <controls:TopBar Grid.Row="0" />
-                    <Grid Grid.Row="1" Padding="24">
-                        <Label Text="E-Week Page (placeholder)" TextColor="White" />
-                    </Grid>
-                </Grid>
-            </ContentPage>
-        </ShellContent>
+        <ShellContent Title="E-Week" ContentTemplate="{DataTemplate pages:EWeekPage}" />
     </FlyoutItem>
+
 
     <FlyoutItem Title="Academic Catalogue" Route="Academic Catalogue">
         <ShellContent Title="Academic Catalogue">

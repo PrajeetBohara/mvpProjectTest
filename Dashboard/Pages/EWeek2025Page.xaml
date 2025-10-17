@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Dashboard.Pages.EWeek2025Page"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Title="E-Week 2025">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Main Content Area -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="20">
+                <!-- Back Button and Page Header -->
+                <HorizontalStackLayout Spacing="15" HorizontalOptions="Start">
+                    <Button Text="← Back to E-Week"
+                            BackgroundColor="#2A2F3A"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Padding="15,8"
+                            FontSize="14"
+                            Clicked="OnBackButtonClicked" />
+                </HorizontalStackLayout>
+                
+                <!-- Page Header -->
+                <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+                    <Label Text="🎯"
+                           FontSize="40"
+                           VerticalOptions="Center" />
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="E-Week 2025"
+                               FontSize="28"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                        <Label Text="Current Year Events &amp; Activities"
+                               FontSize="16"
+                               TextColor="#4CAF50"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+                
+                <!-- E-Week 2025 Content -->
+                    <VerticalStackLayout Spacing="20">
+                        
+                        <!-- Schedule Overview -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="15">
+                                <Label Text="📅 E-Week 2025 Schedule"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                
+                                <Label Text="March 17-21, 2025"
+                                       FontSize="16"
+                                       TextColor="#4CAF50"
+                                       FontAttributes="Bold" />
+                                
+                                <VerticalStackLayout Spacing="10">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="Mon"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               WidthRequest="40" />
+                                        <Label Text="Opening Ceremony &amp; Engineering Fair"
+                                               FontSize="14"
+                                               TextColor="White" />
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="Tue"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               WidthRequest="40" />
+                                        <Label Text="Student Project Showcase &amp; Competitions"
+                                               FontSize="14"
+                                               TextColor="White" />
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="Wed"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               WidthRequest="40" />
+                                        <Label Text="Industry Speaker Series &amp; Career Fair"
+                                               FontSize="14"
+                                               TextColor="White" />
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="Thu"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               WidthRequest="40" />
+                                        <Label Text="Technical Workshops &amp; Lab Tours"
+                                               FontSize="14"
+                                               TextColor="White" />
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="Fri"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               WidthRequest="40" />
+                                        <Label Text="Awards Ceremony &amp; Closing Celebration"
+                                               FontSize="14"
+                                               TextColor="White" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Featured Events -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="15">
+                                <Label Text="🌟 Featured Events"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                
+                                <!-- Event 1 -->
+                                <Frame BackgroundColor="#2A2F3A"
+                                       CornerRadius="8"
+                                       Padding="15">
+                                    <VerticalStackLayout Spacing="8">
+                                        <Label Text="🏆 Engineering Design Competition"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#4CAF50" />
+                                        <Label Text="Monday, March 17 • 9:00 AM - 5:00 PM"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC" />
+                                        <Label Text="Engineering Building, Main Hall"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC" />
+                                        <Label Text="Teams compete to design innovative solutions to real-world engineering challenges. Prizes awarded for creativity, feasibility, and presentation."
+                                               FontSize="14"
+                                               TextColor="White"
+                                               LineBreakMode="WordWrap" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                                
+                                <!-- Event 2 -->
+                                <Frame BackgroundColor="#2A2F3A"
+                                       CornerRadius="8"
+                                       Padding="15">
+                                    <VerticalStackLayout Spacing="8">
+                                        <Label Text="🎤 Keynote: Future of Engineering"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#2196F3" />
+                                        <Label Text="Wednesday, March 19 • 2:00 PM - 3:30 PM"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC" />
+                                        <Label Text="Auditorium"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC" />
+                                        <Label Text="Dr. Sarah Chen from TechCorp discusses emerging trends in engineering and the skills needed for tomorrow's engineers."
+                                               FontSize="14"
+                                               TextColor="White"
+                                               LineBreakMode="WordWrap" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                                
+                                <!-- Event 3 -->
+                                <Frame BackgroundColor="#2A2F3A"
+                                       CornerRadius="8"
+                                       Padding="15">
+                                    <VerticalStackLayout Spacing="8">
+                                        <Label Text="🔬 Student Project Expo"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#FF9800" />
+                                        <Label Text="Tuesday, March 18 • 10:00 AM - 4:00 PM"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC" />
+                                        <Label Text="Student Center, Exhibition Hall"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC" />
+                                        <Label Text="Showcase of senior design projects, research work, and innovative student creations. Open to all students and faculty."
+                                               FontSize="14"
+                                               TextColor="White"
+                                               LineBreakMode="WordWrap" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Competitions -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="15">
+                                <Label Text="🏁 Competitions &amp; Contests"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                
+                                <VerticalStackLayout Spacing="12">
+                                    <HorizontalStackLayout Spacing="15">
+                                        <Label Text="⚡"
+                                               FontSize="24"
+                                               VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="5">
+                                            <Label Text="Robotics Challenge"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Build and program autonomous robots"
+                                                   FontSize="12"
+                                                   TextColor="#CCCCCC" />
+                                            <Label Text="Registration: Open until March 10"
+                                                   FontSize="12"
+                                                   TextColor="#4CAF50" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout Spacing="15">
+                                        <Label Text="🌱"
+                                               FontSize="24"
+                                               VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="5">
+                                            <Label Text="Green Engineering Contest"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Design sustainable engineering solutions"
+                                                   FontSize="12"
+                                                   TextColor="#CCCCCC" />
+                                            <Label Text="Registration: Open until March 12"
+                                                   FontSize="12"
+                                                   TextColor="#4CAF50" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout Spacing="15">
+                                        <Label Text="💻"
+                                               FontSize="24"
+                                               VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="5">
+                                            <Label Text="Coding Marathon"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="24-hour programming competition"
+                                                   FontSize="12"
+                                                   TextColor="#CCCCCC" />
+                                            <Label Text="Registration: Open until March 8"
+                                                   FontSize="12"
+                                                   TextColor="#4CAF50" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Registration Info -->
+                        <Frame BackgroundColor="#2A2F3A"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="False">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="📝 Registration &amp; Participation"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                
+                                <Label Text="• Most events are free and open to all students"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC" />
+                                
+                                <Label Text="• Competition registration closes March 10-12"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC" />
+                                
+                                <Label Text="• Limited seats for keynote speakers - RSVP required"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC" />
+                                
+                                <Label Text="• Questions? Contact: eweek@university.edu"
+                                       FontSize="14"
+                                       TextColor="#4CAF50" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                    </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

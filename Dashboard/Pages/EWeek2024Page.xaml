@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Dashboard.Pages.EWeek2024Page"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Title="E-Week 2024">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Main Content Area -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="1">
+                <!-- Back Button and Page Header -->
+                <HorizontalStackLayout Spacing="15" HorizontalOptions="Start">
+                    <Button Text="← Back to E-Week"
+                            BackgroundColor="#2A2F3A"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Padding="15,8"
+                            FontSize="14"
+                            Clicked="OnBackButtonClicked" />
+                </HorizontalStackLayout>
+                
+                <!-- Page Header -->
+                <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                    <Label Text="📚"
+                           FontSize="40"
+                           VerticalOptions="Center" />
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="E-Week 2024"
+                               FontSize="28"
+                               FontAttributes="Bold"
+                               TextColor="Black" />
+                        <Label Text="Venue: Drew Hall McNeese Campus"
+                               FontSize="16"
+                               TextColor="Black"
+                               HorizontalOptions="Center" />
+                        <Label Text="Previous Year Archive"
+                               FontSize="16"
+                               TextColor="#FF9800"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+                
+                <!-- E-Week 2024 Content -->
+                    <VerticalStackLayout Spacing="20">
+                        
+                        <!-- Event Summary -->
+                    <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                        <VerticalStackLayout Spacing="15">
+                            <Label Text="📊 Summary"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+
+                            <Label Text="March 18-22, 2024"
+                                       FontSize="16"
+                                       TextColor="#FF9800"
+                                       FontAttributes="Bold" />
+
+                            <HorizontalStackLayout Spacing="30" HorizontalOptions="Center">
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="1,250+"
+                                               FontSize="24"
+                                               FontAttributes="Bold"
+                                               TextColor="#4CAF50"
+                                               HorizontalOptions="Center" />
+                                    <Label Text="Participants"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="45"
+                                               FontSize="24"
+                                               FontAttributes="Bold"
+                                               TextColor="#2196F3"
+                                               HorizontalOptions="Center" />
+                                    <Label Text="Events"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="12"
+                                               FontSize="24"
+                                               FontAttributes="Bold"
+                                               TextColor="#FF9800"
+                                               HorizontalOptions="Center" />
+                                    <Label Text="Competitions"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+
+                            <Label Text="E-Week 2024 was a tremendous success with record participation across all events. Students showcased innovative projects, competed in exciting challenges, and connected with industry professionals."
+                                       FontSize="14"
+                                       TextColor="#CCCCCC"
+                                       LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Photo Gallery Preview -->
+                        <Frame BackgroundColor="#1C2028"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="15">
+                                <Label Text="📸 Event Gallery"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                
+                                <Label Text="Highlights from E-Week 2024"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC" />
+                                
+                                <!-- Placeholder for gallery images -->
+                                <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+                                    <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                        <Label Text="🏆"
+                                               FontSize="30"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="#FFD700" />
+                                    </Frame>
+                                    <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                        <Label Text="🔬"
+                                               FontSize="30"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="#4CAF50" />
+                                    </Frame>
+                                    <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                        <Label Text="🎉"
+                                               FontSize="30"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="#2196F3" />
+                                    </Frame>
+                                    <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                        <Label Text="🎤"
+                                               FontSize="30"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="#FF9800" />
+                                    </Frame>
+                                    <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                        <Label Text="👥"
+                                               FontSize="30"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="#E91E63" />
+                                    </Frame>
+                                    <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                        <Label Text="🚀"
+                                               FontSize="30"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="#9C27B0" />
+                                    </Frame>
+                                </Grid>
+                                
+                                <Label Text="Tap to view full gallery →"
+                                       FontSize="14"
+                                       TextColor="#FF9800"
+                                       HorizontalOptions="Center"
+                                       FontAttributes="Italic" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Testimonials -->
+                        <Frame BackgroundColor="#2A2F3A"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="False">
+                            <VerticalStackLayout Spacing="15">
+                                <Label Text="💬 Student Testimonials"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                
+                                <Frame BackgroundColor="#1C2028" CornerRadius="8" Padding="15">
+                                    <VerticalStackLayout Spacing="8">
+                                        <Label Text="'E-Week 2024 was an incredible experience! The robotics competition pushed our team to think creatively and work under pressure. We learned so much and made great connections.'"
+                                               FontSize="14"
+                                               TextColor="White"
+                                               LineBreakMode="WordWrap" />
+                                        <Label Text="- Sarah Chen, Computer Engineering"
+                                               FontSize="12"
+                                               TextColor="#4CAF50"
+                                               FontAttributes="Italic" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                                
+                                <Frame BackgroundColor="#1C2028" CornerRadius="8" Padding="15">
+                                    <VerticalStackLayout Spacing="8">
+                                        <Label Text="'The industry speakers provided valuable insights into the future of engineering. It was inspiring to see how our studies connect to real-world applications.'"
+                                               FontSize="14"
+                                               TextColor="White"
+                                               LineBreakMode="WordWrap" />
+                                        <Label Text="- Mike Rodriguez, Mechanical Engineering"
+                                               FontSize="12"
+                                               TextColor="#2196F3"
+                                               FontAttributes="Italic" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                    </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
