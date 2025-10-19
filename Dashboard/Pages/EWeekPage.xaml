@@ -121,7 +121,7 @@
                         </Frame.GestureRecognizers>
                         
                         <VerticalStackLayout Spacing="15" HorizontalOptions="Center">
-                            <Label Text="🎯"
+                            <Label Text="📚"
                                    FontSize="50"
                                    HorizontalOptions="Center" />
 

@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Dashboard.Pages.LabsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Title="Labs">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Main Content Area -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="25">
+                
+                <!-- Page Header -->
+                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Label Text="🔬"
+                           FontSize="50"
+                           HorizontalOptions="Center" />
+                    <Label Text="Engineering Laboratories"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center" />
+                    <Label Text="Explore our state-of-the-art research and teaching facilities"
+                           FontSize="16"
+                           TextColor="#CCCCCC"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <!-- Computer Science Labs Section -->
+                <Frame BackgroundColor="#1C2028"
+                       CornerRadius="12"
+                       Padding="25"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="20">
+                        <Label Text="💻 Computer Science Laboratories"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                        
+                        <!-- CS Labs Grid -->
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="15" RowSpacing="15">
+                            
+                            <!-- Software Engineering Lab -->
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="#2A2F3A"
+                                   CornerRadius="10"
+                                   Padding="20"
+                                   HasShadow="True">
+                                <VerticalStackLayout Spacing="12">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="💻" FontSize="24" VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="Software Engineering Lab"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Drew Hall, Room 301"
+                                                   FontSize="12"
+                                                   TextColor="#4CAF50" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <Label Text="Advanced software development, testing, and project management facilities with modern development environments."
+                                           FontSize="12"
+                                           TextColor="#CCCCCC"
+                                           LineBreakMode="WordWrap" />
+                                    
+                                    <HorizontalStackLayout Spacing="15">
+                                        <Label Text="🖥️ 30 Workstations" FontSize="10" TextColor="#2196F3" />
+                                        <Label Text="⚡ High-Speed Internet" FontSize="10" TextColor="#2196F3" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+
+                            <!-- Cybersecurity Lab -->
+                            <Frame Grid.Column="1"
+                                   BackgroundColor="#2A2F3A"
+                                   CornerRadius="10"
+                                   Padding="20"
+                                   HasShadow="True">
+                                <VerticalStackLayout Spacing="12">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="🔒" FontSize="24" VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="Cybersecurity Lab"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Drew Hall, Room 303"
+                                                   FontSize="12"
+                                                   TextColor="#4CAF50" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <Label Text="Dedicated space for cybersecurity research, penetration testing, and digital forensics with isolated networks."
+                                           FontSize="12"
+                                           TextColor="#CCCCCC"
+                                           LineBreakMode="WordWrap" />
+                                    
+                                    <HorizontalStackLayout Spacing="15">
+                                        <Label Text="🛡️ Secure Environment" FontSize="10" TextColor="#FF9800" />
+                                        <Label Text="🔍 Forensic Tools" FontSize="10" TextColor="#FF9800" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Electrical Engineering Labs Section -->
+                <Frame BackgroundColor="#1C2028"
+                       CornerRadius="12"
+                       Padding="25"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="20">
+                        <Label Text="⚡ Electrical Engineering Laboratories"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                        
+                        <!-- EE Labs Grid -->
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="15" RowSpacing="15">
+                            
+                            <!-- Power Systems Lab -->
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="#2A2F3A"
+                                   CornerRadius="10"
+                                   Padding="20"
+                                   HasShadow="True">
+                                <VerticalStackLayout Spacing="12">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="⚡" FontSize="24" VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="Power Systems Lab"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Drew Hall, Room 205"
+                                                   FontSize="12"
+                                                   TextColor="#4CAF50" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <Label Text="High-voltage equipment, power analysis tools, and renewable energy systems for power engineering studies."
+                                           FontSize="12"
+                                           TextColor="#CCCCCC"
+                                           LineBreakMode="WordWrap" />
+                                    
+                                    <HorizontalStackLayout Spacing="15">
+                                        <Label Text="🔌 Power Equipment" FontSize="10" TextColor="#FFD700" />
+                                        <Label Text="🌱 Renewable Energy" FontSize="10" TextColor="#FFD700" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+
+                            <!-- Electronics Lab -->
+                            <Frame Grid.Column="1"
+                                   BackgroundColor="#2A2F3A"
+                                   CornerRadius="10"
+                                   Padding="20"
+                                   HasShadow="True">
+                                <VerticalStackLayout Spacing="12">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="🔧" FontSize="24" VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="Electronics Lab"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Drew Hall, Room 207"
+                                                   FontSize="12"
+                                                   TextColor="#4CAF50" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <Label Text="Circuit design, testing equipment, and prototyping facilities for electronic systems development."
+                                           FontSize="12"
+                                           TextColor="#CCCCCC"
+                                           LineBreakMode="WordWrap" />
+                                    
+                                    <HorizontalStackLayout Spacing="15">
+                                        <Label Text="📐 Circuit Design" FontSize="10" TextColor="#E91E63" />
+                                        <Label Text="🔬 Testing Equipment" FontSize="10" TextColor="#E91E63" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Mechanical Engineering Labs Section -->
+                <Frame BackgroundColor="#1C2028"
+                       CornerRadius="12"
+                       Padding="25"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="20">
+                        <Label Text="🔧 Mechanical Engineering Laboratories"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                        
+                        <!-- ME Labs Grid -->
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="15" RowSpacing="15">
+                            
+                            <!-- Manufacturing Lab -->
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="#2A2F3A"
+                                   CornerRadius="10"
+                                   Padding="20"
+                                   HasShadow="True">
+                                <VerticalStackLayout Spacing="12">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="🏭" FontSize="24" VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="Manufacturing Lab"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Engineering Building, Room 101"
+                                                   FontSize="12"
+                                                   TextColor="#4CAF50" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <Label Text="CNC machines, 3D printers, and precision manufacturing equipment for hands-on manufacturing education."
+                                           FontSize="12"
+                                           TextColor="#CCCCCC"
+                                           LineBreakMode="WordWrap" />
+                                    
+                                    <HorizontalStackLayout Spacing="15">
+                                        <Label Text="🖨️ 3D Printing" FontSize="10" TextColor="#9C27B0" />
+                                        <Label Text="⚙️ CNC Machines" FontSize="10" TextColor="#9C27B0" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+
+                            <!-- Thermodynamics Lab -->
+                            <Frame Grid.Column="1"
+                                   BackgroundColor="#2A2F3A"
+                                   CornerRadius="10"
+                                   Padding="20"
+                                   HasShadow="True">
+                                <VerticalStackLayout Spacing="12">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="🌡️" FontSize="24" VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="Thermodynamics Lab"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Engineering Building, Room 103"
+                                                   FontSize="12"
+                                                   TextColor="#4CAF50" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <Label Text="Heat transfer, fluid mechanics, and energy systems equipment for thermal engineering experiments."
+                                           FontSize="12"
+                                           TextColor="#CCCCCC"
+                                           LineBreakMode="WordWrap" />
+                                    
+                                    <HorizontalStackLayout Spacing="15">
+                                        <Label Text="🔥 Heat Transfer" FontSize="10" TextColor="#FF5722" />
+                                        <Label Text="💧 Fluid Mechanics" FontSize="10" TextColor="#FF5722" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Civil Engineering Labs Section -->
+                <Frame BackgroundColor="#1C2028"
+                       CornerRadius="12"
+                       Padding="25"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="20">
+                        <Label Text="🏗️ Civil Engineering Laboratories"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                        
+                        <!-- CE Labs Grid -->
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="15" RowSpacing="15">
+                            
+                            <!-- Materials Testing Lab -->
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="#2A2F3A"
+                                   CornerRadius="10"
+                                   Padding="20"
+                                   HasShadow="True">
+                                <VerticalStackLayout Spacing="12">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="🧱" FontSize="24" VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="Materials Testing Lab"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Engineering Building, Room 201"
+                                                   FontSize="12"
+                                                   TextColor="#4CAF50" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <Label Text="Concrete, steel, and construction materials testing equipment for structural engineering research."
+                                           FontSize="12"
+                                           TextColor="#CCCCCC"
+                                           LineBreakMode="WordWrap" />
+                                    
+                                    <HorizontalStackLayout Spacing="15">
+                                        <Label Text="🏗️ Concrete Testing" FontSize="10" TextColor="#607D8B" />
+                                        <Label Text="🔩 Steel Testing" FontSize="10" TextColor="#607D8B" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+
+                            <!-- Environmental Lab -->
+                            <Frame Grid.Column="1"
+                                   BackgroundColor="#2A2F3A"
+                                   CornerRadius="10"
+                                   Padding="20"
+                                   HasShadow="True">
+                                <VerticalStackLayout Spacing="12">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="🌱" FontSize="24" VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="Environmental Lab"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White" />
+                                            <Label Text="Engineering Building, Room 203"
+                                                   FontSize="12"
+                                                   TextColor="#4CAF50" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    
+                                    <Label Text="Water quality analysis, environmental monitoring, and sustainability research facilities."
+                                           FontSize="12"
+                                           TextColor="#CCCCCC"
+                                           LineBreakMode="WordWrap" />
+                                    
+                                    <HorizontalStackLayout Spacing="15">
+                                        <Label Text="💧 Water Analysis" FontSize="10" TextColor="#8BC34A" />
+                                        <Label Text="🌍 Environmental" FontSize="10" TextColor="#8BC34A" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Lab Access Information -->
+                <Frame BackgroundColor="#2A2F3A"
+                       CornerRadius="12"
+                       Padding="25"
+                       HasShadow="False">
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="🔑 Laboratory Access &amp; Information"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                        
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="20" RowSpacing="15">
+                            
+                            <!-- Left Column -->
+                            <VerticalStackLayout Grid.Column="0" Spacing="12">
+                                <Frame BackgroundColor="#1C2028"
+                                       CornerRadius="8"
+                                       Padding="15"
+                                       HasShadow="False">
+                                    <VerticalStackLayout Spacing="8">
+                                        <HorizontalStackLayout Spacing="10">
+                                            <Label Text="⏰" FontSize="18" VerticalOptions="Center" />
+                                            <VerticalStackLayout Spacing="3">
+                                                <Label Text="Lab Hours"
+                                                       FontSize="14"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White" />
+                                                <Label Text="Monday - Friday"
+                                                       FontSize="12"
+                                                       TextColor="#CCCCCC" />
+                                                <Label Text="8:00 AM - 10:00 PM"
+                                                       FontSize="12"
+                                                       TextColor="#CCCCCC" />
+                                            </VerticalStackLayout>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Frame>
+                                
+                                <Frame BackgroundColor="#1C2028"
+                                       CornerRadius="8"
+                                       Padding="15"
+                                       HasShadow="False">
+                                    <VerticalStackLayout Spacing="8">
+                                        <HorizontalStackLayout Spacing="10">
+                                            <Label Text="👨‍🏫" FontSize="18" VerticalOptions="Center" />
+                                            <VerticalStackLayout Spacing="3">
+                                                <Label Text="Supervision"
+                                                       FontSize="14"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White" />
+                                                <Label Text="Faculty supervision required"
+                                                       FontSize="12"
+                                                       TextColor="#CCCCCC" />
+                                                <Label Text="for advanced equipment"
+                                                       FontSize="12"
+                                                       TextColor="#CCCCCC" />
+                                            </VerticalStackLayout>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </VerticalStackLayout>
+                            
+                            <!-- Right Column -->
+                            <VerticalStackLayout Grid.Column="1" Spacing="12">
+                                <Frame BackgroundColor="#1C2028"
+                                       CornerRadius="8"
+                                       Padding="15"
+                                       HasShadow="False">
+                                    <VerticalStackLayout Spacing="8">
+                                        <HorizontalStackLayout Spacing="10">
+                                            <Label Text="📋" FontSize="18" VerticalOptions="Center" />
+                                            <VerticalStackLayout Spacing="3">
+                                                <Label Text="Safety Training"
+                                                       FontSize="14"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White" />
+                                                <Label Text="Required before lab access"
+                                                       FontSize="12"
+                                                       TextColor="#CCCCCC" />
+                                                <Label Text="Contact lab coordinator"
+                                                       FontSize="12"
+                                                       TextColor="#CCCCCC" />
+                                            </VerticalStackLayout>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Frame>
+                                
+                                <Frame BackgroundColor="#1C2028"
+                                       CornerRadius="8"
+                                       Padding="15"
+                                       HasShadow="False">
+                                    <VerticalStackLayout Spacing="8">
+                                        <HorizontalStackLayout Spacing="10">
+                                            <Label Text="📞" FontSize="18" VerticalOptions="Center" />
+                                            <VerticalStackLayout Spacing="3">
+                                                <Label Text="Lab Coordinator"
+                                                       FontSize="14"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White" />
+                                                <Label Text="Dr. Jennifer Lavergne"
+                                                       FontSize="12"
+                                                       TextColor="#4CAF50" />
+                                                <Label Text="jlavegne@mcneese.edu"
+                                                       FontSize="12"
+                                                       TextColor="#2196F3" />
+                                            </VerticalStackLayout>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+                
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -39,7 +39,7 @@
         </ShellContent>
     </FlyoutItem>
 
-    <FlyoutItem Title="Senior Design Projects" Route="Senior Projects">
+    <FlyoutItem Title="Projects" Route="Senior Projects">
         <ShellContent Title="Senior Design Projects">
             <ContentPage>
                 <Grid RowDefinitions="Auto,*">
@@ -116,6 +116,10 @@
                 </Grid>
             </ContentPage>
         </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Labs" Route="Labs">
+        <ShellContent Title="Labs" ContentTemplate="{DataTemplate pages:LabsPage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Contact" Route="Contact">
