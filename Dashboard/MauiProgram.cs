@@ -20,9 +20,10 @@ namespace Dashboard
     		builder.Logging.AddDebug();
 #endif
 
-            // Register services
-            builder.Services.AddSingleton<SupabaseService>();
-            builder.Services.AddSingleton<EWeekGalleryService>();
+                // Register services
+                builder.Services.AddSingleton<SupabaseService>();
+                builder.Services.AddSingleton<EWeekGalleryService>();
+                builder.Services.AddSingleton<FacultyService>();
 
             return builder.Build();
         }

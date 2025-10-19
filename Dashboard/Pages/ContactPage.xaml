@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Dashboard.Pages.ContactPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    xmlns:models="clr-namespace:Dashboard.Models"
+    Title="Contact">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Main Content Area -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="25">
+                
+
+
+                <!-- Department Heads Section -->
+                <Frame BackgroundColor="#1C2028"
+                       CornerRadius="12"
+                       Padding="25"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="20">
+                        <Label Text="Department Leadership"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                        
+                        <!-- Department Heads Grid -->
+                        <CollectionView ItemsSource="{Binding DepartmentHeads}"
+                                        ItemsLayout="VerticalGrid, 2"
+                                        HeightRequest="400">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Faculty">
+                                    <Frame BackgroundColor="#2A2F3A"
+                                           CornerRadius="15"
+                                           Padding="20"
+                                           Margin="5"
+                                           HasShadow="True">
+                                        <VerticalStackLayout Spacing="15" HorizontalOptions="Center">
+                                            
+                                            <!-- Circular Profile Image -->
+                                            <Image Source="{Binding AvatarUrl}"
+                                                   Aspect="AspectFill"
+                                                   WidthRequest="80"
+                                                   HeightRequest="80">
+                                                <Image.Clip>
+                                                    <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                </Image.Clip>
+                                            </Image>
+                                            
+                                            <!-- Name and Title -->
+                                            <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                                                <Label Text="{Binding FullName}"
+                                                       FontSize="18"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White"
+                                                       HorizontalOptions="Center"
+                                                       HorizontalTextAlignment="Center" />
+                                                
+                                                <Label Text="{Binding Title}"
+                                                       FontSize="14"
+                                                       TextColor="#4CAF50"
+                                                       HorizontalOptions="Center"
+                                                       HorizontalTextAlignment="Center"
+                                                       FontAttributes="Italic" />
+                                                
+                                                <Label Text="{Binding Department}"
+                                                       FontSize="12"
+                                                       TextColor="#CCCCCC"
+                                                       HorizontalOptions="Center"
+                                                       HorizontalTextAlignment="Center" />
+                                            </VerticalStackLayout>
+                                            
+                                            <!-- Contact Information -->
+                                            <VerticalStackLayout Spacing="8">
+                                                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                                                    <Label Text="📧" FontSize="16" VerticalOptions="Center" />
+                                                    <Label Text="{Binding Email}"
+                                                           FontSize="12"
+                                                           TextColor="#CCCCCC"
+                                                           VerticalOptions="Center" />
+                                                </HorizontalStackLayout>
+                                                
+                                                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                                                    <Label Text="📞" FontSize="16" VerticalOptions="Center" />
+                                                    <Label Text="{Binding Phone}"
+                                                           FontSize="12"
+                                                           TextColor="#CCCCCC"
+                                                           VerticalOptions="Center" />
+                                                </HorizontalStackLayout>
+                                                
+                                                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                                                    <Label Text="📍" FontSize="16" VerticalOptions="Center" />
+                                                    <Label Text="{Binding OfficeLocation}"
+                                                           FontSize="12"
+                                                           TextColor="#CCCCCC"
+                                                           VerticalOptions="Center" />
+                                                </HorizontalStackLayout>
+                                            </VerticalStackLayout>
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Faculty Section -->
+                <Frame BackgroundColor="#1C2028"
+                       CornerRadius="12"
+                       Padding="25"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="20">
+                        <Label Text="Faculty"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                        
+                        <!-- Staff Grid -->
+                        <CollectionView ItemsSource="{Binding KeyStaff}"
+                                        ItemsLayout="VerticalGrid, 3"
+                                        HeightRequest="350">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Faculty">
+                                    <Frame BackgroundColor="#2A2F3A"
+                                           CornerRadius="12"
+                                           Padding="15"
+                                           Margin="5"
+                                           HasShadow="True">
+                                        <VerticalStackLayout Spacing="12" HorizontalOptions="Center">
+                                            
+                                            <!-- Circular Profile Image -->
+                                            <Image Source="{Binding AvatarUrl}"
+                                                   Aspect="AspectFill"
+                                                   WidthRequest="60"
+                                                   HeightRequest="60">
+                                                <Image.Clip>
+                                                    <EllipseGeometry Center="30,30" RadiusX="30" RadiusY="30" />
+                                                </Image.Clip>
+                                            </Image>
+                                            
+                                            <!-- Name and Title -->
+                                            <VerticalStackLayout Spacing="3" HorizontalOptions="Center">
+                                                <Label Text="{Binding FullName}"
+                                                       FontSize="16"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White"
+                                                       HorizontalOptions="Center"
+                                                       HorizontalTextAlignment="Center" />
+                                                
+                                                <Label Text="{Binding Title}"
+                                                       FontSize="12"
+                                                       TextColor="#2196F3"
+                                                       HorizontalOptions="Center"
+                                                       HorizontalTextAlignment="Center"
+                                                       FontAttributes="Italic" />
+                                            </VerticalStackLayout>
+                                            
+                                            <!-- Contact Information -->
+                                            <VerticalStackLayout Spacing="5">
+                                                <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                                                    <Label Text="📧" FontSize="14" VerticalOptions="Center" />
+                                                    <Label Text="{Binding Email}"
+                                                           FontSize="10"
+                                                           TextColor="#CCCCCC"
+                                                           VerticalOptions="Center" />
+                                                </HorizontalStackLayout>
+                                                
+                                                <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                                                    <Label Text="📞" FontSize="14" VerticalOptions="Center" />
+                                                    <Label Text="{Binding Phone}"
+                                                           FontSize="10"
+                                                           TextColor="#CCCCCC"
+                                                           VerticalOptions="Center" />
+                                                </HorizontalStackLayout>
+                                            </VerticalStackLayout>
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Department Information -->
+                <Frame BackgroundColor="#1C2028"
+                       CornerRadius="12"
+                       Padding="25"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="20">
+                        <Label Text="🏢 Department Information"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                        
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="20" RowSpacing="15">
+                            
+                            <!-- Left Column -->
+                            <VerticalStackLayout Grid.Column="0" Spacing="15">
+                                <Frame BackgroundColor="#2A2F3A"
+                                       CornerRadius="8"
+                                       Padding="15"
+                                       HasShadow="False">
+                                    <VerticalStackLayout Spacing="10">
+                                        <HorizontalStackLayout Spacing="10">
+                                            <Label Text="🏛️" FontSize="20" VerticalOptions="Center" />
+                                            <VerticalStackLayout Spacing="3">
+                                                <Label Text="Main Office"
+                                                       FontSize="16"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White" />
+                                                <Label Text="Drew Hall, Room 101"
+                                                       FontSize="14"
+                                                       TextColor="#CCCCCC" />
+                                            </VerticalStackLayout>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Frame>
+                                
+                                <Frame BackgroundColor="#2A2F3A"
+                                       CornerRadius="8"
+                                       Padding="15"
+                                       HasShadow="False">
+                                    <VerticalStackLayout Spacing="10">
+                                        <HorizontalStackLayout Spacing="10">
+                                            <Label Text="⏰" FontSize="20" VerticalOptions="Center" />
+                                            <VerticalStackLayout Spacing="3">
+                                                <Label Text="Office Hours"
+                                                       FontSize="16"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White" />
+                                                <Label Text="Monday - Friday"
+                                                       FontSize="14"
+                                                       TextColor="#CCCCCC" />
+                                                <Label Text="8:00 AM - 5:00 PM"
+                                                       FontSize="14"
+                                                       TextColor="#CCCCCC" />
+                                            </VerticalStackLayout>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </VerticalStackLayout>
+                            
+                            <!-- Right Column -->
+                            <VerticalStackLayout Grid.Column="1" Spacing="15">
+                                <Frame BackgroundColor="#2A2F3A"
+                                       CornerRadius="8"
+                                       Padding="15"
+                                       HasShadow="False">
+                                    <VerticalStackLayout Spacing="10">
+                                        <HorizontalStackLayout Spacing="10">
+                                            <Label Text="🌐" FontSize="20" VerticalOptions="Center" />
+                                            <VerticalStackLayout Spacing="3">
+                                                <Label Text="Website"
+                                                       FontSize="16"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White" />
+                                                <Label Text="www.mcneese.edu"
+                                                       FontSize="14"
+                                                       TextColor="#4CAF50" />
+                                            </VerticalStackLayout>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Frame>
+                                
+                                <Frame BackgroundColor="#2A2F3A"
+                                       CornerRadius="8"
+                                       Padding="15"
+                                       HasShadow="False">
+                                    <VerticalStackLayout Spacing="10">
+                                        <HorizontalStackLayout Spacing="10">
+                                            <Label Text="📧" FontSize="20" VerticalOptions="Center" />
+                                            <VerticalStackLayout Spacing="3">
+                                                <Label Text="General Email"
+                                                       FontSize="16"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White" />
+                                                <Label Text="xyz@mcneese.edu"
+                                                       FontSize="14"
+                                                       TextColor="#2196F3" />
+                                            </VerticalStackLayout>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
