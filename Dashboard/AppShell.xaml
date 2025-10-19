@@ -119,16 +119,7 @@
     </FlyoutItem>
 
     <FlyoutItem Title="Contact" Route="Contact">
-        <ShellContent Title="Contact">
-            <ContentPage>
-                <Grid RowDefinitions="Auto,*">
-                    <controls:TopBar Grid.Row="0" />
-                    <Grid Grid.Row="1" Padding="24">
-                        <Label Text="Contact Page (placeholder)" TextColor="White" />
-                    </Grid>
-                </Grid>
-            </ContentPage>
-        </ShellContent>
+        <ShellContent Title="Contact" ContentTemplate="{DataTemplate pages:ContactPage}" />
     </FlyoutItem>
 
 </Shell>
