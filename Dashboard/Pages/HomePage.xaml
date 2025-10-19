@@ -195,7 +195,7 @@
                     <ScrollView>
                         <VerticalStackLayout Spacing="12">
                             <Label Text="📢 Announcements"
-                                   TextColor="Black"
+                                   TextColor="White"
                                    FontAttributes="Bold"
                                    FontSize="{OnPlatform Default=16, Android=14, iOS=14}"
                                    HorizontalOptions="Center" />

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Dashboard.Services;
 
 namespace Dashboard
 {
@@ -18,6 +19,10 @@ namespace Dashboard
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            // Register services
+            builder.Services.AddSingleton<SupabaseService>();
+            builder.Services.AddSingleton<EWeekGalleryService>();
 
             return builder.Build();
         }
