@@ -59,14 +59,14 @@
                                        FontAttributes="Bold"
                                        TextColor="White" />
 
-                            <Label Text="March 18-22, 2024"
+                            <Label Text="February 18-22, 2024"
                                        FontSize="16"
                                        TextColor="#FF9800"
                                        FontAttributes="Bold" />
 
                             <HorizontalStackLayout Spacing="30" HorizontalOptions="Center">
                                 <VerticalStackLayout Spacing="5">
-                                    <Label Text="1,250+"
+                                    <Label Text="800+"
                                                FontSize="24"
                                                FontAttributes="Bold"
                                                TextColor="#4CAF50"
@@ -78,7 +78,7 @@
                                 </VerticalStackLayout>
 
                                 <VerticalStackLayout Spacing="5">
-                                    <Label Text="45"
+                                    <Label Text="12"
                                                FontSize="24"
                                                FontAttributes="Bold"
                                                TextColor="#2196F3"
@@ -109,7 +109,7 @@
                         </VerticalStackLayout>
                     </Frame>
 
-                    <!-- Photo Gallery Preview -->
+                        <!-- Photo Gallery Preview -->
                         <Frame BackgroundColor="#1C2028"
                                CornerRadius="12"
                                Padding="20"
@@ -124,51 +124,72 @@
                                        FontSize="14"
                                        TextColor="#CCCCCC" />
                                 
-                                <!-- Placeholder for gallery images -->
-                                <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
-                                    <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
-                                        <Label Text="🏆"
-                                               FontSize="30"
-                                               HorizontalOptions="Center"
-                                               VerticalOptions="Center"
-                                               TextColor="#FFD700" />
-                                    </Frame>
-                                    <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
-                                        <Label Text="🔬"
-                                               FontSize="30"
-                                               HorizontalOptions="Center"
-                                               VerticalOptions="Center"
-                                               TextColor="#4CAF50" />
-                                    </Frame>
-                                    <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
-                                        <Label Text="🎉"
-                                               FontSize="30"
-                                               HorizontalOptions="Center"
-                                               VerticalOptions="Center"
-                                               TextColor="#2196F3" />
-                                    </Frame>
-                                    <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
-                                        <Label Text="🎤"
-                                               FontSize="30"
-                                               HorizontalOptions="Center"
-                                               VerticalOptions="Center"
-                                               TextColor="#FF9800" />
-                                    </Frame>
-                                    <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
-                                        <Label Text="👥"
-                                               FontSize="30"
-                                               HorizontalOptions="Center"
-                                               VerticalOptions="Center"
-                                               TextColor="#E91E63" />
-                                    </Frame>
-                                    <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
-                                        <Label Text="🚀"
-                                               FontSize="30"
-                                               HorizontalOptions="Center"
-                                               VerticalOptions="Center"
-                                               TextColor="#9C27B0" />
-                                    </Frame>
-                                </Grid>
+                                <!-- Gallery Images from Supabase -->
+                                <CollectionView ItemsSource="{Binding FeaturedImages}"
+                                                ItemsLayout="VerticalGrid, 3"
+                                                HeightRequest="600">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Frame BackgroundColor="#2A2F3A" 
+                                                   CornerRadius="8" 
+                                                   Padding="5"
+                                                   Margin="5"
+                                                   HasShadow="False">
+                                                <Image Source="{Binding ImageUrl}" 
+                                                       Aspect="AspectFill"
+                                                       HeightRequest="300" />
+                                            </Frame>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                    
+                                    <!-- Empty state when no images -->
+                                    <CollectionView.EmptyView>
+                                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+                                            <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                                <Label Text="🏆"
+                                                       FontSize="30"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       TextColor="#FFD700" />
+                                            </Frame>
+                                            <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                                <Label Text="🔬"
+                                                       FontSize="30"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       TextColor="#4CAF50" />
+                                            </Frame>
+                                            <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                                <Label Text="🎉"
+                                                       FontSize="30"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       TextColor="#2196F3" />
+                                            </Frame>
+                                            <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                                <Label Text="🎤"
+                                                       FontSize="30"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       TextColor="#FF9800" />
+                                            </Frame>
+                                            <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                                <Label Text="👥"
+                                                       FontSize="30"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       TextColor="#E91E63" />
+                                            </Frame>
+                                            <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                                <Label Text="🚀"
+                                                       FontSize="30"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       TextColor="#9C27B0" />
+                                            </Frame>
+                                        </Grid>
+                                    </CollectionView.EmptyView>
+                                </CollectionView>
                                 
                                 <Label Text="Tap to view full gallery →"
                                        FontSize="14"
@@ -178,44 +199,9 @@
                             </VerticalStackLayout>
                         </Frame>
                         
-                        <!-- Testimonials -->
-                        <Frame BackgroundColor="#2A2F3A"
-                               CornerRadius="12"
-                               Padding="20"
-                               HasShadow="False">
-                            <VerticalStackLayout Spacing="15">
-                                <Label Text="💬 Student Testimonials"
-                                       FontSize="18"
-                                       FontAttributes="Bold"
-                                       TextColor="White" />
-                                
-                                <Frame BackgroundColor="#1C2028" CornerRadius="8" Padding="15">
-                                    <VerticalStackLayout Spacing="8">
-                                        <Label Text="'E-Week 2024 was an incredible experience! The robotics competition pushed our team to think creatively and work under pressure. We learned so much and made great connections.'"
-                                               FontSize="14"
-                                               TextColor="White"
-                                               LineBreakMode="WordWrap" />
-                                        <Label Text="- Sarah Chen, Computer Engineering"
-                                               FontSize="12"
-                                               TextColor="#4CAF50"
-                                               FontAttributes="Italic" />
-                                    </VerticalStackLayout>
-                                </Frame>
-                                
-                                <Frame BackgroundColor="#1C2028" CornerRadius="8" Padding="15">
-                                    <VerticalStackLayout Spacing="8">
-                                        <Label Text="'The industry speakers provided valuable insights into the future of engineering. It was inspiring to see how our studies connect to real-world applications.'"
-                                               FontSize="14"
-                                               TextColor="White"
-                                               LineBreakMode="WordWrap" />
-                                        <Label Text="- Mike Rodriguez, Mechanical Engineering"
-                                               FontSize="12"
-                                               TextColor="#2196F3"
-                                               FontAttributes="Italic" />
-                                    </VerticalStackLayout>
-                                </Frame>
-                            </VerticalStackLayout>
-                        </Frame>
+  
+                           
+                    
                         
                     </VerticalStackLayout>
             </VerticalStackLayout>
