@@ -39,7 +39,7 @@
         </ShellContent>
     </FlyoutItem>
 
-    <FlyoutItem Title="Senior Design Projects" Route="Senior Projects">
+    <FlyoutItem Title="Projects" Route="Senior Projects">
         <ShellContent Title="Senior Design Projects">
             <ContentPage>
                 <Grid RowDefinitions="Auto,*">
@@ -93,16 +93,7 @@
     </FlyoutItem>
 
     <FlyoutItem Title="Faculty Directory" Route="Faculty">
-        <ShellContent Title="Faculty Directory">
-            <ContentPage>
-                <Grid RowDefinitions="Auto,*">
-                    <controls:TopBar Grid.Row="0" />
-                    <Grid Grid.Row="1" Padding="24">
-                        <Label Text="Faculty Directory Page (placeholder)" TextColor="White" />
-                    </Grid>
-                </Grid>
-            </ContentPage>
-        </ShellContent>
+        <ShellContent Title="Faculty Directory" ContentTemplate="{DataTemplate pages:FacultyDirectoryPage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Sponsors and Donors" Route="Sponsors and Donors">
@@ -116,6 +107,10 @@
                 </Grid>
             </ContentPage>
         </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Labs" Route="Labs">
+        <ShellContent Title="Labs" ContentTemplate="{DataTemplate pages:LabsPage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Contact" Route="Contact">

@@ -141,10 +141,10 @@ This code file gives UI for the top navigation bar that will be present througho
                    HorizontalTextAlignment="End" />
         </Grid>
 
-        <!-- Current time-->
+        <!-- Current date and time-->
         <Label Grid.Column="11"
                x:Name="ClockLabel"
-               Text="04:16 PM • Sep 19"
+               Text="Sep 19 • 04:16:45 PM"
                FontSize="14"
                FontAttributes="Bold"
                TextColor="{DynamicResource TopBarForeground}"
