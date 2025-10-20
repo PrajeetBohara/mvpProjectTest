@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!---Code written by Prajeet Bohara iwth the help of contenview template provided by .NET MAUI
+<!---Code written by Prajeet Bohara with the help of contenview template provided by .NET MAUI
 This code file gives UI for the top navigation bar that will be present throughout all the pages-->
     
 <!-- DynamicResouce are used from the app.xaml files which is the global resource file for the project-->

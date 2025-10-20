@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!---Code written by Prajeet Bohara 
+This code file gives UI for the EWeek page. All the commented codes here are placeholders that we might need in future-->
 <ContentPage
     x:Class="Dashboard.Pages.EWeekPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -14,7 +16,7 @@
         <ScrollView Grid.Row="1" Padding="20">
             <VerticalStackLayout Spacing="25">
                 
-                <!-- About E-Week Header 
+                <!-- About E-Week Header. Removed this as per now but might use later
                 <Label Text="📋 About E-Week"
                        FontSize="28"
                        FontAttributes="Bold"

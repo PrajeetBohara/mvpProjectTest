@@ -1,29 +1,53 @@
+/// Code written by Jael Ruiz
+/// 
+/// This file defines a service that interacts with Supabase to fetch faculty
+/// and staff data for display in the Dashboard. It provides methods for retrieving
+/// all active faculty members, department heads, and key staff members.
+/// It also includes a connection test method for debugging purposes.
+
 using Dashboard.Models;
 using System.Text.Json;
 
 namespace Dashboard.Services;
 
+/// <summary>
+/// Service responsible for fetching and organizing faculty-related data from Supabase.
+/// Provides methods for retrieving all faculty, department heads, and key staff members.
+/// </summary>
 public class FacultyService
 {
     private readonly HttpClient _httpClient;
     private readonly string _supabaseUrl;
     private readonly string _supabaseKey;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FacultyService"/> class.
+    /// Sets up the HTTP client and authentication headers needed for Supabase API requests.
+    /// </summary>
     public FacultyService()
     {
         _httpClient = new HttpClient();
         _supabaseUrl = SupabaseService.SupabaseUrl;
         _supabaseKey = SupabaseService.SupabaseAnonKey;
 
+        // Add necessary Supabase headers for authorization
         _httpClient.DefaultRequestHeaders.Add("apikey", _supabaseKey);
         _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_supabaseKey}");
     }
 
+    /// <summary>
+    /// Retrieves all active faculty members from the database.
+    /// Includes joined profile information such as name, email, and department.
+    /// </summary>
+    /// <returns>
+    /// A list of <see cref="Faculty"/> objects representing all active faculty members.
+    /// Returns an empty list if none are found or an error occurs.
+    /// </returns>
     public async Task<List<Faculty>> GetAllFacultyAsync()
     {
         try
         {
-            // Join faculty with profiles table to get complete information
+            // Query joins faculty and profile data for complete details
             var url = $"{_supabaseUrl}/rest/v1/faculty?select=*,profiles(full_name,email,avatar_url,department,role)&is_active=eq.true&order=title.asc";
             System.Diagnostics.Debug.WriteLine($"Fetching faculty from: {url}");
 
@@ -38,6 +62,7 @@ public class FacultyService
             System.Diagnostics.Debug.WriteLine($"Deserialized {facultyData?.Count ?? 0} faculty members");
 
             var faculty = new List<Faculty>();
+
             if (facultyData != null)
             {
                 foreach (var item in facultyData)
@@ -75,11 +100,19 @@ public class FacultyService
         }
     }
 
+    /// <summary>
+    /// Retrieves active faculty members with leadership titles such as
+    /// "Head", "Director", or "Chair". Used to display department heads or program leaders.
+    /// </summary>
+    /// <returns>
+    /// A list of <see cref="Faculty"/> objects representing department heads.
+    /// Returns an empty list if none are found or an error occurs.
+    /// </returns>
     public async Task<List<Faculty>> GetDepartmentHeadsAsync()
     {
         try
         {
-            // Get faculty with titles that suggest department leadership
+            // Filter for leadership-related titles using "ilike" (case-insensitive match)
             var url = $"{_supabaseUrl}/rest/v1/faculty?select=*,profiles(full_name,email,avatar_url,department,role)&is_active=eq.true&or=(title.ilike.%head%,title.ilike.%director%,title.ilike.%chair%)&order=title.asc";
             System.Diagnostics.Debug.WriteLine($"Fetching department heads from: {url}");
 
@@ -92,6 +125,7 @@ public class FacultyService
             });
 
             var faculty = new List<Faculty>();
+
             if (facultyData != null)
             {
                 foreach (var item in facultyData)
@@ -129,11 +163,19 @@ public class FacultyService
         }
     }
 
+    /// <summary>
+    /// Retrieves active faculty members who are not department heads.
+    /// These are typically teaching or support staff without leadership titles.
+    /// </summary>
+    /// <returns>
+    /// A list of <see cref="Faculty"/> objects representing key staff members.
+    /// Returns an empty list if none are found or an error occurs.
+    /// </returns>
     public async Task<List<Faculty>> GetKeyStaffAsync()
     {
         try
         {
-            // Get faculty excluding department heads
+            // Exclude faculty members with leadership-related titles
             var url = $"{_supabaseUrl}/rest/v1/faculty?select=*,profiles(full_name,email,avatar_url,department,role)&is_active=eq.true&not.and=(title.ilike.%head%,title.ilike.%director%,title.ilike.%chair%)&order=title.asc";
             System.Diagnostics.Debug.WriteLine($"Fetching key staff from: {url}");
 
@@ -146,6 +188,7 @@ public class FacultyService
             });
 
             var faculty = new List<Faculty>();
+
             if (facultyData != null)
             {
                 foreach (var item in facultyData)
@@ -183,6 +226,13 @@ public class FacultyService
         }
     }
 
+    /// <summary>
+    /// Tests the connection to the Supabase faculty table.
+    /// Useful for confirming that the service is properly configured.
+    /// </summary>
+    /// <returns>
+    /// True if the connection is successful, false if an error occurs.
+    /// </returns>
     public async Task<bool> TestConnectionAsync()
     {
         try
@@ -202,7 +252,10 @@ public class FacultyService
         }
     }
 
-    // Helper classes for JSON deserialization
+    /// <summary>
+    /// Internal helper class for deserializing faculty JSON data.
+    /// Represents the shape of the data returned by Supabase including nested profile info.
+    /// </summary>
     private class FacultyData
     {
         public Guid Id { get; set; }

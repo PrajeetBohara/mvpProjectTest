@@ -51,6 +51,7 @@ public partial class ContactPage : ContentPage
             }
 
             // Add fallback data if no faculty found
+            // Here the AvatarUrl fetches images from Supabase storage
             if (DepartmentHeads.Count == 0)
             {
                 System.Diagnostics.Debug.WriteLine("No department heads found, adding fallback data");
