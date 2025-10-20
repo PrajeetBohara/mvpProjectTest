@@ -1,5 +1,5 @@
 -- Sample data for E-Week Gallery
--- Replace the image URLs with actual URLs from your Supabase Storage
+-- Here image data will be replaced by the url form supabase
 
 -- Sample images for E-Week 2024
 INSERT INTO public.eweek_gallery (year, title, description, image_url, category, display_order, is_featured) VALUES
@@ -19,5 +19,3 @@ INSERT INTO public.eweek_gallery (year, title, description, image_url, category,
 (2025, 'Student Innovation Awards', 'Recognition for most innovative student projects', 'https://your-supabase-url/storage/v1/object/public/images/eweek/2025/awards1.jpg', 'winners', 5, true),
 (2025, 'Tech Expo', 'Showcasing cutting-edge technology and research', 'https://your-supabase-url/storage/v1/object/public/images/eweek/2025/tech1.jpg', 'events', 6, false);
 
--- Note: Replace 'https://your-supabase-url/storage/v1/object/public/images/eweek/' 
--- with your actual Supabase Storage URL structure
