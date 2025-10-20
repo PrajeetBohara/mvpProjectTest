@@ -11,22 +11,13 @@
         <controls:TopBar Grid.Row="0" />
         
         <!-- Main Content Area -->
-        <ScrollView Grid.Row="1" Padding="20">
-            <VerticalStackLayout Spacing="25">
-                
+        <ScrollView Grid.Row="1" Padding="2">
+            <VerticalStackLayout Spacing="20">
                 <!-- Page Header -->
-                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                    <Label Text="🔬"
-                           FontSize="50"
-                           HorizontalOptions="Center" />
-                    <Label Text="Engineering Laboratories"
-                           FontSize="28"
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           HorizontalOptions="Center" />
-                    <Label Text="Explore our state-of-the-art research and teaching facilities"
+                <VerticalStackLayout Spacing="1" HorizontalOptions="Center">
+                    <Label Text="Explore McNeese state-of-the-art research and teaching facilities"
                            FontSize="16"
-                           TextColor="#CCCCCC"
+                           TextColor="Black"
                            HorizontalOptions="Center" />
                 </VerticalStackLayout>
 

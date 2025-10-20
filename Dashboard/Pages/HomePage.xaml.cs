@@ -75,21 +75,75 @@ public partial class HomePage : ContentPage
         }
     }
 
-            /// <summary>
-            /// Handles maps section tap to open maps for Drew Hall and ETL.
-            /// Placeholder for now
-            /// </summary>
-            private async void OnMapsTapped(object sender, EventArgs e)
+    /// <summary>
+    /// Handles maps section tap to open maps for Drew Hall and ETL.
+    /// Placeholder for now
+    /// </summary>
+    private async void OnMapsTapped(object sender, EventArgs e)
+    {
+        try
+        {
+            await DisplayAlert("Campus Maps", "Opening interactive campus maps...", "OK");
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error opening maps: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// Handles contact section tap to navigate to Contact page.
+    /// </summary>
+    private async void OnContactTapped(object sender, EventArgs e)
+    {
+        try
+        {
+            if (Shell.Current != null)
             {
-                try
-                {
-                    await DisplayAlert("Campus Maps", "Opening interactive campus maps...", "OK");
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Error opening maps: {ex.Message}");
-                }
+                await Shell.Current.GoToAsync("//Contact");
             }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error opening contact: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// Handles labs section tap to navigate to Labs page.
+    /// </summary>
+    private async void OnLabsTapped(object sender, EventArgs e)
+    {
+        try
+        {
+            if (Shell.Current != null)
+            {
+                await Shell.Current.GoToAsync("//Labs");
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error opening labs: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// Handles projects section tap to navigate to Senior Design Projects page.
+    /// </summary>
+    private async void OnProjectsTapped(object sender, EventArgs e)
+    {
+        try
+        {
+            if (Shell.Current != null)
+            {
+                await Shell.Current.GoToAsync("//Senior Projects");
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error opening projects: {ex.Message}");
+        }
+    }
 
             ///// <summary>
             ///// Handles stats section tap to open detailed statistics.
