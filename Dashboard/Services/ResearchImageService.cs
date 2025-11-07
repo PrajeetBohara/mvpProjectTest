@@ -1,7 +1,7 @@
-/// Code written by Jael Ruiz
-/// This file defines a service for retrieving faculty research images stored in Supabase.
-/// The service fetches images from the "faculty_research" storage bucket, processes
-/// them into display-ready objects, and includes helper methods for validation and captioning.
+// Code written by Jael Ruiz
+// This file defines a service for retrieving faculty research images stored in Supabase.
+// The service fetches images from the "faculty_research" storage bucket, processes
+// them into display-ready objects, and includes helper methods for validation and captioning.
 
 using Dashboard.Models;
 using System.Text.Json;

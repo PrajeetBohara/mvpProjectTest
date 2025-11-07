@@ -1,7 +1,7 @@
-/// Code written by Jael Ruiz
-/// This file defines a service responsible for fetching Engineering Week (E-Week)
-/// gallery images from the Supabase backend. The service provides methods for 
-/// retrieving images by year, category, featured status, and recency.
+// Code written by Jael Ruiz
+// This file defines a service responsible for fetching Engineering Week (E-Week)
+// gallery images from the Supabase backend. The service provides methods for 
+// retrieving images by year, category, featured status, and recency.
 
 using Dashboard.Models;
 using System.Text.Json;
@@ -55,6 +55,7 @@ public class EWeekGalleryService
                 PropertyNameCaseInsensitive = true
             });
 
+            // Fallback to an empty list so calling code does not need to guard against null values.
             System.Diagnostics.Debug.WriteLine($"Deserialized {images?.Count ?? 0} images");
             return images ?? new List<EWeekGalleryImage>();
         }
@@ -89,6 +90,7 @@ public class EWeekGalleryService
                 PropertyNameCaseInsensitive = true
             });
 
+            // Returning an empty list keeps UI bindings simple when no featured items exist.
             System.Diagnostics.Debug.WriteLine($"Deserialized {images?.Count ?? 0} featured images");
             return images ?? new List<EWeekGalleryImage>();
         }
@@ -123,6 +125,7 @@ public class EWeekGalleryService
                 PropertyNameCaseInsensitive = true
             });
 
+            // Null is normalized to an empty list to avoid special-case handling downstream.
             return images ?? new List<EWeekGalleryImage>();
         }
         catch (Exception ex)
@@ -154,6 +157,7 @@ public class EWeekGalleryService
                 PropertyNameCaseInsensitive = true
             });
 
+            // Preserve existing ordering supplied by Supabase (most recent first).
             return images ?? new List<EWeekGalleryImage>();
         }
         catch (Exception ex)
