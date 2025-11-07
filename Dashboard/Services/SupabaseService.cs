@@ -1,8 +1,8 @@
-/// Code written by Jael Ruiz
-/// 
-/// This file defines a simple configuration service that stores
-/// Supabase connection credentials used throughout the application.
-/// Other services reference this class to access the Supabase URL and API key.
+// Code written by Jael Ruiz
+// 
+// This file defines a simple configuration service that stores
+// Supabase connection credentials used throughout the application.
+// Other services reference this class to access the Supabase URL and API key.
 
 namespace Dashboard.Services;
 

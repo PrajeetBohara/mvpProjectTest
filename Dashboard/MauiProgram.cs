@@ -21,7 +21,7 @@ namespace Dashboard
 #endif
 
     // Register services
-    builder.Services.AddSingleton<SupabaseService>();
+    builder.Services.AddSingleton<WeatherService>();
     builder.Services.AddSingleton<EWeekGalleryService>();
     builder.Services.AddSingleton<FacultyService>();
     builder.Services.AddSingleton<ResearchImageService>();

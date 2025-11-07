@@ -1,9 +1,9 @@
-/// Code written by Jael Ruiz
-/// 
-/// This file defines a service that interacts with Supabase to fetch faculty
-/// and staff data for display in the Dashboard. It provides methods for retrieving
-/// all active faculty members, department heads, and key staff members.
-/// It also includes a connection test method for debugging purposes.
+// Code written by Jael Ruiz
+// 
+// This file defines a service that interacts with Supabase to fetch faculty
+// and staff data for display in the Dashboard. It provides methods for retrieving
+// all active faculty members, department heads, and key staff members.
+// It also includes a connection test method for debugging purposes.
 
 using Dashboard.Models;
 using System.Text.Json;
