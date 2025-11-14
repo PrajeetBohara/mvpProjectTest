@@ -28,14 +28,14 @@ This code file gives UI for the announcement page-->
                     <VerticalStackLayout Spacing="15">
                         
                         <!-- Announcement 1 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
                                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
                                     <Label Grid.Row="0" Grid.Column="0" Text="•" 
-                                           TextColor="#4CAF50" FontSize="20" />
+                                           TextColor="#FFD204" FontSize="20" />
                                     <Label Grid.Row="0" Grid.Column="1" Text="New semester registration opens Monday"
                                            FontSize="18"
                                            FontAttributes="Bold"
@@ -54,14 +54,14 @@ This code file gives UI for the announcement page-->
                         </Frame>
                         
                         <!-- Announcement 2 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
                                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
                                     <Label Grid.Row="0" Grid.Column="0" Text="•" 
-                                           TextColor="#FF9800" FontSize="20" />
+                                           TextColor="#f2b32e" FontSize="20" />
                                     <Label Grid.Row="0" Grid.Column="1" Text="Engineering Career Fair next Friday"
                                            FontSize="18"
                                            FontAttributes="Bold"
@@ -80,14 +80,14 @@ This code file gives UI for the announcement page-->
                         </Frame>
                         
                         <!-- Announcement 3 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
                                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
                                     <Label Grid.Row="0" Grid.Column="0" Text="•" 
-                                           TextColor="#2196F3" FontSize="20" />
+                                           TextColor="#00aeef" FontSize="20" />
                                     <Label Grid.Row="0" Grid.Column="1" Text="Library extended hours for finals"
                                            FontSize="18"
                                            FontAttributes="Bold"
@@ -106,14 +106,14 @@ This code file gives UI for the announcement page-->
                         </Frame>
                         
                         <!-- Announcement 4 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
                                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
                                     <Label Grid.Row="0" Grid.Column="0" Text="•" 
-                                           TextColor="#E91E63" FontSize="20" />
+                                           TextColor="#FFD204" FontSize="20" />
                                     <Label Grid.Row="0" Grid.Column="1" Text="Student parking permits now available"
                                            FontSize="18"
                                            FontAttributes="Bold"
@@ -132,14 +132,14 @@ This code file gives UI for the announcement page-->
                         </Frame>
                         
                         <!-- Announcement 5 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
                                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
                                     <Label Grid.Row="0" Grid.Column="0" Text="•" 
-                                           TextColor="#9C27B0" FontSize="20" />
+                                           TextColor="#f2b32e" FontSize="20" />
                                     <Label Grid.Row="0" Grid.Column="1" Text="New computer lab hours posted"
                                            FontSize="18"
                                            FontAttributes="Bold"
