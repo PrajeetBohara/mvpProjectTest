@@ -27,13 +27,13 @@
 
             <!-- ====================== TOP-LEFT: Slideshow ====================== -->
             <Grid Grid.Row="0" Grid.Column="0">
-                <Frame BackgroundColor="#1C2028"
+                <Frame BackgroundColor="#003087"
                        CornerRadius="12"
                        Padding="0"
                        HasShadow="True"
                        Margin="0,0,10,10">
                     <Grid>
-                        <Frame BackgroundColor="#2A2F3A"
+                        <Frame BackgroundColor="#002a54"
                                CornerRadius="12"
                                Padding="0"
                                HasShadow="False"
@@ -42,37 +42,49 @@
                                 <TapGestureRecognizer Tapped="OnSlideshowTapped" />
                             </Frame.GestureRecognizers>
 
-                            <Image Source="dotnet_bot.png"
-                                   Aspect="AspectFill"
-                                   Opacity="0.3" />
+                            <Grid>
+                                <!-- Dynamic Image from Supabase (will be updated in code-behind) -->
+                                <Image x:Name="SlideshowImage"
+                                       Source="dotnet_bot.png"
+                                       Aspect="AspectFill"
+                                       Opacity="1.0"
+                                       HorizontalOptions="Fill"
+                                       VerticalOptions="Fill"
+                                       ZIndex="0" />
 
-                            <VerticalStackLayout VerticalOptions="Center"
-                                                 HorizontalOptions="Center"
-                                                 Spacing="15">
-                                <Label Text="🎬"
-                                       FontSize="{OnPlatform Default=80, Android=70, iOS=70}"
-                                       TextColor="White" />
-                                <Label Text="Slide SHOW"
-                                       FontSize="{OnPlatform Default=36, Android=32, iOS=32}"
-                                       FontAttributes="Bold"
-                                       TextColor="White" />
-                                <Label Text="Student Projects &amp; Achievements"
-                                       FontSize="{OnPlatform Default=18, Android=16, iOS=16}"
-                                       TextColor="#CCCCCC" />
-                                <Label Text="Tap to view slideshow"
-                                       FontSize="{OnPlatform Default=16, Android=14, iOS=14}"
-                                       TextColor="#4CAF50" />
-                            </VerticalStackLayout>
+                                <VerticalStackLayout VerticalOptions="Center"
+                                                     HorizontalOptions="Center"
+                                                     Spacing="15"
+                                                     BackgroundColor="Transparent"
+                                                     ZIndex="1"
+                                                     InputTransparent="False">
+                                    <Label Text="🎬"
+                                           FontSize="{OnPlatform Default=80, Android=70, iOS=70}"
+                                           TextColor="White" />
+                                    <Label x:Name="SlideshowTitle"
+                                           Text="Slide SHOW"
+                                           FontSize="{OnPlatform Default=36, Android=32, iOS=32}"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    <Label x:Name="SlideshowDescription"
+                                           Text="Student Projects &amp; Achievements"
+                                           FontSize="{OnPlatform Default=18, Android=16, iOS=16}"
+                                           TextColor="#CCCCCC" />
+                                    <Label Text="Tap to view slideshow"
+                                           FontSize="{OnPlatform Default=16, Android=14, iOS=14}"
+                                           TextColor="#FFD204" />
+                                </VerticalStackLayout>
 
-                            <HorizontalStackLayout HorizontalOptions="Center"
-                                                   VerticalOptions="End"
-                                                   Spacing="12"
-                                                   Margin="0,0,0,30">
-                                <BoxView WidthRequest="12" HeightRequest="12" CornerRadius="6" BackgroundColor="White" />
-                                <BoxView WidthRequest="12" HeightRequest="12" CornerRadius="6" BackgroundColor="#666666" />
-                                <BoxView WidthRequest="12" HeightRequest="12" CornerRadius="6" BackgroundColor="#666666" />
-                                <BoxView WidthRequest="12" HeightRequest="12" CornerRadius="6" BackgroundColor="#666666" />
-                            </HorizontalStackLayout>
+                                <!-- Pagination Dots (will be populated dynamically) -->
+                                <HorizontalStackLayout x:Name="PaginationContainer"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="End"
+                                                       Spacing="0"
+                                                       Margin="0,0,0,30"
+                                                       ZIndex="1">
+                                    <!-- Dots will be added programmatically -->
+                                </HorizontalStackLayout>
+                            </Grid>
                         </Frame>
                     </Grid>
                 </Frame>
@@ -173,6 +185,50 @@
                         </VerticalStackLayout>
                     </Frame>
 
+                    <!-- Faculty Directory Section -->
+                    <Frame BackgroundColor="Transparent"
+                           CornerRadius="12"
+                           Padding="20,12,20,12"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnFacultyDirectoryTapped" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout VerticalOptions="Center"
+                                             HorizontalOptions="Center"
+                                             Spacing="18">
+                            <Label Text="👨‍🏫"
+                                   FontSize="{OnPlatform Default=36, Android=28, iOS=36}"
+                                   HorizontalOptions="Center" />
+                            <Label Text="Faculty"
+                                   FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center"
+                                   TextColor="Black" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Student Clubs Section -->
+                    <Frame BackgroundColor="Transparent"
+                           CornerRadius="12"
+                           Padding="20,12,20,12"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnStudentClubsTapped" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout VerticalOptions="Center"
+                                             HorizontalOptions="Center"
+                                             Spacing="18">
+                            <Label Text="🎓"
+                                   FontSize="{OnPlatform Default=36, Android=28, iOS=36}"
+                                   HorizontalOptions="Center" />
+                            <Label Text="Clubs"
+                                   FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center"
+                                   TextColor="Black" />
+                        </VerticalStackLayout>
+                    </Frame>
+
                 </HorizontalStackLayout>
             </Grid>
 
@@ -185,7 +241,7 @@
 
                 <!-- TOP-RIGHT: Upcoming Events (slightly smaller) -->
                 <Frame Grid.Row="0"
-                       BackgroundColor="#1C2028"
+                       BackgroundColor="#003087"
                        CornerRadius="12"
                        Padding="16"
                        HasShadow="True"
@@ -198,7 +254,7 @@
                                    TextColor="White" />
 
                             <VerticalStackLayout Spacing="6">
-                                <Frame BackgroundColor="#2A2F3A" CornerRadius="6" Padding="6" HasShadow="False">
+                                <Frame BackgroundColor="#002a54" CornerRadius="6" Padding="6" HasShadow="False">
                                     <VerticalStackLayout Spacing="3">
                                         <Label Text="Engineering Career Fair"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
@@ -206,14 +262,14 @@
                                                TextColor="White" />
                                         <Label Text="Friday, Sep 27"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#4CAF50" />
+                                               TextColor="#FFD204" />
                                         <Label Text="10:00 AM"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#4CAF50" />
+                                               TextColor="#FFD204" />
                                     </VerticalStackLayout>
                                 </Frame>
 
-                                <Frame BackgroundColor="#2A2F3A" CornerRadius="6" Padding="6" HasShadow="False">
+                                <Frame BackgroundColor="#002a54" CornerRadius="6" Padding="6" HasShadow="False">
                                     <VerticalStackLayout Spacing="3">
                                         <Label Text="CS Department Meeting"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
@@ -221,14 +277,14 @@
                                                TextColor="White" />
                                         <Label Text="Monday, Sep 30"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#FF9800" />
+                                               TextColor="#f2b32e" />
                                         <Label Text="2:00 PM"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#FF9800" />
+                                               TextColor="#f2b32e" />
                                     </VerticalStackLayout>
                                 </Frame>
 
-                                <Frame BackgroundColor="#2A2F3A" CornerRadius="6" Padding="6" HasShadow="False">
+                                <Frame BackgroundColor="#002a54" CornerRadius="6" Padding="6" HasShadow="False">
                                     <VerticalStackLayout Spacing="3">
                                         <Label Text="Student Club Expo"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
@@ -236,16 +292,16 @@
                                                TextColor="White" />
                                         <Label Text="Wednesday, Oct 2"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#2196F3" />
+                                               TextColor="#00aeef" />
                                         <Label Text="1:00 PM"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#2196F3" />
+                                               TextColor="#00aeef" />
                                     </VerticalStackLayout>
                                 </Frame>
                             </VerticalStackLayout>
 
                             <Button Text="View All Events"
-                                    BackgroundColor="#2A2F3A"
+                                    BackgroundColor="#002a54"
                                     TextColor="White"
                                     CornerRadius="6"
                                     FontSize="{OnPlatform Default=9, Android=8, iOS=8}"
@@ -256,7 +312,7 @@
 
                 <!-- BOTTOM-RIGHT: Announcements (expanded upward) -->
                 <Frame Grid.Row="1"
-                       BackgroundColor="#1C2028"
+                       BackgroundColor="#003087"
                        CornerRadius="12"
                        Padding="12"
                        HasShadow="True"
@@ -270,10 +326,10 @@
                                    HorizontalOptions="Center" />
 
                             <VerticalStackLayout Spacing="8">
-                                <Frame BackgroundColor="#2A2F3A" CornerRadius="8" Padding="12">
+                                <Frame BackgroundColor="#002a54" CornerRadius="8" Padding="12">
                                     <VerticalStackLayout Spacing="4">
                                         <Label Text="Spring 2024 Registration"
-                                               TextColor="#4CAF50"
+                                               TextColor="#FFD204"
                                                FontSize="{OnPlatform Default=12, Android=10, iOS=10}" />
                                         <Label Text="Registration opens Nov 1st"
                                                TextColor="White"
@@ -284,10 +340,10 @@
                                     </VerticalStackLayout>
                                 </Frame>
 
-                                <Frame BackgroundColor="#2A2F3A" CornerRadius="8" Padding="12">
+                                <Frame BackgroundColor="#002a54" CornerRadius="8" Padding="12">
                                     <VerticalStackLayout Spacing="4">
                                         <Label Text="Lab Equipment"
-                                               TextColor="#FF9800"
+                                               TextColor="#f2b32e"
                                                FontSize="{OnPlatform Default=12, Android=10, iOS=10}" />
                                         <Label Text="High-performance workstations available"
                                                TextColor="White"
@@ -300,8 +356,8 @@
                             </VerticalStackLayout>
 
                             <Button Text="View All Announcements"
-                                    BackgroundColor="#FF9800"
-                                    TextColor="White"
+                                    BackgroundColor="#FFD204"
+                                    TextColor="#003087"
                                     FontSize="{OnPlatform Default=9, Android=8, iOS=8}"
                                     CornerRadius="6"
                                     HeightRequest="35"
