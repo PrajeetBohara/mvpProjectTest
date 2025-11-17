@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Code written for Academic Catalogue Page -->
+<ContentPage
+    x:Class="Dashboard.Pages.AcademicCataloguePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    xmlns:models="clr-namespace:Dashboard.Models"
+    Title="Academic Catalogue">
+    
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Main Content -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="25">
+                <!-- Page Header -->
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Label Text="📚"
+                           FontSize="48"
+                           HorizontalOptions="Center" />
+                    <Label Text="Academic Catalogue"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#003087"
+                           HorizontalOptions="Center" />
+                    <Label Text="Explore degree programs and course requirements"
+                           FontSize="16"
+                           TextColor="#002a54"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+                
+                <!-- Computer Science Section -->
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="0"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="0">
+                        <!-- Section Header -->
+                        <Frame BackgroundColor="#002a54"
+                               CornerRadius="16"
+                               Padding="20"
+                               HasShadow="False"
+                               Margin="0,0,0,0">
+                            <Label Text="Computer Science"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204"
+                                   HorizontalOptions="Center" />
+                        </Frame>
+                        
+                        <!-- Programs Grid -->
+                        <CollectionView x:Name="CSProgramsCollectionView"
+                                        ItemsSource="{Binding CSPrograms}"
+                                        SelectionMode="Single"
+                                        SelectionChanged="OnProgramSelected">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical"
+                                                Span="2"
+                                                HorizontalItemSpacing="15"
+                                                VerticalItemSpacing="15" />
+                            </CollectionView.ItemsLayout>
+                            
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:AcademicProgram">
+                                    <Frame BackgroundColor="#002a54"
+                                           CornerRadius="12"
+                                           Padding="0"
+                                           HasShadow="True"
+                                           HeightRequest="200">
+                                        <Grid RowDefinitions="Auto,*">
+                                            <!-- Program Image Section -->
+                                            <Grid Grid.Row="0"
+                                                  BackgroundColor="#003087"
+                                                  HeightRequest="120"
+                                                  VerticalOptions="Start">
+                                                <Image x:Name="ProgramImage"
+                                                       Source="mcneeselogo.png"
+                                                       Aspect="AspectFit"
+                                                       Margin="10"
+                                                       Opacity="0.9" />
+                                            </Grid>
+                                            
+                                            <!-- Program Name Section -->
+                                            <VerticalStackLayout Grid.Row="1"
+                                                                 Padding="15,10"
+                                                                 Spacing="5"
+                                                                 VerticalOptions="Fill">
+                                                <Label Text="{Binding Name}"
+                                                       FontSize="18"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#FFD204"
+                                                       HorizontalOptions="Center" />
+                                                <Label Text="{Binding FullName}"
+                                                       FontSize="12"
+                                                       TextColor="#CCCCCC"
+                                                       HorizontalOptions="Center"
+                                                       HorizontalTextAlignment="Center"
+                                                       LineBreakMode="WordWrap" />
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <!-- Chemical Engineering Section (Placeholder - Hidden for now) -->
+                <Frame x:Name="ChemicalEngineeringSection"
+                       BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="0"
+                       HasShadow="True"
+                       IsVisible="False">
+                    <VerticalStackLayout Spacing="0">
+                        <Frame BackgroundColor="#002a54"
+                               CornerRadius="16"
+                               Padding="20"
+                               HasShadow="False">
+                            <Label Text="Chemical Engineering"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204"
+                                   HorizontalOptions="Center" />
+                        </Frame>
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <!-- Mechanical Engineering Section (Placeholder - Hidden for now) -->
+                <Frame x:Name="MechanicalEngineeringSection"
+                       BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="0"
+                       HasShadow="True"
+                       IsVisible="False">
+                    <VerticalStackLayout Spacing="0">
+                        <Frame BackgroundColor="#002a54"
+                               CornerRadius="16"
+                               Padding="20"
+                               HasShadow="False">
+                            <Label Text="Mechanical Engineering"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204"
+                                   HorizontalOptions="Center" />
+                        </Frame>
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+
