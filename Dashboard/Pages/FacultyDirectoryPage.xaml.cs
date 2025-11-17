@@ -7,6 +7,9 @@ namespace Dashboard.Pages;
 public partial class FacultyDirectoryPage : ContentPage
 {
     private bool _isResearchDetailsVisible = false;
+    private bool _isMenonResearchVisible = false;
+    private bool _isAndersonResearchVisible = false;
+    private bool _isXieResearchVisible = false;
     private readonly ResearchImageService _researchImageService;
     
     public ObservableCollection<ResearchImage> ResearchImages { get; set; } = new();

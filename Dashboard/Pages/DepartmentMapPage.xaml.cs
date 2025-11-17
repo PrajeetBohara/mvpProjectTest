@@ -14,6 +14,7 @@ public partial class DepartmentMapPage : ContentPage
 {
     private readonly FloorPlanService _floorPlanService;
     private int _currentFloor = 1;
+    private string _currentSelection = "1"; // "ETL" or "1", "2", "3"
     private double _imageWidth = 0;
     private double _imageHeight = 0;
     private Dictionary<string, View> _roomZones = new Dictionary<string, View>();
@@ -29,11 +30,11 @@ public partial class DepartmentMapPage : ContentPage
         InitializeComponent();
         _floorPlanService = floorPlanService;
         
-        // Load initial floor
+        // Load initial floor (Floor 1)
         LoadFloor(1);
         
-        // Set up WebView size tracking
-        FloorPlanWebView.SizeChanged += OnWebViewSizeChanged;
+        // Set up Image size tracking
+        FloorPlanImage.SizeChanged += OnImageSizeChanged;
         
         // Set up zoom/pan gestures
         SetupZoomPanGestures();
@@ -68,10 +69,44 @@ public partial class DepartmentMapPage : ContentPage
     {
         if (sender is Button button && button.CommandParameter is string floorStr)
         {
-            if (int.TryParse(floorStr, out int floorNumber))
+            if (floorStr == "ETL")
+            {
+                LoadETL();
+            }
+            else if (int.TryParse(floorStr, out int floorNumber))
             {
                 LoadFloor(floorNumber);
             }
+        }
+    }
+
+    /// <summary>
+    /// Loads and displays the ETL (Electrical Technology Lab) map.
+    /// </summary>
+    private async void LoadETL()
+    {
+        _currentSelection = "ETL";
+        _currentFloor = 0; // Use 0 to represent ETL
+        
+        // Update button styles
+        UpdateFloorButtonStyles();
+        
+        // Clear existing room zones
+        ClearRoomZones();
+        LocationOverlay.Children.Clear();
+        
+        // Load ETL JPG image
+        LoadImage("etl.jpg");
+        
+        // Wait a bit for image to load
+        await Task.Delay(300);
+        
+        // ETL can have rooms too if needed - for now just load the map
+        var etlFloorPlan = _floorPlanService.GetETLFloorPlan();
+        if (etlFloorPlan != null)
+        {
+            AddRoomZones(etlFloorPlan);
+            AddCurrentLocationMarker();
         }
     }
 
@@ -82,6 +117,7 @@ public partial class DepartmentMapPage : ContentPage
     private async void LoadFloor(int floorNumber)
     {
         _currentFloor = floorNumber;
+        _currentSelection = floorNumber.ToString();
         
         // Update floor button styles
         UpdateFloorButtonStyles();
@@ -94,108 +130,87 @@ public partial class DepartmentMapPage : ContentPage
             ClearRoomZones();
             LocationOverlay.Children.Clear();
             
-            // Load SVG file as HTML content in WebView
-            await LoadSvgInWebView(floorPlan.SvgPath);
+            // Load JPG image
+            LoadImage($"{floorPlan.SvgPath}.jpg");
             
-            // Wait a bit for WebView to render, then add interactive zones
-            await Task.Delay(500);
+            // Wait a bit for image to load, then add interactive zones
+            await Task.Delay(300);
             AddRoomZones(floorPlan);
             AddCurrentLocationMarker();
         }
     }
 
     /// <summary>
-    /// Loads an SVG file into the WebView as HTML content.
-    /// This avoids bitmap conversion and memory issues with large SVGs.
+    /// Loads a JPG image file into the Image control.
     /// </summary>
-    private async Task LoadSvgInWebView(string svgFileName)
+    private void LoadImage(string imageFileName)
     {
         try
         {
-            // Add .svg extension if not present
-            var fullFileName = svgFileName.EndsWith(".svg", StringComparison.OrdinalIgnoreCase) 
-                ? svgFileName 
-                : $"{svgFileName}.svg";
+            // Reset zoom when loading new image
+            _currentZoom = 1.0;
+            FloorPlanImage.Scale = 1.0;
             
-            // Read the SVG file from resources (loaded as MauiAsset)
-            using var stream = await FileSystem.OpenAppPackageFileAsync(fullFileName);
-            using var reader = new StreamReader(stream);
-            var svgContent = await reader.ReadToEndAsync();
+            // Set the image source - MAUI will automatically load from Resources/Images
+            FloorPlanImage.Source = imageFileName;
             
-            // Create HTML wrapper for the SVG
-            var html = $@"
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"">
-    <style>
-        body {{
-            margin: 0;
-            padding: 0;
-            overflow: auto;
-            background-color: #F5F5F5;
-        }}
-        svg {{
-            width: 100%;
-            height: auto;
-            display: block;
-        }}
-    </style>
-</head>
-<body>
-    {svgContent}
-</body>
-</html>";
+            System.Diagnostics.Debug.WriteLine($"Loading image: {imageFileName}");
             
-            // Load HTML into WebView
-            var htmlSource = new HtmlWebViewSource { Html = html };
-            FloorPlanWebView.Source = htmlSource;
+            // Set up size tracking when image loads
+            FloorPlanImage.Loaded += OnImageLoaded;
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Error loading SVG: {ex.Message}");
-            // Fallback: show error message
-            var errorHtml = $@"
-<!DOCTYPE html>
-<html>
-<body style=""padding: 20px; font-family: Arial;"">
-    <h3>Error loading floor plan</h3>
-    <p>Could not load {svgFileName}</p>
-    <p>{ex.Message}</p>
-</body>
-</html>";
-            FloorPlanWebView.Source = new HtmlWebViewSource { Html = errorHtml };
+            System.Diagnostics.Debug.WriteLine($"Error loading image: {ex.Message}");
+            // Fallback: show placeholder or error
+            FloorPlanImage.Source = "mcneeselogo.png";
         }
     }
 
     /// <summary>
-    /// Updates the visual style of floor selection buttons to highlight the current floor.
+    /// Updates the visual style of floor selection buttons to highlight the current selection.
     /// </summary>
     private void UpdateFloorButtonStyles()
     {
         // McNeese colors: Sunflower Gold for selected, Dark Blue for unselected
-        Floor1Button.BackgroundColor = _currentFloor == 1 ? Color.FromArgb("#FFD204") : Color.FromArgb("#002a54");
-        Floor1Button.TextColor = _currentFloor == 1 ? Color.FromArgb("#003087") : Colors.White;
-        Floor2Button.BackgroundColor = _currentFloor == 2 ? Color.FromArgb("#FFD204") : Color.FromArgb("#002a54");
-        Floor2Button.TextColor = _currentFloor == 2 ? Color.FromArgb("#003087") : Colors.White;
-        Floor3Button.BackgroundColor = _currentFloor == 3 ? Color.FromArgb("#FFD204") : Color.FromArgb("#002a54");
-        Floor3Button.TextColor = _currentFloor == 3 ? Color.FromArgb("#003087") : Colors.White;
+        bool isETLSelected = _currentSelection == "ETL";
+        bool isFloor1Selected = _currentSelection == "1";
+        bool isFloor2Selected = _currentSelection == "2";
+        bool isFloor3Selected = _currentSelection == "3";
+        
+        ETLButton.BackgroundColor = isETLSelected ? Color.FromArgb("#FFD204") : Color.FromArgb("#002a54");
+        ETLButton.TextColor = isETLSelected ? Color.FromArgb("#003087") : Colors.White;
+        Floor1Button.BackgroundColor = isFloor1Selected ? Color.FromArgb("#FFD204") : Color.FromArgb("#002a54");
+        Floor1Button.TextColor = isFloor1Selected ? Color.FromArgb("#003087") : Colors.White;
+        Floor2Button.BackgroundColor = isFloor2Selected ? Color.FromArgb("#FFD204") : Color.FromArgb("#002a54");
+        Floor2Button.TextColor = isFloor2Selected ? Color.FromArgb("#003087") : Colors.White;
+        Floor3Button.BackgroundColor = isFloor3Selected ? Color.FromArgb("#FFD204") : Color.FromArgb("#002a54");
+        Floor3Button.TextColor = isFloor3Selected ? Color.FromArgb("#003087") : Colors.White;
     }
     #endregion
 
-    #region WebView Size Tracking
+    #region Image Size Tracking
     /// <summary>
-    /// Handles WebView size changes to recalculate room zone positions.
+    /// Handles Image size changes to recalculate room zone positions.
     /// </summary>
-    private void OnWebViewSizeChanged(object? sender, EventArgs e)
+    private void OnImageSizeChanged(object? sender, EventArgs e)
     {
-        if (FloorPlanWebView.Width > 0 && FloorPlanWebView.Height > 0)
+        if (FloorPlanImage.Width > 0 && FloorPlanImage.Height > 0)
         {
-            _imageWidth = FloorPlanWebView.Width;
-            _imageHeight = FloorPlanWebView.Height;
+            _imageWidth = FloorPlanImage.Width;
+            _imageHeight = FloorPlanImage.Height;
             
-            // Recalculate room zones when WebView size changes
-            var floorPlan = _floorPlanService.GetFloorPlan(_currentFloor);
+            // Recalculate room zones when Image size changes
+            FloorPlan? floorPlan = null;
+            if (_currentSelection == "ETL")
+            {
+                floorPlan = _floorPlanService.GetETLFloorPlan();
+            }
+            else
+            {
+                floorPlan = _floorPlanService.GetFloorPlan(_currentFloor);
+            }
+            
             if (floorPlan != null)
             {
                 ClearRoomZones();
@@ -286,7 +301,7 @@ public partial class DepartmentMapPage : ContentPage
         var detailsPage = new ContentPage
         {
             Title = $"Room {room.RoomNumber}",
-            BackgroundColor = Color.FromArgb("#1C2028"),
+            BackgroundColor = Color.FromArgb("#003087"),
             Padding = new Thickness(20)
         };
 
@@ -310,7 +325,7 @@ public partial class DepartmentMapPage : ContentPage
             Text = room.RoomName,
             FontSize = 24,
             FontAttributes = FontAttributes.Bold,
-            TextColor = Color.FromArgb("#4CAF50")
+            TextColor = Color.FromArgb("#FFD204") // McNeese Sunflower Gold
         });
 
         // Room Type
@@ -354,8 +369,8 @@ public partial class DepartmentMapPage : ContentPage
         var closeButton = new Button
         {
             Text = "Close",
-            BackgroundColor = Color.FromArgb("#4CAF50"),
-            TextColor = Colors.White,
+            BackgroundColor = Color.FromArgb("#FFD204"), // McNeese Sunflower Gold
+            TextColor = Color.FromArgb("#003087"), // Royal Blue text
             FontSize = 18,
             CornerRadius = 8,
             Margin = new Thickness(0, 20, 0, 0),
@@ -389,9 +404,10 @@ public partial class DepartmentMapPage : ContentPage
         var y = location.Y * _imageHeight;
         
         // Create pulsing location marker (using BoxView with CornerRadius for circular shape)
+        // Using McNeese Orange Gold to differentiate from campus map (which uses Sunflower Gold)
         var marker = new BoxView
         {
-            BackgroundColor = Color.FromArgb("#FF0000"),
+            BackgroundColor = Color.FromArgb("#f2b32e"), // McNeese Orange Gold
             WidthRequest = 20,
             HeightRequest = 20,
             CornerRadius = 10 // Makes it circular
@@ -406,7 +422,7 @@ public partial class DepartmentMapPage : ContentPage
         {
             Text = "You are here",
             FontSize = 12,
-            TextColor = Colors.Red,
+            TextColor = Color.FromArgb("#f2b32e"), // McNeese Orange Gold
             FontAttributes = FontAttributes.Bold,
             BackgroundColor = Colors.White,
             Padding = new Thickness(5, 2, 5, 2)
@@ -437,19 +453,23 @@ public partial class DepartmentMapPage : ContentPage
     #endregion
 
     #region Zoom and Pan Gestures
+    private double _lastScale = 1.0;
+    private double _startScale = 1.0;
+    
     /// <summary>
     /// Sets up pinch-to-zoom and pan gestures for the map.
-    /// ScrollView already provides basic zoom, but we enhance it here.
     /// </summary>
     private void SetupZoomPanGestures()
     {
-        // Pinch gesture for zoom
+        // Pinch gesture for zoom on the image
         var pinchGesture = new PinchGestureRecognizer();
         pinchGesture.PinchUpdated += OnPinchUpdated;
-        MapContainer.GestureRecognizers.Add(pinchGesture);
+        FloorPlanImage.GestureRecognizers.Add(pinchGesture);
         
-        // Pan gesture (ScrollView handles this, but we can add custom handling if needed)
-        // The ScrollView with ZoomMode="Enabled" already provides pan functionality
+        // Pan gesture for moving around when zoomed
+        var panGesture = new PanGestureRecognizer();
+        panGesture.PanUpdated += OnPanUpdated;
+        MapContainer.GestureRecognizers.Add(panGesture);
     }
 
     /// <summary>
@@ -457,24 +477,40 @@ public partial class DepartmentMapPage : ContentPage
     /// </summary>
     private void OnPinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
     {
-        if (e.Status == GestureStatus.Running)
+        switch (e.Status)
         {
-            // Calculate zoom scale
-            _currentZoom = Math.Max(1.0, Math.Min(5.0, _currentZoom * e.Scale));
-            
-            // Update ScrollView zoom programmatically if needed
-            // Note: ScrollView handles zoom automatically, but we track it for room zone recalculation
+            case GestureStatus.Started:
+                _startScale = _currentZoom;
+                break;
+                
+            case GestureStatus.Running:
+                // Calculate new zoom scale
+                _currentZoom = Math.Max(1.0, Math.Min(5.0, _startScale * e.Scale));
+                
+                // Apply scale to image
+                FloorPlanImage.Scale = _currentZoom;
+                
+                // Update container size to allow scrolling when zoomed
+                if (FloorPlanImage.Width > 0 && FloorPlanImage.Height > 0)
+                {
+                    MapContainer.MinimumWidthRequest = FloorPlanImage.Width * _currentZoom;
+                    MapContainer.MinimumHeightRequest = FloorPlanImage.Height * _currentZoom;
+                }
+                break;
+                
+            case GestureStatus.Completed:
+                _lastScale = _currentZoom;
+                break;
         }
-        else if (e.Status == GestureStatus.Completed)
-        {
-            // Recalculate room zones after zoom completes
-            var floorPlan = _floorPlanService.GetFloorPlan(_currentFloor);
-            if (floorPlan != null && _imageWidth > 0 && _imageHeight > 0)
-            {
-                // Room zones will automatically adjust with the image size
-                // The AbsoluteLayout positions are relative to the scaled image
-            }
-        }
+    }
+
+    /// <summary>
+    /// Handles pan gesture for moving around the zoomed map.
+    /// </summary>
+    private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
+    {
+        // Pan is handled automatically by ScrollView when content is larger than viewport
+        // This is mainly for tracking if needed
     }
     #endregion
 }
