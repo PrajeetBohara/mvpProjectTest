@@ -22,7 +22,7 @@
                 </VerticalStackLayout>
 
                 <!-- Computer Science Labs Section -->
-                <Frame BackgroundColor="#1C2028"
+                <Frame BackgroundColor="#003087"
                        CornerRadius="12"
                        Padding="25"
                        HasShadow="True">
@@ -38,7 +38,7 @@
                             
                             <!-- Software Engineering Lab -->
                             <Frame Grid.Column="0"
-                                   BackgroundColor="#2A2F3A"
+                                   BackgroundColor="#002a54"
                                    CornerRadius="10"
                                    Padding="20"
                                    HasShadow="True">
@@ -52,7 +52,7 @@
                                                    TextColor="White" />
                                             <Label Text="Drew Hall, Room 301"
                                                    FontSize="12"
-                                                   TextColor="#4CAF50" />
+                                                   TextColor="#FFD204" />
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                     
@@ -62,15 +62,15 @@
                                            LineBreakMode="WordWrap" />
                                     
                                     <HorizontalStackLayout Spacing="15">
-                                        <Label Text="🖥️ 30 Workstations" FontSize="10" TextColor="#2196F3" />
-                                        <Label Text="⚡ High-Speed Internet" FontSize="10" TextColor="#2196F3" />
+                                        <Label Text="🖥️ 30 Workstations" FontSize="10" TextColor="#00aeef" />
+                                        <Label Text="⚡ High-Speed Internet" FontSize="10" TextColor="#00aeef" />
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
                             </Frame>
 
                             <!-- Cybersecurity Lab -->
                             <Frame Grid.Column="1"
-                                   BackgroundColor="#2A2F3A"
+                                   BackgroundColor="#002a54"
                                    CornerRadius="10"
                                    Padding="20"
                                    HasShadow="True">
@@ -84,7 +84,7 @@
                                                    TextColor="White" />
                                             <Label Text="Drew Hall, Room 303"
                                                    FontSize="12"
-                                                   TextColor="#4CAF50" />
+                                                   TextColor="#FFD204" />
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                     
@@ -94,8 +94,8 @@
                                            LineBreakMode="WordWrap" />
                                     
                                     <HorizontalStackLayout Spacing="15">
-                                        <Label Text="🛡️ Secure Environment" FontSize="10" TextColor="#FF9800" />
-                                        <Label Text="🔍 Forensic Tools" FontSize="10" TextColor="#FF9800" />
+                                        <Label Text="🛡️ Secure Environment" FontSize="10" TextColor="#f2b32e" />
+                                        <Label Text="🔍 Forensic Tools" FontSize="10" TextColor="#f2b32e" />
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
                             </Frame>
@@ -104,7 +104,7 @@
                 </Frame>
 
                 <!-- Electrical Engineering Labs Section -->
-                <Frame BackgroundColor="#1C2028"
+                <Frame BackgroundColor="#003087"
                        CornerRadius="12"
                        Padding="25"
                        HasShadow="True">
@@ -120,7 +120,7 @@
                             
                             <!-- Power Systems Lab -->
                             <Frame Grid.Column="0"
-                                   BackgroundColor="#2A2F3A"
+                                   BackgroundColor="#002a54"
                                    CornerRadius="10"
                                    Padding="20"
                                    HasShadow="True">
@@ -134,7 +134,7 @@
                                                    TextColor="White" />
                                             <Label Text="Drew Hall, Room 205"
                                                    FontSize="12"
-                                                   TextColor="#4CAF50" />
+                                                   TextColor="#FFD204" />
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                     
@@ -152,7 +152,7 @@
 
                             <!-- Electronics Lab -->
                             <Frame Grid.Column="1"
-                                   BackgroundColor="#2A2F3A"
+                                   BackgroundColor="#002a54"
                                    CornerRadius="10"
                                    Padding="20"
                                    HasShadow="True">
@@ -166,7 +166,7 @@
                                                    TextColor="White" />
                                             <Label Text="Drew Hall, Room 207"
                                                    FontSize="12"
-                                                   TextColor="#4CAF50" />
+                                                   TextColor="#FFD204" />
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                     
@@ -186,7 +186,7 @@
                 </Frame>
 
                 <!-- Mechanical Engineering Labs Section -->
-                <Frame BackgroundColor="#1C2028"
+                <Frame BackgroundColor="#003087"
                        CornerRadius="12"
                        Padding="25"
                        HasShadow="True">
@@ -202,7 +202,7 @@
                             
                             <!-- Manufacturing Lab -->
                             <Frame Grid.Column="0"
-                                   BackgroundColor="#2A2F3A"
+                                   BackgroundColor="#002a54"
                                    CornerRadius="10"
                                    Padding="20"
                                    HasShadow="True">
@@ -216,7 +216,7 @@
                                                    TextColor="White" />
                                             <Label Text="Engineering Building, Room 101"
                                                    FontSize="12"
-                                                   TextColor="#4CAF50" />
+                                                   TextColor="#FFD204" />
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                     
@@ -234,7 +234,7 @@
 
                             <!-- Thermodynamics Lab -->
                             <Frame Grid.Column="1"
-                                   BackgroundColor="#2A2F3A"
+                                   BackgroundColor="#002a54"
                                    CornerRadius="10"
                                    Padding="20"
                                    HasShadow="True">
@@ -248,7 +248,7 @@
                                                    TextColor="White" />
                                             <Label Text="Engineering Building, Room 103"
                                                    FontSize="12"
-                                                   TextColor="#4CAF50" />
+                                                   TextColor="#FFD204" />
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                     
@@ -268,7 +268,7 @@
                 </Frame>
 
                 <!-- Civil Engineering Labs Section -->
-                <Frame BackgroundColor="#1C2028"
+                <Frame BackgroundColor="#003087"
                        CornerRadius="12"
                        Padding="25"
                        HasShadow="True">
@@ -284,7 +284,7 @@
                             
                             <!-- Materials Testing Lab -->
                             <Frame Grid.Column="0"
-                                   BackgroundColor="#2A2F3A"
+                                   BackgroundColor="#002a54"
                                    CornerRadius="10"
                                    Padding="20"
                                    HasShadow="True">
@@ -298,7 +298,7 @@
                                                    TextColor="White" />
                                             <Label Text="Engineering Building, Room 201"
                                                    FontSize="12"
-                                                   TextColor="#4CAF50" />
+                                                   TextColor="#FFD204" />
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                     
@@ -316,7 +316,7 @@
 
                             <!-- Environmental Lab -->
                             <Frame Grid.Column="1"
-                                   BackgroundColor="#2A2F3A"
+                                   BackgroundColor="#002a54"
                                    CornerRadius="10"
                                    Padding="20"
                                    HasShadow="True">
@@ -330,7 +330,7 @@
                                                    TextColor="White" />
                                             <Label Text="Engineering Building, Room 203"
                                                    FontSize="12"
-                                                   TextColor="#4CAF50" />
+                                                   TextColor="#FFD204" />
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
                                     
@@ -350,7 +350,7 @@
                 </Frame>
 
                 <!-- Lab Access Information -->
-                <Frame BackgroundColor="#2A2F3A"
+                <Frame BackgroundColor="#002a54"
                        CornerRadius="12"
                        Padding="25"
                        HasShadow="False">
@@ -365,7 +365,7 @@
                             
                             <!-- Left Column -->
                             <VerticalStackLayout Grid.Column="0" Spacing="12">
-                                <Frame BackgroundColor="#1C2028"
+                                <Frame BackgroundColor="#003087"
                                        CornerRadius="8"
                                        Padding="15"
                                        HasShadow="False">
@@ -388,7 +388,7 @@
                                     </VerticalStackLayout>
                                 </Frame>
                                 
-                                <Frame BackgroundColor="#1C2028"
+                                <Frame BackgroundColor="#003087"
                                        CornerRadius="8"
                                        Padding="15"
                                        HasShadow="False">
@@ -414,7 +414,7 @@
                             
                             <!-- Right Column -->
                             <VerticalStackLayout Grid.Column="1" Spacing="12">
-                                <Frame BackgroundColor="#1C2028"
+                                <Frame BackgroundColor="#003087"
                                        CornerRadius="8"
                                        Padding="15"
                                        HasShadow="False">
@@ -437,7 +437,7 @@
                                     </VerticalStackLayout>
                                 </Frame>
                                 
-                                <Frame BackgroundColor="#1C2028"
+                                <Frame BackgroundColor="#003087"
                                        CornerRadius="8"
                                        Padding="15"
                                        HasShadow="False">
@@ -451,10 +451,10 @@
                                                        TextColor="White" />
                                                 <Label Text="Dr. Jennifer Lavergne"
                                                        FontSize="12"
-                                                       TextColor="#4CAF50" />
+                                                       TextColor="#FFD204" />
                                                 <Label Text="jlavegne@mcneese.edu"
                                                        FontSize="12"
-                                                       TextColor="#2196F3" />
+                                                       TextColor="#00aeef" />
                                             </VerticalStackLayout>
                                         </HorizontalStackLayout>
                                     </VerticalStackLayout>

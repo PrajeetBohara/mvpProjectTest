@@ -54,21 +54,36 @@ public partial class AcademicProgramDetailPage : ContentPage
     /// </summary>
     private void LoadProgramDetails()
     {
+        System.Diagnostics.Debug.WriteLine($"=== LoadProgramDetails called ===");
+        System.Diagnostics.Debug.WriteLine($"Current _programId: '{_programId}'");
+        
         // Get program ID from query parameters
         if (!string.IsNullOrEmpty(_programId) && int.TryParse(_programId, out var programId))
         {
+            System.Diagnostics.Debug.WriteLine($"Parsed programId: {programId}");
             _currentProgram = _programService.GetProgramById(programId);
             if (_currentProgram != null)
             {
+                System.Diagnostics.Debug.WriteLine($"Found program: {_currentProgram.Name}");
                 DisplayProgramDetails(_currentProgram);
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine($"✗ No program found with ID: {programId}");
             }
         }
         else
         {
+            System.Diagnostics.Debug.WriteLine($"✗ Could not parse programId from: '{_programId}'");
+            
             // Fallback: try to get from Shell query
             if (Shell.Current?.CurrentState?.Location is not null)
             {
-                var queryString = Shell.Current.CurrentState.Location.Query;
+                var location = Shell.Current.CurrentState.Location;
+                System.Diagnostics.Debug.WriteLine($"Shell location: {location}");
+                var queryString = location.Query;
+                System.Diagnostics.Debug.WriteLine($"Query string: '{queryString}'");
+                
                 if (!string.IsNullOrEmpty(queryString))
                 {
                     // Parse query string manually (format: ?programId=1)
@@ -78,15 +93,21 @@ public partial class AcademicProgramDetailPage : ContentPage
                         var keyValue = part.Split('=');
                         if (keyValue.Length == 2 && keyValue[0] == "programId" && int.TryParse(keyValue[1], out var id))
                         {
+                            System.Diagnostics.Debug.WriteLine($"Found programId in query: {id}");
                             _currentProgram = _programService.GetProgramById(id);
                             if (_currentProgram != null)
                             {
+                                System.Diagnostics.Debug.WriteLine($"Found program: {_currentProgram.Name}");
                                 DisplayProgramDetails(_currentProgram);
                             }
                             break;
                         }
                     }
                 }
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("✗ Shell.Current or CurrentState is null");
             }
         }
     }

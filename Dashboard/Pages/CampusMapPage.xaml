@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Code written for Campus Map Page -->
+<ContentPage
+    x:Class="Dashboard.Pages.CampusMapPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Title="Campus Map">
+
+    <Grid RowDefinitions="Auto,Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Back Button -->
+        <Frame Grid.Row="1"
+               BackgroundColor="#003087"
+               Padding="10"
+               HasShadow="True"
+               Margin="0,0,0,10">
+            <Button x:Name="BackButton"
+                    Text="← Back to Maps"
+                    BackgroundColor="#002a54"
+                    TextColor="White"
+                    FontSize="14"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    Padding="15,8"
+                    HorizontalOptions="Start"
+                    Clicked="OnBackButtonClicked" />
+        </Frame>
+
+        <!-- Campus Map Area -->
+        <ScrollView x:Name="MapScrollView"
+                    Grid.Row="2"
+                    HorizontalScrollBarVisibility="Always"
+                    VerticalScrollBarVisibility="Always">
+            <Grid x:Name="MapContainer"
+                  BackgroundColor="#F5F5F5">
+                
+                <!-- Campus Map PNG Image -->
+                <Image x:Name="CampusMapImage"
+                       Aspect="AspectFit" />
+                
+                <!-- Current Location Indicator -->
+                <AbsoluteLayout x:Name="LocationOverlay"
+                                BackgroundColor="Transparent">
+                    <!-- Current location marker will be added programmatically -->
+                </AbsoluteLayout>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+

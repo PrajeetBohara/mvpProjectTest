@@ -83,7 +83,7 @@ public partial class HomePage : ContentPage
             {
                 System.Diagnostics.Debug.WriteLine("[HomePage] No images found. Showing default image.");
                 // Show default image if no images from backend
-                SlideshowImage.Source = "dotnet_bot.png";
+                SlideshowImage.Source = "mcneeselogo.png";
             }
         }
         catch (Exception ex)
@@ -92,7 +92,7 @@ public partial class HomePage : ContentPage
             System.Diagnostics.Debug.WriteLine($"[HomePage] Error Type: {ex.GetType().Name}");
             System.Diagnostics.Debug.WriteLine($"[HomePage] Stack Trace: {ex.StackTrace}");
             // Fallback to default image
-            SlideshowImage.Source = "dotnet_bot.png";
+            SlideshowImage.Source = "mcneeselogo.png";
         }
     }
 
@@ -126,7 +126,7 @@ public partial class HomePage : ContentPage
                     else
                     {
                         System.Diagnostics.Debug.WriteLine($"[HomePage] Invalid image URL format: {currentImage.ImageUrl}");
-                        SlideshowImage.Source = "dotnet_bot.png";
+                        SlideshowImage.Source = "mcneeselogo.png";
                         SlideshowImage.Opacity = 1.0;
                     }
                 }
@@ -134,28 +134,11 @@ public partial class HomePage : ContentPage
                 {
                     System.Diagnostics.Debug.WriteLine($"[HomePage] Error setting image source: {ex.Message}");
                     System.Diagnostics.Debug.WriteLine($"[HomePage] Stack Trace: {ex.StackTrace}");
-                    SlideshowImage.Source = "dotnet_bot.png";
+                    SlideshowImage.Source = "mcneeselogo.png";
                     SlideshowImage.Opacity = 1.0;
                 }
                 
-                // Update title and description if available
-                if (!string.IsNullOrEmpty(currentImage.Title))
-                {
-                    SlideshowTitle.Text = currentImage.Title;
-                }
-                else
-                {
-                    SlideshowTitle.Text = "Slide SHOW";
-                }
-                
-                if (!string.IsNullOrEmpty(currentImage.Description))
-                {
-                    SlideshowDescription.Text = currentImage.Description;
-                }
-                else
-                {
-                    SlideshowDescription.Text = "Student Projects & Achievements";
-                }
+                // Title and description labels removed - no text displayed on slideshow
             });
         }
         else

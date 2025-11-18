@@ -18,7 +18,7 @@ This code file gives UI Eweek year 2024 page-->
                 <!-- Back Button and Page Header -->
                 <HorizontalStackLayout Spacing="15" HorizontalOptions="Start">
                     <Button Text="← Back to E-Week"
-                            BackgroundColor="#2A2F3A"
+                            BackgroundColor="#002a54"
                             TextColor="White"
                             CornerRadius="8"
                             Padding="15,8"
@@ -42,7 +42,7 @@ This code file gives UI Eweek year 2024 page-->
                                HorizontalOptions="Center" />
                         <Label Text="Previous Year Archive"
                                FontSize="16"
-                               TextColor="#FF9800"
+                               TextColor="#f2b32e"
                                HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </HorizontalStackLayout>
@@ -63,7 +63,7 @@ This code file gives UI Eweek year 2024 page-->
 
                             <Label Text="February 18-22, 2024"
                                        FontSize="16"
-                                       TextColor="#FF9800"
+                                       TextColor="#f2b32e"
                                        FontAttributes="Bold" />
 
                             <HorizontalStackLayout Spacing="30" HorizontalOptions="Center">
@@ -95,7 +95,7 @@ This code file gives UI Eweek year 2024 page-->
                                     <Label Text="12"
                                                FontSize="24"
                                                FontAttributes="Bold"
-                                               TextColor="#FF9800"
+                                               TextColor="#f2b32e"
                                                HorizontalOptions="Center" />
                                     <Label Text="Competitions"
                                                FontSize="12"
@@ -132,7 +132,7 @@ This code file gives UI Eweek year 2024 page-->
                                                 HeightRequest="600">
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
-                                            <Frame BackgroundColor="#2A2F3A" 
+                                            <Frame BackgroundColor="#002a54" 
                                                    CornerRadius="8" 
                                                    Padding="5"
                                                    Margin="5"
@@ -147,42 +147,42 @@ This code file gives UI Eweek year 2024 page-->
                                     <!-- Empty state when no images -->
                                     <CollectionView.EmptyView>
                                         <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
-                                            <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="🏆"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        TextColor="#FFD700" />
                                             </Frame>
-                                            <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="🔬"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        TextColor="#4CAF50" />
                                             </Frame>
-                                            <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="🎉"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        TextColor="#2196F3" />
                                             </Frame>
-                                            <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="🎤"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center"
-                                                       TextColor="#FF9800" />
+                                                       TextColor="#f2b32e" />
                                             </Frame>
-                                            <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="👥"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        TextColor="#E91E63" />
                                             </Frame>
-                                            <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="🚀"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
@@ -195,7 +195,7 @@ This code file gives UI Eweek year 2024 page-->
                                 
                                 <Label Text="Tap to view full gallery →"
                                        FontSize="14"
-                                       TextColor="#FF9800"
+                                       TextColor="#f2b32e"
                                        HorizontalOptions="Center"
                                        FontAttributes="Italic" />
                             </VerticalStackLayout>

@@ -45,45 +45,24 @@
                             <Grid>
                                 <!-- Dynamic Image from Supabase (will be updated in code-behind) -->
                                 <Image x:Name="SlideshowImage"
-                                       Source="dotnet_bot.png"
+                                       Source="mcneeselogo.png"
                                        Aspect="AspectFill"
                                        Opacity="1.0"
                                        HorizontalOptions="Fill"
                                        VerticalOptions="Fill"
                                        ZIndex="0" />
 
-                                <VerticalStackLayout VerticalOptions="Center"
-                                                     HorizontalOptions="Center"
-                                                     Spacing="15"
-                                                     BackgroundColor="Transparent"
-                                                     ZIndex="1"
-                                                     InputTransparent="False">
-                                    <Label Text="🎬"
-                                           FontSize="{OnPlatform Default=80, Android=70, iOS=70}"
-                                           TextColor="White" />
-                                    <Label x:Name="SlideshowTitle"
-                                           Text="Slide SHOW"
-                                           FontSize="{OnPlatform Default=36, Android=32, iOS=32}"
-                                           FontAttributes="Bold"
-                                           TextColor="White" />
-                                    <Label x:Name="SlideshowDescription"
-                                           Text="Student Projects &amp; Achievements"
-                                           FontSize="{OnPlatform Default=18, Android=16, iOS=16}"
-                                           TextColor="#CCCCCC" />
-                                    <Label Text="Tap to view slideshow"
-                                           FontSize="{OnPlatform Default=16, Android=14, iOS=14}"
-                                           TextColor="#FFD204" />
-                                </VerticalStackLayout>
+                            <!-- Text labels removed - slideshow displays only images -->
 
                                 <!-- Pagination Dots (will be populated dynamically) -->
                                 <HorizontalStackLayout x:Name="PaginationContainer"
                                                        HorizontalOptions="Center"
-                                                       VerticalOptions="End"
+                                                   VerticalOptions="End"
                                                        Spacing="0"
                                                        Margin="0,0,0,30"
                                                        ZIndex="1">
                                     <!-- Dots will be added programmatically -->
-                                </HorizontalStackLayout>
+                            </HorizontalStackLayout>
                             </Grid>
                         </Frame>
                     </Grid>

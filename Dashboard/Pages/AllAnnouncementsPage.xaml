@@ -158,14 +158,14 @@ This code file gives UI for the announcement page-->
                         </Frame>
                         
                         <!-- Announcement 6 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
                                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
                                     <Label Grid.Row="0" Grid.Column="0" Text="•" 
-                                           TextColor="#00BCD4" FontSize="20" />
+                                           TextColor="#00aeef" FontSize="20" />
                                     <Label Grid.Row="0" Grid.Column="1" Text="WiFi upgrade completed"
                                            FontSize="18"
                                            FontAttributes="Bold"
@@ -184,14 +184,14 @@ This code file gives UI for the announcement page-->
                         </Frame>
                         
                         <!-- Announcement 7 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
                                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
                                     <Label Grid.Row="0" Grid.Column="0" Text="•" 
-                                           TextColor="#FF5722" FontSize="20" />
+                                           TextColor="#FFD204" FontSize="20" />
                                     <Label Grid.Row="0" Grid.Column="1" Text="Student ID card replacement"
                                            FontSize="18"
                                            FontAttributes="Bold"

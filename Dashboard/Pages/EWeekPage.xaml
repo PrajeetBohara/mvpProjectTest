@@ -24,7 +24,7 @@ This code file gives UI for the EWeek page. All the commented codes here are pla
                        HorizontalOptions="Center" />-->
                 
                 <!-- E-Week Description -->
-                <Frame BackgroundColor="#2A2F3A"
+                <Frame BackgroundColor="#002a54"
                        CornerRadius="12"
                        Padding="20"
                        HasShadow="False">
@@ -83,7 +83,7 @@ This code file gives UI for the EWeek page. All the commented codes here are pla
                     
                     <!-- E-Week 2024 Tile -->
                     <Frame Grid.Column="0"
-                           BackgroundColor="#1C2028"
+                           BackgroundColor="#003087"
                            CornerRadius="12"
                            Padding="20"
                            HasShadow="True">
@@ -106,7 +106,7 @@ This code file gives UI for the EWeek page. All the commented codes here are pla
 
                             <Label Text="Tap to explore →"
                                    FontSize="14"
-                                   TextColor="#FF9800"
+                                   TextColor="#f2b32e"
                                    FontAttributes="Italic"
                                    HorizontalOptions="Center" />
                         </VerticalStackLayout>
@@ -114,7 +114,7 @@ This code file gives UI for the EWeek page. All the commented codes here are pla
                     
                     <!-- E-Week 2025 Tile -->
                     <Frame Grid.Column="1"
-                           BackgroundColor="#1C2028"
+                           BackgroundColor="#003087"
                            CornerRadius="12"
                            Padding="20"
                            HasShadow="True">
@@ -137,7 +137,7 @@ This code file gives UI for the EWeek page. All the commented codes here are pla
                             </VerticalStackLayout>
                             <Label Text="Tap to explore →"
                                    FontSize="14"
-                                   TextColor="#4CAF50"
+                                   TextColor="#FFD204"
                                    FontAttributes="Italic"
                                    HorizontalOptions="Center" />
                         </VerticalStackLayout>
