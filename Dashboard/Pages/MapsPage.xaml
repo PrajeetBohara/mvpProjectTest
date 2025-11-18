@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Code written for Maps page with Department and Campus map options -->
+<ContentPage
+    x:Class="Dashboard.Pages.MapsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Title="Maps">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Main Content Area -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="30">
+                <!-- Page Header -->
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Label Text="🗺️"
+                           FontSize="48"
+                           HorizontalOptions="Center" />
+                    <Label Text="Campus Maps"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center" />
+                    <Label Text="Navigate to department locations and explore the campus"
+                           FontSize="16"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <!-- Map Options Grid -->
+                <Grid ColumnDefinitions="*,*" 
+                      ColumnSpacing="20" 
+                      RowSpacing="20"
+                      Margin="0,10,0,0">
+                    
+                    <!-- Department Map Option -->
+                    <Frame Grid.Column="0"
+                           BackgroundColor="#003087"
+                           CornerRadius="16"
+                           Padding="0"
+                           HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnDepartmentMapTapped" />
+                        </Frame.GestureRecognizers>
+                        
+                        <Grid RowDefinitions="Auto,*">
+                            <!-- Icon Section -->
+                            <Grid Grid.Row="0"
+                                  BackgroundColor="#002a54"
+                                  HeightRequest="120"
+                                  VerticalOptions="Start">
+                                <Label Text="🏢"
+                                       FontSize="64"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                            </Grid>
+                            
+                            <!-- Content Section -->
+                            <VerticalStackLayout Grid.Row="1"
+                                                 Padding="20"
+                                                 Spacing="12">
+                                <Label Text="Department Map"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center" />
+                                
+                                <Label Text="Find specific departments, offices, and facilities within engineering buildings"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC"
+                                       LineBreakMode="WordWrap"
+                                       HorizontalTextAlignment="Center" />
+                                
+                                <BoxView HeightRequest="2"
+                                         BackgroundColor="#FFD204"
+                                         Margin="0,8,0,0"
+                                         HorizontalOptions="Fill" />
+                                
+                                <Label Text="Tap to view →"
+                                       FontSize="12"
+                                       TextColor="#FFD204"
+                                       FontAttributes="Italic"
+                                       HorizontalOptions="Center"
+                                       Margin="0,4,0,0" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Campus Map Option -->
+                    <Frame Grid.Column="1"
+                           BackgroundColor="#003087"
+                           CornerRadius="16"
+                           Padding="0"
+                           HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCampusMapTapped" />
+                        </Frame.GestureRecognizers>
+                        
+                        <Grid RowDefinitions="Auto,*">
+                            <!-- Icon Section -->
+                            <Grid Grid.Row="0"
+                                  BackgroundColor="#002a54"
+                                  HeightRequest="120"
+                                  VerticalOptions="Start">
+                                <Label Text="🏛️"
+                                       FontSize="64"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                            </Grid>
+                            
+                            <!-- Content Section -->
+                            <VerticalStackLayout Grid.Row="1"
+                                                 Padding="20"
+                                                 Spacing="12">
+                                <Label Text="Campus Map"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center" />
+                                
+                                <Label Text="Explore the entire McNeese campus including all buildings, parking, and amenities"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC"
+                                       LineBreakMode="WordWrap"
+                                       HorizontalTextAlignment="Center" />
+                                
+                                <BoxView HeightRequest="2"
+                                         BackgroundColor="#00aeef"
+                                         Margin="0,8,0,0"
+                                         HorizontalOptions="Fill" />
+                                
+                                <Label Text="Tap to view →"
+                                       FontSize="12"
+                                       TextColor="#00aeef"
+                                       FontAttributes="Italic"
+                                       HorizontalOptions="Center"
+                                       Margin="0,4,0,0" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+                </Grid>
+                
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+

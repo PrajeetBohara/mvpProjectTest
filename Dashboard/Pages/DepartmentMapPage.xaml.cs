@@ -36,8 +36,8 @@ public partial class DepartmentMapPage : ContentPage
         // Set up Image size tracking
         FloorPlanImage.SizeChanged += OnImageSizeChanged;
         
-        // Set up zoom/pan gestures
-        SetupZoomPanGestures();
+        // Initialize zoom controls
+        InitializeZoomControls();
     }
     #endregion
 
@@ -148,16 +148,12 @@ public partial class DepartmentMapPage : ContentPage
         try
         {
             // Reset zoom when loading new image
-            _currentZoom = 1.0;
-            FloorPlanImage.Scale = 1.0;
+            SetZoom(1.0);
             
             // Set the image source - MAUI will automatically load from Resources/Images
             FloorPlanImage.Source = imageFileName;
             
             System.Diagnostics.Debug.WriteLine($"Loading image: {imageFileName}");
-            
-            // Set up size tracking when image loads
-            FloorPlanImage.Loaded += OnImageLoaded;
         }
         catch (Exception ex)
         {
@@ -191,7 +187,7 @@ public partial class DepartmentMapPage : ContentPage
 
     #region Image Size Tracking
     /// <summary>
-    /// Handles Image size changes to recalculate room zone positions.
+    /// Handles Image size changes to recalculate room zone positions and update container size.
     /// </summary>
     private void OnImageSizeChanged(object? sender, EventArgs e)
     {
@@ -199,6 +195,10 @@ public partial class DepartmentMapPage : ContentPage
         {
             _imageWidth = FloorPlanImage.Width;
             _imageHeight = FloorPlanImage.Height;
+            
+            // Update container size for scrolling (allows panning when zoomed)
+            MapContainer.MinimumWidthRequest = FloorPlanImage.Width * _currentZoom;
+            MapContainer.MinimumHeightRequest = FloorPlanImage.Height * _currentZoom;
             
             // Recalculate room zones when Image size changes
             FloorPlan? floorPlan = null;
@@ -388,16 +388,25 @@ public partial class DepartmentMapPage : ContentPage
 
     #region Current Location Marker
     /// <summary>
-    /// Adds the current location indicator to the map.
+    /// Adds the current location indicator to the map for the current floor/ETL.
     /// </summary>
     private void AddCurrentLocationMarker()
     {
         if (_imageWidth == 0 || _imageHeight == 0) return;
         
-        var location = _floorPlanService.GetCurrentLocation();
+        // Get location for the current floor/ETL being viewed
+        BuildingLocation? location = null;
+        if (_currentSelection == "ETL")
+        {
+            location = _floorPlanService.GetLocationForFloor(0); // ETL is floor 0
+        }
+        else
+        {
+            location = _floorPlanService.GetLocationForFloor(_currentFloor);
+        }
         
-        // Only show marker if on the same floor
-        if (location.FloorNumber != _currentFloor) return;
+        // If no location found for this floor, don't show marker
+        if (location == null) return;
         
         // Calculate absolute position
         var x = location.X * _imageWidth;
@@ -452,65 +461,111 @@ public partial class DepartmentMapPage : ContentPage
     }
     #endregion
 
-    #region Zoom and Pan Gestures
-    private double _lastScale = 1.0;
-    private double _startScale = 1.0;
+    #region Zoom Controls
+    private const double MinZoom = 1.0;
+    private const double MaxZoom = 5.0;
+    private const double ZoomStep = 0.25;
+    private bool _isUpdatingZoom = false;
     
     /// <summary>
-    /// Sets up pinch-to-zoom and pan gestures for the map.
+    /// Initializes zoom controls (slider and buttons).
     /// </summary>
-    private void SetupZoomPanGestures()
+    private void InitializeZoomControls()
     {
-        // Pinch gesture for zoom on the image
-        var pinchGesture = new PinchGestureRecognizer();
-        pinchGesture.PinchUpdated += OnPinchUpdated;
-        FloorPlanImage.GestureRecognizers.Add(pinchGesture);
-        
-        // Pan gesture for moving around when zoomed
-        var panGesture = new PanGestureRecognizer();
-        panGesture.PanUpdated += OnPanUpdated;
-        MapContainer.GestureRecognizers.Add(panGesture);
+        ZoomSlider.Minimum = MinZoom;
+        ZoomSlider.Maximum = MaxZoom;
+        ZoomSlider.Value = _currentZoom;
+        UpdateZoomLevelLabel();
     }
-
+    
     /// <summary>
-    /// Handles pinch gesture for zooming the map.
+    /// Handles zoom in button click.
     /// </summary>
-    private void OnPinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
+    private void OnZoomInClicked(object? sender, EventArgs e)
     {
-        switch (e.Status)
+        var newZoom = Math.Min(MaxZoom, _currentZoom + ZoomStep);
+        SetZoom(newZoom);
+    }
+    
+    /// <summary>
+    /// Handles zoom out button click.
+    /// </summary>
+    private void OnZoomOutClicked(object? sender, EventArgs e)
+    {
+        var newZoom = Math.Max(MinZoom, _currentZoom - ZoomStep);
+        SetZoom(newZoom);
+    }
+    
+    /// <summary>
+    /// Handles zoom slider value change.
+    /// </summary>
+    private void OnZoomSliderValueChanged(object? sender, ValueChangedEventArgs e)
+    {
+        if (!_isUpdatingZoom)
         {
-            case GestureStatus.Started:
-                _startScale = _currentZoom;
-                break;
-                
-            case GestureStatus.Running:
-                // Calculate new zoom scale
-                _currentZoom = Math.Max(1.0, Math.Min(5.0, _startScale * e.Scale));
-                
-                // Apply scale to image
-                FloorPlanImage.Scale = _currentZoom;
-                
-                // Update container size to allow scrolling when zoomed
-                if (FloorPlanImage.Width > 0 && FloorPlanImage.Height > 0)
-                {
-                    MapContainer.MinimumWidthRequest = FloorPlanImage.Width * _currentZoom;
-                    MapContainer.MinimumHeightRequest = FloorPlanImage.Height * _currentZoom;
-                }
-                break;
-                
-            case GestureStatus.Completed:
-                _lastScale = _currentZoom;
-                break;
+            SetZoom(e.NewValue);
         }
     }
-
+    
     /// <summary>
-    /// Handles pan gesture for moving around the zoomed map.
+    /// Sets the zoom level and updates all related controls.
     /// </summary>
-    private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
+    private void SetZoom(double zoomLevel)
     {
-        // Pan is handled automatically by ScrollView when content is larger than viewport
-        // This is mainly for tracking if needed
+        _currentZoom = Math.Max(MinZoom, Math.Min(MaxZoom, zoomLevel));
+        
+        // Update slider without triggering event
+        _isUpdatingZoom = true;
+        ZoomSlider.Value = _currentZoom;
+        _isUpdatingZoom = false;
+        
+        // Apply scale to image
+        FloorPlanImage.Scale = _currentZoom;
+        
+        // Update container size to allow scrolling when zoomed
+        if (FloorPlanImage.Width > 0 && FloorPlanImage.Height > 0)
+        {
+            MapContainer.MinimumWidthRequest = FloorPlanImage.Width * _currentZoom;
+            MapContainer.MinimumHeightRequest = FloorPlanImage.Height * _currentZoom;
+        }
+        
+        // Update zoom level label
+        UpdateZoomLevelLabel();
+        
+        // Recalculate room zones for new zoom level
+        RecalculateRoomZones();
+    }
+    
+    /// <summary>
+    /// Updates the zoom level label to show current percentage.
+    /// </summary>
+    private void UpdateZoomLevelLabel()
+    {
+        var percentage = (int)(_currentZoom * 100);
+        ZoomLevelLabel.Text = $"{percentage}%";
+    }
+    
+    /// <summary>
+    /// Recalculates room zones for the current zoom level.
+    /// </summary>
+    private void RecalculateRoomZones()
+    {
+        FloorPlan? floorPlan = null;
+        if (_currentSelection == "ETL")
+        {
+            floorPlan = _floorPlanService.GetETLFloorPlan();
+        }
+        else
+        {
+            floorPlan = _floorPlanService.GetFloorPlan(_currentFloor);
+        }
+        
+        if (floorPlan != null && _imageWidth > 0 && _imageHeight > 0)
+        {
+            ClearRoomZones();
+            AddRoomZones(floorPlan);
+            AddCurrentLocationMarker();
+        }
     }
     #endregion
 }

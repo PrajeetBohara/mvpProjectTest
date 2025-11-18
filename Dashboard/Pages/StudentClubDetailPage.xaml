@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Code written for Student Club Detail Page -->
+<ContentPage
+    x:Class="Dashboard.Pages.StudentClubDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Title="Club Details">
+    
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Back Button -->
+        <Frame Grid.Row="0"
+               BackgroundColor="#003087"
+               Padding="10"
+               HasShadow="True"
+               Margin="0,60,0,10"
+               ZIndex="10">
+            <Button x:Name="BackButton"
+                    Text="← Back to Clubs"
+                    BackgroundColor="#002a54"
+                    TextColor="White"
+                    FontSize="14"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    Padding="15,8"
+                    HorizontalOptions="Start"
+                    Clicked="OnBackButtonClicked" />
+        </Frame>
+        
+        <!-- Main Content -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout x:Name="ContentContainer" Spacing="20">
+                <!-- Club Header -->
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="0"
+                       HasShadow="True">
+                    <Grid RowDefinitions="Auto,*">
+                        <!-- Club Image/Icon Section -->
+                        <Grid Grid.Row="0"
+                              BackgroundColor="#002a54"
+                              HeightRequest="200"
+                              VerticalOptions="Start">
+                            <Image x:Name="ClubImage"
+                                   Source="mcneeselogo.png"
+                                   Aspect="AspectFit"
+                                   Margin="20"
+                                   Opacity="0.9" />
+                        </Grid>
+                        
+                        <!-- Club Name Section -->
+                        <VerticalStackLayout Grid.Row="1"
+                                             Padding="20"
+                                             Spacing="10">
+                            <Label x:Name="ClubNameLabel"
+                                   Text="Club Name"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204"
+                                   HorizontalOptions="Center" />
+                            <Label x:Name="ClubFullNameLabel"
+                                   Text="Full Name"
+                                   FontSize="18"
+                                   TextColor="#CCCCCC"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+                
+                <!-- Description Section -->
+                <Frame BackgroundColor="#002a54"
+                       CornerRadius="12"
+                       Padding="20"
+                       HasShadow="False">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="About"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204" />
+                        <Label x:Name="DescriptionLabel"
+                               Text="Description will appear here"
+                               FontSize="14"
+                               TextColor="#CCCCCC"
+                               LineBreakMode="WordWrap" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <!-- Contact Information Section -->
+                <Frame BackgroundColor="#002a54"
+                       CornerRadius="12"
+                       Padding="20"
+                       HasShadow="False">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Contact Information"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204" />
+                        <Label x:Name="ContactInfoLabel"
+                               Text="Contact info will appear here"
+                               FontSize="14"
+                               TextColor="#CCCCCC"
+                               LineBreakMode="WordWrap" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <!-- Meeting Information Section -->
+                <Frame BackgroundColor="#002a54"
+                       CornerRadius="12"
+                       Padding="20"
+                       HasShadow="False">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Meeting Information"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204" />
+                        <Label x:Name="MeetingInfoLabel"
+                               Text="Meeting info will appear here"
+                               FontSize="14"
+                               TextColor="#CCCCCC"
+                               LineBreakMode="WordWrap" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <!-- Website Section (if available) -->
+                <Frame x:Name="WebsiteFrame"
+                       BackgroundColor="#002a54"
+                       CornerRadius="12"
+                       Padding="20"
+                       HasShadow="False"
+                       IsVisible="False">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Website"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204" />
+                        <Button x:Name="WebsiteButton"
+                                Text="Visit Website"
+                                BackgroundColor="#00aeef"
+                                TextColor="White"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                CornerRadius="8"
+                                Padding="15,10"
+                                Clicked="OnWebsiteButtonClicked" />
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+

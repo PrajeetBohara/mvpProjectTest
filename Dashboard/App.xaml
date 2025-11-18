@@ -5,9 +5,10 @@
              x:Class="Dashboard.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="ColorTopBarBg">#111318</Color>
+            <!-- McNeese Brand Colors for TopBar -->
+            <Color x:Key="ColorTopBarBg">#003087</Color> <!-- Royal Blue -->
             <Color x:Key="ColorTopBarFg">#FFFFFF</Color>
-            <Color x:Key="ColorTopBarSearchBg">#1C2028</Color>
+            <Color x:Key="ColorTopBarSearchBg">#002a54</Color> <!-- Dark Blue -->
             <Color x:Key="ColorTopBarPlaceholder">#99FFFFFF</Color>
 
             <Style TargetType="ContentPage">

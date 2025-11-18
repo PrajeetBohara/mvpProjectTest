@@ -28,7 +28,7 @@ This code file gives UI for the All events page-->
                     <VerticalStackLayout Spacing="15">
                         
                         <!-- Event 1 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
@@ -39,7 +39,7 @@ This code file gives UI for the All events page-->
                                        TextColor="White" />
                                 <Label Text="Friday, September 27, 2024 • 10:00 AM - 4:00 PM"
                                        FontSize="16"
-                                       TextColor="#4CAF50" />
+                                       TextColor="#FFD204" />
                                 <Label Text="Main Campus Auditorium"
                                        FontSize="14"
                                        TextColor="#CCCCCC" />
@@ -51,7 +51,7 @@ This code file gives UI for the All events page-->
                         </Frame>
                         
                         <!-- Event 2 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
@@ -62,7 +62,7 @@ This code file gives UI for the All events page-->
                                        TextColor="White" />
                                 <Label Text="Monday, September 30, 2024 • 2:00 PM - 3:30 PM"
                                        FontSize="16"
-                                       TextColor="#FF9800" />
+                                       TextColor="#f2b32e" />
                                 <Label Text="Computer Science Building, Room 201"
                                        FontSize="14"
                                        TextColor="#CCCCCC" />
@@ -74,7 +74,7 @@ This code file gives UI for the All events page-->
                         </Frame>
                         
                         <!-- Event 3 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
@@ -85,7 +85,7 @@ This code file gives UI for the All events page-->
                                        TextColor="White" />
                                 <Label Text="Wednesday, October 2, 2024 • 1:00 PM - 5:00 PM"
                                        FontSize="16"
-                                       TextColor="#2196F3" />
+                                       TextColor="#00aeef" />
                                 <Label Text="Student Center, Main Hall"
                                        FontSize="14"
                                        TextColor="#CCCCCC" />
@@ -97,7 +97,7 @@ This code file gives UI for the All events page-->
                         </Frame>
                         
                         <!-- Event 4 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
@@ -108,7 +108,7 @@ This code file gives UI for the All events page-->
                                        TextColor="White" />
                                 <Label Text="Friday, October 4, 2024 • 3:00 PM - 4:30 PM"
                                        FontSize="16"
-                                       TextColor="#E91E63" />
+                                       TextColor="#FFD204" />
                                 <Label Text="Engineering Building, Lecture Hall A"
                                        FontSize="14"
                                        TextColor="#CCCCCC" />
@@ -120,7 +120,7 @@ This code file gives UI for the All events page-->
                         </Frame>
                         
                         <!-- Event 5 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
@@ -131,7 +131,7 @@ This code file gives UI for the All events page-->
                                        TextColor="White" />
                                 <Label Text="Saturday, October 5, 2024 • 9:00 AM - 9:00 PM"
                                        FontSize="16"
-                                       TextColor="#9C27B0" />
+                                       TextColor="#f2b32e" />
                                 <Label Text="Computer Science Building, Labs 1-4"
                                        FontSize="14"
                                        TextColor="#CCCCCC" />
@@ -143,7 +143,7 @@ This code file gives UI for the All events page-->
                         </Frame>
                         
                         <!-- Event 6 -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
@@ -154,7 +154,7 @@ This code file gives UI for the All events page-->
                                        TextColor="White" />
                                 <Label Text="Tuesday, October 8, 2024 • 10:00 AM - 2:00 PM"
                                        FontSize="16"
-                                       TextColor="#00BCD4" />
+                                       TextColor="#00aeef" />
                                 <Label Text="Library Conference Center"
                                        FontSize="14"
                                        TextColor="#CCCCCC" />

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Code written for Department Concentrations Page -->
+<ContentPage
+    x:Class="Dashboard.Pages.DepartmentConcentrationsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    xmlns:models="clr-namespace:Dashboard.Models"
+    xmlns:converters="clr-namespace:Dashboard.Converters"
+    Title="Concentrations">
+    
+    <ContentPage.Resources>
+        <converters:FirstImageConverter x:Key="FirstImageConverter" />
+    </ContentPage.Resources>
+    
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Back Button -->
+        <Frame Grid.Row="0"
+               BackgroundColor="#003087"
+               Padding="10"
+               HasShadow="True"
+               Margin="0,60,0,10"
+               ZIndex="10">
+            <Button x:Name="BackButton"
+                    Text="← Back to Catalogue"
+                    BackgroundColor="#002a54"
+                    TextColor="White"
+                    FontSize="14"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    Padding="15,8"
+                    HorizontalOptions="Start"
+                    Clicked="OnBackButtonClicked" />
+        </Frame>
+        
+        <!-- Main Content -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="25">
+                <!-- Department Header -->
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Label x:Name="DepartmentNameLabel"
+                               Text="Department Name"
+                               FontSize="28"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204"
+                               HorizontalOptions="Center" />
+                        <Label Text="Select a concentration to view catalogue"
+                               FontSize="16"
+                               TextColor="#CCCCCC"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <!-- Concentrations Grid -->
+                <CollectionView x:Name="ConcentrationsCollectionView"
+                                ItemsSource="{Binding Concentrations}"
+                                SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                        Span="2"
+                                        HorizontalItemSpacing="15"
+                                        VerticalItemSpacing="15" />
+                    </CollectionView.ItemsLayout>
+                    
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:AcademicProgram">
+                            <Frame BackgroundColor="#002a54"
+                                   CornerRadius="12"
+                                   Padding="0"
+                                   HasShadow="True"
+                                   HeightRequest="200">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnConcentrationTapped" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                                <Grid RowDefinitions="Auto,*">
+                                    <!-- Program Image Section -->
+                                    <Grid Grid.Row="0"
+                                          BackgroundColor="#003087"
+                                          HeightRequest="120"
+                                          VerticalOptions="Start">
+                                        <Image Source="{Binding ImageUrls, Converter={StaticResource FirstImageConverter}}"
+                                               Aspect="AspectFit"
+                                               Margin="10"
+                                               Opacity="0.9" />
+                                    </Grid>
+                                    
+                                    <!-- Program Name Section -->
+                                    <VerticalStackLayout Grid.Row="1"
+                                                         Padding="15,10"
+                                                         Spacing="5"
+                                                         VerticalOptions="Fill">
+                                        <Label Text="{Binding Name}"
+                                               FontSize="18"
+                                               FontAttributes="Bold"
+                                               TextColor="#FFD204"
+                                               HorizontalOptions="Center" />
+                                        <Label Text="{Binding FullName}"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Code written for Student Clubs Page -->
+<ContentPage
+    x:Class="Dashboard.Pages.StudentClubsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    xmlns:models="clr-namespace:Dashboard.Models"
+    Title="Student Clubs">
+    
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Main Content -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="20">
+                <!-- Page Header -->
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Label Text="🎓"
+                           FontSize="48"
+                           HorizontalOptions="Center" />
+                    <Label Text="Student Clubs"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#003087"
+                           HorizontalOptions="Center" />
+                    <Label Text="Explore engineering and computer science student organizations"
+                           FontSize="16"
+                           TextColor="#002a54"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+                
+                <!-- Clubs Grid -->
+                <CollectionView x:Name="ClubsCollectionView"
+                                ItemsSource="{Binding Clubs}"
+                                SelectionMode="Single"
+                                SelectionChanged="OnClubSelected">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                        Span="2"
+                                        HorizontalItemSpacing="15"
+                                        VerticalItemSpacing="15" />
+                    </CollectionView.ItemsLayout>
+                    
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:StudentClub">
+                            <Frame BackgroundColor="#003087"
+                                   CornerRadius="12"
+                                   Padding="0"
+                                   HasShadow="True"
+                                   HeightRequest="180">
+                                <Grid RowDefinitions="Auto,*">
+                                    <!-- Club Image/Icon Section -->
+                                    <Grid Grid.Row="0"
+                                          BackgroundColor="#002a54"
+                                          HeightRequest="100"
+                                          VerticalOptions="Start">
+                                        <Image Source="{Binding ImageUrl}"
+                                               Aspect="AspectFit"
+                                               Margin="10"
+                                               Opacity="0.9" />
+                                    </Grid>
+                                    
+                                    <!-- Club Name Section -->
+                                    <VerticalStackLayout Grid.Row="1"
+                                                         Padding="15,10"
+                                                         Spacing="5"
+                                                         VerticalOptions="Fill">
+                                        <Label Text="{Binding Name}"
+                                               FontSize="20"
+                                               FontAttributes="Bold"
+                                               TextColor="#FFD204"
+                                               HorizontalOptions="Center" />
+                                        <Label Text="{Binding FullName}"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+

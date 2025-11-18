@@ -20,7 +20,7 @@ This code file gives UI for the contact page-->
 
 
                 <!-- Department Heads Section -->
-                <Frame BackgroundColor="#1C2028"
+                <Frame BackgroundColor="#003087"
                        CornerRadius="12"
                        Padding="25"
                        HasShadow="True">
@@ -37,7 +37,7 @@ This code file gives UI for the contact page-->
                                         HeightRequest="400">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="models:Faculty">
-                                    <Frame BackgroundColor="#2A2F3A"
+                                    <Frame BackgroundColor="#002a54"
                                            CornerRadius="15"
                                            Padding="20"
                                            Margin="5"
@@ -65,7 +65,7 @@ This code file gives UI for the contact page-->
                                                 
                                                 <Label Text="{Binding Title}"
                                                        FontSize="14"
-                                                       TextColor="#4CAF50"
+                                                       TextColor="#FFD204"
                                                        HorizontalOptions="Center"
                                                        HorizontalTextAlignment="Center"
                                                        FontAttributes="Italic" />
@@ -112,7 +112,7 @@ This code file gives UI for the contact page-->
                 </Frame>
 
                 <!-- Faculty Section -->
-                <Frame BackgroundColor="#1C2028"
+                <Frame BackgroundColor="#003087"
                        CornerRadius="12"
                        Padding="25"
                        HasShadow="True">
@@ -129,7 +129,7 @@ This code file gives UI for the contact page-->
                                         HeightRequest="350">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="models:Faculty">
-                                    <Frame BackgroundColor="#2A2F3A"
+                                    <Frame BackgroundColor="#002a54"
                                            CornerRadius="12"
                                            Padding="15"
                                            Margin="5"
@@ -157,7 +157,7 @@ This code file gives UI for the contact page-->
                                                 
                                                 <Label Text="{Binding Title}"
                                                        FontSize="12"
-                                                       TextColor="#2196F3"
+                                                       TextColor="#00aeef"
                                                        HorizontalOptions="Center"
                                                        HorizontalTextAlignment="Center"
                                                        FontAttributes="Italic" />
@@ -190,7 +190,7 @@ This code file gives UI for the contact page-->
                 </Frame>
 
                 <!-- Department Information -->
-                <Frame BackgroundColor="#1C2028"
+                <Frame BackgroundColor="#003087"
                        CornerRadius="12"
                        Padding="25"
                        HasShadow="True">
@@ -205,7 +205,7 @@ This code file gives UI for the contact page-->
                             
                             <!-- Left Column -->
                             <VerticalStackLayout Grid.Column="0" Spacing="15">
-                                <Frame BackgroundColor="#2A2F3A"
+                                <Frame BackgroundColor="#002a54"
                                        CornerRadius="8"
                                        Padding="15"
                                        HasShadow="False">
@@ -225,7 +225,7 @@ This code file gives UI for the contact page-->
                                     </VerticalStackLayout>
                                 </Frame>
                                 
-                                <Frame BackgroundColor="#2A2F3A"
+                                <Frame BackgroundColor="#002a54"
                                        CornerRadius="8"
                                        Padding="15"
                                        HasShadow="False">
@@ -251,7 +251,7 @@ This code file gives UI for the contact page-->
                             
                             <!-- Right Column -->
                             <VerticalStackLayout Grid.Column="1" Spacing="15">
-                                <Frame BackgroundColor="#2A2F3A"
+                                <Frame BackgroundColor="#002a54"
                                        CornerRadius="8"
                                        Padding="15"
                                        HasShadow="False">
@@ -265,13 +265,13 @@ This code file gives UI for the contact page-->
                                                        TextColor="White" />
                                                 <Label Text="www.mcneese.edu"
                                                        FontSize="14"
-                                                       TextColor="#4CAF50" />
+                                                       TextColor="#FFD204" />
                                             </VerticalStackLayout>
                                         </HorizontalStackLayout>
                                     </VerticalStackLayout>
                                 </Frame>
                                 
-                                <Frame BackgroundColor="#2A2F3A"
+                                <Frame BackgroundColor="#002a54"
                                        CornerRadius="8"
                                        Padding="15"
                                        HasShadow="False">
@@ -285,7 +285,7 @@ This code file gives UI for the contact page-->
                                                        TextColor="White" />
                                                 <Label Text="xyz@mcneese.edu"
                                                        FontSize="14"
-                                                       TextColor="#2196F3" />
+                                                       TextColor="#00aeef" />
                                             </VerticalStackLayout>
                                         </HorizontalStackLayout>
                                     </VerticalStackLayout>

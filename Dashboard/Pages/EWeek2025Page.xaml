@@ -18,7 +18,7 @@ This code file gives UI for the EWeek 2025 page-->
                 <!-- Back Button and Page Header -->
                 <HorizontalStackLayout Spacing="15" HorizontalOptions="Start">
                     <Button Text="← Back to E-Week"
-                            BackgroundColor="#2A2F3A"
+                            BackgroundColor="#002a54"
                             TextColor="White"
                             CornerRadius="8"
                             Padding="15,8"
@@ -42,7 +42,7 @@ This code file gives UI for the EWeek 2025 page-->
                                HorizontalOptions="Center" />
                         <Label Text="Current Year Events &amp; Activities"
                                FontSize="16"
-                               TextColor="#4CAF50"
+                               TextColor="#FFD204"
                                HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </HorizontalStackLayout>
@@ -63,7 +63,7 @@ This code file gives UI for the EWeek 2025 page-->
 
                             <Label Text="March 17-21, 2025"
                                        FontSize="16"
-                                       TextColor="#4CAF50"
+                                       TextColor="#FFD204"
                                        FontAttributes="Bold" />
 
                             <HorizontalStackLayout Spacing="30" HorizontalOptions="Center">
@@ -71,7 +71,7 @@ This code file gives UI for the EWeek 2025 page-->
                                     <Label Text="1,500+"
                                                FontSize="24"
                                                FontAttributes="Bold"
-                                               TextColor="#4CAF50"
+                                               TextColor="#FFD204"
                                                HorizontalOptions="Center" />
                                     <Label Text="Participants"
                                                FontSize="12"
@@ -132,7 +132,7 @@ This code file gives UI for the EWeek 2025 page-->
                                                 HeightRequest="600">
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
-                                            <Frame BackgroundColor="#2A2F3A" 
+                                            <Frame BackgroundColor="#002a54" 
                                                    CornerRadius="8" 
                                                    Padding="5"
                                                    Margin="5"
@@ -147,42 +147,42 @@ This code file gives UI for the EWeek 2025 page-->
                                     <!-- Empty state when no images -->
                                     <CollectionView.EmptyView>
                                         <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
-                                            <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="🏆"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        TextColor="#FFD700" />
                                             </Frame>
-                                            <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="🔬"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center"
-                                                       TextColor="#4CAF50" />
+                                                       TextColor="#FFD204" />
                                             </Frame>
-                                            <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="🎉"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        TextColor="#2196F3" />
                                             </Frame>
-                                            <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="🎤"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        TextColor="#FF9800" />
                                             </Frame>
-                                            <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="👥"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        TextColor="#E91E63" />
                                             </Frame>
-                                            <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="#2A2F3A" CornerRadius="8" Padding="20">
+                                            <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="20">
                                                 <Label Text="🚀"
                                                        FontSize="30"
                                                        HorizontalOptions="Center"
