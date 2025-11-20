@@ -39,11 +39,16 @@
                 
                 <!-- Campus Map PNG Image -->
                 <Image x:Name="CampusMapImage"
-                       Aspect="AspectFit" />
+                       Aspect="AspectFit"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill" />
                 
-                <!-- Current Location Indicator -->
+                <!-- Current Location Indicator Overlay -->
+                <!-- Same structure as department map for consistent marker display -->
                 <AbsoluteLayout x:Name="LocationOverlay"
-                                BackgroundColor="Transparent">
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill">
                     <!-- Current location marker will be added programmatically -->
                 </AbsoluteLayout>
             </Grid>
