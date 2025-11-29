@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Code written for Student Club Detail Page -->
 <ContentPage
     x:Class="Dashboard.Pages.StudentClubDetailPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Dashboard.Controls"
     Title="Club Details">
-    
+
     <Grid RowDefinitions="Auto,*">
+
         <!-- Global TopBar -->
         <controls:TopBar Grid.Row="0" />
-        
+
         <!-- Back Button -->
         <Frame Grid.Row="0"
                BackgroundColor="#003087"
@@ -29,17 +29,20 @@
                     HorizontalOptions="Start"
                     Clicked="OnBackButtonClicked" />
         </Frame>
-        
+
         <!-- Main Content -->
         <ScrollView Grid.Row="1" Padding="20">
             <VerticalStackLayout x:Name="ContentContainer" Spacing="20">
+
                 <!-- Club Header -->
                 <Frame BackgroundColor="#003087"
                        CornerRadius="16"
                        Padding="0"
                        HasShadow="True">
+
                     <Grid RowDefinitions="Auto,*">
-                        <!-- Club Image/Icon Section -->
+
+                        <!-- Club Image -->
                         <Grid Grid.Row="0"
                               BackgroundColor="#002a54"
                               HeightRequest="200"
@@ -50,7 +53,7 @@
                                    Margin="20"
                                    Opacity="0.9" />
                         </Grid>
-                        
+
                         <!-- Club Name Section -->
                         <VerticalStackLayout Grid.Row="1"
                                              Padding="20"
@@ -61,6 +64,7 @@
                                    FontAttributes="Bold"
                                    TextColor="#FFD204"
                                    HorizontalOptions="Center" />
+
                             <Label x:Name="ClubFullNameLabel"
                                    Text="Full Name"
                                    FontSize="18"
@@ -69,88 +73,306 @@
                                    HorizontalTextAlignment="Center"
                                    LineBreakMode="WordWrap" />
                         </VerticalStackLayout>
+
                     </Grid>
                 </Frame>
-                
-                <!-- Description Section -->
+
+                <!-- About Section -->
                 <Frame BackgroundColor="#002a54"
                        CornerRadius="12"
                        Padding="20"
                        HasShadow="False">
-                    <VerticalStackLayout Spacing="10">
+
+                    <VerticalStackLayout Spacing="15">
                         <Label Text="About"
-                               FontSize="20"
+                               FontSize="22"
                                FontAttributes="Bold"
                                TextColor="#FFD204" />
-                        <Label x:Name="DescriptionLabel"
-                               Text="Description will appear here"
+
+                        <Label x:Name="AboutContentLabel"
+                               Text="About content will appear here"
                                FontSize="14"
                                TextColor="#CCCCCC"
                                LineBreakMode="WordWrap" />
                     </VerticalStackLayout>
+
                 </Frame>
-                
-                <!-- Contact Information Section -->
-                <Frame BackgroundColor="#002a54"
-                       CornerRadius="12"
-                       Padding="20"
-                       HasShadow="False">
-                    <VerticalStackLayout Spacing="10">
-                        <Label Text="Contact Information"
-                               FontSize="20"
-                               FontAttributes="Bold"
-                               TextColor="#FFD204" />
-                        <Label x:Name="ContactInfoLabel"
-                               Text="Contact info will appear here"
-                               FontSize="14"
-                               TextColor="#CCCCCC"
-                               LineBreakMode="WordWrap" />
-                    </VerticalStackLayout>
-                </Frame>
-                
-                <!-- Meeting Information Section -->
-                <Frame BackgroundColor="#002a54"
-                       CornerRadius="12"
-                       Padding="20"
-                       HasShadow="False">
-                    <VerticalStackLayout Spacing="10">
-                        <Label Text="Meeting Information"
-                               FontSize="20"
-                               FontAttributes="Bold"
-                               TextColor="#FFD204" />
-                        <Label x:Name="MeetingInfoLabel"
-                               Text="Meeting info will appear here"
-                               FontSize="14"
-                               TextColor="#CCCCCC"
-                               LineBreakMode="WordWrap" />
-                    </VerticalStackLayout>
-                </Frame>
-                
-                <!-- Website Section (if available) -->
-                <Frame x:Name="WebsiteFrame"
+
+                <!-- Meeting Information Cards -->
+                <Grid ColumnDefinitions="*,*,*"
+                      ColumnSpacing="10"
+                      RowSpacing="10">
+
+                    <!-- Established -->
+                    <Frame x:Name="YearEstablishedFrame"
+                           Grid.Column="0"
+                           BackgroundColor="#002a54"
+                           CornerRadius="12"
+                           Padding="15"
+                           HasShadow="False"
+                           IsVisible="False">
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                            <Label Text="📅" FontSize="24" HorizontalOptions="Center" />
+                            <Label Text="Established" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
+                            <Label x:Name="YearEstablishedLabel"
+                                   Text="----"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204"
+                                   HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Meeting Time -->
+                    <Frame x:Name="MeetingTimeFrame"
+                           Grid.Column="1"
+                           BackgroundColor="#002a54"
+                           CornerRadius="12"
+                           Padding="15"
+                           HasShadow="False"
+                           IsVisible="False">
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                            <Label Text="🕐" FontSize="24" HorizontalOptions="Center" />
+                            <Label Text="Meeting Time" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
+                            <Label x:Name="MeetingTimeLabel"
+                                   Text="----"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Meeting Location -->
+                    <Frame x:Name="MeetingLocationFrame"
+                           Grid.Column="2"
+                           BackgroundColor="#002a54"
+                           CornerRadius="12"
+                           Padding="15"
+                           HasShadow="False"
+                           IsVisible="False">
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                            <Label Text="📍" FontSize="24" HorizontalOptions="Center" />
+                            <Label Text="Location" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
+                            <Label x:Name="MeetingLocationLabel"
+                                   Text="----"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                </Grid>
+
+                <!-- Social Media Section -->
+                <Frame x:Name="SocialsFrame"
                        BackgroundColor="#002a54"
                        CornerRadius="12"
                        Padding="20"
                        HasShadow="False"
                        IsVisible="False">
-                    <VerticalStackLayout Spacing="10">
-                        <Label Text="Website"
-                               FontSize="20"
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label Text="Connect With Us"
+                               FontSize="22"
                                FontAttributes="Bold"
                                TextColor="#FFD204" />
-                        <Button x:Name="WebsiteButton"
-                                Text="Visit Website"
-                                BackgroundColor="#00aeef"
-                                TextColor="White"
-                                FontSize="14"
-                                FontAttributes="Bold"
-                                CornerRadius="8"
-                                Padding="15,10"
-                                Clicked="OnWebsiteButtonClicked" />
+
+                        <VerticalStackLayout Spacing="15">
+
+                            <!-- Instagram #1 -->
+                            <Frame x:Name="InstagramFrame"
+                                   BackgroundColor="#003087"
+                                   CornerRadius="10"
+                                   Padding="15"
+                                   HasShadow="False"
+                                   IsVisible="False">
+
+                                <HorizontalStackLayout Spacing="12"
+                                                       VerticalOptions="Center">
+
+                                    <!-- Instagram Logo -->
+                                    <Border WidthRequest="36"
+                                            HeightRequest="36"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10,10,10,10">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#833AB4" Offset="0.0" />
+                                                <GradientStop Color="#FD1D1D" Offset="0.5" />
+                                                <GradientStop Color="#FCB045" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+
+                                        <Grid Padding="8">
+                                            <Border Stroke="White"
+                                                    StrokeThickness="2"
+                                                    StrokeShape="RoundRectangle 6,6,6,6" />
+                                            <Ellipse WidthRequest="10" HeightRequest="10" Fill="White" />
+                                            <Ellipse WidthRequest="3" HeightRequest="3" Fill="White"
+                                                     HorizontalOptions="End"
+                                                     VerticalOptions="Start"
+                                                     Margin="0,2,2,0" />
+                                        </Grid>
+
+                                    </Border>
+
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label Text="Instagram"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#FFD204" />
+                                        <Label x:Name="InstagramUrlLabel"
+                                               Text="URL will appear here"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               LineBreakMode="TailTruncation" />
+                                    </VerticalStackLayout>
+
+                                </HorizontalStackLayout>
+                            </Frame>
+
+                            <!-- LinkedIn -->
+                            <Frame x:Name="LinkedInFrame"
+                                   BackgroundColor="#003087"
+                                   CornerRadius="10"
+                                   Padding="15"
+                                   HasShadow="False"
+                                   IsVisible="False">
+
+                                <HorizontalStackLayout Spacing="12"
+                                                       VerticalOptions="Center">
+
+                                    <Border BackgroundColor="#0077B5"
+                                            StrokeThickness="0"
+                                            Padding="8,4"
+                                            StrokeShape="RoundRectangle 4,4,4,4">
+                                        <Label Text="in"
+                                               FontSize="18"
+                                               FontAttributes="Bold"
+                                               TextColor="White" />
+                                    </Border>
+
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label Text="LinkedIn"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#FFD204" />
+                                        <Label x:Name="LinkedInUrlLabel"
+                                               Text="URL will appear here"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               LineBreakMode="TailTruncation" />
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+                            </Frame>
+
+                            <!-- Instagram #2 (NEW) -->
+                            <Frame x:Name="InstagramFrame2"
+                                   BackgroundColor="#003087"
+                                   CornerRadius="10"
+                                   Padding="15"
+                                   HasShadow="False"
+                                   IsVisible="False">
+
+                                <HorizontalStackLayout Spacing="12"
+                                                       VerticalOptions="Center">
+
+                                    <!-- Instagram Logo -->
+                                    <Border WidthRequest="36"
+                                            HeightRequest="36"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10,10,10,10">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#833AB4" Offset="0.0" />
+                                                <GradientStop Color="#FD1D1D" Offset="0.5" />
+                                                <GradientStop Color="#FCB045" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+
+                                        <Grid Padding="8">
+                                            <Border Stroke="White"
+                                                    StrokeThickness="2"
+                                                    StrokeShape="RoundRectangle 6,6,6,6" />
+                                            <Ellipse WidthRequest="10" HeightRequest="10" Fill="White" />
+                                            <Ellipse WidthRequest="3" HeightRequest="3" Fill="White"
+                                                     HorizontalOptions="End"
+                                                     VerticalOptions="Start"
+                                                     Margin="0,2,2,0" />
+                                        </Grid>
+
+                                    </Border>
+
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label Text="Instagram"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#FFD204" />
+                                        <Label x:Name="InstagramUrlLabel2"
+                                               Text="URL will appear here"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               LineBreakMode="TailTruncation" />
+                                    </VerticalStackLayout>
+
+                                </HorizontalStackLayout>
+                            </Frame>
+
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+                <!-- Gallery Section -->
+                <Frame x:Name="GalleryFrame"
+                       BackgroundColor="#002a54"
+                       CornerRadius="12"
+                       Padding="20"
+                       HasShadow="False"
+                       IsVisible="False">
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Gallery"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204" />
+                        
+                        <CollectionView x:Name="GalleryCollectionView"
+                                        ItemsSource="{Binding GalleryImages}"
+                                        SelectionMode="None">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical"
+                                                 Span="2"
+                                                 HorizontalItemSpacing="10"
+                                                 VerticalItemSpacing="10" />
+                            </CollectionView.ItemsLayout>
+                            
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame BackgroundColor="#003087"
+                                           CornerRadius="8"
+                                           Padding="0"
+                                           HasShadow="True"
+                                           HeightRequest="150">
+                                        <Image Source="{Binding .}"
+                                               Aspect="AspectFill"
+                                               HeightRequest="150" />
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </VerticalStackLayout>
                 </Frame>
+
             </VerticalStackLayout>
         </ScrollView>
+
     </Grid>
 </ContentPage>
-

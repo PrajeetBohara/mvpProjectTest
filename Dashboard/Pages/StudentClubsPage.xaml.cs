@@ -37,18 +37,48 @@ public partial class StudentClubsPage : ContentPage
     }
 
     /// <summary>
-    /// Handles club selection to navigate to club details.
+    /// Handles club tap to navigate to club details.
+    /// </summary>
+    private async void OnClubTapped(object? sender, TappedEventArgs e)
+    {
+        System.Diagnostics.Debug.WriteLine("=== OnClubTapped triggered ===");
+        
+        if (sender is Frame frame && frame.BindingContext is StudentClub selectedClub)
+        {
+            System.Diagnostics.Debug.WriteLine($"Tapped club: {selectedClub.Name} (ID: {selectedClub.Id})");
+            
+            try
+            {
+                // Navigate to club detail page using registered route
+                var route = $"ClubDetail?clubId={selectedClub.Id}";
+                System.Diagnostics.Debug.WriteLine($"Navigating to: {route}");
+                await Shell.Current.GoToAsync(route);
+                System.Diagnostics.Debug.WriteLine("✓ Navigation completed successfully");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"✗ Navigation error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+                await DisplayAlert("Navigation Error", $"Could not open club details.\n\nError: {ex.Message}", "OK");
+            }
+        }
+        else
+        {
+            System.Diagnostics.Debug.WriteLine("✗ Tapped item is not a StudentClub or BindingContext is null");
+            if (sender != null)
+            {
+                System.Diagnostics.Debug.WriteLine($"Sender type: {sender.GetType().Name}");
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Handles club selection to navigate to club details (kept for backward compatibility).
     /// </summary>
     private async void OnClubSelected(object? sender, SelectionChangedEventArgs e)
     {
-        if (e.CurrentSelection.FirstOrDefault() is StudentClub selectedClub)
-        {
-            // Clear selection
-            ClubsCollectionView.SelectedItem = null;
-            
-            // Navigate to club detail page with query parameter
-            await Shell.Current.GoToAsync($"//ClubDetail?clubId={selectedClub.Id}");
-        }
+        // This method is kept but not used - we use OnClubTapped instead
+        System.Diagnostics.Debug.WriteLine("OnClubSelected called (should use OnClubTapped)");
     }
 }
 

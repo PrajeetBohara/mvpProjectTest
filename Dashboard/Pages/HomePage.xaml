@@ -222,59 +222,97 @@
                 <Frame Grid.Row="0"
                        BackgroundColor="#003087"
                        CornerRadius="12"
-                       Padding="16"
+                       Padding="12"
                        HasShadow="True"
-                       Margin="10,0,10,6">
-                    <ScrollView>
-                        <VerticalStackLayout Spacing="8">
+                       Margin="10,0,15,6">
+                    <ScrollView HorizontalScrollBarVisibility="Never"
+                                VerticalScrollBarVisibility="Default">
+                        <VerticalStackLayout Spacing="8"
+                                             HorizontalOptions="Fill">
                             <Label Text="📅 Upcoming Events"
                                    FontSize="{OnPlatform Default=14, Android=12, iOS=12}"
                                    FontAttributes="Bold"
-                                   TextColor="White" />
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center" />
 
-                            <VerticalStackLayout Spacing="6">
-                                <Frame BackgroundColor="#002a54" CornerRadius="6" Padding="6" HasShadow="False">
-                                    <VerticalStackLayout Spacing="3">
+                            <VerticalStackLayout Spacing="6"
+                                                 HorizontalOptions="Fill">
+                                <Frame BackgroundColor="#002a54" 
+                                       CornerRadius="6" 
+                                       Padding="8" 
+                                       HasShadow="False"
+                                       HorizontalOptions="Fill"
+                                       Margin="0,0,9,0">
+                                    <VerticalStackLayout Spacing="3"
+                                                         HorizontalOptions="Fill">
                                         <Label Text="Engineering Career Fair"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
                                                FontAttributes="Bold"
-                                               TextColor="White" />
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
                                         <Label Text="Friday, Sep 27"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#FFD204" />
+                                               TextColor="#FFD204"
+                                               HorizontalOptions="Center" />
                                         <Label Text="10:00 AM"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#FFD204" />
+                                               TextColor="#FFD204"
+                                               HorizontalOptions="Center" />
                                     </VerticalStackLayout>
                                 </Frame>
 
-                                <Frame BackgroundColor="#002a54" CornerRadius="6" Padding="6" HasShadow="False">
-                                    <VerticalStackLayout Spacing="3">
+                                <Frame BackgroundColor="#002a54" 
+                                       CornerRadius="6" 
+                                       Padding="8" 
+                                       HasShadow="False"
+                                       HorizontalOptions="Fill"
+                                       Margin="0,0,9,0">
+                                    <VerticalStackLayout Spacing="3"
+                                                         HorizontalOptions="Fill">
                                         <Label Text="CS Department Meeting"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
                                                FontAttributes="Bold"
-                                               TextColor="White" />
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
                                         <Label Text="Monday, Sep 30"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#f2b32e" />
+                                               TextColor="#f2b32e"
+                                               HorizontalOptions="Center" />
                                         <Label Text="2:00 PM"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#f2b32e" />
+                                               TextColor="#f2b32e"
+                                               HorizontalOptions="Center" />
                                     </VerticalStackLayout>
                                 </Frame>
 
-                                <Frame BackgroundColor="#002a54" CornerRadius="6" Padding="6" HasShadow="False">
-                                    <VerticalStackLayout Spacing="3">
+                                <Frame BackgroundColor="#002a54" 
+                                       CornerRadius="6" 
+                                       Padding="8" 
+                                       HasShadow="False"
+                                       HorizontalOptions="Fill"
+                                       Margin="0,0,9,0">
+                                    <VerticalStackLayout Spacing="3"
+                                                         HorizontalOptions="Fill">
                                         <Label Text="Student Club Expo"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
                                                FontAttributes="Bold"
-                                               TextColor="White" />
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
                                         <Label Text="Wednesday, Oct 2"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#00aeef" />
+                                               TextColor="#00aeef"
+                                               HorizontalOptions="Center" />
                                         <Label Text="1:00 PM"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#00aeef" />
+                                               TextColor="#00aeef"
+                                               HorizontalOptions="Center" />
                                     </VerticalStackLayout>
                                 </Frame>
                             </VerticalStackLayout>
@@ -284,6 +322,7 @@
                                     TextColor="White"
                                     CornerRadius="6"
                                     FontSize="{OnPlatform Default=9, Android=8, iOS=8}"
+                                    HorizontalOptions="Fill"
                                     Clicked="OnViewAllEventsClicked" />
                         </VerticalStackLayout>
                     </ScrollView>
@@ -295,41 +334,69 @@
                        CornerRadius="12"
                        Padding="12"
                        HasShadow="True"
-                       Margin="16,6,8,0">
-                    <ScrollView>
-                        <VerticalStackLayout Spacing="12">
+                       Margin="10,6,10,0">
+                    <ScrollView HorizontalScrollBarVisibility="Never"
+                                VerticalScrollBarVisibility="Default">
+                        <VerticalStackLayout Spacing="12"
+                                             HorizontalOptions="Fill">
                             <Label Text="📢 Announcements"
                                    TextColor="White"
                                    FontAttributes="Bold"
                                    FontSize="{OnPlatform Default=16, Android=14, iOS=14}"
-                                   HorizontalOptions="Center" />
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center" />
 
-                            <VerticalStackLayout Spacing="8">
-                                <Frame BackgroundColor="#002a54" CornerRadius="8" Padding="12">
-                                    <VerticalStackLayout Spacing="4">
+                            <VerticalStackLayout Spacing="8"
+                                                 HorizontalOptions="Fill">
+                                <Frame BackgroundColor="#002a54" 
+                                       CornerRadius="8" 
+                                       Padding="10"
+                                       HorizontalOptions="Fill"
+                                       Margin="0,0,9,0">
+                                    <VerticalStackLayout Spacing="4"
+                                                         HorizontalOptions="Fill">
                                         <Label Text="Spring 2024 Registration"
                                                TextColor="#FFD204"
-                                               FontSize="{OnPlatform Default=12, Android=10, iOS=10}" />
+                                               FontSize="{OnPlatform Default=12, Android=10, iOS=10}"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
                                         <Label Text="Registration opens Nov 1st"
                                                TextColor="White"
-                                               FontSize="{OnPlatform Default=10, Android=9, iOS=9}" />
+                                               FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
                                         <Label Text="2 hours ago"
                                                TextColor="#CCCCCC"
-                                               FontSize="{OnPlatform Default=8, Android=7, iOS=7}" />
+                                               FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
+                                               HorizontalOptions="Center" />
                                     </VerticalStackLayout>
                                 </Frame>
 
-                                <Frame BackgroundColor="#002a54" CornerRadius="8" Padding="12">
-                                    <VerticalStackLayout Spacing="4">
+                                <Frame BackgroundColor="#002a54" 
+                                       CornerRadius="8" 
+                                       Padding="10"
+                                       HorizontalOptions="Fill"
+                                       Margin="0,0,9,0">
+                                    <VerticalStackLayout Spacing="4"
+                                                         HorizontalOptions="Fill">
                                         <Label Text="Lab Equipment"
                                                TextColor="#f2b32e"
-                                               FontSize="{OnPlatform Default=12, Android=10, iOS=10}" />
+                                               FontSize="{OnPlatform Default=12, Android=10, iOS=10}"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
                                         <Label Text="High-performance workstations available"
                                                TextColor="White"
-                                               FontSize="{OnPlatform Default=10, Android=9, iOS=9}" />
+                                               FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
                                         <Label Text="1 day ago"
                                                TextColor="#CCCCCC"
-                                               FontSize="{OnPlatform Default=8, Android=7, iOS=7}" />
+                                               FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
+                                               HorizontalOptions="Center" />
                                     </VerticalStackLayout>
                                 </Frame>
                             </VerticalStackLayout>
@@ -340,7 +407,7 @@
                                     FontSize="{OnPlatform Default=9, Android=8, iOS=8}"
                                     CornerRadius="6"
                                     HeightRequest="35"
-                                    
+                                    HorizontalOptions="Fill"
                                     Clicked="OnViewAllAnnouncementsClicked" />
                         </VerticalStackLayout>
                     </ScrollView>

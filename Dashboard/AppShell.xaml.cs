@@ -4,8 +4,7 @@
     {
         public AppShell()
         {
-            InitializeComponent();
-
+            // Register routes BEFORE InitializeComponent to ensure they're available
             // A global route alias for home navigation
             Routing.RegisterRoute("//Home", typeof(Pages.HomePage));
             
@@ -23,13 +22,15 @@
             Routing.RegisterRoute("//CampusMap", typeof(Pages.CampusMapPage));
             
             // Register Student Clubs routes
-            Routing.RegisterRoute("//Clubs", typeof(Pages.StudentClubsPage));
-            Routing.RegisterRoute("//ClubDetail", typeof(Pages.StudentClubDetailPage));
+            Routing.RegisterRoute("Clubs", typeof(Pages.StudentClubsPage));
+            Routing.RegisterRoute("ClubDetail", typeof(Pages.StudentClubDetailPage));
             
             // Register Academic Catalogue routes
             Routing.RegisterRoute("//AcademicCatalogue", typeof(Pages.AcademicCataloguePage));
             Routing.RegisterRoute("//DepartmentConcentrations", typeof(Pages.DepartmentConcentrationsPage));
             Routing.RegisterRoute("//ProgramDetail", typeof(Pages.AcademicProgramDetailPage));
+            
+            InitializeComponent();
         }
     }
 }
