@@ -5,6 +5,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Dashboard.Controls"
+    xmlns:models="clr-namespace:Dashboard.Models"
     Title="Academic Catalogue">
     
     <Grid RowDefinitions="Auto,*">
@@ -31,115 +32,11 @@
                            HorizontalTextAlignment="Center" />
                 </VerticalStackLayout>
                 
-                <!-- Department Selection Cards -->
-                <VerticalStackLayout Spacing="20">
-                    <!-- Computer Science Department Card -->
-                    <Frame BackgroundColor="#003087"
-                           CornerRadius="16"
-                           Padding="0"
-                           HasShadow="True">
-                        <Grid>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnComputerScienceTapped" />
-                            </Frame.GestureRecognizers>
-                            <Grid RowDefinitions="Auto,*" Padding="20">
-                                <Label Text="💻"
-                                       FontSize="48"
-                                       HorizontalOptions="Center"
-                                       Margin="0,10,0,0" />
-                                <VerticalStackLayout Grid.Row="1" Spacing="8" HorizontalOptions="Center">
-                                    <Label Text="Computer Science"
-                                           FontSize="24"
-                                           FontAttributes="Bold"
-                                           TextColor="#FFD204"
-                                           HorizontalOptions="Center" />
-                                    <Label Text="View concentrations"
-                                           FontSize="14"
-                                           TextColor="#CCCCCC"
-                                           HorizontalOptions="Center" />
-                                    <Label Text="›"
-                                           FontSize="32"
-                                           FontAttributes="Bold"
-                                           TextColor="#FFD204"
-                                           HorizontalOptions="End"
-                                           Margin="0,-10,0,0" />
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Grid>
-                    </Frame>
-                    
-                    <!-- Chemical Engineering Department Card -->
-                    <Frame BackgroundColor="#003087"
-                           CornerRadius="16"
-                           Padding="0"
-                           HasShadow="True">
-                        <Grid>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnChemicalEngineeringTapped" />
-                            </Frame.GestureRecognizers>
-                            <Grid RowDefinitions="Auto,*" Padding="20">
-                                <Label Text="⚗️"
-                                       FontSize="48"
-                                       HorizontalOptions="Center"
-                                       Margin="0,10,0,0" />
-                                <VerticalStackLayout Grid.Row="1" Spacing="8" HorizontalOptions="Center">
-                                    <Label Text="Chemical Engineering"
-                                           FontSize="24"
-                                           FontAttributes="Bold"
-                                           TextColor="#FFD204"
-                                           HorizontalOptions="Center" />
-                                    <Label Text="View concentrations"
-                                           FontSize="14"
-                                           TextColor="#CCCCCC"
-                                           HorizontalOptions="Center" />
-                                    <Label Text="›"
-                                           FontSize="32"
-                                           FontAttributes="Bold"
-                                           TextColor="#FFD204"
-                                           HorizontalOptions="End"
-                                           Margin="0,-10,0,0" />
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Grid>
-                    </Frame>
-                    
-                    <!-- Mechanical Engineering Department Card -->
-                    <Frame BackgroundColor="#003087"
-                           CornerRadius="16"
-                           Padding="0"
-                           HasShadow="True">
-                        <Grid>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnMechanicalEngineeringTapped" />
-                            </Frame.GestureRecognizers>
-                            <Grid RowDefinitions="Auto,*" Padding="20">
-                                <Label Text="⚙️"
-                                       FontSize="48"
-                                       HorizontalOptions="Center"
-                                       Margin="0,10,0,0" />
-                                <VerticalStackLayout Grid.Row="1" Spacing="8" HorizontalOptions="Center">
-                                    <Label Text="Mechanical Engineering"
-                                           FontSize="24"
-                                           FontAttributes="Bold"
-                                           TextColor="#FFD204"
-                                           HorizontalOptions="Center" />
-                                    <Label Text="View concentrations"
-                                           FontSize="14"
-                                           TextColor="#CCCCCC"
-                                           HorizontalOptions="Center" />
-                                    <Label Text="›"
-                                           FontSize="32"
-                                           FontAttributes="Bold"
-                                           TextColor="#FFD204"
-                                           HorizontalOptions="End"
-                                           Margin="0,-10,0,0" />
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Grid>
-                    </Frame>
+                <!-- Programs by Degree Type -->
+                <VerticalStackLayout x:Name="ProgramsContainer" Spacing="20">
+                    <!-- Programs will be added programmatically -->
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
 </ContentPage>
-

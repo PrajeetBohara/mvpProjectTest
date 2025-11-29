@@ -55,16 +55,20 @@ This code file gives UI for the faculty-->
                                     <!-- Ms. Rhonda Anderson (A) -->
                                     <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="AndersonImage"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Ms. Rhonda Anderson" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Instructor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="randerson@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -81,16 +85,20 @@ This code file gives UI for the faculty-->
                                     <!-- Dr. Jennifer Lavergne (L) -->
                                     <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="LavergneImage"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Jennifer Lavergne" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Assistant Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="jlavegne@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -107,16 +115,20 @@ This code file gives UI for the faculty-->
                                     <!-- Dr. Vipin Menon (M) -->
                                     <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="MenonImage"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Vipin Menon" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="vmenon@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -136,16 +148,20 @@ This code file gives UI for the faculty-->
                                 <Grid ColumnDefinitions="*" ColumnSpacing="15">
                                     <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False" HorizontalOptions="Start" WidthRequest="200">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="XieImage"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Bei Xie" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Associate Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="bxie@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -195,16 +211,20 @@ This code file gives UI for the faculty-->
                                     <!-- Dr. Matthew Aghili (A) -->
                                     <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="EngProf1Image"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Matthew Aghili" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="maghili@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -221,16 +241,20 @@ This code file gives UI for the faculty-->
                                     <!-- Dr. Srinivasam Ambatipani (A) -->
                                     <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="EngProf2Image"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Srinivasam Ambatipani" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="sambatipani@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -247,16 +271,20 @@ This code file gives UI for the faculty-->
                                     <!-- Dr. Dimitrios Dermisis (D) -->
                                     <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="EngProf3Image"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Dimitrios Dermisis" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="ddermisis@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -277,16 +305,20 @@ This code file gives UI for the faculty-->
                                     <!-- Mr. Brent Garner (G) -->
                                     <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="EngProf4Image"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Mr. Brent Garner" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Instructor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="bgarner@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -303,16 +335,20 @@ This code file gives UI for the faculty-->
                                     <!-- Dr. Qi Guo (G) -->
                                     <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="EngProf5Image"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Qi Guo" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="qguo@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -329,16 +365,20 @@ This code file gives UI for the faculty-->
                                     <!-- Dr. Zhuang Li (L) -->
                                     <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="EngProf6Image"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Zhuang Li" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="zli@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -359,16 +399,20 @@ This code file gives UI for the faculty-->
                                     <!-- Dr. Qiu Liu (L) -->
                                     <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="EngProf7Image"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Qiu Liu" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="qliu@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -385,16 +429,20 @@ This code file gives UI for the faculty-->
                                     <!-- Dr. Firouz Rosti (R) -->
                                     <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="EngProf8Image"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Firouz Rosti" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="frosti@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -411,16 +459,20 @@ This code file gives UI for the faculty-->
                                     <!-- Dr. Ramalingam Subramaniam (S) -->
                                     <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="EngProf9Image"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Ramalingam Subramaniam" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="rsubramaniam@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
@@ -440,16 +492,20 @@ This code file gives UI for the faculty-->
                                 <Grid ColumnDefinitions="*" ColumnSpacing="15">
                                     <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False" HorizontalOptions="Start" WidthRequest="200">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Frame BackgroundColor="Black" CornerRadius="50" Padding="3" HasShadow="True">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
                                                 <Image x:Name="EngProf10Image"
                                                        Aspect="AspectFill"
-                                                       WidthRequest="80"
-                                                       HeightRequest="80">
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
                                                     <Image.Clip>
-                                                        <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40" />
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
                                                     </Image.Clip>
                                                 </Image>
-                                            </Frame>
+                                            </Border>
                                             <Label Text="Dr. Ning Zhang" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
                                             <Label Text="nzhang@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
