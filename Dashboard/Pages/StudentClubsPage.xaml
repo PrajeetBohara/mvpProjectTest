@@ -6,7 +6,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Dashboard.Controls"
     xmlns:models="clr-namespace:Dashboard.Models"
+    xmlns:converters="clr-namespace:Dashboard.Converters"
     Title="Student Clubs">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ClubImageConverter x:Key="ClubImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     
     <Grid RowDefinitions="Auto,*">
         <!-- Global TopBar -->
@@ -35,8 +42,7 @@
                 <!-- Clubs Grid -->
                 <CollectionView x:Name="ClubsCollectionView"
                                 ItemsSource="{Binding Clubs}"
-                                SelectionMode="Single"
-                                SelectionChanged="OnClubSelected">
+                                SelectionMode="None">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical"
                                         Span="2"
@@ -51,13 +57,16 @@
                                    Padding="0"
                                    HasShadow="True"
                                    HeightRequest="180">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnClubTapped" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
                                 <Grid RowDefinitions="Auto,*">
                                     <!-- Club Image/Icon Section -->
                                     <Grid Grid.Row="0"
                                           BackgroundColor="#002a54"
                                           HeightRequest="100"
                                           VerticalOptions="Start">
-                                        <Image Source="{Binding ImageUrl}"
+                                        <Image Source="{Binding ., Converter={StaticResource ClubImageConverter}}"
                                                Aspect="AspectFit"
                                                Margin="10"
                                                Opacity="0.9" />
