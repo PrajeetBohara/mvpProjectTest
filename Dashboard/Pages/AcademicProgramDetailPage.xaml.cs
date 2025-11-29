@@ -129,11 +129,7 @@ public partial class AcademicProgramDetailPage : ContentPage
         
         // Debug output
         System.Diagnostics.Debug.WriteLine($"Displaying program: {program.Name}");
-        System.Diagnostics.Debug.WriteLine($"Number of images: {program.ImageUrls.Count}");
-        if (program.ImageUrls.Count > 0)
-        {
-            System.Diagnostics.Debug.WriteLine($"First image path: {program.ImageUrls[0]}");
-        }
+        // Note: ImageUrls removed - this page is deprecated in favor of URL-based navigation
     }
 
     /// <summary>
@@ -141,71 +137,24 @@ public partial class AcademicProgramDetailPage : ContentPage
     /// </summary>
     private async void UpdateImageDisplay()
     {
-        if (_currentProgram == null || _currentProgram.ImageUrls.Count == 0)
+        // Note: Image functionality removed - this page is deprecated
+        // Programs now show URLs directly in AcademicCataloguePage
+        if (_currentProgram == null)
         {
             ProgramImage.Source = "mcneeselogo.png";
-            ImageCounterLabel.Text = "No images available";
+            ImageCounterLabel.Text = "Program information";
             PreviousImageButton.IsVisible = false;
             NextImageButton.IsVisible = false;
-            System.Diagnostics.Debug.WriteLine("No images available for program");
-            await DisplayAlert("Info", "No images available for this program.", "OK");
             return;
         }
 
-        // Ensure index is within bounds
-        if (_currentImageIndex < 0) _currentImageIndex = 0;
-        if (_currentImageIndex >= _currentProgram.ImageUrls.Count) _currentImageIndex = _currentProgram.ImageUrls.Count - 1;
-
-        // Display current image
-        var currentImageUrl = _currentProgram.ImageUrls[_currentImageIndex];
-        System.Diagnostics.Debug.WriteLine($"=== Loading image {_currentImageIndex + 1} of {_currentProgram.ImageUrls.Count} ===");
-        System.Diagnostics.Debug.WriteLine($"Image path: {currentImageUrl}");
-        
-        try
-        {
-            // Load image from local assets asynchronously
-            ImageSource imageSource;
-            
-            if (currentImageUrl.StartsWith("degree_catalogue/", StringComparison.OrdinalIgnoreCase) ||
-                currentImageUrl.StartsWith("degree_catalogue\\", StringComparison.OrdinalIgnoreCase))
-            {
-                // Load from local assets folder
-                System.Diagnostics.Debug.WriteLine($"Loading from LOCAL assets folder: {currentImageUrl}");
-                imageSource = await CreateImageSourceAsync(currentImageUrl);
-            }
-            else
-            {
-                // Regular image resource
-                imageSource = CreateImageSource(currentImageUrl);
-            }
-            
-            // Update UI on main thread
-            await MainThread.InvokeOnMainThreadAsync(() =>
-            {
-                ProgramImage.Source = imageSource;
-                System.Diagnostics.Debug.WriteLine($"✓ Image source set on UI thread from LOCAL file");
-            });
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"✗ ERROR creating image source: {ex.GetType().Name}: {ex.Message}");
-            System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
-            await MainThread.InvokeOnMainThreadAsync(() =>
-            {
-                ProgramImage.Source = "mcneeselogo.png";
-            });
-            await DisplayAlert("Image Error", $"Error loading image:\n{ex.Message}", "OK");
-        }
-        
-        // Update image counter - show "Page 1 of 3" format
-        ImageCounterLabel.Text = $"Page {_currentImageIndex + 1} of {_currentProgram.ImageUrls.Count}";
-        
-        // Show navigation buttons if there are multiple images
-        bool hasMultipleImages = _currentProgram.ImageUrls.Count > 1;
-        PreviousImageButton.IsVisible = hasMultipleImages;
-        NextImageButton.IsVisible = hasMultipleImages;
-        
-        System.Diagnostics.Debug.WriteLine($"Navigation buttons visible: {hasMultipleImages}, Image count: {_currentProgram.ImageUrls.Count}");
+        // Show default logo since images are removed
+        ProgramImage.Source = "mcneeselogo.png";
+        ImageCounterLabel.Text = "Images removed - see URL in main catalogue";
+        PreviousImageButton.IsVisible = false;
+        NextImageButton.IsVisible = false;
+        System.Diagnostics.Debug.WriteLine($"Program: {_currentProgram.FullName}");
+        // Note: All image loading code removed - this page is deprecated in favor of URL-based navigation
     }
 
     /// <summary>
@@ -213,15 +162,8 @@ public partial class AcademicProgramDetailPage : ContentPage
     /// </summary>
     private void OnPreviousImageClicked(object? sender, EventArgs e)
     {
-        if (_currentProgram == null || _currentProgram.ImageUrls.Count == 0) return;
-        
-        _currentImageIndex--;
-        if (_currentImageIndex < 0)
-        {
-            _currentImageIndex = _currentProgram.ImageUrls.Count - 1; // Loop to last image
-        }
-        
-        UpdateImageDisplay();
+        // Note: Image functionality removed - this page is deprecated
+        return;
     }
 
     /// <summary>
@@ -245,15 +187,8 @@ public partial class AcademicProgramDetailPage : ContentPage
     /// </summary>
     private void NavigateToNextImage()
     {
-        if (_currentProgram == null || _currentProgram.ImageUrls.Count == 0) return;
-        
-        _currentImageIndex++;
-        if (_currentImageIndex >= _currentProgram.ImageUrls.Count)
-        {
-            _currentImageIndex = 0; // Loop to first image
-        }
-        
-        UpdateImageDisplay();
+        // Note: Image functionality removed - this page is deprecated
+        return;
     }
 
     /// <summary>

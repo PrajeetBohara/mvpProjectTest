@@ -85,8 +85,10 @@ public partial class DepartmentConcentrationsPage : ContentPage
         {
             DepartmentNameLabel.Text = _department;
             
-            // Load programs for this department
-            var programs = _programService.GetProgramsByDepartment(_department);
+            // Load programs for this department (grouped by degree type)
+            // Note: This page is deprecated - programs are now shown directly in AcademicCataloguePage
+            var allPrograms = _programService.GetAllPrograms();
+            var programs = allPrograms.Where(p => p.Department.Equals(_department, StringComparison.OrdinalIgnoreCase)).ToList();
             Concentrations.Clear();
             foreach (var program in programs)
             {
@@ -109,7 +111,7 @@ public partial class DepartmentConcentrationsPage : ContentPage
         if (sender is Frame frame && frame.BindingContext is AcademicProgram selectedProgram)
         {
             System.Diagnostics.Debug.WriteLine($"Tapped program: {selectedProgram.Name} (ID: {selectedProgram.Id})");
-            System.Diagnostics.Debug.WriteLine($"Program has {selectedProgram.ImageUrls?.Count ?? 0} images");
+            System.Diagnostics.Debug.WriteLine($"Program: {selectedProgram.FullName}");
             
             try
             {

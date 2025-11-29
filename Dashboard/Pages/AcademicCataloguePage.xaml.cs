@@ -1,96 +1,181 @@
 // Code written for Academic Catalogue Page functionality
-using System;
-using System.Collections.Generic;
+using Dashboard.Models;
+using Dashboard.Services;
+using Microsoft.Maui.Controls;
 
 namespace Dashboard.Pages;
 
 /// <summary>
 /// Control behind the AcademicCataloguePage xaml file.
-/// Displays department selection cards.
+/// Displays academic programs organized by degree type.
 /// </summary>
 public partial class AcademicCataloguePage : ContentPage
 {
-    public AcademicCataloguePage()
+    private readonly AcademicProgramService _programService;
+
+    public AcademicCataloguePage(AcademicProgramService programService)
     {
         InitializeComponent();
+        _programService = programService;
+        LoadPrograms();
     }
 
     /// <summary>
-    /// Handles Computer Science department tap to navigate to concentrations.
+    /// Loads and displays all programs organized by degree type.
     /// </summary>
-    private async void OnComputerScienceTapped(object? sender, EventArgs e)
+    private void LoadPrograms()
     {
-        try
+        var degreeTypes = _programService.GetDegreeTypes();
+        
+        foreach (var degreeType in degreeTypes)
         {
-            if (Shell.Current == null)
+            var programs = _programService.GetProgramsByDegreeType(degreeType);
+            if (programs.Count > 0)
             {
-                await DisplayAlert("Error", "Shell.Current is null", "OK");
-                return;
+                CreateDegreeTypeSection(degreeType, programs);
             }
-
-            // Use Dictionary for navigation parameters (more reliable than query strings)
-            var parameters = new Dictionary<string, object>
-            {
-                { "department", "Computer Science" }
-            };
-
-            System.Diagnostics.Debug.WriteLine($"Attempting navigation to DepartmentConcentrations with department: Computer Science");
-            
-            await Shell.Current.GoToAsync("//DepartmentConcentrations", parameters);
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"Error navigating to Computer Science concentrations: {ex.Message}");
-            System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
-            System.Diagnostics.Debug.WriteLine($"Inner exception: {ex.InnerException?.Message}");
-            await DisplayAlert("Navigation Error", $"Could not navigate to Computer Science concentrations.\n\nError: {ex.Message}", "OK");
         }
     }
 
     /// <summary>
-    /// Handles Chemical Engineering department tap to navigate to concentrations.
+    /// Creates a section for a specific degree type with its programs.
     /// </summary>
-    private async void OnChemicalEngineeringTapped(object? sender, EventArgs e)
+    private void CreateDegreeTypeSection(string degreeType, List<AcademicProgram> programs)
     {
-        try
+        // Degree Type Header
+        var headerFrame = new Frame
         {
-            if (Shell.Current == null) return;
+            BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#003087"),
+            CornerRadius = 12,
+            Padding = 15,
+            HasShadow = true,
+            Margin = new Thickness(0, 0, 0, 10)
+        };
 
-            var parameters = new Dictionary<string, object>
+        var headerLabel = new Label
+        {
+            Text = GetDegreeTypeDisplayName(degreeType),
+            FontSize = 22,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#FFD204"),
+            HorizontalOptions = LayoutOptions.Start
+        };
+
+        headerFrame.Content = headerLabel;
+        ProgramsContainer.Children.Add(headerFrame);
+
+        // Programs List
+        foreach (var program in programs)
+        {
+            var programFrame = new Frame
             {
-                { "department", "Chemical Engineering" }
+                BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#002a54"),
+                CornerRadius = 10,
+                Padding = 15,
+                HasShadow = false,
+                Margin = new Thickness(0, 0, 0, 8)
             };
 
-            await Shell.Current.GoToAsync("//DepartmentConcentrations", parameters);
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"Error navigating to Chemical Engineering concentrations: {ex.Message}");
-            await DisplayAlert("Error", "Could not navigate to Chemical Engineering concentrations.", "OK");
+            var tapGesture = new TapGestureRecognizer();
+            tapGesture.Tapped += (s, e) => OnProgramTapped(program);
+            programFrame.GestureRecognizers.Add(tapGesture);
+
+            var programLayout = new HorizontalStackLayout
+            {
+                Spacing = 15,
+                VerticalOptions = LayoutOptions.Center
+            };
+
+            // Program Name
+            var nameLabel = new Label
+            {
+                Text = program.FullName,
+                FontSize = 16,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Colors.White,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.StartAndExpand
+            };
+
+            // Arrow Icon
+            var arrowLabel = new Label
+            {
+                Text = "›",
+                FontSize = 24,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#FFD204"),
+                VerticalOptions = LayoutOptions.Center
+            };
+
+            programLayout.Children.Add(nameLabel);
+            programLayout.Children.Add(arrowLabel);
+
+            programFrame.Content = programLayout;
+            ProgramsContainer.Children.Add(programFrame);
         }
     }
 
     /// <summary>
-    /// Handles Mechanical Engineering department tap to navigate to concentrations.
+    /// Gets a user-friendly display name for degree types.
     /// </summary>
-    private async void OnMechanicalEngineeringTapped(object? sender, EventArgs e)
+    private string GetDegreeTypeDisplayName(string degreeType)
     {
-        try
+        return degreeType switch
         {
-            if (Shell.Current == null) return;
+            "BS" => "Bachelor of Science (BS)",
+            "BSChE" => "Bachelor of Science in Chemical Engineering (BSChE)",
+            "BSME" => "Bachelor of Science in Mechanical Engineering (BSME)",
+            "Dual Degree" => "Dual Degree (Baccalaureate + Master's)",
+            "Minor" => "Minor",
+            "MEng" => "Master of Engineering (MEng)",
+            _ => degreeType
+        };
+    }
 
-            var parameters = new Dictionary<string, object>
-            {
-                { "department", "Mechanical Engineering" }
-            };
-
-            await Shell.Current.GoToAsync("//DepartmentConcentrations", parameters);
+    /// <summary>
+    /// Handles program tap to show URL.
+    /// </summary>
+    private async void OnProgramTapped(AcademicProgram program)
+    {
+        if (string.IsNullOrEmpty(program.Url))
+        {
+            await DisplayAlert("Program Information", 
+                $"Program: {program.FullName}\n\nURL not available. Please contact the department for more information.", 
+                "OK");
+            return;
         }
-        catch (Exception ex)
+
+        var result = await DisplayAlert(
+            "Program Information",
+            $"Program: {program.FullName}\n\nURL: {program.Url}\n\nWould you like to open this URL in your browser?",
+            "Open URL",
+            "Copy URL"
+        );
+
+        if (result)
         {
-            System.Diagnostics.Debug.WriteLine($"Error navigating to Mechanical Engineering concentrations: {ex.Message}");
-            await DisplayAlert("Error", "Could not navigate to Mechanical Engineering concentrations.", "OK");
+            // Open URL
+            try
+            {
+                await Microsoft.Maui.ApplicationModel.Launcher.Default.OpenAsync(program.Url);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Could not open URL.\n\nError: {ex.Message}", "OK");
+            }
+        }
+        else
+        {
+            // Copy URL to clipboard
+            try
+            {
+                await Clipboard.Default.SetTextAsync(program.Url);
+                await DisplayAlert("Success", "URL copied to clipboard!", "OK");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Could not copy URL.\n\nError: {ex.Message}", "OK");
+            }
         }
     }
 }
-

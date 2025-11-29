@@ -27,9 +27,14 @@ public class AcademicProgram
     public string Department { get; set; } = string.Empty;
 
     /// <summary>
-    /// List of image URLs for the program catalogue.
+    /// Degree type (e.g., "BS", "BSChE", "BSME", "Minor", "MEng", "Dual Degree").
     /// </summary>
-    public List<string> ImageUrls { get; set; } = new List<string>();
+    public string DegreeType { get; set; } = string.Empty;
+
+    /// <summary>
+    /// URL to the program's page on the website.
+    /// </summary>
+    public string Url { get; set; } = string.Empty;
 
     /// <summary>
     /// Description of the program.

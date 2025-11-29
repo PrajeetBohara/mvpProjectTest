@@ -86,7 +86,7 @@
                                           BackgroundColor="#003087"
                                           HeightRequest="120"
                                           VerticalOptions="Start">
-                                        <Image Source="{Binding ImageUrls, Converter={StaticResource FirstImageConverter}}"
+                                        <Image Source="mcneeselogo.png"
                                                Aspect="AspectFit"
                                                Margin="10"
                                                Opacity="0.9" />
