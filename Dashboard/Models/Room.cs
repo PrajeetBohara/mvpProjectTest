@@ -51,6 +51,11 @@ public class Room
     /// Square footage of the room.
     /// </summary>
     public int SquareFootage { get; set; }
+
+    /// <summary>
+    /// Name of the professor assigned to this room (if applicable).
+    /// </summary>
+    public string ProfessorName { get; set; } = string.Empty;
 }
 
 /// <summary>

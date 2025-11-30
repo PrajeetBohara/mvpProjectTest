@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Code written for Sponsors and Donors Page -->
+<ContentPage
+    x:Class="Dashboard.Pages.SponsorsAndDonorsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Title="Sponsors and Donors">
+    
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar Grid.Row="0" />
+        
+        <!-- Main Content -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="25">
+                <!-- Page Header -->
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center" Margin="0,0,0,20">
+                    <Label Text="🤝"
+                           FontSize="48"
+                           HorizontalOptions="Center" />
+                    <Label Text="Sponsors and Donors"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#003087"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <!-- Introduction Section -->
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <Label Text="McNeese's Engineering and Computer Science department receives support from various sponsors and donors, including major companies like Westlake Corporation, Phillips 66, and Cameron LNG, as well as individuals and organizations such as the Contractors' Educational Trust Fund and the Market Basket Charitable Foundation. These donations fund scholarships, endowments, and specific projects like the student study center and unit operations laboratory."
+                           FontSize="16"
+                           TextColor="White"
+                           LineBreakMode="WordWrap" />
+                </Frame>
+
+                <!-- Corporate Sponsors Section -->
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="0"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="0">
+                        <!-- Section Header -->
+                        <Frame BackgroundColor="#002a54"
+                               CornerRadius="0"
+                               Padding="20"
+                               HasShadow="False">
+                            <Label Text="Corporate Sponsors and Donors"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204" />
+                        </Frame>
+
+                        <!-- Corporate Sponsors List -->
+                        <VerticalStackLayout x:Name="CorporateSponsorsContainer"
+                                           Spacing="15"
+                                           Padding="20" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Other Donors Section -->
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="0"
+                       HasShadow="True"
+                       Margin="0,0,0,25">
+                    <VerticalStackLayout Spacing="0">
+                        <!-- Section Header -->
+                        <Frame BackgroundColor="#002a54"
+                               CornerRadius="0"
+                               Padding="20"
+                               HasShadow="False">
+                            <Label Text="Other Donors"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204" />
+                        </Frame>
+
+                        <!-- Other Donors List -->
+                        <VerticalStackLayout x:Name="OtherDonorsContainer"
+                                           Spacing="15"
+                                           Padding="20" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Gallery Section -->
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="0"
+                       HasShadow="True"
+                       Margin="0,0,0,20">
+                    <VerticalStackLayout Spacing="0">
+                        <!-- Section Header -->
+                        <Frame BackgroundColor="#002a54"
+                               CornerRadius="0"
+                               Padding="20"
+                               HasShadow="False">
+                            <Label Text="Gallery"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204" />
+                        </Frame>
+
+                        <!-- Gallery Images List -->
+                        <VerticalStackLayout x:Name="GalleryContainer"
+                                           Spacing="25"
+                                           Padding="20" />
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+

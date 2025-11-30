@@ -2,6 +2,7 @@
 using Dashboard.Models;
 using Dashboard.Services;
 using Microsoft.Maui.Controls;
+using System.Linq;
 
 namespace Dashboard.Pages;
 
@@ -85,65 +86,144 @@ public partial class AcademicCataloguePage : ContentPage
         // Programs Container
         var programsStack = new VerticalStackLayout 
         { 
-            Spacing = 10, 
+            Spacing = 15, 
             Padding = new Thickness(15, 15, 15, 15)
         };
 
-        // Programs List
-        foreach (var program in programs)
+        // For Bachelor's Degrees, group by Department to show subsections in exact order
+        if (degreeType == "Bachelor's Degrees")
         {
-            var programFrame = new Frame
+            // Define the exact order for Bachelor's Degree subsections
+            var bachelorOrder = new List<string>
             {
-                BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#002a54"),
-                CornerRadius = 10,
-                Padding = 18,
-                HasShadow = false,
-                Margin = new Thickness(0, 0, 0, 0)
+                "Bachelor of Science in Engineering",
+                "Bachelor of Science in Chemical Engineering",
+                "Bachelor of Science in Computer Science",
+                "Bachelor of Science in Mechanical Engineering"
             };
 
-            var tapGesture = new TapGestureRecognizer();
-            tapGesture.Tapped += (s, e) => OnProgramTapped(program);
-            programFrame.GestureRecognizers.Add(tapGesture);
-
-            var programLayout = new HorizontalStackLayout
+            var groupedPrograms = programs.GroupBy(p => p.Department);
+            
+            // Process groups in the specified order
+            foreach (var departmentName in bachelorOrder)
             {
-                Spacing = 15,
-                VerticalOptions = LayoutOptions.Center
-            };
+                var group = groupedPrograms.FirstOrDefault(g => g.Key == departmentName);
+                if (group != null)
+                {
+                    // Subsection Header (e.g., "Bachelor of Science in Engineering")
+                    var subsectionHeader = new Label
+                    {
+                        Text = departmentName,
+                        FontSize = 20,
+                        FontAttributes = FontAttributes.Bold,
+                        TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#FFD204"),
+                        Margin = new Thickness(0, 10, 0, 10)
+                    };
+                    programsStack.Children.Add(subsectionHeader);
 
-            // Program Name
-            var nameLabel = new Label
+                    // Programs in this subsection - order by ID to maintain exact order
+                    foreach (var program in group.OrderBy(p => p.Id))
+                    {
+                        programsStack.Children.Add(CreateProgramCard(program));
+                    }
+                }
+            }
+        }
+        else if (degreeType == "Minors")
+        {
+            // For Minors, order by ID to maintain exact order from service
+            foreach (var program in programs.OrderBy(p => p.Id))
             {
-                Text = program.FullName,
-                FontSize = 16,
-                FontAttributes = FontAttributes.Bold,
-                TextColor = Colors.White,
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
-                LineBreakMode = LineBreakMode.WordWrap
-            };
-
-            // Arrow Icon
-            var arrowLabel = new Label
+                programsStack.Children.Add(CreateProgramCard(program));
+            }
+        }
+        else if (degreeType == "Master's Degrees")
+        {
+            // For Master's Degrees, order by ID to maintain exact order from service
+            foreach (var program in programs.OrderBy(p => p.Id))
             {
-                Text = "›",
-                FontSize = 28,
-                FontAttributes = FontAttributes.Bold,
-                TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#FFD204"),
-                VerticalOptions = LayoutOptions.Center,
-                Margin = new Thickness(10, 0, 0, 0)
-            };
-
-            programLayout.Children.Add(nameLabel);
-            programLayout.Children.Add(arrowLabel);
-
-            programFrame.Content = programLayout;
-            programsStack.Children.Add(programFrame);
+                programsStack.Children.Add(CreateProgramCard(program));
+            }
         }
 
         sectionStack.Children.Add(programsStack);
         sectionFrame.Content = sectionStack;
         ProgramsContainer.Children.Add(sectionFrame);
+    }
+
+    /// <summary>
+    /// Creates a clickable program card.
+    /// </summary>
+    private Frame CreateProgramCard(AcademicProgram program)
+    {
+        var programFrame = new Frame
+        {
+            BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#002a54"),
+            CornerRadius = 10,
+            Padding = 18,
+            HasShadow = false,
+            Margin = new Thickness(0, 0, 0, 8)
+        };
+
+        var tapGesture = new TapGestureRecognizer();
+        tapGesture.Tapped += (s, e) => OnProgramTapped(program);
+        programFrame.GestureRecognizers.Add(tapGesture);
+
+        var mainLayout = new VerticalStackLayout
+        {
+            Spacing = 8
+        };
+
+        // Top row with program name and arrow
+        var topRow = new HorizontalStackLayout
+        {
+            Spacing = 15,
+            VerticalOptions = LayoutOptions.Center
+        };
+
+        // Program Name
+        var nameLabel = new Label
+        {
+            Text = program.FullName,
+            FontSize = 16,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White,
+            VerticalOptions = LayoutOptions.Center,
+            HorizontalOptions = LayoutOptions.StartAndExpand,
+            LineBreakMode = LineBreakMode.WordWrap
+        };
+
+        // Arrow Icon
+        var arrowLabel = new Label
+        {
+            Text = "›",
+            FontSize = 28,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#FFD204"),
+            VerticalOptions = LayoutOptions.Center,
+            Margin = new Thickness(10, 0, 0, 0)
+        };
+
+        topRow.Children.Add(nameLabel);
+        topRow.Children.Add(arrowLabel);
+        mainLayout.Children.Add(topRow);
+
+        // URL Display
+        if (!string.IsNullOrEmpty(program.Url))
+        {
+            var urlLabel = new Label
+            {
+                Text = program.Url,
+                FontSize = 12,
+                TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#CCCCCC"),
+                LineBreakMode = LineBreakMode.CharacterWrap,
+                Margin = new Thickness(0, 5, 0, 0)
+            };
+            mainLayout.Children.Add(urlLabel);
+        }
+
+        programFrame.Content = mainLayout;
+        return programFrame;
     }
 
     /// <summary>

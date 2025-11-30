@@ -30,6 +30,8 @@ namespace Dashboard
     builder.Services.AddSingleton<HomePageImageService>();
     builder.Services.AddSingleton<StudentClubService>();
     builder.Services.AddSingleton<AcademicProgramService>();
+    builder.Services.AddSingleton<SponsorDonorService>();
+    builder.Services.AddSingleton<LabService>();
     
     // Register pages that require dependency injection
     builder.Services.AddTransient<DepartmentMapPage>();
@@ -39,6 +41,8 @@ namespace Dashboard
     builder.Services.AddTransient<AcademicCataloguePage>();
     builder.Services.AddTransient<DepartmentConcentrationsPage>();
     builder.Services.AddTransient<AcademicProgramDetailPage>();
+    builder.Services.AddTransient<SponsorsAndDonorsPage>();
+    builder.Services.AddTransient<LabsPage>();
 
             return builder.Build();
         }

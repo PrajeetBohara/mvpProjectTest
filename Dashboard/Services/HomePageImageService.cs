@@ -68,9 +68,38 @@ public class HomePageImageService
                  DisplayOrder = 2,
                  IsActive = true
              },
-            
-            // Add more images below...
-            // ============================================
+
+             new HomePageImage
+             {
+                 Id = Guid.NewGuid(),
+                 Title = "",
+                 Description = "Celebrating achievements in engineering and computer science",
+                 ImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/homepage/BBC-breezeaway-copy.jpg",
+                 DisplayOrder = 2,
+                 IsActive = true
+             },
+
+             new HomePageImage
+             {
+                 Id = Guid.NewGuid(),
+                 Title = "",
+                 Description = "Celebrating achievements in engineering and computer science",
+                 ImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/homepage/FlowerPathBBC-copy.jpg",
+                 DisplayOrder = 2,
+                 IsActive = true
+             },
+
+             new HomePageImage
+             {
+                 Id = Guid.NewGuid(),
+                 Title = "",
+                 Description = "Celebrating achievements in engineering and computer science",
+                 ImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/homepage/footer-background.jpg",
+                 DisplayOrder = 2,
+                 IsActive = true
+             },
+
+
         };
     }
     #endregion

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Code written for Room Tooltip Control -->
+<ContentView
+    x:Class="Dashboard.Controls.RoomTooltip"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <Frame x:Name="TooltipFrame"
+           BackgroundColor="#003087"
+           CornerRadius="12"
+           Padding="15"
+           HasShadow="True"
+           BorderColor="#FFD204">
+        <VerticalStackLayout Spacing="8">
+            <!-- Room Number -->
+            <Label x:Name="RoomNumberLabel"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#FFD204"
+                   HorizontalOptions="Start" />
+            
+            <!-- Professor Name -->
+            <Label x:Name="ProfessorNameLabel"
+                   FontSize="16"
+                   TextColor="White"
+                   HorizontalOptions="Start" />
+            
+            <!-- Room Name/Type (optional) -->
+            <Label x:Name="RoomNameLabel"
+                   FontSize="14"
+                   TextColor="#CCCCCC"
+                   HorizontalOptions="Start" />
+        </VerticalStackLayout>
+    </Frame>
+</ContentView>
+
