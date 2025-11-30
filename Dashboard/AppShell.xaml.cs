@@ -30,6 +30,9 @@
             Routing.RegisterRoute("//DepartmentConcentrations", typeof(Pages.DepartmentConcentrationsPage));
             Routing.RegisterRoute("//ProgramDetail", typeof(Pages.AcademicProgramDetailPage));
             
+            // Register Sponsors and Donors route
+            Routing.RegisterRoute("//SponsorsAndDonors", typeof(Pages.SponsorsAndDonorsPage));
+            
             InitializeComponent();
         }
     }

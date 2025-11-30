@@ -52,19 +52,6 @@
         <ShellContent Title="Academic Catalogue" ContentTemplate="{DataTemplate pages:AcademicCataloguePage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Gallery" Route="Gallery">
-        <ShellContent Title="Gallery">
-            <ContentPage>
-                <Grid RowDefinitions="Auto,*">
-                    <controls:TopBar Grid.Row="0" />
-                    <Grid Grid.Row="1" Padding="24">
-                        <Label Text="Gallery Page (placeholder)" TextColor="White" />
-                    </Grid>
-                </Grid>
-            </ContentPage>
-        </ShellContent>
-    </FlyoutItem>
-
     <!-- Additional routes for View All pages -->
     <FlyoutItem Title="All Events" Route="AllEvents">
         <ShellContent Title="All Events" ContentTemplate="{DataTemplate pages:AllEventsPage}" />
@@ -78,17 +65,8 @@
         <ShellContent Title="Faculty Directory" ContentTemplate="{DataTemplate pages:FacultyDirectoryPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Sponsors and Donors" Route="Sponsors and Donors">
-        <ShellContent Title="Sponsors and Donors">
-            <ContentPage>
-                <Grid RowDefinitions="Auto,*">
-                    <controls:TopBar Grid.Row="0" />
-                    <Grid Grid.Row="1" Padding="24">
-                        <Label Text="Sponsors and Donors Page (placeholder)" TextColor="White" />
-                    </Grid>
-                </Grid>
-            </ContentPage>
-        </ShellContent>
+    <FlyoutItem Title="Sponsors and Donors" Route="SponsorsAndDonors">
+        <ShellContent Title="Sponsors and Donors" ContentTemplate="{DataTemplate pages:SponsorsAndDonorsPage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Labs" Route="Labs">
