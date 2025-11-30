@@ -196,6 +196,14 @@ public partial class DepartmentMapPage : ContentPage
             _imageWidth = FloorPlanImage.Width;
             _imageHeight = FloorPlanImage.Height;
             
+            System.Diagnostics.Debug.WriteLine($"Image size changed: {_imageWidth}x{_imageHeight}");
+            
+            // Update overlay size to match image exactly
+            RoomZonesOverlay.WidthRequest = _imageWidth;
+            RoomZonesOverlay.HeightRequest = _imageHeight;
+            LocationOverlay.WidthRequest = _imageWidth;
+            LocationOverlay.HeightRequest = _imageHeight;
+            
             // Update container size for scrolling (allows panning when zoomed)
             MapContainer.MinimumWidthRequest = FloorPlanImage.Width * _currentZoom;
             MapContainer.MinimumHeightRequest = FloorPlanImage.Height * _currentZoom;
@@ -224,47 +232,62 @@ public partial class DepartmentMapPage : ContentPage
     #region Room Interaction Zones
     /// <summary>
     /// Adds interactive tap zones for all rooms on the current floor.
+    /// Uses invisible Button controls for reliable tap detection on all platforms.
+    /// Hit-boxes are positioned to match the image at base size (overlay scales with image).
     /// </summary>
     private void AddRoomZones(FloorPlan floorPlan)
     {
-        if (_imageWidth == 0 || _imageHeight == 0) return;
+        if (_imageWidth == 0 || _imageHeight == 0)
+        {
+            System.Diagnostics.Debug.WriteLine($"AddRoomZones: Image size not set yet. Width: {_imageWidth}, Height: {_imageHeight}");
+            return;
+        }
+        
+        System.Diagnostics.Debug.WriteLine($"AddRoomZones: Adding zones for {floorPlan.Rooms.Count} rooms. Image size: {_imageWidth}x{_imageHeight}");
+        
+        // Update overlay size to match image
+        RoomZonesOverlay.WidthRequest = _imageWidth;
+        RoomZonesOverlay.HeightRequest = _imageHeight;
         
         foreach (var room in floorPlan.Rooms)
         {
             // Calculate absolute positions based on relative coordinates
+            // Use base image dimensions (overlay will scale with image via Scale property)
             var x = room.X * _imageWidth;
             var y = room.Y * _imageHeight;
             var width = room.Width * _imageWidth;
             var height = room.Height * _imageHeight;
             
-            // Create invisible tap zone
-            var tapZone = new BoxView
+            System.Diagnostics.Debug.WriteLine($"Adding hit-box for Room {room.RoomNumber}: Position ({x}, {y}), Size ({width}, {height})");
+            
+            // Create invisible button as tap zone (more reliable than BoxView)
+            // Temporarily make it slightly visible for debugging (set Opacity to 0.3 to see it)
+            var tapZone = new Button
             {
-                BackgroundColor = Colors.Transparent,
-                Opacity = 0.01, // Slightly visible for debugging, can be set to 0
-                WidthRequest = width,
-                HeightRequest = height
+                BackgroundColor = Color.FromRgba(255, 0, 0, 50), // Slightly visible red for debugging
+                Opacity = 0.3, // Make visible for testing - change to 0.0 when working
+                BorderColor = Colors.Red,
+                BorderWidth = 1,
+                // Store room data in CommandParameter for easy access
+                CommandParameter = room.RoomNumber
             };
             
-            // Add tap gesture
-            var tapGesture = new TapGestureRecognizer();
-            tapGesture.Tapped += (s, e) => OnRoomTapped(room);
-            tapZone.GestureRecognizers.Add(tapGesture);
-            
-            // Add long press gesture (for hover-like behavior on mobile)
-            var longPressGesture = new TapGestureRecognizer
+            // Add click handler
+            tapZone.Clicked += (s, e) => 
             {
-                NumberOfTapsRequired = 1
+                System.Diagnostics.Debug.WriteLine($"Room {room.RoomNumber} tapped!");
+                OnRoomTapped(room);
             };
-            // Note: MAUI doesn't have built-in long press, so we'll use tap for now
-            // Can be enhanced with custom gesture recognizer if needed
             
-            // Position the zone
+            // Position the zone using AbsoluteLayout
+            // Overlay will scale with the image, so positions are relative to base image size
             AbsoluteLayout.SetLayoutBounds(tapZone, new Rect(x, y, width, height));
             RoomZonesOverlay.Children.Add(tapZone);
             
             _roomZones[room.RoomNumber] = tapZone;
         }
+        
+        System.Diagnostics.Debug.WriteLine($"Added {_roomZones.Count} room zones to overlay");
     }
 
     /// <summary>
@@ -280,23 +303,42 @@ public partial class DepartmentMapPage : ContentPage
     #region Room Interaction Handlers
     /// <summary>
     /// Handles room tap to show room details.
+    /// Offers both modal popup and navigation to RoomDetailsPage.
     /// </summary>
     private async void OnRoomTapped(Room room)
     {
         try
         {
-            await ShowRoomDetails(room);
+            // Show action sheet to let user choose between modal and navigation
+            var action = await DisplayActionSheet(
+                $"Room {room.RoomNumber}",
+                "Cancel",
+                null,
+                "View Details (Modal)",
+                "View Details (Full Page)"
+            );
+
+            if (action == "View Details (Modal)")
+            {
+                await ShowRoomDetailsModal(room);
+            }
+            else if (action == "View Details (Full Page)")
+            {
+                await NavigateToRoomDetails(room);
+            }
         }
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"Error showing room details: {ex.Message}");
+            // Fallback: just show modal if action sheet fails
+            await ShowRoomDetailsModal(room);
         }
     }
 
     /// <summary>
     /// Displays room details in a modal popup.
     /// </summary>
-    private async Task ShowRoomDetails(Room room)
+    private async Task ShowRoomDetailsModal(Room room)
     {
         var detailsPage = new ContentPage
         {
@@ -344,6 +386,17 @@ public partial class DepartmentMapPage : ContentPage
             TextColor = Color.FromArgb("#CCCCCC")
         });
 
+        // Professor Name (if applicable)
+        if (!string.IsNullOrEmpty(room.ProfessorName))
+        {
+            stackLayout.Children.Add(new Label
+            {
+                Text = $"Professor: {room.ProfessorName}",
+                FontSize = 16,
+                TextColor = Color.FromArgb("#CCCCCC")
+            });
+        }
+
         // Description
         if (!string.IsNullOrEmpty(room.Description))
         {
@@ -383,6 +436,23 @@ public partial class DepartmentMapPage : ContentPage
         detailsPage.Content = content;
 
         await Navigation.PushModalAsync(detailsPage);
+    }
+
+    /// <summary>
+    /// Navigates to the RoomDetailsPage for a full-page view.
+    /// </summary>
+    private async Task NavigateToRoomDetails(Room room)
+    {
+        try
+        {
+            var roomDetailsPage = new RoomDetailsPage(room);
+            await Navigation.PushModalAsync(roomDetailsPage);
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error navigating to room details page: {ex.Message}");
+            await DisplayAlert("Error", "Could not open room details page.", "OK");
+        }
     }
     #endregion
 
@@ -522,6 +592,16 @@ public partial class DepartmentMapPage : ContentPage
         // Apply scale to image
         FloorPlanImage.Scale = _currentZoom;
         
+        // Also scale the overlay containers to match the image
+        if (RoomZonesOverlay.Width > 0 && RoomZonesOverlay.Height > 0)
+        {
+            RoomZonesOverlay.Scale = _currentZoom;
+        }
+        if (LocationOverlay.Width > 0 && LocationOverlay.Height > 0)
+        {
+            LocationOverlay.Scale = _currentZoom;
+        }
+        
         // Update container size to allow scrolling when zoomed
         if (FloorPlanImage.Width > 0 && FloorPlanImage.Height > 0)
         {
@@ -533,7 +613,31 @@ public partial class DepartmentMapPage : ContentPage
         UpdateZoomLevelLabel();
         
         // Recalculate room zones for new zoom level
-        RecalculateRoomZones();
+        RefreshRoomZones();
+    }
+
+    /// <summary>
+    /// Refreshes room zones when zoom level changes.
+    /// </summary>
+    private void RefreshRoomZones()
+    {
+        if (_imageWidth == 0 || _imageHeight == 0) return;
+        
+        FloorPlan? floorPlan = null;
+        if (_currentSelection == "ETL")
+        {
+            floorPlan = _floorPlanService.GetETLFloorPlan();
+        }
+        else
+        {
+            floorPlan = _floorPlanService.GetFloorPlan(_currentFloor);
+        }
+        
+        if (floorPlan != null)
+        {
+            ClearRoomZones();
+            AddRoomZones(floorPlan);
+        }
     }
     
     /// <summary>

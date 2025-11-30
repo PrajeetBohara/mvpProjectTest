@@ -58,7 +58,7 @@
                                    HasShadow="True"
                                    HeightRequest="180">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnClubTapped" CommandParameter="{Binding .}" />
+                                    <TapGestureRecognizer Tapped="OnClubTapped" />
                                 </Frame.GestureRecognizers>
                                 <Grid RowDefinitions="Auto,*">
                                     <!-- Club Image/Icon Section -->
