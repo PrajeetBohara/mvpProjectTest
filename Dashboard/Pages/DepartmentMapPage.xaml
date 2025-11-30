@@ -95,7 +95,7 @@
                 <Grid x:Name="MapContainer"
                       BackgroundColor="#F5F5F5">
                     
-                    <!-- Floor Plan Image (JPG) with Zoom Support -->
+                    <!-- Floor Plan Image (JPG/SVG) with Zoom Support -->
                     <Image x:Name="FloorPlanImage"
                            Aspect="AspectFit"
                            BackgroundColor="Transparent"
@@ -106,14 +106,20 @@
                            MaximumHeightRequest="600" />
                     
                     <!-- Interactive Zones Overlay (AbsoluteLayout for precise positioning) -->
+                    <!-- This overlay scales with the image to maintain hit-box alignment -->
+                    <!-- Size is set programmatically to match the image exactly -->
                     <AbsoluteLayout x:Name="RoomZonesOverlay"
-                                    BackgroundColor="Transparent">
-                        <!-- Room tap zones will be added programmatically -->
+                                    BackgroundColor="Transparent"
+                                    VerticalOptions="Start"
+                                    HorizontalOptions="Start">
+                        <!-- Room tap zones (invisible buttons) will be added programmatically -->
                     </AbsoluteLayout>
                     
                     <!-- Current Location Indicator -->
                     <AbsoluteLayout x:Name="LocationOverlay"
-                                    BackgroundColor="Transparent">
+                                    BackgroundColor="Transparent"
+                                    VerticalOptions="Start"
+                                    HorizontalOptions="Start">
                         <!-- Current location marker will be added programmatically -->
                     </AbsoluteLayout>
                 </Grid>

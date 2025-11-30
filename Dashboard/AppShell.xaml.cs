@@ -22,7 +22,8 @@
             Routing.RegisterRoute("//CampusMap", typeof(Pages.CampusMapPage));
             
             // Register Student Clubs routes
-            Routing.RegisterRoute("Clubs", typeof(Pages.StudentClubsPage));
+            Routing.RegisterRoute("//Clubs", typeof(Pages.StudentClubsPage));
+            Routing.RegisterRoute("Clubs", typeof(Pages.StudentClubsPage)); // Relative route
             Routing.RegisterRoute("ClubDetail", typeof(Pages.StudentClubDetailPage));
             
             // Register Academic Catalogue routes

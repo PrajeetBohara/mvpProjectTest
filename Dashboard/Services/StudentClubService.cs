@@ -42,7 +42,7 @@ public class StudentClubService
     /// </summary>
     private List<StudentClub> InitializeClubs()
     {
-        return new List<StudentClub>
+                   return new List<StudentClub>
         {
             new StudentClub
             {
@@ -184,10 +184,8 @@ public class StudentClubService
                 {
                     { "President", "Prajeet Bohara" },
                     { "VP", "Christian East" },
-                    { "Secretary", "Manish Lohani" },
-                    { "Secretary", "Andrew Martin" },
-                    { "Project Director", "Payton Todd" },
-                    { "Project Director", "Ethan Guillory" },
+                    { "Secretary", "Manish Lohani, Andrew Martin" },
+                    { "Project Director", "Payton Todd, Ethan Guillory" },
                     { "Treasurer", "Parasan Acharya" },
                     { "SGA Rep", "Dubem Akukwe" },
                     { "Social Media Representative", "Solida Tan" },
