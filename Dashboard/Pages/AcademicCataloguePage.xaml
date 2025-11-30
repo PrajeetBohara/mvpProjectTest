@@ -16,7 +16,7 @@
         <ScrollView Grid.Row="1" Padding="20">
             <VerticalStackLayout Spacing="25">
                 <!-- Page Header -->
-                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center" Margin="0,0,0,20">
                     <Label Text="📚"
                            FontSize="48"
                            HorizontalOptions="Center" />

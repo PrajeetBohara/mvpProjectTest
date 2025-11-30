@@ -218,7 +218,7 @@ public partial class StudentClubDetailPage : ContentPage
             MeetingLocationFrame.IsVisible = false;
         }
         
-        // Social Media Links (Instagram and LinkedIn only)
+        // Social Media Links (Instagram, LinkedIn, and Facebook)
         bool hasAnySocial = false;
         
         if (!string.IsNullOrEmpty(club.InstagramUrl))
@@ -243,7 +243,74 @@ public partial class StudentClubDetailPage : ContentPage
             LinkedInFrame.IsVisible = false;
         }
         
+        if (!string.IsNullOrEmpty(club.FacebookUrl))
+        {
+            FacebookUrlLabel.Text = club.FacebookUrl;
+            FacebookFrame.IsVisible = true;
+            hasAnySocial = true;
+        }
+        else
+        {
+            FacebookFrame.IsVisible = false;
+        }
+        
         SocialsFrame.IsVisible = hasAnySocial;
+        
+        // Leadership Section
+        if (club.Leadership != null && club.Leadership.Count > 0)
+        {
+            LeadershipContainer.Children.Clear();
+            foreach (var position in club.Leadership)
+            {
+                var positionFrame = new Frame
+                {
+                    BackgroundColor = Color.FromArgb("#003087"),
+                    CornerRadius = 8,
+                    Padding = 12,
+                    HasShadow = false
+                };
+                var positionStack = new HorizontalStackLayout { Spacing = 10 };
+                
+                var positionLabel = new Label
+                {
+                    Text = $"{position.Key}:",
+                    FontSize = 14,
+                    FontAttributes = FontAttributes.Bold,
+                    TextColor = Color.FromArgb("#FFD204"),
+                    VerticalOptions = LayoutOptions.Center,
+                    WidthRequest = 150
+                };
+                
+                var nameLabel = new Label
+                {
+                    Text = position.Value,
+                    FontSize = 14,
+                    TextColor = Color.FromArgb("#CCCCCC"),
+                    VerticalOptions = LayoutOptions.Center
+                };
+                
+                positionStack.Children.Add(positionLabel);
+                positionStack.Children.Add(nameLabel);
+                positionFrame.Content = positionStack;
+                LeadershipContainer.Children.Add(positionFrame);
+            }
+            LeadershipFrame.IsVisible = true;
+        }
+        else
+        {
+            LeadershipFrame.IsVisible = false;
+        }
+        
+        // President Email
+        if (!string.IsNullOrEmpty(club.PresidentEmail))
+        {
+            PresidentEmailLabel.Text = club.PresidentEmail;
+            PresidentEmailFrame.IsVisible = true;
+        }
+        else
+        {
+            PresidentEmailFrame.IsVisible = false;
+        }
         
         // Gallery Images
         GalleryImages.Clear();

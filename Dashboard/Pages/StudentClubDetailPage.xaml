@@ -273,6 +273,42 @@
                                 </HorizontalStackLayout>
                             </Frame>
 
+                            <!-- Facebook -->
+                            <Frame x:Name="FacebookFrame"
+                                   BackgroundColor="#003087"
+                                   CornerRadius="10"
+                                   Padding="15"
+                                   HasShadow="False"
+                                   IsVisible="False">
+                                <HorizontalStackLayout Spacing="12"
+                                                       VerticalOptions="Center">
+                                    <!-- Facebook Logo -->
+                                    <Border WidthRequest="36"
+                                            HeightRequest="36"
+                                            BackgroundColor="#1877F2"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10,10,10,10">
+                                        <Label Text="f"
+                                              FontSize="24"
+                                              FontAttributes="Bold"
+                                              TextColor="White"
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center" />
+                                    </Border>
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label Text="Facebook"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#FFD204" />
+                                        <Label x:Name="FacebookUrlLabel"
+                                               Text="URL will appear here"
+                                               FontSize="12"
+                                               TextColor="#CCCCCC"
+                                               LineBreakMode="TailTruncation" />
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+                            </Frame>
+
                             <!-- Instagram #2 (NEW) -->
                             <Frame x:Name="InstagramFrame2"
                                    BackgroundColor="#003087"
@@ -329,6 +365,45 @@
 
                     </VerticalStackLayout>
 
+                </Frame>
+
+                <!-- Leadership Section -->
+                <Frame x:Name="LeadershipFrame"
+                       BackgroundColor="#002a54"
+                       CornerRadius="12"
+                       Padding="20"
+                       HasShadow="False"
+                       IsVisible="False">
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Leadership"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204" />
+                        
+                        <VerticalStackLayout x:Name="LeadershipContainer" Spacing="10">
+                            <!-- Leadership positions will be populated dynamically -->
+                        </VerticalStackLayout>
+                        
+                        <!-- President Email -->
+                        <Frame x:Name="PresidentEmailFrame"
+                               BackgroundColor="#003087"
+                               CornerRadius="10"
+                               Padding="15"
+                               HasShadow="False"
+                               IsVisible="False">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="President Email"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="#FFD204" />
+                                <Label x:Name="PresidentEmailLabel"
+                                       Text=""
+                                       FontSize="14"
+                                       TextColor="#CCCCCC"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </VerticalStackLayout>
                 </Frame>
 
                 <!-- Gallery Section -->

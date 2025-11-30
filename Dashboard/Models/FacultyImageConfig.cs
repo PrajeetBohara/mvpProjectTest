@@ -28,5 +28,15 @@ public static class FacultyImageConfig
     public const string SubramaniamImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Ramalingam%20Subramaniam.jpg"; // Dr. Ramalingam Subramaniam - Placeholder - update with actual URL
     public const string AmbatipaniImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Vasan_Glasses.jpg"; // Dr. Srinivasam Ambatipani - Placeholder - update with actual URL
     public const string LiImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Zhuang%20Li.jpg"; // Dr. Zhuang Li - Placeholder - update with actual URL
+    public const string ZeitounImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Zeyad%20Zeitoun.jpg"; // Dr. Zeyad Zeitoun
+    public const string SinghImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/prithvi%20singh.jpg"; // Prithvi Raj Singh
+
+    // ============================================
+    // ADMIN STAFF IMAGES
+    // ============================================
+    // Note: Dr. Vasan Ambatipati uses AmbatipaniImageUrl (same person, different spelling in admin section)
+    public const string ReddochImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Sarah%20Reddoch.jpg"; // Mrs. Sarah Reddoch
+    public const string OBrienImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Ramona%20O'Brien.jpg"; // Mrs. Ramona O'Brien
+    public const string BennettImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Dennis%20Bennett.jpg"; // Mr. Dennis Bennett
 }
 

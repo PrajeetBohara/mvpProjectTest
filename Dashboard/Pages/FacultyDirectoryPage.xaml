@@ -25,7 +25,7 @@ This code file gives UI for the faculty-->
                            HorizontalOptions="Center" />
                 </VerticalStackLayout>
 
-                <!-- ====================== COMPUTER SCIENCE SECTION ====================== -->
+                <!-- ====================== ADMIN SECTION ====================== -->
                 <Frame BackgroundColor="#003087"
                        CornerRadius="12"
                        Padding="0"
@@ -35,24 +35,23 @@ This code file gives UI for the faculty-->
                         <Frame BackgroundColor="#002a54"
                                CornerRadius="12"
                                Padding="20"
-                               HasShadow="False"
-                               Margin="0,0,0,0">
-                            <Label Text="Computer Science"
+                               HasShadow="False">
+                            <Label Text="Admin"
                                    FontSize="24"
                                    FontAttributes="Bold"
                                    TextColor="#FFD204"
                                    HorizontalOptions="Center" />
                         </Frame>
 
-                        <!-- Computer Science Faculty Grid - 3 per row -->
+                        <!-- Admin Grid - 2 per row -->
                         <Frame BackgroundColor="#003087"
                                CornerRadius="0"
                                Padding="20"
                                HasShadow="False">
                             <VerticalStackLayout Spacing="20">
-                                <!-- Row 1: Alphabetically by last name - Anderson, Lavergne, Menon -->
-                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15">
-                                    <!-- Ms. Rhonda Anderson (A) -->
+                                <!-- Row 1: Ambatipati, Bennett (sorted by last name) -->
+                                <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                                    <!-- Dr. Vasan Ambatipati -->
                                     <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
                                             <Border Stroke="Black"
@@ -60,7 +59,7 @@ This code file gives UI for the faculty-->
                                                     WidthRequest="86"
                                                     HeightRequest="86"
                                                     StrokeShape="RoundRectangle 43,43,43,43">
-                                                <Image x:Name="AndersonImage"
+                                                <Image x:Name="AmbatipatiImage"
                                                        Aspect="AspectFill"
                                                        WidthRequest="82"
                                                        HeightRequest="82">
@@ -69,21 +68,216 @@ This code file gives UI for the faculty-->
                                                     </Image.Clip>
                                                 </Image>
                                             </Border>
-                                            <Label Text="Ms. Rhonda Anderson" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Instructor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="randerson@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
-                                            <Button x:Name="AndersonExpandButton"
+                                            <Label Text="Dr. Vasan Ambatipati" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Department Head, Assistant Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="Chemical Engineering" FontSize="11" TextColor="#CCCCCC" HorizontalOptions="Center" />
+                                            <Label Text="sambatipani@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                    <!-- Mr. Dennis Bennett -->
+                                    <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="BennettImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Mr. Dennis Bennett" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Mechanical Laboratory Tech" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="dbennett1@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </Grid>
+                                
+                                <!-- Row 2: O'Brien, Reddoch (sorted by last name) -->
+                                <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                                    <!-- Mrs. Ramona O'Brien -->
+                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="OBrienImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Mrs. Ramona O'Brien" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="IT Client Support Specialist" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="obrienr@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                    <!-- Mrs. Sarah Reddoch -->
+                                    <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="ReddochImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Mrs. Sarah Reddoch" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Administrative Assistant" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
+                                            <Label Text="sreddoch1@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- ====================== COORDINATORS SECTION ====================== -->
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="12"
+                       Padding="0"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="0">
+                        <!-- Section Header -->
+                        <Frame BackgroundColor="#002a54"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="False">
+                            <Label Text="Coordinators"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204"
+                                   HorizontalOptions="Center" />
+                        </Frame>
+
+                        <!-- Coordinators Grid - 3 per row -->
+                        <Frame BackgroundColor="#003087"
+                               CornerRadius="0"
+                               Padding="20"
+                               HasShadow="False">
+                            <VerticalStackLayout Spacing="20">
+                                <!-- Row 1: Aghili, Dermisis, Garner -->
+                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15">
+                                    <!-- Dr. Matthew Aghili -->
+                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="AghiliImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Dr. Matthew Aghili" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Computer Engineering Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="draghili@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="AghiliExpandButton"
                                                     Text="View Research Details"
                                                     BackgroundColor="#FFD204"
                                                     TextColor="#003087"
                                                     CornerRadius="15"
                                                     Padding="15,8"
                                                     FontSize="11"
-                                                    Clicked="OnAndersonExpandButtonClicked" />
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnAghiliExpandButtonClicked" />
                                         </VerticalStackLayout>
                                     </Frame>
-                                    <!-- Dr. Jennifer Lavergne (L) -->
+                                    <!-- Dr. Dimitrios Dermisis -->
                                     <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="DermisisImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Dr. Dimitrios Dermisis" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Civil Engineering Associate Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="ddermisis@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="DermisisExpandButton"
+                                                    Text="View Research Details"
+                                                    BackgroundColor="#FFD204"
+                                                    TextColor="#003087"
+                                                    CornerRadius="15"
+                                                    Padding="15,8"
+                                                    FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnDermisisExpandButtonClicked" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                    <!-- Mr. Brent Garner -->
+                                    <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="GarnerImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Mr. Brent Garner" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Electrical Engineering Associate Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="garner@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="GarnerExpandButton"
+                                                    Text="View Research Details"
+                                                    BackgroundColor="#FFD204"
+                                                    TextColor="#003087"
+                                                    CornerRadius="15"
+                                                    Padding="15,8"
+                                                    FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnGarnerExpandButtonClicked" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </Grid>
+                                
+                                <!-- Row 2: Lavergne, Li, Subramaniam -->
+                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15">
+                                    <!-- Dr. Jennifer Lavergne -->
+                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
                                             <Border Stroke="Black"
                                                     StrokeThickness="2"
@@ -101,7 +295,7 @@ This code file gives UI for the faculty-->
                                             </Border>
                                             <Label Text="Dr. Jennifer Lavergne" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
                                             <Label Text="Assistant Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="jlavegne@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Label Text="jlavergne@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
                                             <Button x:Name="LavergneExpandButton"
                                                     Text="View Research Details"
                                                     BackgroundColor="#FFD204"
@@ -109,11 +303,242 @@ This code file gives UI for the faculty-->
                                                     CornerRadius="15"
                                                     Padding="15,8"
                                                     FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
                                                     Clicked="OnLavergneExpandButtonClicked" />
                                         </VerticalStackLayout>
                                     </Frame>
-                                    <!-- Dr. Vipin Menon (M) -->
+                                    <!-- Dr. Zhuang Li -->
+                                    <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="LiImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Dr. Zhuang Li" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Mechanical Engineering Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="zli@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="LiExpandButton"
+                                                    Text="View Research Details"
+                                                    BackgroundColor="#FFD204"
+                                                    TextColor="#003087"
+                                                    CornerRadius="15"
+                                                    Padding="15,8"
+                                                    FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnLiExpandButtonClicked" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                    <!-- Dr. Ramalingam Subramaniam -->
                                     <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="SubramaniamImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Dr. Ramalingam Subramaniam" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="Chemical Engineering Associate Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="rsubramaniam@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="SubramaniamExpandButton"
+                                                    Text="View Research Details"
+                                                    BackgroundColor="#FFD204"
+                                                    TextColor="#003087"
+                                                    CornerRadius="15"
+                                                    Padding="15,8"
+                                                    FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnSubramaniamExpandButtonClicked" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- ====================== FACULTY SECTION ====================== -->
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="12"
+                       Padding="0"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="0">
+                        <!-- Section Header -->
+                        <Frame BackgroundColor="#002a54"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="False">
+                            <Label Text="Faculty"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204"
+                                   HorizontalOptions="Center" />
+                        </Frame>
+
+                        <!-- Faculty Grid - 3 per row -->
+                        <Frame BackgroundColor="#003087"
+                               CornerRadius="0"
+                               Padding="20"
+                               HasShadow="False">
+                            <VerticalStackLayout Spacing="20">
+                                <!-- Row 1: Ambatipati, Anderson, Guo (sorted by last name) -->
+                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15">
+                                    <!-- Dr. Vasan Ambatipati -->
+                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="AmbatipatiFacultyImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Dr. Vasan Ambatipati" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="Assistant Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="Chemical Engineering" FontSize="11" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="sambatipani@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="AmbatipatiFacultyExpandButton"
+                                                    Text="View Research Details"
+                                                    BackgroundColor="#FFD204"
+                                                    TextColor="#003087"
+                                                    CornerRadius="15"
+                                                    Padding="15,8"
+                                                    FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnAmbatipatiFacultyExpandButtonClicked" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                    <!-- Ms. Rhonda Anderson -->
+                                    <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="AndersonImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Ms. Rhonda Anderson" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Visiting Assistant Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="randerson@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="AndersonExpandButton"
+                                                    Text="View Research Details"
+                                                    BackgroundColor="#FFD204"
+                                                    TextColor="#003087"
+                                                    CornerRadius="15"
+                                                    Padding="15,8"
+                                                    FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnAndersonExpandButtonClicked" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                    <!-- Dr. Qi Guo -->
+                                    <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="GuoImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Dr. Qi Guo" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Mechanical Engineering Assistant Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="qguo@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="GuoExpandButton"
+                                                    Text="View Research Details"
+                                                    BackgroundColor="#FFD204"
+                                                    TextColor="#003087"
+                                                    CornerRadius="15"
+                                                    Padding="15,8"
+                                                    FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnGuoExpandButtonClicked" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </Grid>
+                                
+                                <!-- Row 2: Liu, Menon, Rosti (sorted by last name) -->
+                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15">
+                                    <!-- Dr. Qiu Liu -->
+                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="LiuImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Dr. Qiu Liu" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Electrical Engineering Assistant Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="qliu@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="LiuExpandButton"
+                                                    Text="View Research Details"
+                                                    BackgroundColor="#FFD204"
+                                                    TextColor="#003087"
+                                                    CornerRadius="15"
+                                                    Padding="15,8"
+                                                    FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnLiuExpandButtonClicked" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                    <!-- Dr. Vipin Menon -->
+                                    <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
                                             <Border Stroke="Black"
                                                     StrokeThickness="2"
@@ -130,8 +555,8 @@ This code file gives UI for the faculty-->
                                                 </Image>
                                             </Border>
                                             <Label Text="Dr. Vipin Menon" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="vmenon@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Label Text="Associate Professor/Coordinator" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
+                                            <Label Text="menon@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
                                             <Button x:Name="MenonExpandButton"
                                                     Text="View Research Details"
                                                     BackgroundColor="#FFD204"
@@ -139,14 +564,49 @@ This code file gives UI for the faculty-->
                                                     CornerRadius="15"
                                                     Padding="15,8"
                                                     FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
                                                     Clicked="OnMenonExpandButtonClicked" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                    <!-- Dr. Firouz Rosti -->
+                                    <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="RostiImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Dr. Firouz Rosti" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Civil Engineering Assistant Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="frosti@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="RostiExpandButton"
+                                                    Text="View Research Details"
+                                                    BackgroundColor="#FFD204"
+                                                    TextColor="#003087"
+                                                    CornerRadius="15"
+                                                    Padding="15,8"
+                                                    FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnRostiExpandButtonClicked" />
                                         </VerticalStackLayout>
                                     </Frame>
                                 </Grid>
                                 
-                                <!-- Row 2: Dr. Bei Xie (X) -->
-                                <Grid ColumnDefinitions="*" ColumnSpacing="15">
-                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False" HorizontalOptions="Start" WidthRequest="200">
+                                <!-- Row 3: Xie, Zhang, Zeitoun (sorted by last name) -->
+                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15">
+                                    <!-- Dr. Bei Xie -->
+                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
                                             <Border Stroke="Black"
                                                     StrokeThickness="2"
@@ -163,7 +623,7 @@ This code file gives UI for the faculty-->
                                                 </Image>
                                             </Border>
                                             <Label Text="Dr. Bei Xie" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Associate Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
+                                            <Label Text="Computer Science and Electrical Engineering Associate Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
                                             <Label Text="bxie@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
                                             <Button x:Name="XieExpandButton"
                                                     Text="View Research Details"
@@ -172,73 +632,12 @@ This code file gives UI for the faculty-->
                                                     CornerRadius="15"
                                                     Padding="15,8"
                                                     FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
                                                     Clicked="OnXieExpandButtonClicked" />
                                         </VerticalStackLayout>
                                     </Frame>
-                                </Grid>
-                            </VerticalStackLayout>
-                        </Frame>
-                    </VerticalStackLayout>
-                </Frame>
-
-                <!-- ====================== ENGINEERING SECTION ====================== -->
-                <Frame BackgroundColor="#003087"
-                       CornerRadius="12"
-                       Padding="0"
-                       HasShadow="True">
-                    <VerticalStackLayout Spacing="0">
-                        <!-- Section Header -->
-                        <Frame BackgroundColor="#002a54"
-                               CornerRadius="12"
-                               Padding="20"
-                               HasShadow="False"
-                               Margin="0,0,0,0">
-                            <Label Text="Engineering"
-                                   FontSize="24"
-                                   FontAttributes="Bold"
-                                   TextColor="#FFD204"
-                                   HorizontalOptions="Center" />
-                        </Frame>
-
-                        <!-- Engineering Faculty Grid - 3 per row -->
-                        <Frame BackgroundColor="#003087"
-                               CornerRadius="0"
-                               Padding="20"
-                               HasShadow="False">
-                            <VerticalStackLayout Spacing="20">
-                                <!-- Row 1: Alphabetically by last name - Aghili, Ambatipani, Dermisis -->
-                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15">
-                                    <!-- Dr. Matthew Aghili (A) -->
-                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
-                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Border Stroke="Black"
-                                                    StrokeThickness="2"
-                                                    WidthRequest="86"
-                                                    HeightRequest="86"
-                                                    StrokeShape="RoundRectangle 43,43,43,43">
-                                                <Image x:Name="EngProf1Image"
-                                                       Aspect="AspectFill"
-                                                       WidthRequest="82"
-                                                       HeightRequest="82">
-                                                    <Image.Clip>
-                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
-                                                    </Image.Clip>
-                                                </Image>
-                                            </Border>
-                                            <Label Text="Dr. Matthew Aghili" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="maghili@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
-                                            <Button x:Name="EngProf1ExpandButton"
-                                                    Text="View Research Details"
-                                                    BackgroundColor="#FFD204"
-                                                    TextColor="#003087"
-                                                    CornerRadius="15"
-                                                    Padding="15,8"
-                                                    FontSize="11"
-                                                    Clicked="OnEngProf1ExpandButtonClicked" />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                    <!-- Dr. Srinivasam Ambatipani (A) -->
+                                    <!-- Dr. Ning Zhang -->
                                     <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
                                             <Border Stroke="Black"
@@ -246,258 +645,7 @@ This code file gives UI for the faculty-->
                                                     WidthRequest="86"
                                                     HeightRequest="86"
                                                     StrokeShape="RoundRectangle 43,43,43,43">
-                                                <Image x:Name="EngProf2Image"
-                                                       Aspect="AspectFill"
-                                                       WidthRequest="82"
-                                                       HeightRequest="82">
-                                                    <Image.Clip>
-                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
-                                                    </Image.Clip>
-                                                </Image>
-                                            </Border>
-                                            <Label Text="Dr. Srinivasam Ambatipani" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="sambatipani@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
-                                            <Button x:Name="EngProf2ExpandButton"
-                                                    Text="View Research Details"
-                                                    BackgroundColor="#FFD204"
-                                                    TextColor="#003087"
-                                                    CornerRadius="15"
-                                                    Padding="15,8"
-                                                    FontSize="11"
-                                                    Clicked="OnEngProf2ExpandButtonClicked" />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                    <!-- Dr. Dimitrios Dermisis (D) -->
-                                    <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
-                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Border Stroke="Black"
-                                                    StrokeThickness="2"
-                                                    WidthRequest="86"
-                                                    HeightRequest="86"
-                                                    StrokeShape="RoundRectangle 43,43,43,43">
-                                                <Image x:Name="EngProf3Image"
-                                                       Aspect="AspectFill"
-                                                       WidthRequest="82"
-                                                       HeightRequest="82">
-                                                    <Image.Clip>
-                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
-                                                    </Image.Clip>
-                                                </Image>
-                                            </Border>
-                                            <Label Text="Dr. Dimitrios Dermisis" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="ddermisis@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
-                                            <Button x:Name="EngProf3ExpandButton"
-                                                    Text="View Research Details"
-                                                    BackgroundColor="#FFD204"
-                                                    TextColor="#003087"
-                                                    CornerRadius="15"
-                                                    Padding="15,8"
-                                                    FontSize="11"
-                                                    Clicked="OnEngProf3ExpandButtonClicked" />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                </Grid>
-                                
-                                <!-- Row 2: Garner, Guo, Li -->
-                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15">
-                                    <!-- Mr. Brent Garner (G) -->
-                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
-                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Border Stroke="Black"
-                                                    StrokeThickness="2"
-                                                    WidthRequest="86"
-                                                    HeightRequest="86"
-                                                    StrokeShape="RoundRectangle 43,43,43,43">
-                                                <Image x:Name="EngProf4Image"
-                                                       Aspect="AspectFill"
-                                                       WidthRequest="82"
-                                                       HeightRequest="82">
-                                                    <Image.Clip>
-                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
-                                                    </Image.Clip>
-                                                </Image>
-                                            </Border>
-                                            <Label Text="Mr. Brent Garner" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Instructor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="bgarner@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
-                                            <Button x:Name="EngProf4ExpandButton"
-                                                    Text="View Research Details"
-                                                    BackgroundColor="#FFD204"
-                                                    TextColor="#003087"
-                                                    CornerRadius="15"
-                                                    Padding="15,8"
-                                                    FontSize="11"
-                                                    Clicked="OnEngProf4ExpandButtonClicked" />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                    <!-- Dr. Qi Guo (G) -->
-                                    <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
-                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Border Stroke="Black"
-                                                    StrokeThickness="2"
-                                                    WidthRequest="86"
-                                                    HeightRequest="86"
-                                                    StrokeShape="RoundRectangle 43,43,43,43">
-                                                <Image x:Name="EngProf5Image"
-                                                       Aspect="AspectFill"
-                                                       WidthRequest="82"
-                                                       HeightRequest="82">
-                                                    <Image.Clip>
-                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
-                                                    </Image.Clip>
-                                                </Image>
-                                            </Border>
-                                            <Label Text="Dr. Qi Guo" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="qguo@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
-                                            <Button x:Name="EngProf5ExpandButton"
-                                                    Text="View Research Details"
-                                                    BackgroundColor="#FFD204"
-                                                    TextColor="#003087"
-                                                    CornerRadius="15"
-                                                    Padding="15,8"
-                                                    FontSize="11"
-                                                    Clicked="OnEngProf5ExpandButtonClicked" />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                    <!-- Dr. Zhuang Li (L) -->
-                                    <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
-                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Border Stroke="Black"
-                                                    StrokeThickness="2"
-                                                    WidthRequest="86"
-                                                    HeightRequest="86"
-                                                    StrokeShape="RoundRectangle 43,43,43,43">
-                                                <Image x:Name="EngProf6Image"
-                                                       Aspect="AspectFill"
-                                                       WidthRequest="82"
-                                                       HeightRequest="82">
-                                                    <Image.Clip>
-                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
-                                                    </Image.Clip>
-                                                </Image>
-                                            </Border>
-                                            <Label Text="Dr. Zhuang Li" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="zli@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
-                                            <Button x:Name="EngProf6ExpandButton"
-                                                    Text="View Research Details"
-                                                    BackgroundColor="#FFD204"
-                                                    TextColor="#003087"
-                                                    CornerRadius="15"
-                                                    Padding="15,8"
-                                                    FontSize="11"
-                                                    Clicked="OnEngProf6ExpandButtonClicked" />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                </Grid>
-                                
-                                <!-- Row 3: Liu, Rosti, Subramaniam -->
-                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15">
-                                    <!-- Dr. Qiu Liu (L) -->
-                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
-                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Border Stroke="Black"
-                                                    StrokeThickness="2"
-                                                    WidthRequest="86"
-                                                    HeightRequest="86"
-                                                    StrokeShape="RoundRectangle 43,43,43,43">
-                                                <Image x:Name="EngProf7Image"
-                                                       Aspect="AspectFill"
-                                                       WidthRequest="82"
-                                                       HeightRequest="82">
-                                                    <Image.Clip>
-                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
-                                                    </Image.Clip>
-                                                </Image>
-                                            </Border>
-                                            <Label Text="Dr. Qiu Liu" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="qliu@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
-                                            <Button x:Name="EngProf7ExpandButton"
-                                                    Text="View Research Details"
-                                                    BackgroundColor="#FFD204"
-                                                    TextColor="#003087"
-                                                    CornerRadius="15"
-                                                    Padding="15,8"
-                                                    FontSize="11"
-                                                    Clicked="OnEngProf7ExpandButtonClicked" />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                    <!-- Dr. Firouz Rosti (R) -->
-                                    <Frame Grid.Column="1" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
-                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Border Stroke="Black"
-                                                    StrokeThickness="2"
-                                                    WidthRequest="86"
-                                                    HeightRequest="86"
-                                                    StrokeShape="RoundRectangle 43,43,43,43">
-                                                <Image x:Name="EngProf8Image"
-                                                       Aspect="AspectFill"
-                                                       WidthRequest="82"
-                                                       HeightRequest="82">
-                                                    <Image.Clip>
-                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
-                                                    </Image.Clip>
-                                                </Image>
-                                            </Border>
-                                            <Label Text="Dr. Firouz Rosti" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="frosti@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
-                                            <Button x:Name="EngProf8ExpandButton"
-                                                    Text="View Research Details"
-                                                    BackgroundColor="#FFD204"
-                                                    TextColor="#003087"
-                                                    CornerRadius="15"
-                                                    Padding="15,8"
-                                                    FontSize="11"
-                                                    Clicked="OnEngProf8ExpandButtonClicked" />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                    <!-- Dr. Ramalingam Subramaniam (S) -->
-                                    <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
-                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Border Stroke="Black"
-                                                    StrokeThickness="2"
-                                                    WidthRequest="86"
-                                                    HeightRequest="86"
-                                                    StrokeShape="RoundRectangle 43,43,43,43">
-                                                <Image x:Name="EngProf9Image"
-                                                       Aspect="AspectFill"
-                                                       WidthRequest="82"
-                                                       HeightRequest="82">
-                                                    <Image.Clip>
-                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
-                                                    </Image.Clip>
-                                                </Image>
-                                            </Border>
-                                            <Label Text="Dr. Ramalingam Subramaniam" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
-                                            <Label Text="rsubramaniam@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
-                                            <Button x:Name="EngProf9ExpandButton"
-                                                    Text="View Research Details"
-                                                    BackgroundColor="#FFD204"
-                                                    TextColor="#003087"
-                                                    CornerRadius="15"
-                                                    Padding="15,8"
-                                                    FontSize="11"
-                                                    Clicked="OnEngProf9ExpandButtonClicked" />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                </Grid>
-                                
-                                <!-- Row 4: Dr. Ning Zhang (Z) -->
-                                <Grid ColumnDefinitions="*" ColumnSpacing="15">
-                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False" HorizontalOptions="Start" WidthRequest="200">
-                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                            <Border Stroke="Black"
-                                                    StrokeThickness="2"
-                                                    WidthRequest="86"
-                                                    HeightRequest="86"
-                                                    StrokeShape="RoundRectangle 43,43,43,43">
-                                                <Image x:Name="EngProf10Image"
+                                                <Image x:Name="ZhangImage"
                                                        Aspect="AspectFill"
                                                        WidthRequest="82"
                                                        HeightRequest="82">
@@ -507,16 +655,86 @@ This code file gives UI for the faculty-->
                                                 </Image>
                                             </Border>
                                             <Label Text="Dr. Ning Zhang" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
-                                            <Label Text="Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" />
+                                            <Label Text="Mechanical Engineering Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
                                             <Label Text="nzhang@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
-                                            <Button x:Name="EngProf10ExpandButton"
+                                            <Button x:Name="ZhangExpandButton"
                                                     Text="View Research Details"
                                                     BackgroundColor="#FFD204"
                                                     TextColor="#003087"
                                                     CornerRadius="15"
                                                     Padding="15,8"
                                                     FontSize="11"
-                                                    Clicked="OnEngProf10ExpandButtonClicked" />
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnZhangExpandButtonClicked" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                    <!-- Dr. Zeyad Zeitoun -->
+                                    <Frame Grid.Column="2" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="ZeitounImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Dr. Zeyad Zeitoun" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Chemical Engineering Assistant Professor" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="zzeitoun@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="ZeitounExpandButton"
+                                                    Text="View Research Details"
+                                                    BackgroundColor="#FFD204"
+                                                    TextColor="#003087"
+                                                    CornerRadius="15"
+                                                    Padding="15,8"
+                                                    FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnZeitounExpandButtonClicked" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </Grid>
+                                
+                                <!-- Row 4: Singh (sorted by last name) -->
+                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15" Margin="0,15,0,0">
+                                    <!-- Prithvi Raj Singh -->
+                                    <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                            <Border Stroke="Black"
+                                                    StrokeThickness="2"
+                                                    WidthRequest="86"
+                                                    HeightRequest="86"
+                                                    StrokeShape="RoundRectangle 43,43,43,43">
+                                                <Image x:Name="SinghImage"
+                                                       Aspect="AspectFill"
+                                                       WidthRequest="82"
+                                                       HeightRequest="82">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="41,41" RadiusX="41" RadiusY="41" />
+                                                    </Image.Clip>
+                                                </Image>
+                                            </Border>
+                                            <Label Text="Prithvi Raj Singh" FontSize="14" FontAttributes="Bold" TextColor="#FFD204" HorizontalOptions="Center" />
+                                            <Label Text="Visiting Lecturer" FontSize="12" TextColor="#CCCCCC" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
+                                            <Label Text="psingh8@mcneese.edu" FontSize="10" TextColor="#00aeef" HorizontalOptions="Center" />
+                                            <Button x:Name="SinghExpandButton"
+                                                    Text="View Research Details"
+                                                    BackgroundColor="#FFD204"
+                                                    TextColor="#003087"
+                                                    CornerRadius="15"
+                                                    Padding="15,8"
+                                                    FontSize="11"
+                                                    HorizontalOptions="Center"
+                                                    WidthRequest="150"
+                                                    Clicked="OnSinghExpandButtonClicked" />
                                         </VerticalStackLayout>
                                     </Frame>
                                 </Grid>
@@ -550,7 +768,7 @@ This code file gives UI for the faculty-->
                     <!-- Modal Header with Close Button -->
                     <Grid Grid.Row="0" 
                           BackgroundColor="#002a54"
-                          Padding="20,15"
+                          Padding="20,15,15,15"
                           ColumnDefinitions="*,Auto">
                         <Label x:Name="ModalProfessorName"
                                Text="Dr. Jennifer Lavergne"
@@ -561,13 +779,18 @@ This code file gives UI for the faculty-->
                                Grid.Column="0" />
                         <Button x:Name="CloseModalButton"
                                 Text="✕"
-                                FontSize="24"
+                                FontSize="20"
+                                FontAttributes="Bold"
                                 BackgroundColor="Transparent"
                                 TextColor="White"
-                                WidthRequest="40"
-                                HeightRequest="40"
-                                CornerRadius="20"
+                                WidthRequest="35"
+                                HeightRequest="35"
+                                CornerRadius="17"
+                                Margin="0"
+                                Padding="0"
                                 Grid.Column="1"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center"
                                 Clicked="OnCloseModalClicked" />
                     </Grid>
                     
