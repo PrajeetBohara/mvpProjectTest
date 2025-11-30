@@ -58,11 +58,23 @@ public class StudentClubService
                 Mission = "To enhance the welfare of humanity by advancing the science and profession of civil engineering.",
                 Vision = "To be the voice of the profession and help members shape public policy to build better communities.",
                 Values = "Professionalism, Leadership, Community Service, Education",
-                WebsiteUrl = "https://www.asce.org",
-                FacebookUrl = "",
-                InstagramUrl = "",
-                LinkedInUrl = "https://www.linkedin.com/company/asce",
+                WebsiteUrl = "https://www.asce.org/communities/find-a-group/regions/region-5/la-louisiana-section/mcneese-state-university",
+                FacebookUrl = "https://www.facebook.com/msuasce/",
+                InstagramUrl = "https://www.instagram.com/ascemcneese/?hl=en",
+                LinkedInUrl = "https://www.linkedin.com/company/asce-mcneese-student-chapter/posts/?feedView=all",
                 TwitterUrl = "",
+                PresidentEmail = "msu-bcourville5@mcneese.edu",
+                Leadership = new Dictionary<string, string>
+                {
+                    { "President", "Brant Courville" },
+                    { "VP", "Mariel Sanchez" },
+                    { "Secretary", "Cristhian Perez" },
+                    { "Treasurer", "Hadley Hoffpauir" },
+                    { "Social Media Director", "Francis Chukwuemeka" },
+                    { "SGA Representative", "Mani Subedi" },
+                    { "Concrete Canoe Captain/Symposium Coordinator", "Ana Cabanas" },
+                    { "C.C.C/S.C Assistant", "Arjun Gautam" }
+                },
                 // ============================================
                 // CLUB LOGO AND GALLERY IMAGES FROM SUPABASE
                 // ============================================
@@ -92,9 +104,17 @@ public class StudentClubService
                 Values = "Integrity, Education, Experience",
                 WebsiteUrl = "https://www.asme.org",
                 FacebookUrl = "",
-                InstagramUrl = "",
-                LinkedInUrl = "https://www.linkedin.com/company/asme",
+                InstagramUrl = "https://www.instagram.com/mcneeseasme/",
+                LinkedInUrl = "https://www.linkedin.com/company/asme-club-at-mcneese-state-university/about/",
                 TwitterUrl = "",
+                PresidentEmail = "aborel1@mcneese.edu",
+                Leadership = new Dictionary<string, string>
+                {
+                    { "President", "Audrey Borel" },
+                    { "VP", "Braxton Smith" },
+                    { "Secretary", "Zachary Brewster" },
+                    { "Treasurer", "Logan Loftin" }
+                },
                 LogoUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/clubs/asme.jpg",
                 GalleryImageUrls = new List<string>
                 {
@@ -117,11 +137,21 @@ public class StudentClubService
                 Mission = "To provide educational and training resources to student chemical engineers and connect them with industry.",
                 Vision = "To help students grow academically and personally through research programs and projects.",
                 Values = "Education, Innovation, Professional Development",
-                WebsiteUrl = "https://www.aiche.org",
+                WebsiteUrl = "https://www.aiche.org/community/students/chapters/mcneese-state-university-student-chapter",
                 FacebookUrl = "",
-                InstagramUrl = "",
-                LinkedInUrl = "https://www.linkedin.com/company/aiche",
+                InstagramUrl = "https://www.instagram.com/msu.aiche/",
+                LinkedInUrl = "https://www.linkedin.com/in/mcneese-aiche/",
                 TwitterUrl = "",
+                PresidentEmail = "crichard6@mcneese.edu",
+                Leadership = new Dictionary<string, string>
+                {
+                    { "President", "Camryn Richard" },
+                    { "VP", "Anthony Mayo" },
+                    { "Secretary", "Halli Davis" },
+                    { "Treasurer", "Lainey Mayo" },
+                    { "Chem-E Car Captain", "Trent Self" },
+                    { "Chem-E Cube Captain", "Carson Plaissance" }
+                },
                 LogoUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/clubs/aiche.jpg",
                 GalleryImageUrls = new List<string>
                 {
@@ -144,11 +174,27 @@ public class StudentClubService
                 Mission = "Create a hub for Computer Science related students and activities",
                 Vision = "Promote and improve the computer science community within McNeese State University",
                 Values = "Teamwork, Innovation, Integrity",
-                WebsiteUrl = "https://www.acm.org",
+                WebsiteUrl = "https://mcneeseacm.com/",
                 FacebookUrl = "",
-                InstagramUrl = "",
-                LinkedInUrl = "https://www.linkedin.com/company/acm",
+                InstagramUrl = "https://www.instagram.com/acm_mcneese/",
+                LinkedInUrl = "https://www.linkedin.com/posts/mcneese-acm-student-chapter_innovation-technology-acm-activity-7280785144884404224-I-vG/",
                 TwitterUrl = "",
+                PresidentEmail = "pbohara@mcneese.edu",
+                Leadership = new Dictionary<string, string>
+                {
+                    { "President", "Prajeet Bohara" },
+                    { "VP", "Christian East" },
+                    { "Secretary", "Manish Lohani" },
+                    { "Secretary", "Andrew Martin" },
+                    { "Project Director", "Payton Todd" },
+                    { "Project Director", "Ethan Guillory" },
+                    { "Treasurer", "Parasan Acharya" },
+                    { "SGA Rep", "Dubem Akukwe" },
+                    { "Social Media Representative", "Solida Tan" },
+                    { "Social Media Rep", "Juste Marie Fagla" },
+                    { "Freshmen Rep", "Mehwish Ali" },
+                    { "Sophomore Rep", "Duvier Barber" }
+                },
                 LogoUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/clubs/ACM%20Logo%20(Spring%2025%20Update)%20White%20Background.png",
                 GalleryImageUrls = new List<string>
                 {
@@ -171,11 +217,27 @@ public class StudentClubService
                 Mission = "To increase the number of culturally responsible Black Engineers who excel academically, succeed professionally and positively impact the community. Leadership, Technical Excellence, Academic Excellence and Mentoring are all a part of how we positively impact the community. Supporting NSBE means that you are working to build a strong legacy of leaders, innovators and skilled global citizens that will positively impact the world for decades to come!",
                 Vision = "We envision a world in which engineering is a mainstream word in homes and communities of color, and all Black students can envision themselves as engineers. In this world, Blacks exceed parity in entering engineering fields, earning degrees, and succeeding professionally.",
                 Values = "Leadership, Technical Excellence, Academic Excellence, Mentoring, Community Impact",
-                WebsiteUrl = "https://www.nsbe.org",
+                WebsiteUrl = "https://nsbe.org/chapter/mcneese-state-university/",
                 FacebookUrl = "",
-                InstagramUrl = "",
-                LinkedInUrl = "https://www.linkedin.com/company/national-society-of-black-engineers",
+                InstagramUrl = "https://www.instagram.com/mcneese.nsbe/",
+                LinkedInUrl = "https://www.linkedin.com/in/mcneese-nsbe-871776333/",
                 TwitterUrl = "",
+                PresidentEmail = "sonwude@mcneese.edu",
+                Leadership = new Dictionary<string, string>
+                {
+                    { "Chair", "Chiamaka Onwude" },
+                    { "Vice Chair", "Tola Aladekoba" },
+                    { "Chair Emeritus", "Ngozika Peter" },
+                    { "Secretary", "Rose Chuka" },
+                    { "Treasurer", "Dubem Akukwe" },
+                    { "Finance Chair", "Fidel Anyanwu" },
+                    { "Programs Chair", "Toluwalope Kuseju" },
+                    { "T.O.R.C.H Chair", "Chiamanda Ononimu" },
+                    { "Public Relations", "Francis Chukwuemeka" },
+                    { "Telecommunications Chair", "Dami Osoba" },
+                    { "A.E.X Chair", "Tiwa Oladapo-Fadeni" },
+                    { "Senator International", "Joshua Atul" }
+                },
                 LogoUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/clubs/nsbe.jpg",
                 GalleryImageUrls = new List<string>
                 {
@@ -199,10 +261,19 @@ public class StudentClubService
                 Vision = "To create a sisterhood that helps, teaches, and encourages women to be the best engineers in the classroom and industry",
                 Values = "Empowerment, Support, Professional Development, Sisterhood",
                 WebsiteUrl = "https://www.swe.org",
-                FacebookUrl = "",
+                FacebookUrl = "https://www.facebook.com/profile.php?id=100083167700470#",
                 InstagramUrl = "",
-                LinkedInUrl = "https://www.linkedin.com/company/society-of-women-engineers",
+                LinkedInUrl = "https://www.linkedin.com/in/swe-mcneese-577a82256/",
                 TwitterUrl = "",
+                PresidentEmail = "amaples@mcneese.edu",
+                Leadership = new Dictionary<string, string>
+                {
+                    { "President", "Ashlee Maples" },
+                    { "VP", "Kadence Grace" },
+                    { "Secretary", "Lainey Mayo" },
+                    { "Treasurer", "Halli Davis" },
+                    { "Social Media Manager", "Olivia Montagino" }
+                },
                 LogoUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/clubs/swe.jpg",
                 GalleryImageUrls = new List<string>
                 {
@@ -230,6 +301,14 @@ public class StudentClubService
                 InstagramUrl = "",
                 LinkedInUrl = "",
                 TwitterUrl = "",
+                PresidentEmail = "msu-zbrewster@mcneese.edu",
+                Leadership = new Dictionary<string, string>
+                {
+                    { "President", "Zachary Brewster" },
+                    { "VP", "Ethan Guillory" },
+                    { "Secretary", "Duvier Barber" },
+                    { "Treasurer", "Chiamanda Ononimu" }
+                },
                 LogoUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/clubs/robotics.jpg",
                 GalleryImageUrls = new List<string>
                 {
@@ -253,10 +332,20 @@ public class StudentClubService
                 Vision = "To help members discover and deepen their love for the automotive industry while gaining valuable skills and knowledge",
                 Values = "Education, Hands-on Learning, Professional Development",
                 WebsiteUrl = "",
-                FacebookUrl = "",
-                InstagramUrl = "",
+                FacebookUrl = "https://www.facebook.com/61567816701242/videos/?_rdr",
+                InstagramUrl = "https://www.instagram.com/mcneese.automotive/",
                 LinkedInUrl = "",
                 TwitterUrl = "",
+                PresidentEmail = "fdung@mcneese.edu",
+                Leadership = new Dictionary<string, string>
+                {
+                    { "President", "Feng Dung" },
+                    { "VP", "Conner Kingery" },
+                    { "Secretary", "Lisa Patel" },
+                    { "Treasurer", "Cole Hayes" },
+                    { "SGA Rep./Social Director", "Eden Bryan" },
+                    { "Supa Vic", "Victor Enoch" }
+                },
                 LogoUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/clubs/automotive.jpg",
                 GalleryImageUrls = new List<string>
                 {
@@ -280,10 +369,15 @@ public class StudentClubService
                 Vision = "Our vision for the IEEE Student Club is to be a leading community of aspiring engineers and technologists who drive innovation and create impactful solutions to real-world challenges. We strive to cultivate a culture of collaboration, continuous learning, and professional development, empowering students to become leaders in their fields. Through our efforts, we aim to inspire future generations of engineers to use their skills to make a positive difference in society and contribute to the advancement of technology globally.",
                 Values = "Innovation – We encourage creativity and forward-thinking to develop cutting-edge solutions to today's challenges.\n\nCollaboration – We foster teamwork and open communication, recognizing that the best ideas come from working together.\n\nIntegrity – We uphold ethical standards in all our endeavors, ensuring honesty, fairness, and transparency.\n\nExcellence – We are committed to continuous improvement and striving for the highest level of quality in our projects and learning.\n\nInclusion – We embrace diversity and create an inclusive environment where every member is valued and has the opportunity to contribute.",
                 WebsiteUrl = "https://www.ieee.org",
-                FacebookUrl = "",
-                InstagramUrl = "",
+                FacebookUrl = "https://www.facebook.com/mcneeseieee/",
+                InstagramUrl = "https://www.instagram.com/mcneese.ieee/",
                 LinkedInUrl = "https://www.linkedin.com/company/ieee",
                 TwitterUrl = "",
+                PresidentEmail = "jenglish1@mcneese.edu",
+                Leadership = new Dictionary<string, string>
+                {
+                    { "President", "Jacob English" }
+                },
                 LogoUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/clubs/ieee.jpg",
                 GalleryImageUrls = new List<string>
                 {

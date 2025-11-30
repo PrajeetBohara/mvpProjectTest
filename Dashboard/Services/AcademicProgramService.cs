@@ -66,129 +66,106 @@ public class AcademicProgramService
         return new List<AcademicProgram>
         {
             // ============================================
-            // BACHELOR OF SCIENCE (BS) PROGRAMS
+            // BACHELOR'S DEGREES
             // ============================================
+            // B.S in Engineering - Civil Engineering Concentration
             new AcademicProgram
             {
                 Id = 1,
-                Name = "Applied Computer Science Concentration",
-                FullName = "Computer Science, Applied Computer Science Concentration, BS",
-                Department = "Computer Science",
-                DegreeType = "BS",
-                Description = "A program emphasizing practical applications of computer science in real-world scenarios and industries.",
-                Url = "https://www.mcneese.edu/academics/computer-science/applied-cs" // Placeholder URL - update with actual URL
+                Name = "Civil Engineering Concentration",
+                FullName = "Eng. Civil Eng. Concen., B.S",
+                Department = "Engineering",
+                DegreeType = "Bachelor's Degrees",
+                Description = "A program focused on the design, construction, and maintenance of infrastructure.",
+                Url = "https://www.mcneese.edu/academics/engineering/civil-engineering" // Placeholder URL - update with actual URL
             },
+            // B.S in Engineering - Computer Engineering Concentration
             new AcademicProgram
             {
                 Id = 2,
-                Name = "Artificial Intelligence Concentration",
-                FullName = "Computer Science, Artificial Intelligence Concentration, BS",
-                Department = "Computer Science",
-                DegreeType = "BS",
-                Description = "A cutting-edge program focusing on artificial intelligence, machine learning, and intelligent systems.",
-                Url = "https://www.mcneese.edu/academics/computer-science/ai-cs" // Placeholder URL
-            },
-            new AcademicProgram
-            {
-                Id = 3,
-                Name = "Cybersecurity Concentration",
-                FullName = "Computer Science, Cybersecurity Concentration, BS",
-                Department = "Computer Science",
-                DegreeType = "BS",
-                Description = "A specialized program focusing on cybersecurity, network security, and information protection.",
-                Url = "https://www.mcneese.edu/academics/computer-science/cybersecurity-cs" // Placeholder URL
-            },
-            new AcademicProgram
-            {
-                Id = 4,
-                Name = "General Computer Science Concentration",
-                FullName = "Computer Science, General Computer Science Concentration, BS",
-                Department = "Computer Science",
-                DegreeType = "BS",
-                Description = "A comprehensive computer science program covering fundamental concepts in programming, algorithms, and software engineering.",
-                Url = "https://www.mcneese.edu/academics/computer-science/general-cs" // Placeholder URL
-            },
-            new AcademicProgram
-            {
-                Id = 5,
-                Name = "Industrial Computer Science Concentration",
-                FullName = "Computer Science, Industrial Computer Science Concentration, BS",
-                Department = "Computer Science",
-                DegreeType = "BS",
-                Description = "A program focused on applying computer science principles to industrial and manufacturing environments.",
-                Url = "https://www.mcneese.edu/academics/computer-science/industrial-cs" // Placeholder URL
-            },
-            new AcademicProgram
-            {
-                Id = 6,
-                Name = "Civil Engineering Concentration",
-                FullName = "Engineering, Civil Engineering Concentration, BS",
-                Department = "Engineering",
-                DegreeType = "BS",
-                Description = "A program focused on the design, construction, and maintenance of infrastructure.",
-                Url = "https://www.mcneese.edu/academics/engineering/civil-engineering" // Placeholder URL
-            },
-            new AcademicProgram
-            {
-                Id = 7,
                 Name = "Computer Engineering Concentration",
-                FullName = "Engineering, Computer Engineering Concentration, BS",
+                FullName = "Eng. Comp. Eng. Concen., B.S",
                 Department = "Engineering",
-                DegreeType = "BS",
+                DegreeType = "Bachelor's Degrees",
                 Description = "A program combining computer science and electrical engineering principles.",
                 Url = "https://www.mcneese.edu/academics/engineering/computer-engineering" // Placeholder URL
             },
+            // B.S in Engineering - Electrical Engineering Concentration
             new AcademicProgram
             {
-                Id = 8,
+                Id = 3,
                 Name = "Electrical Engineering Concentration",
-                FullName = "Engineering, Electrical Engineering Concentration, BS",
+                FullName = "Eng. Electrical Eng. Concen., B.S",
                 Department = "Engineering",
-                DegreeType = "BS",
+                DegreeType = "Bachelor's Degrees",
                 Description = "A program focused on electrical systems, electronics, and power generation.",
                 Url = "https://www.mcneese.edu/academics/engineering/electrical-engineering" // Placeholder URL
             },
-
-            // ============================================
-            // BACHELOR OF SCIENCE IN CHEMICAL ENGINEERING (BSChE)
-            // ============================================
+            // B.S in Chemical Engineering
             new AcademicProgram
             {
-                Id = 9,
+                Id = 4,
                 Name = "Chemical Engineering",
-                FullName = "Chemical Engineering, BSChE",
+                FullName = "B.S in Chemical Eng.",
                 Department = "Chemical Engineering",
-                DegreeType = "BSChE",
+                DegreeType = "Bachelor's Degrees",
                 Description = "A program focused on chemical processes, materials, and industrial applications.",
                 Url = "https://www.mcneese.edu/academics/chemical-engineering" // Placeholder URL
             },
-
-            // ============================================
-            // BACHELOR OF SCIENCE IN MECHANICAL ENGINEERING (BSME)
-            // ============================================
+            // B.S in Computer Science - General CS Concentration
             new AcademicProgram
             {
-                Id = 10,
+                Id = 5,
+                Name = "General CS Concentration",
+                FullName = "CS. General CS. Con., B.S",
+                Department = "Computer Science",
+                DegreeType = "Bachelor's Degrees",
+                Description = "A comprehensive computer science program covering fundamental concepts in programming, algorithms, and software engineering.",
+                Url = "https://www.mcneese.edu/academics/computer-science/general-cs" // Placeholder URL
+            },
+            // B.S in Computer Science - Software Engineering Concentration
+            new AcademicProgram
+            {
+                Id = 6,
+                Name = "Software Engineering Concentration",
+                FullName = "CS. Software Eng. Con., B.S",
+                Department = "Computer Science",
+                DegreeType = "Bachelor's Degrees",
+                Description = "A program focused on software development, design patterns, and software engineering principles.",
+                Url = "https://www.mcneese.edu/academics/computer-science/software-engineering" // Placeholder URL
+            },
+            // B.S in Computer Science - Cyber Security Concentration
+            new AcademicProgram
+            {
+                Id = 7,
+                Name = "Cyber Security Concentration",
+                FullName = "CS. Cyber Security Con., B.S",
+                Department = "Computer Science",
+                DegreeType = "Bachelor's Degrees",
+                Description = "A specialized program focusing on cybersecurity, network security, and information protection.",
+                Url = "https://www.mcneese.edu/academics/computer-science/cybersecurity-cs" // Placeholder URL
+            },
+            // B.S in Computer Science - AI Concentration
+            new AcademicProgram
+            {
+                Id = 8,
+                Name = "AI Concentration",
+                FullName = "CS.AI concen., B.S",
+                Department = "Computer Science",
+                DegreeType = "Bachelor's Degrees",
+                Description = "A cutting-edge program focusing on artificial intelligence, machine learning, and intelligent systems.",
+                Url = "https://www.mcneese.edu/academics/computer-science/ai-cs" // Placeholder URL
+            },
+            // B.S in Mechanical Engineering
+            new AcademicProgram
+            {
+                Id = 9,
                 Name = "Mechanical Engineering",
-                FullName = "Mechanical Engineering, BSME",
+                FullName = "B.S in Mechanical Eng.",
                 Department = "Mechanical Engineering",
-                DegreeType = "BSME",
+                DegreeType = "Bachelor's Degrees",
                 Description = "A program focused on mechanical systems, design, and manufacturing.",
                 Url = "https://www.mcneese.edu/academics/mechanical-engineering" // Placeholder URL
-            },
-
-            // ============================================
-            // DUAL DEGREE PROGRAMS
-            // ============================================
-            new AcademicProgram
-            {
-                Id = 11,
-                Name = "BS/MS Computer Science",
-                FullName = "Computer Science, General Computer Science Concentration, BS/Mathematical Sciences, Computer Science Concentration, MS",
-                Department = "Computer Science",
-                DegreeType = "Dual Degree",
-                Description = "An accelerated program combining bachelor's and master's degrees in computer science.",
-                Url = "https://www.mcneese.edu/academics/computer-science/dual-degree" // Placeholder URL
             },
 
             // ============================================
@@ -196,165 +173,165 @@ public class AcademicProgramService
             // ============================================
             new AcademicProgram
             {
-                Id = 12,
+                Id = 10,
                 Name = "Automation Engineering",
-                FullName = "Automation Engineering, Minor",
+                FullName = "Automation Eng., Minor",
                 Department = "Engineering",
-                DegreeType = "Minor",
+                DegreeType = "Minors",
                 Description = "A minor program in automation and control systems.",
                 Url = "https://www.mcneese.edu/academics/minors/automation-engineering" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 13,
+                Id = 11,
                 Name = "Chemical Engineering",
-                FullName = "Chemical Engineering, Minor",
+                FullName = "Chemical Eng., Minor",
                 Department = "Chemical Engineering",
-                DegreeType = "Minor",
+                DegreeType = "Minors",
                 Description = "A minor program in chemical engineering principles.",
                 Url = "https://www.mcneese.edu/academics/minors/chemical-engineering" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 14,
+                Id = 12,
                 Name = "Civil Engineering",
-                FullName = "Civil Engineering, Minor",
+                FullName = "Civil Eng., Minor",
                 Department = "Engineering",
-                DegreeType = "Minor",
+                DegreeType = "Minors",
                 Description = "A minor program in civil engineering fundamentals.",
                 Url = "https://www.mcneese.edu/academics/minors/civil-engineering" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 15,
+                Id = 13,
                 Name = "Computer Engineering",
-                FullName = "Computer Engineering, Minor",
+                FullName = "Computer Eng., Minor",
                 Department = "Engineering",
-                DegreeType = "Minor",
+                DegreeType = "Minors",
                 Description = "A minor program in computer engineering.",
                 Url = "https://www.mcneese.edu/academics/minors/computer-engineering" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 16,
+                Id = 14,
                 Name = "Computer Science",
                 FullName = "Computer Science, Minor",
                 Department = "Computer Science",
-                DegreeType = "Minor",
+                DegreeType = "Minors",
                 Description = "A minor program in computer science fundamentals.",
                 Url = "https://www.mcneese.edu/academics/minors/computer-science" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 17,
+                Id = 15,
                 Name = "Cybersecurity",
                 FullName = "Cybersecurity, Minor",
                 Department = "Computer Science",
-                DegreeType = "Minor",
+                DegreeType = "Minors",
                 Description = "A minor program in cybersecurity and information protection.",
                 Url = "https://www.mcneese.edu/academics/minors/cybersecurity" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 18,
+                Id = 16,
                 Name = "Electrical Engineering",
-                FullName = "Electrical Engineering, Minor",
+                FullName = "Electrical Eng., Minor",
                 Department = "Engineering",
-                DegreeType = "Minor",
+                DegreeType = "Minors",
                 Description = "A minor program in electrical engineering principles.",
                 Url = "https://www.mcneese.edu/academics/minors/electrical-engineering" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 19,
+                Id = 17,
                 Name = "Environmental Engineering",
-                FullName = "Environmental Engineering, Minor",
+                FullName = "Environmental Eng., Minor",
                 Department = "Engineering",
-                DegreeType = "Minor",
+                DegreeType = "Minors",
                 Description = "A minor program in environmental engineering and sustainability.",
                 Url = "https://www.mcneese.edu/academics/minors/environmental-engineering" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 20,
+                Id = 18,
                 Name = "Land Surveying",
                 FullName = "Land Surveying, Minor",
                 Department = "Engineering",
-                DegreeType = "Minor",
+                DegreeType = "Minors",
                 Description = "A minor program in land surveying and geomatics.",
                 Url = "https://www.mcneese.edu/academics/minors/land-surveying" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 21,
+                Id = 19,
                 Name = "Mechanical Engineering",
-                FullName = "Mechanical Engineering, Minor",
+                FullName = "Mechanical Eng., Minor",
                 Department = "Mechanical Engineering",
-                DegreeType = "Minor",
+                DegreeType = "Minors",
                 Description = "A minor program in mechanical engineering fundamentals.",
                 Url = "https://www.mcneese.edu/academics/minors/mechanical-engineering" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 22,
+                Id = 20,
                 Name = "Power Engineering",
-                FullName = "Power Engineering, Minor",
+                FullName = "Power Eng., Minor",
                 Department = "Engineering",
-                DegreeType = "Minor",
+                DegreeType = "Minors",
                 Description = "A minor program in power systems and electrical power engineering.",
                 Url = "https://www.mcneese.edu/academics/minors/power-engineering" // Placeholder URL
             },
 
             // ============================================
-            // MASTER OF ENGINEERING (MEng) PROGRAMS
+            // MASTER'S DEGREES (MEng)
             // ============================================
             new AcademicProgram
             {
-                Id = 23,
+                Id = 21,
                 Name = "Chemical Engineering Concentration",
-                FullName = "Engineering, Chemical Engineering Concentration, MEng",
+                FullName = "Eng., Chemical Eng. Con., MEng",
                 Department = "Chemical Engineering",
-                DegreeType = "MEng",
+                DegreeType = "Master's Degrees",
                 Description = "A master's program in chemical engineering with advanced coursework and research.",
                 Url = "https://www.mcneese.edu/academics/graduate/chemical-engineering-meng" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 24,
+                Id = 22,
                 Name = "Civil Engineering Concentration",
-                FullName = "Engineering, Civil Engineering Concentration, MEng",
+                FullName = "Eng., Civil Eng. Con., MEng",
                 Department = "Engineering",
-                DegreeType = "MEng",
+                DegreeType = "Master's Degrees",
                 Description = "A master's program in civil engineering with advanced coursework and research.",
                 Url = "https://www.mcneese.edu/academics/graduate/civil-engineering-meng" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 25,
+                Id = 23,
                 Name = "Computer Engineering Concentration",
-                FullName = "Engineering, Computer Engineering Concentration, MEng",
+                FullName = "Eng., Computer Eng. Con., MEng",
                 Department = "Engineering",
-                DegreeType = "MEng",
+                DegreeType = "Master's Degrees",
                 Description = "A master's program in computer engineering with advanced coursework and research.",
                 Url = "https://www.mcneese.edu/academics/graduate/computer-engineering-meng" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 26,
+                Id = 24,
                 Name = "Electrical Engineering Concentration",
-                FullName = "Engineering, Electrical Engineering Concentration, MEng",
+                FullName = "Eng., Electrical Eng. Con., MEng",
                 Department = "Engineering",
-                DegreeType = "MEng",
+                DegreeType = "Master's Degrees",
                 Description = "A master's program in electrical engineering with advanced coursework and research.",
                 Url = "https://www.mcneese.edu/academics/graduate/electrical-engineering-meng" // Placeholder URL
             },
             new AcademicProgram
             {
-                Id = 27,
+                Id = 25,
                 Name = "Mechanical Engineering Concentration",
-                FullName = "Engineering, Mechanical Engineering Concentration, MEng",
+                FullName = "Eng., Mechanical Eng. Con., MEng",
                 Department = "Mechanical Engineering",
-                DegreeType = "MEng",
+                DegreeType = "Master's Degrees",
                 Description = "A master's program in mechanical engineering with advanced coursework and research.",
                 Url = "https://www.mcneese.edu/academics/graduate/mechanical-engineering-meng" // Placeholder URL
             }

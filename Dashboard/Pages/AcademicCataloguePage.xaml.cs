@@ -25,9 +25,15 @@ public partial class AcademicCataloguePage : ContentPage
     /// </summary>
     private void LoadPrograms()
     {
-        var degreeTypes = _programService.GetDegreeTypes();
+        // Define the order we want to display sections
+        var orderedDegreeTypes = new List<string> 
+        { 
+            "Bachelor's Degrees", 
+            "Minors", 
+            "Master's Degrees" 
+        };
         
-        foreach (var degreeType in degreeTypes)
+        foreach (var degreeType in orderedDegreeTypes)
         {
             var programs = _programService.GetProgramsByDegreeType(degreeType);
             if (programs.Count > 0)
@@ -42,27 +48,46 @@ public partial class AcademicCataloguePage : ContentPage
     /// </summary>
     private void CreateDegreeTypeSection(string degreeType, List<AcademicProgram> programs)
     {
+        // Main Section Frame
+        var sectionFrame = new Frame
+        {
+            BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#003087"),
+            CornerRadius = 16,
+            Padding = 0,
+            HasShadow = true,
+            Margin = new Thickness(0, 0, 0, 25)
+        };
+
+        var sectionStack = new VerticalStackLayout { Spacing = 0 };
+
         // Degree Type Header
         var headerFrame = new Frame
         {
-            BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#003087"),
-            CornerRadius = 12,
-            Padding = 15,
-            HasShadow = true,
-            Margin = new Thickness(0, 0, 0, 10)
+            BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#002a54"),
+            CornerRadius = 0,
+            Padding = 20,
+            HasShadow = false,
+            Margin = 0
         };
 
         var headerLabel = new Label
         {
             Text = GetDegreeTypeDisplayName(degreeType),
-            FontSize = 22,
+            FontSize = 24,
             FontAttributes = FontAttributes.Bold,
             TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#FFD204"),
             HorizontalOptions = LayoutOptions.Start
         };
 
         headerFrame.Content = headerLabel;
-        ProgramsContainer.Children.Add(headerFrame);
+        sectionStack.Children.Add(headerFrame);
+
+        // Programs Container
+        var programsStack = new VerticalStackLayout 
+        { 
+            Spacing = 10, 
+            Padding = new Thickness(15, 15, 15, 15)
+        };
 
         // Programs List
         foreach (var program in programs)
@@ -71,9 +96,9 @@ public partial class AcademicCataloguePage : ContentPage
             {
                 BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#002a54"),
                 CornerRadius = 10,
-                Padding = 15,
+                Padding = 18,
                 HasShadow = false,
-                Margin = new Thickness(0, 0, 0, 8)
+                Margin = new Thickness(0, 0, 0, 0)
             };
 
             var tapGesture = new TapGestureRecognizer();
@@ -94,25 +119,31 @@ public partial class AcademicCataloguePage : ContentPage
                 FontAttributes = FontAttributes.Bold,
                 TextColor = Colors.White,
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.StartAndExpand
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                LineBreakMode = LineBreakMode.WordWrap
             };
 
             // Arrow Icon
             var arrowLabel = new Label
             {
                 Text = "›",
-                FontSize = 24,
+                FontSize = 28,
                 FontAttributes = FontAttributes.Bold,
                 TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#FFD204"),
-                VerticalOptions = LayoutOptions.Center
+                VerticalOptions = LayoutOptions.Center,
+                Margin = new Thickness(10, 0, 0, 0)
             };
 
             programLayout.Children.Add(nameLabel);
             programLayout.Children.Add(arrowLabel);
 
             programFrame.Content = programLayout;
-            ProgramsContainer.Children.Add(programFrame);
+            programsStack.Children.Add(programFrame);
         }
+
+        sectionStack.Children.Add(programsStack);
+        sectionFrame.Content = sectionStack;
+        ProgramsContainer.Children.Add(sectionFrame);
     }
 
     /// <summary>
@@ -122,12 +153,9 @@ public partial class AcademicCataloguePage : ContentPage
     {
         return degreeType switch
         {
-            "BS" => "Bachelor of Science (BS)",
-            "BSChE" => "Bachelor of Science in Chemical Engineering (BSChE)",
-            "BSME" => "Bachelor of Science in Mechanical Engineering (BSME)",
-            "Dual Degree" => "Dual Degree (Baccalaureate + Master's)",
-            "Minor" => "Minor",
-            "MEng" => "Master of Engineering (MEng)",
+            "Bachelor's Degrees" => "Bachelor's Degrees",
+            "Minors" => "Minors",
+            "Master's Degrees" => "Master's Degrees",
             _ => degreeType
         };
     }
@@ -145,26 +173,27 @@ public partial class AcademicCataloguePage : ContentPage
             return;
         }
 
-        var result = await DisplayAlert(
-            "Program Information",
-            $"Program: {program.FullName}\n\nURL: {program.Url}\n\nWould you like to open this URL in your browser?",
-            "Open URL",
-            "Copy URL"
+        var result = await DisplayActionSheet(
+            $"Program: {program.FullName}",
+            "Cancel",
+            null,
+            "Open URL in Browser",
+            "Copy URL to Clipboard"
         );
 
-        if (result)
+        if (result == "Open URL in Browser")
         {
             // Open URL
             try
             {
-                await Microsoft.Maui.ApplicationModel.Launcher.Default.OpenAsync(program.Url);
+                await Microsoft.Maui.ApplicationModel.Launcher.Default.OpenAsync(new Uri(program.Url));
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Error", $"Could not open URL.\n\nError: {ex.Message}", "OK");
             }
         }
-        else
+        else if (result == "Copy URL to Clipboard")
         {
             // Copy URL to clipboard
             try

@@ -105,5 +105,15 @@ public class StudentClub
     /// Twitter/X profile URL.
     /// </summary>
     public string TwitterUrl { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Dictionary of leadership positions and names (e.g., "President" -> "John Doe").
+    /// </summary>
+    public Dictionary<string, string> Leadership { get; set; } = new();
+
+    /// <summary>
+    /// President's email address.
+    /// </summary>
+    public string PresidentEmail { get; set; } = string.Empty;
 }
 
