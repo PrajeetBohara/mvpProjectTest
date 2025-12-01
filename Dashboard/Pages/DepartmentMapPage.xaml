@@ -7,184 +7,44 @@
     xmlns:controls="clr-namespace:Dashboard.Controls"
     Title="Department Map">
 
-    <Grid RowDefinitions="Auto,Auto,Auto,*">
-        <!-- Global TopBar -->
+    <!-- Full Screen WebView with Zoom and Pan Support -->
+    <Grid RowDefinitions="Auto,*">
+        <!-- TopBar -->
         <controls:TopBar Grid.Row="0" />
         
-        <!-- Back Button -->
-        <Frame Grid.Row="1"
-               BackgroundColor="#003087"
-               Padding="10"
-               HasShadow="True"
-               Margin="0,0,0,10">
-            <Button x:Name="BackButton"
-                    Text="← Back to Maps"
-                    BackgroundColor="#002a54"
-                    TextColor="White"
-                    FontSize="14"
-                    FontAttributes="Bold"
-                    CornerRadius="8"
-                    Padding="15,8"
-                    HorizontalOptions="Start"
-                    Clicked="OnBackButtonClicked" />
-        </Frame>
-        
-        <!-- Floor Selector -->
-        <Frame Grid.Row="2"
-               BackgroundColor="#003087"
-               Padding="15"
-               HasShadow="True"
-               Margin="0,0,0,10">
-            <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
-                <!-- ETL Button -->
-                <Button x:Name="ETLButton"
-                        Text="ETL"
-                        BackgroundColor="#002a54"
-                        TextColor="White"
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        CornerRadius="8"
-                        Padding="20,10"
-                        Clicked="OnFloorSelected"
-                        CommandParameter="ETL" />
-                
-                <!-- Floor 1 Button -->
-                <Button x:Name="Floor1Button"
-                        Text="Floor 1"
-                        BackgroundColor="#FFD204"
-                        TextColor="#003087"
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        CornerRadius="8"
-                        Padding="20,10"
-                        Clicked="OnFloorSelected"
-                        CommandParameter="1" />
-                
-                <!-- Floor 2 Button -->
-                <Button x:Name="Floor2Button"
-                        Text="Floor 2"
-                        BackgroundColor="#002a54"
-                        TextColor="White"
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        CornerRadius="8"
-                        Padding="20,10"
-                        Clicked="OnFloorSelected"
-                        CommandParameter="2" />
-                
-                <!-- Floor 3 Button -->
-                <Button x:Name="Floor3Button"
-                        Text="Floor 3"
-                        BackgroundColor="#002a54"
-                        TextColor="White"
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        CornerRadius="8"
-                        Padding="20,10"
-                        Clicked="OnFloorSelected"
-                        CommandParameter="3" />
-            </HorizontalStackLayout>
-        </Frame>
-
-        <!-- Interactive Map Area with Zoom and Pan -->
-        <Grid Grid.Row="3">
-            <ScrollView x:Name="MapScrollView"
-                        HorizontalScrollBarVisibility="Always"
-                        VerticalScrollBarVisibility="Always"
-                        Orientation="Both">
-                <Grid x:Name="MapContainer"
-                      BackgroundColor="#F5F5F5">
-                    
-                    <!-- Floor Plan Image (JPG/SVG) with Zoom Support -->
-                    <Image x:Name="FloorPlanImage"
-                           Aspect="AspectFit"
-                           BackgroundColor="Transparent"
-                           VerticalOptions="Start"
-                           HorizontalOptions="Start"
-                           Opacity="1.0"
-                           MaximumWidthRequest="800"
-                           MaximumHeightRequest="600" />
-                    
-                    <!-- Interactive Zones Overlay (AbsoluteLayout for precise positioning) -->
-                    <!-- This overlay scales with the image to maintain hit-box alignment -->
-                    <!-- Size is set programmatically to match the image exactly -->
-                    <AbsoluteLayout x:Name="RoomZonesOverlay"
-                                    BackgroundColor="Transparent"
-                                    VerticalOptions="Start"
-                                    HorizontalOptions="Start">
-                        <!-- Room tap zones (invisible buttons) will be added programmatically -->
-                    </AbsoluteLayout>
-                    
-                    <!-- Current Location Indicator -->
-                    <AbsoluteLayout x:Name="LocationOverlay"
-                                    BackgroundColor="Transparent"
-                                    VerticalOptions="Start"
-                                    HorizontalOptions="Start">
-                        <!-- Current location marker will be added programmatically -->
-                    </AbsoluteLayout>
-                </Grid>
-            </ScrollView>
-            
-            <!-- Zoom Controls Overlay -->
-            <Frame BackgroundColor="#80000000"
-                   CornerRadius="12"
-                   Padding="15"
+        <!-- WebView Container with Zoom Slider -->
+        <Grid Grid.Row="1"
+              RowDefinitions="Auto,*">
+            <!-- Back Button -->
+            <Frame Grid.Row="0"
+                   BackgroundColor="#003087"
+                   Padding="10"
                    HasShadow="True"
-                   HorizontalOptions="End"
-                   VerticalOptions="End"
-                   Margin="0,0,20,20"
-                   WidthRequest="80">
-                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                    <!-- Zoom In Button -->
-                    <Button x:Name="ZoomInButton"
-                            Text="+"
-                            FontSize="24"
-                            FontAttributes="Bold"
-                            BackgroundColor="#FFD204"
-                            TextColor="#003087"
-                            CornerRadius="20"
-                            WidthRequest="50"
-                            HeightRequest="50"
-                            Padding="0"
-                            Clicked="OnZoomInClicked" />
-                    
-                    <!-- Zoom Slider (Vertical) -->
-                    <Grid WidthRequest="60" HeightRequest="150" HorizontalOptions="Center">
-                        <Slider x:Name="ZoomSlider"
-                                Minimum="1.0"
-                                Maximum="5.0"
-                                Value="1.0"
-                                MinimumTrackColor="#FFD204"
-                                MaximumTrackColor="#002a54"
-                                ThumbColor="#FFD204"
-                                Rotation="270"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                ValueChanged="OnZoomSliderValueChanged" />
-                    </Grid>
-                    
-                    <!-- Zoom Out Button -->
-                    <Button x:Name="ZoomOutButton"
-                            Text="−"
-                            FontSize="28"
-                            FontAttributes="Bold"
-                            BackgroundColor="#FFD204"
-                            TextColor="#003087"
-                            CornerRadius="20"
-                            WidthRequest="50"
-                            HeightRequest="50"
-                            Padding="0"
-                            Clicked="OnZoomOutClicked" />
-                    
-                    <!-- Zoom Level Label -->
-                    <Label x:Name="ZoomLevelLabel"
-                           Text="100%"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           HorizontalOptions="Center" />
-                </VerticalStackLayout>
+                   Margin="0,0,0,10">
+                <Button x:Name="BackButton"
+                        Text="← Back to Maps"
+                        BackgroundColor="#002a54"
+                        TextColor="White"
+                        FontSize="14"
+                        FontAttributes="Bold"
+                        CornerRadius="8"
+                        Padding="15,8"
+                        HorizontalOptions="Start"
+                        Clicked="OnBackButtonClicked" />
             </Frame>
+            
+            <!-- WebView with Zoom Slider -->
+            <Grid Grid.Row="1">
+                <WebView x:Name="InteractiveMapWebView"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="White"
+                         IsVisible="True"
+                         Opacity="1.0"
+                         Navigating="OnWebViewNavigating"
+                         Navigated="OnWebViewNavigated" />
+                
+            </Grid>
         </Grid>
     </Grid>
 </ContentPage>
