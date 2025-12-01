@@ -2,7 +2,7 @@
 using Dashboard.Models;
 using Dashboard.Services;
 using Microsoft.Maui.Controls;
-using System.Text;
+using Microsoft.Maui.ApplicationModel;
 
 namespace Dashboard.Pages;
 
@@ -13,12 +13,21 @@ namespace Dashboard.Pages;
 public partial class DepartmentMapPage : ContentPage
 {
     private readonly FloorPlanService _floorPlanService;
-    private int _currentFloor = 1;
-    private string _currentSelection = "1"; // "ETL" or "1", "2", "3"
-    private double _imageWidth = 0;
-    private double _imageHeight = 0;
-    private Dictionary<string, View> _roomZones = new Dictionary<string, View>();
     private double _currentZoom = 1.0;
+    private bool _isUpdatingZoom = false;
+    private double _panX = 0;
+    private double _panY = 0;
+    
+    // Vercel deployment URL
+    private const string VercelMapUrl = "https://interactive-map-seven-kappa.vercel.app/";
+    
+    // Zoom constants
+    private const double MinZoom = 0.5;
+    private const double MaxZoom = 3.0;
+    private const double ZoomStep = 0.1;
+    
+    // Pan constants
+    private const double PanStep = 50; // Pixels to pan per click
 
     #region Constructor
     /// <summary>
@@ -30,14 +39,57 @@ public partial class DepartmentMapPage : ContentPage
         InitializeComponent();
         _floorPlanService = floorPlanService;
         
-        // Load initial floor (Floor 1)
-        LoadFloor(1);
+        // Enable zoom and pan for WebView
+        EnableWebViewZoom();
         
-        // Set up Image size tracking
-        FloorPlanImage.SizeChanged += OnImageSizeChanged;
-        
-        // Initialize zoom controls
-        InitializeZoomControls();
+        // Load the Vercel interactive map
+        LoadVercelMap();
+    }
+    
+    /// <summary>
+    /// Enables zoom and pan functionality for the WebView on all platforms.
+    /// </summary>
+    private void EnableWebViewZoom()
+    {
+        #if ANDROID
+        // Android-specific: Enable zoom controls and scrolling
+        InteractiveMapWebView.HandlerChanged += (s, e) =>
+        {
+            if (InteractiveMapWebView.Handler?.PlatformView is Android.Webkit.WebView androidWebView)
+            {
+                var settings = androidWebView.Settings;
+                settings.SetSupportZoom(true);
+                settings.BuiltInZoomControls = true;
+                settings.DisplayZoomControls = false; // Hide default zoom controls, use pinch-to-zoom
+                settings.UseWideViewPort = true;
+                settings.LoadWithOverviewMode = true;
+                settings.JavaScriptEnabled = true;
+                settings.DomStorageEnabled = true;
+                
+                // Enable scrolling/panning
+                androidWebView.ScrollBarStyle = Android.Views.ScrollbarStyles.OutsideOverlay;
+                androidWebView.ScrollbarFadingEnabled = false;
+            }
+        };
+        #elif IOS || MACCATALYST
+        // iOS/Mac: Zoom is enabled by default, but we can configure it
+        InteractiveMapWebView.HandlerChanged += (s, e) =>
+        {
+            if (InteractiveMapWebView.Handler?.PlatformView is WebKit.WKWebView iosWebView)
+            {
+                iosWebView.Configuration.AllowsInlineMediaPlayback = true;
+                iosWebView.Configuration.MediaTypesRequiringUserActionForPlayback = WebKit.WKAudiovisualMediaTypes.None;
+            }
+        };
+        #elif WINDOWS
+        // Windows: WebView2 supports zoom by default
+        // Zoom can be controlled via Ctrl+Plus, Ctrl+Minus, or mouse wheel
+        InteractiveMapWebView.HandlerChanged += (s, e) =>
+        {
+            // WebView2 on Windows supports zoom natively
+            // No additional configuration needed
+        };
+        #endif
     }
     #endregion
 
@@ -61,616 +113,93 @@ public partial class DepartmentMapPage : ContentPage
     }
     #endregion
 
-    #region Floor Management
+    #region Map Loading
     /// <summary>
-    /// Handles floor selection button clicks.
+    /// Loads the Vercel-deployed interactive map in the WebView.
+    /// The map supports zoom, pan, and all interactive features natively through the WebView.
     /// </summary>
-    private void OnFloorSelected(object sender, EventArgs e)
-    {
-        if (sender is Button button && button.CommandParameter is string floorStr)
-        {
-            if (floorStr == "ETL")
-            {
-                LoadETL();
-            }
-            else if (int.TryParse(floorStr, out int floorNumber))
-            {
-                LoadFloor(floorNumber);
-            }
-        }
-    }
-
-    /// <summary>
-    /// Loads and displays the ETL (Electrical Technology Lab) map.
-    /// </summary>
-    private async void LoadETL()
-    {
-        _currentSelection = "ETL";
-        _currentFloor = 0; // Use 0 to represent ETL
-        
-        // Update button styles
-        UpdateFloorButtonStyles();
-        
-        // Clear existing room zones
-        ClearRoomZones();
-        LocationOverlay.Children.Clear();
-        
-        // Load ETL JPG image
-        LoadImage("etl.jpg");
-        
-        // Wait a bit for image to load
-        await Task.Delay(300);
-        
-        // ETL can have rooms too if needed - for now just load the map
-        var etlFloorPlan = _floorPlanService.GetETLFloorPlan();
-        if (etlFloorPlan != null)
-        {
-            AddRoomZones(etlFloorPlan);
-            AddCurrentLocationMarker();
-        }
-    }
-
-    /// <summary>
-    /// Loads and displays the specified floor plan.
-    /// </summary>
-    /// <param name="floorNumber">The floor number to load (1, 2, or 3).</param>
-    private async void LoadFloor(int floorNumber)
-    {
-        _currentFloor = floorNumber;
-        _currentSelection = floorNumber.ToString();
-        
-        // Update floor button styles
-        UpdateFloorButtonStyles();
-        
-        // Load floor plan SVG
-        var floorPlan = _floorPlanService.GetFloorPlan(floorNumber);
-        if (floorPlan != null)
-        {
-            // Clear existing room zones
-            ClearRoomZones();
-            LocationOverlay.Children.Clear();
-            
-            // Load JPG image
-            LoadImage($"{floorPlan.SvgPath}.jpg");
-            
-            // Wait a bit for image to load, then add interactive zones
-            await Task.Delay(300);
-            AddRoomZones(floorPlan);
-            AddCurrentLocationMarker();
-        }
-    }
-
-    /// <summary>
-    /// Loads a JPG image file into the Image control.
-    /// </summary>
-    private void LoadImage(string imageFileName)
+    private void LoadVercelMap()
     {
         try
         {
-            // Reset zoom when loading new image
-            SetZoom(1.0);
+            System.Diagnostics.Debug.WriteLine($"Loading Vercel map: {VercelMapUrl}");
             
-            // Set the image source - MAUI will automatically load from Resources/Images
-            FloorPlanImage.Source = imageFileName;
-            
-            System.Diagnostics.Debug.WriteLine($"Loading image: {imageFileName}");
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"Error loading image: {ex.Message}");
-            // Fallback: show placeholder or error
-            FloorPlanImage.Source = "mcneeselogo.png";
-        }
-    }
-
-    /// <summary>
-    /// Updates the visual style of floor selection buttons to highlight the current selection.
-    /// </summary>
-    private void UpdateFloorButtonStyles()
-    {
-        // McNeese colors: Sunflower Gold for selected, Dark Blue for unselected
-        bool isETLSelected = _currentSelection == "ETL";
-        bool isFloor1Selected = _currentSelection == "1";
-        bool isFloor2Selected = _currentSelection == "2";
-        bool isFloor3Selected = _currentSelection == "3";
-        
-        ETLButton.BackgroundColor = isETLSelected ? Color.FromArgb("#FFD204") : Color.FromArgb("#002a54");
-        ETLButton.TextColor = isETLSelected ? Color.FromArgb("#003087") : Colors.White;
-        Floor1Button.BackgroundColor = isFloor1Selected ? Color.FromArgb("#FFD204") : Color.FromArgb("#002a54");
-        Floor1Button.TextColor = isFloor1Selected ? Color.FromArgb("#003087") : Colors.White;
-        Floor2Button.BackgroundColor = isFloor2Selected ? Color.FromArgb("#FFD204") : Color.FromArgb("#002a54");
-        Floor2Button.TextColor = isFloor2Selected ? Color.FromArgb("#003087") : Colors.White;
-        Floor3Button.BackgroundColor = isFloor3Selected ? Color.FromArgb("#FFD204") : Color.FromArgb("#002a54");
-        Floor3Button.TextColor = isFloor3Selected ? Color.FromArgb("#003087") : Colors.White;
-    }
-    #endregion
-
-    #region Image Size Tracking
-    /// <summary>
-    /// Handles Image size changes to recalculate room zone positions and update container size.
-    /// </summary>
-    private void OnImageSizeChanged(object? sender, EventArgs e)
-    {
-        if (FloorPlanImage.Width > 0 && FloorPlanImage.Height > 0)
-        {
-            _imageWidth = FloorPlanImage.Width;
-            _imageHeight = FloorPlanImage.Height;
-            
-            System.Diagnostics.Debug.WriteLine($"Image size changed: {_imageWidth}x{_imageHeight}");
-            
-            // Update overlay size to match image exactly
-            RoomZonesOverlay.WidthRequest = _imageWidth;
-            RoomZonesOverlay.HeightRequest = _imageHeight;
-            LocationOverlay.WidthRequest = _imageWidth;
-            LocationOverlay.HeightRequest = _imageHeight;
-            
-            // Update container size for scrolling (allows panning when zoomed)
-            MapContainer.MinimumWidthRequest = FloorPlanImage.Width * _currentZoom;
-            MapContainer.MinimumHeightRequest = FloorPlanImage.Height * _currentZoom;
-            
-            // Recalculate room zones when Image size changes
-            FloorPlan? floorPlan = null;
-            if (_currentSelection == "ETL")
+            InteractiveMapWebView.Source = new UrlWebViewSource
             {
-                floorPlan = _floorPlanService.GetETLFloorPlan();
-            }
-            else
-            {
-                floorPlan = _floorPlanService.GetFloorPlan(_currentFloor);
-            }
-            
-            if (floorPlan != null)
-            {
-                ClearRoomZones();
-                AddRoomZones(floorPlan);
-                AddCurrentLocationMarker();
-            }
-        }
-    }
-    #endregion
-
-    #region Room Interaction Zones
-    /// <summary>
-    /// Adds interactive tap zones for all rooms on the current floor.
-    /// Uses invisible Button controls for reliable tap detection on all platforms.
-    /// Hit-boxes are positioned to match the image at base size (overlay scales with image).
-    /// </summary>
-    private void AddRoomZones(FloorPlan floorPlan)
-    {
-        if (_imageWidth == 0 || _imageHeight == 0)
-        {
-            System.Diagnostics.Debug.WriteLine($"AddRoomZones: Image size not set yet. Width: {_imageWidth}, Height: {_imageHeight}");
-            return;
-        }
-        
-        System.Diagnostics.Debug.WriteLine($"AddRoomZones: Adding zones for {floorPlan.Rooms.Count} rooms. Image size: {_imageWidth}x{_imageHeight}");
-        
-        // Update overlay size to match image
-        RoomZonesOverlay.WidthRequest = _imageWidth;
-        RoomZonesOverlay.HeightRequest = _imageHeight;
-        
-        foreach (var room in floorPlan.Rooms)
-        {
-            // Calculate absolute positions based on relative coordinates
-            // Use base image dimensions (overlay will scale with image via Scale property)
-            var x = room.X * _imageWidth;
-            var y = room.Y * _imageHeight;
-            var width = room.Width * _imageWidth;
-            var height = room.Height * _imageHeight;
-            
-            System.Diagnostics.Debug.WriteLine($"Adding hit-box for Room {room.RoomNumber}: Position ({x}, {y}), Size ({width}, {height})");
-            
-            // Create invisible button as tap zone (more reliable than BoxView)
-            // Temporarily make it slightly visible for debugging (set Opacity to 0.3 to see it)
-            var tapZone = new Button
-            {
-                BackgroundColor = Color.FromRgba(255, 0, 0, 50), // Slightly visible red for debugging
-                Opacity = 0.3, // Make visible for testing - change to 0.0 when working
-                BorderColor = Colors.Red,
-                BorderWidth = 1,
-                // Store room data in CommandParameter for easy access
-                CommandParameter = room.RoomNumber
+                Url = VercelMapUrl
             };
             
-            // Add click handler
-            tapZone.Clicked += (s, e) => 
-            {
-                System.Diagnostics.Debug.WriteLine($"Room {room.RoomNumber} tapped!");
-                OnRoomTapped(room);
-            };
-            
-            // Position the zone using AbsoluteLayout
-            // Overlay will scale with the image, so positions are relative to base image size
-            AbsoluteLayout.SetLayoutBounds(tapZone, new Rect(x, y, width, height));
-            RoomZonesOverlay.Children.Add(tapZone);
-            
-            _roomZones[room.RoomNumber] = tapZone;
-        }
-        
-        System.Diagnostics.Debug.WriteLine($"Added {_roomZones.Count} room zones to overlay");
-    }
-
-    /// <summary>
-    /// Clears all room interaction zones from the overlay.
-    /// </summary>
-    private void ClearRoomZones()
-    {
-        RoomZonesOverlay.Children.Clear();
-        _roomZones.Clear();
-    }
-    #endregion
-
-    #region Room Interaction Handlers
-    /// <summary>
-    /// Handles room tap to show room details.
-    /// Offers both modal popup and navigation to RoomDetailsPage.
-    /// </summary>
-    private async void OnRoomTapped(Room room)
-    {
-        try
-        {
-            // Show action sheet to let user choose between modal and navigation
-            var action = await DisplayActionSheet(
-                $"Room {room.RoomNumber}",
-                "Cancel",
-                null,
-                "View Details (Modal)",
-                "View Details (Full Page)"
-            );
-
-            if (action == "View Details (Modal)")
-            {
-                await ShowRoomDetailsModal(room);
-            }
-            else if (action == "View Details (Full Page)")
-            {
-                await NavigateToRoomDetails(room);
-            }
+            System.Diagnostics.Debug.WriteLine($"✓ Vercel map loaded successfully");
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Error showing room details: {ex.Message}");
-            // Fallback: just show modal if action sheet fails
-            await ShowRoomDetailsModal(room);
-        }
-    }
-
-    /// <summary>
-    /// Displays room details in a modal popup.
-    /// </summary>
-    private async Task ShowRoomDetailsModal(Room room)
-    {
-        var detailsPage = new ContentPage
-        {
-            Title = $"Room {room.RoomNumber}",
-            BackgroundColor = Color.FromArgb("#003087"),
-            Padding = new Thickness(20)
-        };
-
-        var content = new ScrollView();
-        var stackLayout = new VerticalStackLayout
-        {
-            Spacing = 15
-        };
-
-        // Room Number and Name
-        stackLayout.Children.Add(new Label
-        {
-            Text = room.RoomNumber,
-            FontSize = 32,
-            FontAttributes = FontAttributes.Bold,
-            TextColor = Colors.White
-        });
-
-        stackLayout.Children.Add(new Label
-        {
-            Text = room.RoomName,
-            FontSize = 24,
-            FontAttributes = FontAttributes.Bold,
-            TextColor = Color.FromArgb("#FFD204") // McNeese Sunflower Gold
-        });
-
-        // Room Type
-        stackLayout.Children.Add(new Label
-        {
-            Text = $"Type: {room.RoomType}",
-            FontSize = 18,
-            TextColor = Color.FromArgb("#CCCCCC")
-        });
-
-        // Square Footage
-        stackLayout.Children.Add(new Label
-        {
-            Text = $"Size: {room.SquareFootage} sq ft",
-            FontSize = 16,
-            TextColor = Color.FromArgb("#CCCCCC")
-        });
-
-        // Professor Name (if applicable)
-        if (!string.IsNullOrEmpty(room.ProfessorName))
-        {
-            stackLayout.Children.Add(new Label
+            System.Diagnostics.Debug.WriteLine($"✗ Error loading Vercel map: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+            
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
-                Text = $"Professor: {room.ProfessorName}",
-                FontSize = 16,
-                TextColor = Color.FromArgb("#CCCCCC")
+                await DisplayAlert("Error", $"Could not load interactive map.\n\n{ex.Message}", "OK");
             });
         }
-
-        // Description
-        if (!string.IsNullOrEmpty(room.Description))
+    }
+    
+    /// <summary>
+    /// Handles WebView navigation start.
+    /// </summary>
+    private void OnWebViewNavigating(object? sender, WebNavigatingEventArgs e)
+    {
+        System.Diagnostics.Debug.WriteLine($"WebView navigating to: {e.Url}");
+    }
+    
+    /// <summary>
+    /// Handles WebView navigation completion.
+    /// Ensures panning is enabled after page loads.
+    /// </summary>
+    private async void OnWebViewNavigated(object? sender, WebNavigatedEventArgs e)
+    {
+        if (e.Result == WebNavigationResult.Success)
         {
-            stackLayout.Children.Add(new Label
+            System.Diagnostics.Debug.WriteLine($"WebView navigated successfully");
+            
+            // Wait a bit for the page to fully load
+            await Task.Delay(500);
+            
+            // Ensure the page can handle touch gestures (pan/zoom) directly inside the WebView
+            try
             {
-                Text = "Description:",
-                FontSize = 18,
-                FontAttributes = FontAttributes.Bold,
-                TextColor = Colors.White,
-                Margin = new Thickness(0, 10, 0, 5)
-            });
-
-            stackLayout.Children.Add(new Label
+                var enableInteractionScript = @"
+                    (function() {
+                        var body = document.body;
+                        var html = document.documentElement;
+                        
+                        // Allow scrolling and touch gestures
+                        body.style.overflow = 'auto';
+                        html.style.overflow = 'auto';
+                        
+                        body.style.touchAction = 'manipulation';
+                        html.style.touchAction = 'manipulation';
+                        
+                        // Ensure pointer events are enabled
+                        body.style.pointerEvents = 'auto';
+                        html.style.pointerEvents = 'auto';
+                    })();
+                ";
+                
+                await InteractiveMapWebView.EvaluateJavaScriptAsync(enableInteractionScript);
+                
+                System.Diagnostics.Debug.WriteLine($"✓ WebView interactions enabled");
+            }
+            catch (Exception ex)
             {
-                Text = room.Description,
-                FontSize = 16,
-                TextColor = Color.FromArgb("#CCCCCC"),
-                LineBreakMode = LineBreakMode.WordWrap
-            });
+                System.Diagnostics.Debug.WriteLine($"✗ Error enabling interactions: {ex.Message}");
+            }
         }
-
-        // Close Button
-        var closeButton = new Button
-        {
-            Text = "Close",
-            BackgroundColor = Color.FromArgb("#FFD204"), // McNeese Sunflower Gold
-            TextColor = Color.FromArgb("#003087"), // Royal Blue text
-            FontSize = 18,
-            CornerRadius = 8,
-            Margin = new Thickness(0, 20, 0, 0),
-            HeightRequest = 50
-        };
-        closeButton.Clicked += async (s, e) => await Navigation.PopModalAsync();
-        stackLayout.Children.Add(closeButton);
-
-        content.Content = stackLayout;
-        detailsPage.Content = content;
-
-        await Navigation.PushModalAsync(detailsPage);
-    }
-
-    /// <summary>
-    /// Navigates to the RoomDetailsPage for a full-page view.
-    /// </summary>
-    private async Task NavigateToRoomDetails(Room room)
-    {
-        try
-        {
-            var roomDetailsPage = new RoomDetailsPage(room);
-            await Navigation.PushModalAsync(roomDetailsPage);
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"Error navigating to room details page: {ex.Message}");
-            await DisplayAlert("Error", "Could not open room details page.", "OK");
-        }
-    }
-    #endregion
-
-    #region Current Location Marker
-    /// <summary>
-    /// Adds the current location indicator to the map for the current floor/ETL.
-    /// </summary>
-    private void AddCurrentLocationMarker()
-    {
-        if (_imageWidth == 0 || _imageHeight == 0) return;
-        
-        // Get location for the current floor/ETL being viewed
-        BuildingLocation? location = null;
-        if (_currentSelection == "ETL")
-        {
-            location = _floorPlanService.GetLocationForFloor(0); // ETL is floor 0
-        }
-        else
-        {
-            location = _floorPlanService.GetLocationForFloor(_currentFloor);
-        }
-        
-        // If no location found for this floor, don't show marker
-        if (location == null) return;
-        
-        // Calculate absolute position
-        var x = location.X * _imageWidth;
-        var y = location.Y * _imageHeight;
-        
-        // Create pulsing location marker (using BoxView with CornerRadius for circular shape)
-        // Using McNeese Orange Gold to differentiate from campus map (which uses Sunflower Gold)
-        var marker = new BoxView
-        {
-            BackgroundColor = Color.FromArgb("#f2b32e"), // McNeese Orange Gold
-            WidthRequest = 20,
-            HeightRequest = 20,
-            CornerRadius = 10 // Makes it circular
-        };
-        
-        // Position the marker
-        AbsoluteLayout.SetLayoutBounds(marker, new Rect(x - 10, y - 10, 20, 20));
-        LocationOverlay.Children.Add(marker);
-        
-        // Add label
-        var label = new Label
-        {
-            Text = "You are here",
-            FontSize = 12,
-            TextColor = Color.FromArgb("#f2b32e"), // McNeese Orange Gold
-            FontAttributes = FontAttributes.Bold,
-            BackgroundColor = Colors.White,
-            Padding = new Thickness(5, 2, 5, 2)
-        };
-        AbsoluteLayout.SetLayoutBounds(label, new Rect(x - 40, y - 35, 80, 20));
-        LocationOverlay.Children.Add(label);
-        
-        // Start pulsing animation
-        StartLocationPulseAnimation(marker);
-    }
-
-    /// <summary>
-    /// Starts a pulsing animation for the location marker.
-    /// </summary>
-    private void StartLocationPulseAnimation(BoxView marker)
-    {
-        var animation = new Animation();
-        
-        // Scale animation
-        var scaleUp = new Animation(v => marker.Scale = v, 1.0, 1.5);
-        var scaleDown = new Animation(v => marker.Scale = v, 1.5, 1.0);
-        
-        animation.Add(0, 0.5, scaleUp);
-        animation.Add(0.5, 1.0, scaleDown);
-        
-        animation.Commit(marker, "Pulse", 16, 1000, Easing.Linear, (v, c) => marker.Scale = 1.0, () => true);
     }
     #endregion
 
     #region Zoom Controls
-    private const double MinZoom = 1.0;
-    private const double MaxZoom = 5.0;
-    private const double ZoomStep = 0.25;
-    private bool _isUpdatingZoom = false;
-    
-    /// <summary>
-    /// Initializes zoom controls (slider and buttons).
-    /// </summary>
-    private void InitializeZoomControls()
-    {
-        ZoomSlider.Minimum = MinZoom;
-        ZoomSlider.Maximum = MaxZoom;
-        ZoomSlider.Value = _currentZoom;
-        UpdateZoomLevelLabel();
-    }
-    
-    /// <summary>
-    /// Handles zoom in button click.
-    /// </summary>
-    private void OnZoomInClicked(object? sender, EventArgs e)
-    {
-        var newZoom = Math.Min(MaxZoom, _currentZoom + ZoomStep);
-        SetZoom(newZoom);
-    }
-    
-    /// <summary>
-    /// Handles zoom out button click.
-    /// </summary>
-    private void OnZoomOutClicked(object? sender, EventArgs e)
-    {
-        var newZoom = Math.Max(MinZoom, _currentZoom - ZoomStep);
-        SetZoom(newZoom);
-    }
-    
-    /// <summary>
-    /// Handles zoom slider value change.
-    /// </summary>
-    private void OnZoomSliderValueChanged(object? sender, ValueChangedEventArgs e)
-    {
-        if (!_isUpdatingZoom)
-        {
-            SetZoom(e.NewValue);
-        }
-    }
-    
-    /// <summary>
-    /// Sets the zoom level and updates all related controls.
-    /// </summary>
-    private void SetZoom(double zoomLevel)
-    {
-        _currentZoom = Math.Max(MinZoom, Math.Min(MaxZoom, zoomLevel));
-        
-        // Update slider without triggering event
-        _isUpdatingZoom = true;
-        ZoomSlider.Value = _currentZoom;
-        _isUpdatingZoom = false;
-        
-        // Apply scale to image
-        FloorPlanImage.Scale = _currentZoom;
-        
-        // Also scale the overlay containers to match the image
-        if (RoomZonesOverlay.Width > 0 && RoomZonesOverlay.Height > 0)
-        {
-            RoomZonesOverlay.Scale = _currentZoom;
-        }
-        if (LocationOverlay.Width > 0 && LocationOverlay.Height > 0)
-        {
-            LocationOverlay.Scale = _currentZoom;
-        }
-        
-        // Update container size to allow scrolling when zoomed
-        if (FloorPlanImage.Width > 0 && FloorPlanImage.Height > 0)
-        {
-            MapContainer.MinimumWidthRequest = FloorPlanImage.Width * _currentZoom;
-            MapContainer.MinimumHeightRequest = FloorPlanImage.Height * _currentZoom;
-        }
-        
-        // Update zoom level label
-        UpdateZoomLevelLabel();
-        
-        // Recalculate room zones for new zoom level
-        RefreshRoomZones();
-    }
-
-    /// <summary>
-    /// Refreshes room zones when zoom level changes.
-    /// </summary>
-    private void RefreshRoomZones()
-    {
-        if (_imageWidth == 0 || _imageHeight == 0) return;
-        
-        FloorPlan? floorPlan = null;
-        if (_currentSelection == "ETL")
-        {
-            floorPlan = _floorPlanService.GetETLFloorPlan();
-        }
-        else
-        {
-            floorPlan = _floorPlanService.GetFloorPlan(_currentFloor);
-        }
-        
-        if (floorPlan != null)
-        {
-            ClearRoomZones();
-            AddRoomZones(floorPlan);
-        }
-    }
-    
-    /// <summary>
-    /// Updates the zoom level label to show current percentage.
-    /// </summary>
-    private void UpdateZoomLevelLabel()
-    {
-        var percentage = (int)(_currentZoom * 100);
-        ZoomLevelLabel.Text = $"{percentage}%";
-    }
-    
-    /// <summary>
-    /// Recalculates room zones for the current zoom level.
-    /// </summary>
-    private void RecalculateRoomZones()
-    {
-        FloorPlan? floorPlan = null;
-        if (_currentSelection == "ETL")
-        {
-            floorPlan = _floorPlanService.GetETLFloorPlan();
-        }
-        else
-        {
-            floorPlan = _floorPlanService.GetFloorPlan(_currentFloor);
-        }
-        
-        if (floorPlan != null && _imageWidth > 0 && _imageHeight > 0)
-        {
-            ClearRoomZones();
-            AddRoomZones(floorPlan);
-            AddCurrentLocationMarker();
-        }
-    }
     #endregion
+
+
 }
 
