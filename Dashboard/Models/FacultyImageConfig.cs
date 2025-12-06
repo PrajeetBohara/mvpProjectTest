@@ -26,7 +26,7 @@ public static class FacultyImageConfig
     public const string GuoImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Qi%20Guo.jpg"; // Dr. Qi Guo - Placeholder - update with actual URL
     public const string LiuImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Qiu%20Liu.jpg"; // Dr. Qiu Liu - Placeholder - update with actual URL
     public const string SubramaniamImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Ramalingam%20Subramaniam.jpg"; // Dr. Ramalingam Subramaniam - Placeholder - update with actual URL
-    public const string AmbatipaniImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Vasan_Glasses.jpg"; // Dr. Srinivasam Ambatipani - Placeholder - update with actual URL
+    public const string AmbatipaniImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Vasan_Glasses%20(1).jpg"; // Dr. Srinivasam Ambatipani - Placeholder - update with actual URL
     public const string LiImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Zhuang%20Li.jpg"; // Dr. Zhuang Li - Placeholder - update with actual URL
     public const string ZeitounImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/Zeyad%20Zeitoun.jpg"; // Dr. Zeyad Zeitoun
     public const string SinghImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/faculty/prithvi%20singh.jpg"; // Prithvi Raj Singh
