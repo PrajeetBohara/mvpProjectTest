@@ -27,7 +27,8 @@
             Routing.RegisterRoute("//Contact", typeof(Pages.ContactPage));
             Routing.RegisterRoute("//AllEvents", typeof(Pages.AllEventsPage));
             Routing.RegisterRoute("//AllAnnouncements", typeof(Pages.AllAnnouncementsPage));
-            Routing.RegisterRoute("//EWeek", typeof(Pages.EWeekPage));
+            Routing.RegisterRoute("//E-Week", typeof(Pages.EWeekPage));
+            Routing.RegisterRoute("//EWeek", typeof(Pages.EWeekPage)); // Alias for consistency
             
             // Register Student Clubs routes
             Routing.RegisterRoute("//Clubs", typeof(Pages.StudentClubsPage));

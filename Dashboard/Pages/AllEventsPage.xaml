@@ -15,10 +15,10 @@ This code file gives UI for the All events page-->
         <!-- Main Content Area -->
         <Grid Grid.Row="1" RowDefinitions="Auto,*" Padding="20">
             <Label Grid.Row="0"
-                   Text="📅 Important Dates"
+                   Text="All Important Dates"
                    FontSize="24"
                    FontAttributes="Bold"
-                   TextColor="White"
+                   TextColor="#003087"
                    HorizontalOptions="Center"
                    Margin="0,0,0,20" />
             
@@ -35,10 +35,10 @@ This code file gives UI for the All events page-->
                                 <Label Text="Classes end"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="White" />
+                                       TextColor="#FFD204" />
                                 <Label Text="December 8"
                                        FontSize="16"
-                                       TextColor="#FFD204" />
+                                       TextColor="White" />
                             </VerticalStackLayout>
                         </Frame>
                         
@@ -51,11 +51,11 @@ This code file gives UI for the All events page-->
                                 <Label Text="Last day to remove &quot;I&quot; grades from previous semester"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="White"
+                                       TextColor="#FFD204"
                                        LineBreakMode="WordWrap" />
                                 <Label Text="December 8"
                                        FontSize="16"
-                                       TextColor="#f2b32e" />
+                                       TextColor="White" />
                             </VerticalStackLayout>
                         </Frame>
                         
@@ -68,10 +68,10 @@ This code file gives UI for the All events page-->
                                 <Label Text="Study Day"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="White" />
+                                       TextColor="#FFD204" />
                                 <Label Text="December 9"
                                        FontSize="16"
-                                       TextColor="#00aeef" />
+                                       TextColor="White" />
                             </VerticalStackLayout>
                         </Frame>
                         
@@ -84,10 +84,10 @@ This code file gives UI for the All events page-->
                                 <Label Text="Final exams begin"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="White" />
+                                       TextColor="#FFD204" />
                                 <Label Text="December 10"
                                        FontSize="16"
-                                       TextColor="#FFD204" />
+                                       TextColor="White" />
                             </VerticalStackLayout>
                         </Frame>
                         
@@ -100,10 +100,10 @@ This code file gives UI for the All events page-->
                                 <Label Text="Final exams end"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="White" />
+                                       TextColor="#FFD204" />
                                 <Label Text="December 13"
                                        FontSize="16"
-                                       TextColor="#f2b32e" />
+                                       TextColor="White" />
                             </VerticalStackLayout>
                         </Frame>
                         
@@ -116,11 +116,11 @@ This code file gives UI for the All events page-->
                                 <Label Text="Grades due at 8:30am for graduating students"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="White"
+                                       TextColor="#FFD204"
                                        LineBreakMode="WordWrap" />
                                 <Label Text="December 15"
                                        FontSize="16"
-                                       TextColor="#00aeef" />
+                                       TextColor="White" />
                             </VerticalStackLayout>
                         </Frame>
                         
@@ -133,11 +133,11 @@ This code file gives UI for the All events page-->
                                 <Label Text="Final grades due by 8:30 am for all remaining students"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="White"
+                                       TextColor="#FFD204"
                                        LineBreakMode="WordWrap" />
                                 <Label Text="December 17"
                                        FontSize="16"
-                                       TextColor="#FFD204" />
+                                       TextColor="White" />
                             </VerticalStackLayout>
                         </Frame>
                         
@@ -150,10 +150,10 @@ This code file gives UI for the All events page-->
                                 <Label Text="Commencement"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="White" />
+                                       TextColor="#FFD204" />
                                 <Label Text="December 19"
                                        FontSize="16"
-                                       TextColor="#f2b32e" />
+                                       TextColor="White" />
                             </VerticalStackLayout>
                         </Frame>
                         
@@ -166,11 +166,11 @@ This code file gives UI for the All events page-->
                                 <Label Text="Final grades available online"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="White"
+                                       TextColor="#FFD204"
                                        LineBreakMode="WordWrap" />
                                 <Label Text="December 19"
                                        FontSize="16"
-                                       TextColor="#00aeef" />
+                                       TextColor="White" />
                             </VerticalStackLayout>
                         </Frame>
                         
@@ -183,10 +183,10 @@ This code file gives UI for the All events page-->
                                 <Label Text="University closes"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="White" />
+                                       TextColor="#FFD204" />
                                 <Label Text="December 19"
                                        FontSize="16"
-                                       TextColor="#FFD204" />
+                                       TextColor="White" />
                             </VerticalStackLayout>
                         </Frame>
                         

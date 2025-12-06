@@ -25,31 +25,44 @@ public partial class FacultyDirectoryPage : ContentPage
     private void SetProfessorImages()
     {
         // Admin Section
-        AmbatipatiImage.Source = FacultyImageConfig.AmbatipaniImageUrl; // Dr. Vasan Ambatipati (Department Head)
-        ZhangAdminImage.Source = FacultyImageConfig.ZhangImageUrl; // Dr. Ning Zhang
-        OBrienImage.Source = FacultyImageConfig.OBrienImageUrl; // Mrs. Ramona O'Brien
-        BennettImage.Source = FacultyImageConfig.BennettImageUrl; // Mr. Dennis Bennett
+        SetImageWithAlignment(AmbatipatiImage, FacultyImageConfig.AmbatipaniImageUrl, FacultyImageAlignment.AmbatipatiAlignment);
+        SetImageWithAlignment(ZhangAdminImage, FacultyImageConfig.ZhangImageUrl, FacultyImageAlignment.ZhangAdminAlignment);
+        SetImageWithAlignment(OBrienImage, FacultyImageConfig.OBrienImageUrl, FacultyImageAlignment.OBrienAlignment);
+        SetImageWithAlignment(BennettImage, FacultyImageConfig.BennettImageUrl, FacultyImageAlignment.BennettAlignment);
         
         // Coordinators Section
-        AghiliImage.Source = FacultyImageConfig.AghiliImageUrl; // Dr. Matthew Aghili
-        DermisisImage.Source = FacultyImageConfig.DermisisImageUrl; // Dr. Dimitrios Dermisis
-        GarnerImage.Source = FacultyImageConfig.GarnerImageUrl; // Mr. Brent Garner
-        LiImage.Source = FacultyImageConfig.LiImageUrl; // Dr. Zhuang Li
-        MenonCoordinatorImage.Source = FacultyImageConfig.MenonImageUrl; // Dr. Vipin Menon
-        SubramaniamImage.Source = FacultyImageConfig.SubramaniamImageUrl; // Dr. Ramalingam Subramaniam
+        SetImageWithAlignment(AghiliImage, FacultyImageConfig.AghiliImageUrl, FacultyImageAlignment.AghiliAlignment);
+        SetImageWithAlignment(DermisisImage, FacultyImageConfig.DermisisImageUrl, FacultyImageAlignment.DermisisAlignment);
+        SetImageWithAlignment(GarnerImage, FacultyImageConfig.GarnerImageUrl, FacultyImageAlignment.GarnerAlignment);
+        SetImageWithAlignment(LiImage, FacultyImageConfig.LiImageUrl, FacultyImageAlignment.LiAlignment);
+        SetImageWithAlignment(MenonCoordinatorImage, FacultyImageConfig.MenonImageUrl, FacultyImageAlignment.MenonCoordinatorAlignment);
+        SetImageWithAlignment(SubramaniamImage, FacultyImageConfig.SubramaniamImageUrl, FacultyImageAlignment.SubramaniamAlignment);
         
         // Faculty Section (sorted by last name: Ambatipati, Anderson, Guo, Lavergne, Liu, Menon, Rosti, Xie, Zhang, Zeitoun)
-        AmbatipatiFacultyImage.Source = FacultyImageConfig.AmbatipaniImageUrl; // Dr. Vasan Ambatipati
-        AndersonImage.Source = FacultyImageConfig.AndersonImageUrl; // Ms. Rhonda Anderson
-        GuoImage.Source = FacultyImageConfig.GuoImageUrl; // Dr. Qi Guo
-        LavergneFacultyImage.Source = FacultyImageConfig.LavergneImageUrl; // Dr. Jennifer Lavergne
-        LiuImage.Source = FacultyImageConfig.LiuImageUrl; // Dr. Qiu Liu
-        MenonFacultyImage.Source = FacultyImageConfig.MenonImageUrl; // Dr. Vipin Menon
-        RostiImage.Source = FacultyImageConfig.RostiImageUrl; // Dr. Firouz Rosti
-        XieImage.Source = FacultyImageConfig.XieImageUrl; // Dr. Bei Xie
-        ZhangImage.Source = FacultyImageConfig.ZhangImageUrl; // Dr. Ning Zhang
-        ZeitounImage.Source = FacultyImageConfig.ZeitounImageUrl; // Dr. Zeyad Zeitoun
-        SinghImage.Source = FacultyImageConfig.SinghImageUrl; // Prithvi Raj Singh
+        SetImageWithAlignment(AmbatipatiFacultyImage, FacultyImageConfig.AmbatipaniImageUrl, FacultyImageAlignment.AmbatipatiFacultyAlignment);
+        SetImageWithAlignment(AndersonImage, FacultyImageConfig.AndersonImageUrl, FacultyImageAlignment.AndersonAlignment);
+        SetImageWithAlignment(GuoImage, FacultyImageConfig.GuoImageUrl, FacultyImageAlignment.GuoAlignment);
+        SetImageWithAlignment(LavergneFacultyImage, FacultyImageConfig.LavergneImageUrl, FacultyImageAlignment.LavergneFacultyAlignment);
+        SetImageWithAlignment(LiuImage, FacultyImageConfig.LiuImageUrl, FacultyImageAlignment.LiuAlignment);
+        SetImageWithAlignment(MenonFacultyImage, FacultyImageConfig.MenonImageUrl, FacultyImageAlignment.MenonFacultyAlignment);
+        SetImageWithAlignment(RostiImage, FacultyImageConfig.RostiImageUrl, FacultyImageAlignment.RostiAlignment);
+        SetImageWithAlignment(XieImage, FacultyImageConfig.XieImageUrl, FacultyImageAlignment.XieAlignment);
+        SetImageWithAlignment(ZhangImage, FacultyImageConfig.ZhangImageUrl, FacultyImageAlignment.ZhangFacultyAlignment);
+        SetImageWithAlignment(ZeitounImage, FacultyImageConfig.ZeitounImageUrl, FacultyImageAlignment.ZeitounAlignment);
+        SetImageWithAlignment(SinghImage, FacultyImageConfig.SinghImageUrl, FacultyImageAlignment.SinghAlignment);
+    }
+    
+    /// <summary>
+    /// Sets the image source and applies alignment settings
+    /// </summary>
+    private void SetImageWithAlignment(Image image, string imageUrl, (string Horizontal, string Vertical) alignment)
+    {
+        if (image != null)
+        {
+            image.Source = imageUrl;
+            image.HorizontalOptions = FacultyImageAlignment.GetHorizontalOptions(alignment.Horizontal);
+            image.VerticalOptions = FacultyImageAlignment.GetVerticalOptions(alignment.Vertical);
+        }
     }
 
     protected override async void OnAppearing()

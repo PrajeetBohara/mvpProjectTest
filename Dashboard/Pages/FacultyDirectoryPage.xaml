@@ -18,6 +18,12 @@ This code file gives UI for the faculty-->
                 
                 <!-- Page Header -->
                 <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Label Text="Faculty Directory"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#003087"
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,10" />
                     <Label Text="Meet our distinguished faculty and explore their research"
                            FontSize="16"
                            TextColor="Black"
