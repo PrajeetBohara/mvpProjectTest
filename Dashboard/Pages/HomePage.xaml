@@ -10,7 +10,7 @@
 
     <Grid RowDefinitions="Auto,*">
         <!-- Global TopBar (Always visible) -->
-        <controls:TopBar Grid.Row="0" />
+        <controls:TopBar ZIndex="10" Grid.Row="0" />
 
         <!-- Main 2x2 area -->
         <Grid Grid.Row="1"
@@ -22,7 +22,7 @@
             <Image Source="mcneeselogo.png"
                    Aspect="AspectFill"
                    Opacity="0.1"
-                   Grid.RowSpan="2"
+                  
                    Grid.ColumnSpan="2" />
 
             <!-- ====================== TOP-LEFT: Slideshow ====================== -->
@@ -214,7 +214,7 @@
 
             <!-- ====================== RIGHT SIDE CONTAINER (spans both rows) ====================== -->
             <!-- Makes Events a bit shorter and Announcements taller -->
-            <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+            <Grid Grid.Column="1" Grid.Row="0"
                   RowDefinitions="1*,1.5*">
                 <!-- adjust ratios as you like -->
 

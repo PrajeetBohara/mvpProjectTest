@@ -9,7 +9,7 @@
 
     <Grid RowDefinitions="Auto,Auto,*">
         <!-- Global TopBar -->
-        <controls:TopBar Grid.Row="0" />
+        <controls:TopBar ZIndex="10" Grid.Row="0" />
         
         <!-- Back Button -->
         <Frame Grid.Row="1"

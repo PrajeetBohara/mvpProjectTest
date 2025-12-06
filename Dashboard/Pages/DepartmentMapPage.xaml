@@ -10,7 +10,7 @@
     <!-- Full Screen WebView with Zoom and Pan Support -->
     <Grid RowDefinitions="Auto,*">
         <!-- TopBar -->
-        <controls:TopBar Grid.Row="0" />
+        <controls:TopBar ZIndex="10" Grid.Row="0" />
         
         <!-- WebView Container with Zoom Slider -->
         <Grid Grid.Row="1"
