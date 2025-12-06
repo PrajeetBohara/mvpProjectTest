@@ -25,22 +25,17 @@
         <ShellContent Title="Home" ContentTemplate="{DataTemplate pages:HomePage}" />
     </FlyoutItem>
 
+    <FlyoutItem Title="Maps" Route="Maps">
+        <ShellContent Title="Maps" ContentTemplate="{DataTemplate pages:MapsPage}" />
+    </FlyoutItem>
+
     <!-- Student Clubs -->
     <FlyoutItem Title="Student Clubs" Route="Clubs">
         <ShellContent Title="Student Clubs" ContentTemplate="{DataTemplate pages:StudentClubsPage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Projects" Route="Senior Projects">
-        <ShellContent Title="Senior Design Projects">
-            <ContentPage>
-                <Grid RowDefinitions="Auto,*">
-                    <controls:TopBar ZIndex="10" Grid.Row="0" />
-                    <Grid Grid.Row="1" Padding="24">
-                        <Label Text="Senior Design Projects Page (placeholder)" TextColor="White" />
-                    </Grid>
-                </Grid>
-            </ContentPage>
-        </ShellContent>
+        <ShellContent Title="Senior Design Projects" ContentTemplate="{DataTemplate pages:SeniorProjectsPage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="E-Week" Route="E-Week">

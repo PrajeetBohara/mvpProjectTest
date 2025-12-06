@@ -83,17 +83,53 @@
                        Padding="20"
                        HasShadow="False">
 
-                    <VerticalStackLayout Spacing="15">
+                    <VerticalStackLayout Spacing="12">
                         <Label Text="About"
                                FontSize="22"
                                FontAttributes="Bold"
                                TextColor="#FFD204" />
 
-                        <Label x:Name="AboutContentLabel"
-                               Text="About content will appear here"
-                               FontSize="14"
-                               TextColor="#CCCCCC"
-                               LineBreakMode="WordWrap" />
+                        <VerticalStackLayout x:Name="AboutBullets"
+                                             Spacing="10">
+                            <!-- Bullet paragraphs will be injected here -->
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout x:Name="MissionContainer"
+                                             Spacing="4"
+                                             IsVisible="False">
+                            <Label Text="Mission"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204" />
+                            <Label x:Name="MissionLabel"
+                                   FontSize="14"
+                                   TextColor="#CCCCCC"
+                                   LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout x:Name="VisionContainer"
+                                             Spacing="4"
+                                             IsVisible="False">
+                            <Label Text="Vision"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204" />
+                            <Label x:Name="VisionLabel"
+                                   FontSize="14"
+                                   TextColor="#CCCCCC"
+                                   LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout x:Name="ValuesContainer"
+                                             Spacing="4"
+                                             IsVisible="False">
+                            <Label Text="Values"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204" />
+                            <VerticalStackLayout x:Name="ValuesBullets"
+                                                 Spacing="6" />
+                        </VerticalStackLayout>
                     </VerticalStackLayout>
 
                 </Frame>

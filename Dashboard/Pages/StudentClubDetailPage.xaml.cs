@@ -2,7 +2,9 @@
 using Dashboard.Models;
 using Dashboard.Services;
 using Microsoft.Maui.Controls;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Dashboard.Pages;
 
@@ -139,51 +141,38 @@ public partial class StudentClubDetailPage : ContentPage
             ClubImage.Source = "mcneeselogo.png"; // Default fallback
         }
         
-        // Combine all information into one About section
-        var aboutContent = new System.Text.StringBuilder();
-        
-        // Add Description
+        AboutBullets.Children.Clear();
         if (!string.IsNullOrEmpty(club.Description))
         {
-            // Clean up bullet points and formatting
-            var description = club.Description
-                .Replace("•", "")
-                .Replace("\n\n", "\n")
-                .Trim();
-            aboutContent.AppendLine(description);
+            var descriptionLines = club.Description
+                .Replace("•", string.Empty)
+                .Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(line => line.Trim())
+                .Where(line => !string.IsNullOrEmpty(line));
+            AddBulletLabels(AboutBullets, descriptionLines);
         }
-        
-        // Add Mission if available
-        if (!string.IsNullOrEmpty(club.Mission))
+
+        MissionContainer.IsVisible = !string.IsNullOrEmpty(club.Mission);
+        MissionLabel.Text = club.Mission ?? string.Empty;
+
+        VisionContainer.IsVisible = !string.IsNullOrEmpty(club.Vision);
+        VisionLabel.Text = club.Vision ?? string.Empty;
+
+        ValuesBullets.Children.Clear();
+        var valuesLines = (club.Values ?? string.Empty)
+            .Replace("\n\n", "\n")
+            .Split(new[] { '\r', '\n', ',' }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(value => value.Trim())
+            .Where(value => !string.IsNullOrEmpty(value));
+        if (valuesLines.Any())
         {
-            if (aboutContent.Length > 0) aboutContent.AppendLine("\n");
-            aboutContent.AppendLine("Mission:");
-            aboutContent.AppendLine(club.Mission);
+            ValuesContainer.IsVisible = true;
+            AddBulletLabels(ValuesBullets, valuesLines);
         }
-        
-        // Add Vision if available
-        if (!string.IsNullOrEmpty(club.Vision))
+        else
         {
-            if (aboutContent.Length > 0) aboutContent.AppendLine("\n");
-            aboutContent.AppendLine("Vision:");
-            aboutContent.AppendLine(club.Vision);
+            ValuesContainer.IsVisible = false;
         }
-        
-        // Add Values if available
-        if (!string.IsNullOrEmpty(club.Values))
-        {
-            if (aboutContent.Length > 0) aboutContent.AppendLine("\n");
-            aboutContent.AppendLine("Values:");
-            // Format values nicely (handle comma-separated or newline-separated)
-            var values = club.Values
-                .Replace("\n\n", "\n")
-                .Replace(", ", "\n• ")
-                .Replace(",", "\n• ");
-            if (!values.StartsWith("•")) values = "• " + values;
-            aboutContent.AppendLine(values);
-        }
-        
-        AboutContentLabel.Text = aboutContent.ToString().Trim();
         
         // Year Established
         if (club.YearEstablished.HasValue)
@@ -327,7 +316,22 @@ public partial class StudentClubDetailPage : ContentPage
         }
         else
         {
-            GalleryFrame.IsVisible = false;
+        GalleryFrame.IsVisible = false;
+        }
+    }
+
+    private void AddBulletLabels(VerticalStackLayout container, IEnumerable<string> lines)
+    {
+        container.Children.Clear();
+        foreach (var line in lines)
+        {
+            container.Children.Add(new Label
+            {
+                Text = $"• {line}",
+                FontSize = 14,
+                TextColor = Color.FromArgb("#CCCCCC"),
+                LineBreakMode = LineBreakMode.WordWrap
+            });
         }
     }
 

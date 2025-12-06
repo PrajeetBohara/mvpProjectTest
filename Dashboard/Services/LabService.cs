@@ -91,6 +91,13 @@ public class LabService
                 Building = "Drew Hall",
                 Type = LabType.Teaching
             },
+            new Lab
+            {
+                Name = "VR/Game Lab",
+                Location = "Drew 228",
+                Building = "Drew Hall",
+                Type = LabType.Teaching
+            },
 
             // ETL Labs
             new Lab

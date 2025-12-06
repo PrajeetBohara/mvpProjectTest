@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Senior Design Projects overview -->
+<ContentPage
+    x:Class="Dashboard.Pages.SeniorProjectsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Title="Senior Design Projects">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Global TopBar -->
+        <controls:TopBar ZIndex="10" Grid.Row="0" />
+
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="24">
+
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Capstone Projects"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204" />
+                        <Label Text="McNeese ENSC takes pride in its Senior Design projects where graduating senior students work across disciplines to design and create an applicable solution to a real life problem. They are paired with companies and professors who will guide them throughout the project and also grade the feasibility of the proposed solution. This solution is implemented by the projects’ sponsor companies after the students’ presentation."
+                               FontSize="16"
+                               TextColor="White"
+                               LineBreakMode="WordWrap" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="2023-24 Projects"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204" />
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="• Inter-galagriculture Video Game" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Gesture Game" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Trashformer Robot" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Flood Modeling" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Rover and User Application" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Fetch Robot" FontSize="15" TextColor="#FFFFFF" />
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="2025 Projects"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204" />
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="• Heart Disease Risk Prediction Web Application" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Tentative ML Student Document Learner" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• LNG/ENCS Touchscreen Dashboard Prototype" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Interactive Chess Game" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Secure Web Medical Data Sharing and Leakage Prevention Platform" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• RSPile Desktop Implementation" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• 8 Ball Game in 3D Environment" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Phishing Awareness Simulator" FontSize="15" TextColor="#FFFFFF" />
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Other Undergraduate Projects"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204" />
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="• CHEM-E-CAR" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• LaSPACE Rover Auto Move &amp; Application" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Wood Glider" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• LaACES Student Balloon" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Concrete Canoe" FontSize="15" TextColor="#FFFFFF" />
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+
