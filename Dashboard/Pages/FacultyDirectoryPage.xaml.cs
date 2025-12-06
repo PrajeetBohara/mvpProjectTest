@@ -24,7 +24,7 @@ public partial class FacultyDirectoryPage : ContentPage
     {
         // Admin Section
         AmbatipatiImage.Source = FacultyImageConfig.AmbatipaniImageUrl; // Dr. Vasan Ambatipati (Department Head)
-        ReddochImage.Source = FacultyImageConfig.ReddochImageUrl; // Mrs. Sarah Reddoch
+        ZhangAdminImage.Source = FacultyImageConfig.ZhangImageUrl; // Dr. Ning Zhang
         OBrienImage.Source = FacultyImageConfig.OBrienImageUrl; // Mrs. Ramona O'Brien
         BennettImage.Source = FacultyImageConfig.BennettImageUrl; // Mr. Dennis Bennett
         
@@ -32,16 +32,17 @@ public partial class FacultyDirectoryPage : ContentPage
         AghiliImage.Source = FacultyImageConfig.AghiliImageUrl; // Dr. Matthew Aghili
         DermisisImage.Source = FacultyImageConfig.DermisisImageUrl; // Dr. Dimitrios Dermisis
         GarnerImage.Source = FacultyImageConfig.GarnerImageUrl; // Mr. Brent Garner
-        LavergneImage.Source = FacultyImageConfig.LavergneImageUrl; // Dr. Jennifer Lavergne
         LiImage.Source = FacultyImageConfig.LiImageUrl; // Dr. Zhuang Li
+        MenonCoordinatorImage.Source = FacultyImageConfig.MenonImageUrl; // Dr. Vipin Menon
         SubramaniamImage.Source = FacultyImageConfig.SubramaniamImageUrl; // Dr. Ramalingam Subramaniam
         
-        // Faculty Section (sorted by last name: Ambatipati, Anderson, Guo, Liu, Menon, Rosti, Xie, Zhang, Zeitoun)
+        // Faculty Section (sorted by last name: Ambatipati, Anderson, Guo, Lavergne, Liu, Menon, Rosti, Xie, Zhang, Zeitoun)
         AmbatipatiFacultyImage.Source = FacultyImageConfig.AmbatipaniImageUrl; // Dr. Vasan Ambatipati
         AndersonImage.Source = FacultyImageConfig.AndersonImageUrl; // Ms. Rhonda Anderson
         GuoImage.Source = FacultyImageConfig.GuoImageUrl; // Dr. Qi Guo
+        LavergneFacultyImage.Source = FacultyImageConfig.LavergneImageUrl; // Dr. Jennifer Lavergne
         LiuImage.Source = FacultyImageConfig.LiuImageUrl; // Dr. Qiu Liu
-        MenonImage.Source = FacultyImageConfig.MenonImageUrl; // Dr. Vipin Menon
+        MenonFacultyImage.Source = FacultyImageConfig.MenonImageUrl; // Dr. Vipin Menon
         RostiImage.Source = FacultyImageConfig.RostiImageUrl; // Dr. Firouz Rosti
         XieImage.Source = FacultyImageConfig.XieImageUrl; // Dr. Bei Xie
         ZhangImage.Source = FacultyImageConfig.ZhangImageUrl; // Dr. Ning Zhang
@@ -103,6 +104,9 @@ public partial class FacultyDirectoryPage : ContentPage
             ModalProfessorName.Text = professorName;
             ModalResearchContent.Children.Clear();
             
+            // Set professor image using the same URL as the faculty card
+            SetModalProfessorImage(professorName);
+            
             // Populate content based on professor
             if (professorName.Contains("Lavergne"))
             {
@@ -118,7 +122,19 @@ public partial class FacultyDirectoryPage : ContentPage
             }
             else if (professorName.Contains("Xie"))
             {
-                PopulatePlaceholderResearchContent("Dr. Bei Xie");
+                PopulateXieResearchContent();
+            }
+            else if (professorName.Contains("Zhang"))
+            {
+                PopulateZhangResearchContent();
+            }
+            else if (professorName.Contains("Guo"))
+            {
+                PopulateGuoResearchContent();
+            }
+            else if (professorName.Contains("Rosti"))
+            {
+                PopulateRostiResearchContent();
             }
             else if (professorName.Contains("Zeitoun"))
             {
@@ -146,6 +162,53 @@ public partial class FacultyDirectoryPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"Error showing research modal: {ex.Message}");
+        }
+    }
+
+    private void SetModalProfessorImage(string professorName)
+    {
+        try
+        {
+            // Set the modal image using the same URL as the faculty card
+            if (professorName.Contains("Lavergne"))
+                ModalProfessorImage.Source = FacultyImageConfig.LavergneImageUrl;
+            else if (professorName.Contains("Menon"))
+                ModalProfessorImage.Source = FacultyImageConfig.MenonImageUrl;
+            else if (professorName.Contains("Anderson"))
+                ModalProfessorImage.Source = FacultyImageConfig.AndersonImageUrl;
+            else if (professorName.Contains("Xie"))
+                ModalProfessorImage.Source = FacultyImageConfig.XieImageUrl;
+            else if (professorName.Contains("Zeitoun"))
+                ModalProfessorImage.Source = FacultyImageConfig.ZeitounImageUrl;
+            else if ((professorName.Contains("Ambatipati") || professorName.Contains("Ambatipani")) && !professorName.Contains("Zeitoun"))
+                ModalProfessorImage.Source = FacultyImageConfig.AmbatipaniImageUrl;
+            else if (professorName.Contains("Garner"))
+                ModalProfessorImage.Source = FacultyImageConfig.GarnerImageUrl;
+            else if (professorName.Contains("Singh"))
+                ModalProfessorImage.Source = FacultyImageConfig.SinghImageUrl;
+            else if (professorName.Contains("Aghili"))
+                ModalProfessorImage.Source = FacultyImageConfig.AghiliImageUrl;
+            else if (professorName.Contains("Dermisis"))
+                ModalProfessorImage.Source = FacultyImageConfig.DermisisImageUrl;
+            else if (professorName.Contains("Li") && !professorName.Contains("Liu"))
+                ModalProfessorImage.Source = FacultyImageConfig.LiImageUrl;
+            else if (professorName.Contains("Subramaniam"))
+                ModalProfessorImage.Source = FacultyImageConfig.SubramaniamImageUrl;
+            else if (professorName.Contains("Guo"))
+                ModalProfessorImage.Source = FacultyImageConfig.GuoImageUrl;
+            else if (professorName.Contains("Liu"))
+                ModalProfessorImage.Source = FacultyImageConfig.LiuImageUrl;
+            else if (professorName.Contains("Rosti"))
+                ModalProfessorImage.Source = FacultyImageConfig.RostiImageUrl;
+            else if (professorName.Contains("Zhang"))
+                ModalProfessorImage.Source = FacultyImageConfig.ZhangImageUrl;
+            else
+                ModalProfessorImage.Source = null; // Default fallback
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error setting modal professor image: {ex.Message}");
+            ModalProfessorImage.Source = null;
         }
     }
 
@@ -340,36 +403,45 @@ public partial class FacultyDirectoryPage : ContentPage
         galleryFrame.Content = galleryStack;
         ModalResearchContent.Children.Add(galleryFrame);
 
-        // Contact Information (Simplified - Office Location and Email only)
-        AddContactInformation("Drew 209", "jlavergne@mcneese.edu");
     }
 
     private void PopulatePlaceholderResearchContent(string professorName)
     {
-        var researchFocusFrame = new Frame
+        var announcementFrame = new Frame
         {
             BackgroundColor = Color.FromArgb("#003087"),
             CornerRadius = 8,
-            Padding = 15,
+            Padding = 20,
             HasShadow = false
         };
-        var researchFocusStack = new VerticalStackLayout { Spacing = 10 };
-        researchFocusStack.Children.Add(new Label
+        var announcementStack = new VerticalStackLayout { Spacing = 10 };
+        announcementStack.Children.Add(new Label
         {
-            Text = "Research Focus",
+            Text = "Research Information",
             FontSize = 18,
             FontAttributes = FontAttributes.Bold,
-            TextColor = Colors.White
+            TextColor = Colors.White,
+            HorizontalOptions = LayoutOptions.Center
         });
-        researchFocusStack.Children.Add(new Label { Text = "• Research Area 1", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
-        researchFocusStack.Children.Add(new Label { Text = "• Research Area 2", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
-        researchFocusStack.Children.Add(new Label { Text = "• Research Area 3", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
-        researchFocusFrame.Content = researchFocusStack;
-        ModalResearchContent.Children.Add(researchFocusFrame);
-
-        // Add contact information
-        var (officeLocation, email) = GetFacultyContactInfo(professorName);
-        AddContactInformation(officeLocation, email);
+        announcementStack.Children.Add(new Label 
+        { 
+            Text = "To be announced", 
+            FontSize = 16, 
+            TextColor = Color.FromArgb("#FFD204"),
+            HorizontalOptions = LayoutOptions.Center,
+            FontAttributes = FontAttributes.Italic
+        });
+        announcementStack.Children.Add(new Label 
+        { 
+            Text = "Research details for this faculty member will be available soon.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            HorizontalOptions = LayoutOptions.Center,
+            HorizontalTextAlignment = TextAlignment.Center,
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        announcementFrame.Content = announcementStack;
+        ModalResearchContent.Children.Add(announcementFrame);
     }
 
     private void PopulateZeitounResearchContent()
@@ -667,8 +739,6 @@ public partial class FacultyDirectoryPage : ContentPage
         publicationsFrame.Content = publicationsStack;
         ModalResearchContent.Children.Add(publicationsFrame);
 
-        // Contact Information
-        AddContactInformation("Drew Hall", "zzeitoun@mcneese.edu");
     }
 
     private (string officeLocation, string email) GetFacultyContactInfo(string professorName)
@@ -956,8 +1026,6 @@ public partial class FacultyDirectoryPage : ContentPage
         recognitionFrame.Content = recognitionStack;
         ModalResearchContent.Children.Add(recognitionFrame);
 
-        // Contact Information
-        AddContactInformation("Drew 115", "sambatipani@mcneese.edu");
     }
 
     private void PopulateGarnerResearchContent()
@@ -1057,8 +1125,6 @@ public partial class FacultyDirectoryPage : ContentPage
         involvementFrame.Content = involvementStack;
         ModalResearchContent.Children.Add(involvementFrame);
 
-        // Contact Information
-        AddContactInformation("Drew Hall 103", "garner@mcneese.edu");
     }
 
     private void PopulateSinghResearchContent()
@@ -1233,8 +1299,6 @@ public partial class FacultyDirectoryPage : ContentPage
         areasFrame.Content = areasStack;
         ModalResearchContent.Children.Add(areasFrame);
 
-        // Contact Information
-        AddContactInformation("Drew Hall", "psingh8@mcneese.edu");
     }
 
     private void PopulateAndersonResearchContent()
@@ -1309,8 +1373,504 @@ public partial class FacultyDirectoryPage : ContentPage
         researchTopicsFrame.Content = researchTopicsStack;
         ModalResearchContent.Children.Add(researchTopicsFrame);
 
-        // Contact Information
-        AddContactInformation("Drew 207", "randerson@mcneese.edu");
+    }
+
+    private void PopulateZhangResearchContent()
+    {
+        // Research Overview
+        var overviewFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var overviewStack = new VerticalStackLayout { Spacing = 10 };
+        overviewStack.Children.Add(new Label
+        {
+            Text = "Research Overview",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        overviewStack.Children.Add(new Label 
+        { 
+            Text = "Dr. Zhang has worked with and mentored engineering students on many undergraduate research and capstone projects.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        overviewFrame.Content = overviewStack;
+        ModalResearchContent.Children.Add(overviewFrame);
+
+        // Research Focus
+        var researchFocusFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var researchFocusStack = new VerticalStackLayout { Spacing = 10 };
+        researchFocusStack.Children.Add(new Label
+        {
+            Text = "Research Focus",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        researchFocusStack.Children.Add(new Label 
+        { 
+            Text = "• Computational Fluid Dynamics (CFD) for Flooding Damage Simulation", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        researchFocusStack.Children.Add(new Label 
+        { 
+            Text = "• Hurricane Wind Impact Analysis on Industrial Facilities", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        researchFocusStack.Children.Add(new Label 
+        { 
+            Text = "• Pollutant Transport and Environmental Assessments", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        researchFocusFrame.Content = researchFocusStack;
+        ModalResearchContent.Children.Add(researchFocusFrame);
+
+        // Student Involvement
+        var studentFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var studentStack = new VerticalStackLayout { Spacing = 10 };
+        studentStack.Children.Add(new Label
+        {
+            Text = "Student Involvement",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        studentStack.Children.Add(new Label 
+        { 
+            Text = "Seven mechanical and civil engineering students were directly involved in these research projects. The projects resulted in multiple research papers published and presented at The American Society of Mechanical Engineers (ASME) international conferences, including the 2023 ASME International Mechanical Engineering Congress and Exposition in New Orleans, Louisiana, and the 2024 ASME Fluids Engineering Summer Conference in Anaheim, California.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        studentFrame.Content = studentStack;
+        ModalResearchContent.Children.Add(studentFrame);
+
+        // Professional Service
+        var serviceFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var serviceStack = new VerticalStackLayout { Spacing = 10 };
+        serviceStack.Children.Add(new Label
+        {
+            Text = "Professional Service",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        serviceStack.Children.Add(new Label 
+        { 
+            Text = "Dr. Zhang is involved with National ASME. He currently serves on the ASME Fluids Engineering Division Executive Committee as Secretary for 2023-24, and will move to Vice Chair for 2024-25. He is also the ASME academic advisor for McNeese State University.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        serviceFrame.Content = serviceStack;
+        ModalResearchContent.Children.Add(serviceFrame);
+    }
+
+    private void PopulateXieResearchContent()
+    {
+        // Research Overview
+        var overviewFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var overviewStack = new VerticalStackLayout { Spacing = 10 };
+        overviewStack.Children.Add(new Label
+        {
+            Text = "Research Overview",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        overviewStack.Children.Add(new Label 
+        { 
+            Text = "Dr. Xie joined McNeese State University in 2017 and her research areas include wireless communication, wireless networks, software engineering and algorithm design and analysis.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        overviewFrame.Content = overviewStack;
+        ModalResearchContent.Children.Add(overviewFrame);
+
+        // Infrastructure Development
+        var infrastructureFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var infrastructureStack = new VerticalStackLayout { Spacing = 10 };
+        infrastructureStack.Children.Add(new Label
+        {
+            Text = "Infrastructure Development",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        
+        var lab1Frame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#002a54"),
+            CornerRadius = 6,
+            Padding = 12,
+            HasShadow = false
+        };
+        var lab1Stack = new VerticalStackLayout { Spacing = 5 };
+        lab1Stack.Children.Add(new Label { Text = "Network and Security Lab", FontSize = 16, FontAttributes = FontAttributes.Bold, TextColor = Color.FromArgb("#FFD204") });
+        lab1Stack.Children.Add(new Label { Text = "Established with a $91,000 Board of Regents enhancement fund awarded in 2019.", FontSize = 14, TextColor = Colors.White, LineBreakMode = LineBreakMode.WordWrap });
+        lab1Frame.Content = lab1Stack;
+        infrastructureStack.Children.Add(lab1Frame);
+
+        var lab2Frame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#002a54"),
+            CornerRadius = 6,
+            Padding = 12,
+            HasShadow = false
+        };
+        var lab2Stack = new VerticalStackLayout { Spacing = 5 };
+        lab2Stack.Children.Add(new Label { Text = "Cybersecurity Fund", FontSize = 16, FontAttributes = FontAttributes.Bold, TextColor = Color.FromArgb("#00aeef") });
+        lab2Stack.Children.Add(new Label { Text = "Secured a $105,000 Board of Regents Cybersecurity fund in 2023, which she is currently utilizing to upgrade the Network and Security Lab and Computer Lab.", FontSize = 14, TextColor = Colors.White, LineBreakMode = LineBreakMode.WordWrap });
+        lab2Frame.Content = lab2Stack;
+        infrastructureStack.Children.Add(lab2Frame);
+
+        infrastructureFrame.Content = infrastructureStack;
+        ModalResearchContent.Children.Add(infrastructureFrame);
+
+        // Student Mentorship
+        var mentorshipFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var mentorshipStack = new VerticalStackLayout { Spacing = 10 };
+        mentorshipStack.Children.Add(new Label
+        {
+            Text = "Student Mentorship",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        mentorshipStack.Children.Add(new Label 
+        { 
+            Text = "Dr. Xie mentors NASA LaSPACE senior design and the NASA LaACES Balloon undergraduate research projects.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        mentorshipFrame.Content = mentorshipStack;
+        ModalResearchContent.Children.Add(mentorshipFrame);
+
+        // Professional Service
+        var serviceFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var serviceStack = new VerticalStackLayout { Spacing = 10 };
+        serviceStack.Children.Add(new Label
+        {
+            Text = "Professional Service",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        serviceStack.Children.Add(new Label 
+        { 
+            Text = "Dr. Xie's commitment to service is exemplary. She served as a co-chair for 2023 E-Week and as the 2024 E-Week chair. Moreover, she has been an active member of various university committees including Faculty Senate, Academic Affairs Committee, Community Partnership and Town Hall Committee and Academic Advising Committee.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        serviceFrame.Content = serviceStack;
+        ModalResearchContent.Children.Add(serviceFrame);
+
+        // Recognition
+        var recognitionFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var recognitionStack = new VerticalStackLayout { Spacing = 10 };
+        recognitionStack.Children.Add(new Label
+        {
+            Text = "Recognition",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        recognitionStack.Children.Add(new Label 
+        { 
+            Text = "All her endeavors were recognized by the Industry Advisory Board with the Outstanding Faculty 2023-2024 award.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#FFD204"),
+            FontAttributes = FontAttributes.Bold,
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        recognitionFrame.Content = recognitionStack;
+        ModalResearchContent.Children.Add(recognitionFrame);
+    }
+
+    private void PopulateGuoResearchContent()
+    {
+        // Research Overview
+        var overviewFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var overviewStack = new VerticalStackLayout { Spacing = 10 };
+        overviewStack.Children.Add(new Label
+        {
+            Text = "Research Overview",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        overviewStack.Children.Add(new Label 
+        { 
+            Text = "Dr. Qi Guo's research interest lies in conducting comprehensive energy audits in oil refining plants, manufacturing sectors, or multi-zone buildings.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        overviewFrame.Content = overviewStack;
+        ModalResearchContent.Children.Add(overviewFrame);
+
+        // Energy Systems Analysis
+        var systemsFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var systemsStack = new VerticalStackLayout { Spacing = 10 };
+        systemsStack.Children.Add(new Label
+        {
+            Text = "Energy Systems Analysis",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        systemsStack.Children.Add(new Label 
+        { 
+            Text = "This involves analyzing various energy systems within the plant or building, including:", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        systemsStack.Children.Add(new Label { Text = "• Energy supply system", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
+        systemsStack.Children.Add(new Label { Text = "• Lighting system", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
+        systemsStack.Children.Add(new Label { Text = "• Motor system", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
+        systemsStack.Children.Add(new Label { Text = "• Pumping and fan system", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
+        systemsStack.Children.Add(new Label { Text = "• Compressed air system", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
+        systemsStack.Children.Add(new Label { Text = "• Process heating system", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
+        systemsStack.Children.Add(new Label { Text = "• Process cooling system", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
+        systemsStack.Children.Add(new Label { Text = "• HVAC system", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
+        systemsStack.Children.Add(new Label { Text = "• Co-generation system", FontSize = 14, TextColor = Color.FromArgb("#CCCCCC") });
+        systemsFrame.Content = systemsStack;
+        ModalResearchContent.Children.Add(systemsFrame);
+
+        // Project Approach
+        var approachFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var approachStack = new VerticalStackLayout { Spacing = 10 };
+        approachStack.Children.Add(new Label
+        {
+            Text = "Project Approach",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        approachStack.Children.Add(new Label 
+        { 
+            Text = "The project timeline is structured to encompass a comprehensive plant energy baseline analysis, an on-site visit for data collection, the identification and quantification of energy-saving opportunities, and the development of tailored energy-saving recommendations.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        approachFrame.Content = approachStack;
+        ModalResearchContent.Children.Add(approachFrame);
+
+        // Expected Outcomes
+        var outcomesFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var outcomesStack = new VerticalStackLayout { Spacing = 10 };
+        outcomesStack.Children.Add(new Label
+        {
+            Text = "Expected Outcomes",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        outcomesStack.Children.Add(new Label 
+        { 
+            Text = "The expected project outcomes include the identification of cost-effective energy saving measures and the promotion of improved sustainability practices within the chemical processing and oil refining plant.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        outcomesFrame.Content = outcomesStack;
+        ModalResearchContent.Children.Add(outcomesFrame);
+    }
+
+    private void PopulateRostiResearchContent()
+    {
+        // Research Overview
+        var overviewFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var overviewStack = new VerticalStackLayout { Spacing = 10 };
+        overviewStack.Children.Add(new Label
+        {
+            Text = "Research Overview",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        overviewStack.Children.Add(new Label 
+        { 
+            Text = "Dr. Firouz Rosti's research in soil mechanics and geotechnical engineering focuses on soil-structure interactions, pile capacity, and soil properties such as setup and thixotropy in deep foundation systems.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        overviewFrame.Content = overviewStack;
+        ModalResearchContent.Children.Add(overviewFrame);
+
+        // Research Focus Areas
+        var focusFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var focusStack = new VerticalStackLayout { Spacing = 10 };
+        focusStack.Children.Add(new Label
+        {
+            Text = "Research Focus Areas",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        focusStack.Children.Add(new Label 
+        { 
+            Text = "His work examines the behavior of various soil types under different loading conditions and environmental factors, aiming to improve construction stability through innovative soil stabilization techniques. By using materials like nanomaterials, biopolymers, and industrial by-products, Dr. Rosti enhances soil strength while promoting environmental sustainability through recycling.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        focusFrame.Content = focusStack;
+        ModalResearchContent.Children.Add(focusFrame);
+
+        // Laboratory Facilities
+        var labFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var labStack = new VerticalStackLayout { Spacing = 10 };
+        labStack.Children.Add(new Label
+        {
+            Text = "Laboratory Facilities",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        labStack.Children.Add(new Label 
+        { 
+            Text = "At McNeese State University, Dr. Rosti leads a state-of-the-art soils lab, conducting comprehensive soil testing, material characterization, and model simulations. He evaluates pile capacity in clay soils and studies how it increases over time after installation, providing valuable insights for foundation design in complex environments.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        labFrame.Content = labStack;
+        ModalResearchContent.Children.Add(labFrame);
+
+        // Climate Change Research
+        var climateFrame = new Frame
+        {
+            BackgroundColor = Color.FromArgb("#003087"),
+            CornerRadius = 8,
+            Padding = 15,
+            HasShadow = false
+        };
+        var climateStack = new VerticalStackLayout { Spacing = 10 };
+        climateStack.Children.Add(new Label
+        {
+            Text = "Climate Change Impact Research",
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Colors.White
+        });
+        climateStack.Children.Add(new Label 
+        { 
+            Text = "Committed to understanding the impact of climate change on soil properties and geotechnical systems, Dr. Rosti's research aims to mitigate risks such as landslides, soil erosion, and infrastructure failures, advancing geotechnical engineering and sustainable practices.", 
+            FontSize = 14, 
+            TextColor = Color.FromArgb("#CCCCCC"),
+            LineBreakMode = LineBreakMode.WordWrap
+        });
+        climateFrame.Content = climateStack;
+        ModalResearchContent.Children.Add(climateFrame);
     }
 
     private void OnCloseModalClicked(object sender, EventArgs e)

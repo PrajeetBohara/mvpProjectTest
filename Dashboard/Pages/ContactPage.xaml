@@ -229,7 +229,7 @@ This code file gives UI for the contact page-->
                                CornerRadius="0"
                                Padding="20"
                                HasShadow="False">
-                            <Label Text="College, Science, Engineering and Mathematics"
+                            <Label Text="College of Engineering and Sciences"
                                    FontSize="22"
                                    FontAttributes="Bold"
                                    TextColor="#FFD204" />
