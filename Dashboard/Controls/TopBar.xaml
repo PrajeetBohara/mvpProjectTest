@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!---Code written by Prajeet Bohara with the help of contenview template provided by .NET MAUI
-This code file gives UI for the top navigation bar that will be present throughout all the pages-->
-    
-<!-- DynamicResouce are used from the app.xaml files which is the global resource file for the project-->
-
 <ContentView
     x:Class="Dashboard.Controls.TopBar"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -13,79 +8,75 @@ This code file gives UI for the top navigation bar that will be present througho
     Padding="20,16,20,16"
     VerticalOptions="Start"
     IsClippedToBounds="False">
-    
+
     <Grid RowDefinitions="Auto,Auto">
-        <!-- Main bar content -->
+
+        <!-- ========================================================= -->
+        <!--                       MAIN TOP BAR                        -->
+        <!-- ========================================================= -->
         <Grid x:Name="TopBarLayout"
               Grid.Row="0"
-              ColumnDefinitions="Auto,12,Auto,12,Auto,*,20,Auto,20,Auto,20,Auto" 
-              RowDefinitions="Auto" 
+              ColumnDefinitions="Auto,4,Auto,4,Auto,*,20,Auto,20,Auto,20,Auto"
+              RowDefinitions="Auto"
               VerticalOptions="Center">
-            
+
             <!-- Hamburger Menu Icon -->
-            <Grid Grid.Column="0" 
-                  WidthRequest="40" 
-                  HeightRequest="40" 
+            <Grid Grid.Column="0"
+                  WidthRequest="40"
+                  HeightRequest="40"
                   VerticalOptions="Center">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnMenuTapped" />
                 </Grid.GestureRecognizers>
-           
-                <VerticalStackLayout Spacing="3" 
-                                    HorizontalOptions="Center" 
-                                    VerticalOptions="Center">
-                    <BoxView HeightRequest="3" 
-                             WidthRequest="20" 
-                             CornerRadius="1.5" 
+
+                <VerticalStackLayout Spacing="3"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center">
+                    <BoxView HeightRequest="3"
+                             WidthRequest="20"
+                             CornerRadius="1.5"
                              BackgroundColor="{DynamicResource TopBarForeground}" />
-                    <BoxView HeightRequest="3" 
-                             WidthRequest="20" 
-                             CornerRadius="1.5" 
+                    <BoxView HeightRequest="3"
+                             WidthRequest="20"
+                             CornerRadius="1.5"
                              BackgroundColor="{DynamicResource TopBarForeground}" />
-                    <BoxView HeightRequest="3" 
-                             WidthRequest="20" 
-                             CornerRadius="1.5" 
+                    <BoxView HeightRequest="3"
+                             WidthRequest="20"
+                             CornerRadius="1.5"
                              BackgroundColor="{DynamicResource TopBarForeground}" />
                 </VerticalStackLayout>
             </Grid>
 
             <!-- Home Icon -->
-            <Grid Grid.Column="2" 
-                  WidthRequest="80" 
-                  HeightRequest="40" 
-                  VerticalOptions="Center">
+            <Grid Grid.Column="2"
+                  WidthRequest="40"
+                  HeightRequest="40"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Center">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnHomeTapped" />
                 </Grid.GestureRecognizers>
-                <Grid ColumnDefinitions="Auto,Auto" 
-                      VerticalOptions="Center">
-                    <Grid Grid.Column="0"
-                          WidthRequest="24" 
-                          HeightRequest="24" 
-                          VerticalOptions="Center"
-                          Margin="0,0,8,0">
-                        <Path Data="M12,2 L22,8 L22,20 L14,20 L14,14 L10,14 L10,20 L2,20 L2,8 Z" 
-                              Fill="{DynamicResource TopBarBackground}" 
-                              Stroke="{DynamicResource TopBarBackground}" 
-                              StrokeThickness="1" />
-                    </Grid>
-                </Grid>
+                <Label Text="🏠"
+                       FontSize="24"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       TextColor="{DynamicResource TopBarForeground}" />
             </Grid>
 
             <!-- Department Branding -->
-            <Grid Grid.Column="3"
-                  Grid.ColumnSpan="2"
-                  ColumnDefinitions="Auto,12,*"
+            <Grid Grid.Column="4"
+                  ColumnDefinitions="Auto,8,*"
                   VerticalOptions="Center"
                   HorizontalOptions="Start">
                 <Image Grid.Column="0"
                        Source="encslogo.png"
-                       HeightRequest="72"
-                       WidthRequest="95"
+                       HeightRequest="60"
+                       WidthRequest="80"
                        Aspect="AspectFit"
                        VerticalOptions="Center" />
+
                 <Label Grid.Column="2"
-                       Text="Department of Engineering Science"
+                       Text="Department of Engineering and Computer Science"
                        FontSize="20"
                        FontAttributes="Bold"
                        TextColor="{DynamicResource TopBarForeground}"
@@ -100,22 +91,26 @@ This code file gives UI for the top navigation bar that will be present througho
                   x:Name="SearchBarContainer"
                   VerticalOptions="Center"
                   HorizontalOptions="Start"
-                  WidthRequest="270"
-                  Margin="20,0,0,0">
+                  WidthRequest="230"
+                  Margin="12,0,0,0">
+
                 <Frame BackgroundColor="{DynamicResource TopBarSearchBackground}"
                        CornerRadius="20"
                        Padding="0"
                        HasShadow="False"
                        VerticalOptions="Center">
-                    <Grid ColumnDefinitions="Auto,*" 
+
+                    <Grid ColumnDefinitions="Auto,*"
                           VerticalOptions="Center"
                           Padding="0">
+
                         <Label Grid.Column="0"
                                Text="🔍"
                                FontSize="16"
                                TextColor="{DynamicResource TopBarPlaceholder}"
                                VerticalTextAlignment="Center"
                                Margin="12,0,8,0" />
+
                         <Entry Grid.Column="1"
                                x:Name="SearchEntry"
                                Placeholder="Search the dashboard..."
@@ -135,17 +130,19 @@ This code file gives UI for the top navigation bar that will be present througho
                 </Frame>
             </Grid>
 
-            <!-- Weather Information (Icon + Text) -->
-            <Grid Grid.Column="9" 
-                  ColumnDefinitions="Auto,Auto" 
+            <!-- Weather Information -->
+            <Grid Grid.Column="9"
+                  ColumnDefinitions="Auto,Auto"
                   VerticalOptions="Center"
                   HorizontalOptions="End">
+
                 <Image x:Name="WeatherIcon"
                        Grid.Column="0"
                        WidthRequest="24"
                        HeightRequest="24"
                        Margin="0,0,8,0"
                        VerticalOptions="Center" />
+
                 <Label Grid.Column="1"
                        x:Name="WeatherLabel"
                        Text="72°F • Partly Cloudy"
@@ -156,7 +153,7 @@ This code file gives UI for the top navigation bar that will be present througho
                        HorizontalTextAlignment="End" />
             </Grid>
 
-            <!-- Current date and time-->
+            <!-- Current Date & Time -->
             <Label Grid.Column="11"
                    x:Name="ClockLabel"
                    Text="Sep 19 • 04:16:45 PM"
@@ -167,13 +164,16 @@ This code file gives UI for the top navigation bar that will be present througho
                    HorizontalTextAlignment="End" />
         </Grid>
 
-        <!-- Search Overlay -->
+        <!-- ========================================================= -->
+        <!--                     SEARCH OVERLAY PANEL                  -->
+        <!-- ========================================================= -->
         <Grid x:Name="SearchOverlay"
               Grid.Row="1"
               IsVisible="False"
               Padding="0"
               InputTransparent="False"
               ZIndex="9999">
+
             <BoxView BackgroundColor="#80000000">
                 <BoxView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnSearchOverlayBackgroundTapped" />
@@ -190,8 +190,10 @@ This code file gives UI for the top navigation bar that will be present througho
                     VerticalOptions="Start"
                     WidthRequest="380"
                     Margin="0,12,0,20">
+
                 <Grid RowDefinitions="Auto,*"
                       BackgroundColor="#1F2937">
+
                     <Grid ColumnDefinitions="*,Auto"
                           Padding="16,10"
                           BackgroundColor="#111827">
@@ -200,6 +202,7 @@ This code file gives UI for the top navigation bar that will be present througho
                                FontSize="16"
                                TextColor="White"
                                VerticalOptions="Center" />
+
                         <Button Grid.Column="1"
                                 Text="Close"
                                 Padding="12,4"
@@ -213,6 +216,7 @@ This code file gives UI for the top navigation bar that will be present througho
                           Padding="0"
                           RowSpacing="0"
                           BackgroundColor="#1F2937">
+
                         <ScrollView x:Name="SearchResultsScrollView"
                                     IsVisible="False"
                                     MaximumHeightRequest="420">
@@ -244,4 +248,3 @@ This code file gives UI for the top navigation bar that will be present througho
         </Grid>
     </Grid>
 </ContentView>
-    
