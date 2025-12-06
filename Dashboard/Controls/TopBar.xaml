@@ -72,24 +72,36 @@ This code file gives UI for the top navigation bar that will be present througho
                 </Grid>
             </Grid>
 
-            <!-- Department Title -->
-            <Label Grid.Column="4"
-                   Text="Department of Engineering &amp; Computer Science"
-                   FontSize="{OnPlatform Default=14, Android=12, iOS=12}"
-                   FontAttributes="Bold"
-                   TextColor="{DynamicResource TopBarForeground}"
-                   VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="Start"
-                   LineBreakMode="TailTruncation"
-                   WidthRequest="280"
-                   MaxLines="1" />
+            <!-- Department Branding -->
+            <Grid Grid.Column="3"
+                  Grid.ColumnSpan="2"
+                  ColumnDefinitions="Auto,12,*"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Start">
+                <Image Grid.Column="0"
+                       Source="encslogo.png"
+                       HeightRequest="72"
+                       WidthRequest="95"
+                       Aspect="AspectFit"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="2"
+                       Text="Department of Engineering Science"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="{DynamicResource TopBarForeground}"
+                       VerticalTextAlignment="Center"
+                       LineBreakMode="TailTruncation"
+                       MaxLines="1"
+                       HorizontalOptions="Start" />
+            </Grid>
 
             <!-- Search Bar -->
-            <Grid Grid.Column="7"
+            <Grid Grid.Column="5"
                   x:Name="SearchBarContainer"
                   VerticalOptions="Center"
                   HorizontalOptions="Start"
-                  WidthRequest="200">
+                  WidthRequest="270"
+                  Margin="20,0,0,0">
                 <Frame BackgroundColor="{DynamicResource TopBarSearchBackground}"
                        CornerRadius="20"
                        Padding="0"
@@ -232,3 +244,4 @@ This code file gives UI for the top navigation bar that will be present througho
         </Grid>
     </Grid>
 </ContentView>
+    
