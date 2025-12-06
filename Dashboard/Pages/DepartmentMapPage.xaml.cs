@@ -19,7 +19,7 @@ public partial class DepartmentMapPage : ContentPage
     private double _panY = 0;
     
     // Vercel deployment URL
-    private const string VercelMapUrl = "https://interactive-map-seven-kappa.vercel.app/";
+    private const string VercelMapUrl = "https://interactive-map-for-encs-lng-dashbo.vercel.app/";
     
     // Zoom constants
     private const double MinZoom = 0.5;
