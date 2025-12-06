@@ -51,7 +51,7 @@ This code file gives UI Eweek year 2024 page-->
                     <VerticalStackLayout Spacing="20">
                         
                         <!-- Event Summary -->
-                    <Frame BackgroundColor="#1C2028"
+                    <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
@@ -71,11 +71,11 @@ This code file gives UI Eweek year 2024 page-->
                                     <Label Text="800+"
                                                FontSize="24"
                                                FontAttributes="Bold"
-                                               TextColor="#4CAF50"
+                                               TextColor="#FFD204"
                                                HorizontalOptions="Center" />
                                     <Label Text="Participants"
                                                FontSize="12"
-                                               TextColor="#CCCCCC"
+                                               TextColor="White"
                                                HorizontalOptions="Center" />
                                 </VerticalStackLayout>
 
@@ -83,11 +83,11 @@ This code file gives UI Eweek year 2024 page-->
                                     <Label Text="12"
                                                FontSize="24"
                                                FontAttributes="Bold"
-                                               TextColor="#2196F3"
+                                               TextColor="#00aeef"
                                                HorizontalOptions="Center" />
                                     <Label Text="Events"
                                                FontSize="12"
-                                               TextColor="#CCCCCC"
+                                               TextColor="White"
                                                HorizontalOptions="Center" />
                                 </VerticalStackLayout>
 
@@ -95,11 +95,11 @@ This code file gives UI Eweek year 2024 page-->
                                     <Label Text="12"
                                                FontSize="24"
                                                FontAttributes="Bold"
-                                               TextColor="#f2b32e"
+                                               TextColor="#FFD204"
                                                HorizontalOptions="Center" />
                                     <Label Text="Competitions"
                                                FontSize="12"
-                                               TextColor="#CCCCCC"
+                                               TextColor="White"
                                                HorizontalOptions="Center" />
                                 </VerticalStackLayout>
                             </HorizontalStackLayout>
@@ -112,7 +112,7 @@ This code file gives UI Eweek year 2024 page-->
                     </Frame>
 
                         <!-- Photo Gallery Preview -->
-                        <Frame BackgroundColor="#1C2028"
+                        <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">

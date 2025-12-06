@@ -15,16 +15,16 @@ This code file gives UI for the announcement page-->
         <!-- Main Content Area -->
         <Grid Grid.Row="1" RowDefinitions="Auto,*" Padding="20">
             <Label Grid.Row="0"
-                   Text="📢 All Announcements"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   TextColor="White"
+                   Text="All Announcements"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                   TextColor="#003087"
                    HorizontalOptions="Center"
                    Margin="0,0,0,20" />
-            
+                
             <!-- Announcements List -->
             <ScrollView Grid.Row="1">
-                <VerticalStackLayout Spacing="15">
+                    <VerticalStackLayout Spacing="15">
                         
                         <!-- Announcement 1 -->
                         <Frame BackgroundColor="#003087"
@@ -38,7 +38,7 @@ This code file gives UI for the announcement page-->
                                     <Label Grid.Row="0" Grid.Column="1" Text="Grade Forgiveness for Previous Retakes"
                                            FontSize="18"
                                            FontAttributes="Bold"
-                                           TextColor="White" />
+                                           TextColor="#FFD204" />
                                     <Label Grid.Row="1" Grid.Column="1" Text="Due: October 31, 2025"
                                            FontSize="14"
                                            TextColor="#CCCCCC" 
@@ -64,7 +64,7 @@ This code file gives UI for the announcement page-->
                                     <Label Grid.Row="0" Grid.Column="1" Text="Grade Forgiveness Policy - Fall 2025"
                                            FontSize="18"
                                            FontAttributes="Bold"
-                                           TextColor="White" />
+                                           TextColor="#FFD204" />
                                     <Label Grid.Row="1" Grid.Column="1" Text="Apply by midterm"
                                            FontSize="14"
                                            TextColor="#CCCCCC" 
@@ -110,7 +110,7 @@ This code file gives UI for the announcement page-->
                                     <Label Grid.Row="0" Grid.Column="1" Text="Spring 2026 Advising"
                                            FontSize="18"
                                            FontAttributes="Bold"
-                                           TextColor="White" />
+                                           TextColor="#FFD204" />
                                     <Label Grid.Row="1" Grid.Column="1" Text="Make appointment now"
                                            FontSize="14"
                                            TextColor="#CCCCCC" 
@@ -141,7 +141,7 @@ This code file gives UI for the announcement page-->
                                     <Label Grid.Row="0" Grid.Column="1" Text="Fall 2025 Graduation Application"
                                            FontSize="18"
                                            FontAttributes="Bold"
-                                           TextColor="White" />
+                                           TextColor="#FFD204" />
                                     <Label Grid.Row="1" Grid.Column="1" Text="Submit ASAP"
                                            FontSize="14"
                                            TextColor="#CCCCCC" 
@@ -167,7 +167,7 @@ This code file gives UI for the announcement page-->
                                     <Label Grid.Row="0" Grid.Column="1" Text="ENCS Scholarship Applications"
                                            FontSize="18"
                                            FontAttributes="Bold"
-                                           TextColor="White" />
+                                           TextColor="#FFD204" />
                                     <Label Grid.Row="1" Grid.Column="1" Text="111 applications received"
                                            FontSize="14"
                                            TextColor="#CCCCCC" 
@@ -193,7 +193,7 @@ This code file gives UI for the announcement page-->
                                     <Label Grid.Row="0" Grid.Column="1" Text="FE Exam Fee Reimbursement"
                                            FontSize="18"
                                            FontAttributes="Bold"
-                                           TextColor="White" />
+                                           TextColor="#FFD204" />
                                     <Label Grid.Row="1" Grid.Column="1" Text="2025-2026 Calendar Year"
                                            FontSize="14"
                                            TextColor="#CCCCCC" 
@@ -219,7 +219,7 @@ This code file gives UI for the announcement page-->
                                     <Label Grid.Row="0" Grid.Column="1" Text="GIS Engineering Tailgate"
                                            FontSize="18"
                                            FontAttributes="Bold"
-                                           TextColor="White" />
+                                           TextColor="#FFD204" />
                                     <Label Grid.Row="1" Grid.Column="1" Text="Saturday, October 18"
                                            FontSize="14"
                                            TextColor="#CCCCCC" 
@@ -245,7 +245,7 @@ This code file gives UI for the announcement page-->
                                     <Label Grid.Row="0" Grid.Column="1" Text="Bioengineering International Competition"
                                            FontSize="18"
                                            FontAttributes="Bold"
-                                           TextColor="White" />
+                                           TextColor="#FFD204" />
                                     <Label Grid.Row="1" Grid.Column="1" Text="Meeting: October 20, 4:15 PM"
                                            FontSize="14"
                                            TextColor="#CCCCCC" 
@@ -271,7 +271,7 @@ This code file gives UI for the announcement page-->
                                     <Label Grid.Row="0" Grid.Column="1" Text="Leaders of Tomorrow Program"
                                            FontSize="18"
                                            FontAttributes="Bold"
-                                           TextColor="White" />
+                                           TextColor="#FFD204" />
                                     <Label Grid.Row="1" Grid.Column="1" Text="Americas LNG Conference"
                                            FontSize="14"
                                            TextColor="#CCCCCC" 
@@ -297,7 +297,7 @@ This code file gives UI for the announcement page-->
                                     <Label Grid.Row="0" Grid.Column="1" Text="ENCS SharePoint Page"
                                            FontSize="18"
                                            FontAttributes="Bold"
-                                           TextColor="White" />
+                                           TextColor="#FFD204" />
                                     <Label Grid.Row="1" Grid.Column="1" Text="New resource available"
                                            FontSize="14"
                                            TextColor="#CCCCCC" 

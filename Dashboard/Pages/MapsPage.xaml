@@ -22,7 +22,7 @@
                     <Label Text="Campus Maps"
                            FontSize="28"
                            FontAttributes="Bold"
-                           TextColor="Black"
+                           TextColor="#003087"
                            HorizontalOptions="Center" />
                     <Label Text="Navigate to department locations and explore the campus"
                            FontSize="16"

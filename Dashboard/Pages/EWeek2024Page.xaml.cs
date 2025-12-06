@@ -34,6 +34,7 @@ public partial class EWeek2024Page : ContentPage
     /// </summary>
     private async void OnBackButtonClicked(object sender, EventArgs e)
     {
+        // Use absolute route to ensure navigation works consistently
         await Shell.Current.GoToAsync("//E-Week");
     }
 

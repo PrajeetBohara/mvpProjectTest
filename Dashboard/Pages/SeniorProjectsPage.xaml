@@ -13,6 +13,14 @@
 
         <ScrollView Grid.Row="1" Padding="20">
             <VerticalStackLayout Spacing="24">
+                
+                <!-- Page Title -->
+                <Label Text="Projects"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="#003087"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,10" />
 
                 <Frame BackgroundColor="#003087"
                        CornerRadius="16"
@@ -87,6 +95,9 @@
                             <Label Text="• Wood Glider" FontSize="15" TextColor="#FFFFFF" />
                             <Label Text="• LaACES Student Balloon" FontSize="15" TextColor="#FFFFFF" />
                             <Label Text="• Concrete Canoe" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Teleoperation AI robots" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Robotics hand" FontSize="15" TextColor="#FFFFFF" />
+                            <Label Text="• Simon's Game" FontSize="15" TextColor="#FFFFFF" />
                         </VerticalStackLayout>
                     </VerticalStackLayout>
                 </Frame>
