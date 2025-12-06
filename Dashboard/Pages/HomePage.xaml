@@ -70,17 +70,19 @@
             </Grid>
 
             <!-- ====================== LEFT-BOTTOM: Quick Access Sections ====================== -->
-            <Grid Grid.Row="1" Grid.Column="0">
-                <HorizontalStackLayout Spacing="40" 
-                                       VerticalOptions="Center"
-                                       HorizontalOptions="Start"
-                                       Margin="0,10,10,0">
+            <Grid Grid.Row="1" Grid.Column="0"
+                  Margin="0,10,10,0">
+                <Grid ColumnDefinitions="*,*,*,*,*,*"
+                      VerticalOptions="Center"
+                      HorizontalOptions="Fill">
                     
                     <!-- Maps Section -->
-                    <Frame BackgroundColor="Transparent"
+                    <Frame Grid.Column="0"
+                           BackgroundColor="Transparent"
                            CornerRadius="12"
-                           Padding="20,12,20,12"
-                           HasShadow="False">
+                           Padding="36,20,36,20"
+                           HasShadow="False"
+                           Margin="0,0,5,0">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnMapsTapped" />
                         </Frame.GestureRecognizers>
@@ -88,7 +90,7 @@
                                              HorizontalOptions="Center"
                                              Spacing="18">
                             <Label Text="🗺️"
-                                   FontSize="{OnPlatform Default=36, Android=28, iOS=36}"
+                                   FontSize="{OnPlatform Default=42, Android=32, iOS=42}"
                                    HorizontalOptions="Center" />
                             <Label Text="Maps"
                                    FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
@@ -99,10 +101,12 @@
                     </Frame>
 
                     <!-- Contact Section -->
-                    <Frame BackgroundColor="Transparent"
+                    <Frame Grid.Column="1"
+                           BackgroundColor="Transparent"
                            CornerRadius="12"
-                           Padding="20,12,20,12"
-                           HasShadow="False">
+                           Padding="36,20,36,20"
+                           HasShadow="False"
+                           Margin="5,0,5,0">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnContactTapped" />
                         </Frame.GestureRecognizers>
@@ -110,7 +114,7 @@
                                              HorizontalOptions="Center"
                                              Spacing="18">
                             <Label Text="📞"
-                                   FontSize="{OnPlatform Default=36, Android=28, iOS=36}"
+                                   FontSize="{OnPlatform Default=42, Android=32, iOS=42}"
                                    HorizontalOptions="Center" />
                             <Label Text="Contact"
                                    FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
@@ -121,18 +125,20 @@
                     </Frame>
 
                     <!-- Labs Section -->
-                    <Frame BackgroundColor="Transparent"
+                    <Frame Grid.Column="2"
+                           BackgroundColor="Transparent"
                            CornerRadius="12"
-                           Padding="20,12,20,12"
-                           HasShadow="False">
+                           Padding="36,20,36,20"
+                           HasShadow="False"
+                           Margin="5,0,5,0">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnLabsTapped" />
                         </Frame.GestureRecognizers>
                         <VerticalStackLayout VerticalOptions="Center"
                                              HorizontalOptions="Center"
                                              Spacing="18">
-                            <Label Text="🔬"
-                                   FontSize="{OnPlatform Default=36, Android=28, iOS=36}"
+                            <Label Text="💻"
+                                   FontSize="{OnPlatform Default=42, Android=32, iOS=42}"
                                    HorizontalOptions="Center" />
                             <Label Text="Labs"
                                    FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
@@ -143,10 +149,12 @@
                     </Frame>
 
                     <!-- Projects Section -->
-                    <Frame BackgroundColor="Transparent"
+                    <Frame Grid.Column="3"
+                           BackgroundColor="Transparent"
                            CornerRadius="12"
-                           Padding="20,12,20,12"
-                           HasShadow="False">
+                           Padding="36,20,36,20"
+                           HasShadow="False"
+                           Margin="5,0,5,0">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnProjectsTapped" />
                         </Frame.GestureRecognizers>
@@ -154,7 +162,7 @@
                                              HorizontalOptions="Center"
                                              Spacing="18">
                             <Label Text="🚀"
-                                   FontSize="{OnPlatform Default=36, Android=28, iOS=36}"
+                                   FontSize="{OnPlatform Default=42, Android=32, iOS=42}"
                                    HorizontalOptions="Center" />
                             <Label Text="Projects"
                                    FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
@@ -165,10 +173,12 @@
                     </Frame>
 
                     <!-- Faculty Directory Section -->
-                    <Frame BackgroundColor="Transparent"
+                    <Frame Grid.Column="4"
+                           BackgroundColor="Transparent"
                            CornerRadius="12"
-                           Padding="20,12,20,12"
-                           HasShadow="False">
+                           Padding="36,20,36,20"
+                           HasShadow="False"
+                           Margin="5,0,5,0">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnFacultyDirectoryTapped" />
                         </Frame.GestureRecognizers>
@@ -176,7 +186,7 @@
                                              HorizontalOptions="Center"
                                              Spacing="18">
                             <Label Text="👨‍🏫"
-                                   FontSize="{OnPlatform Default=36, Android=28, iOS=36}"
+                                   FontSize="{OnPlatform Default=42, Android=32, iOS=42}"
                                    HorizontalOptions="Center" />
                             <Label Text="Faculty"
                                    FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
@@ -187,10 +197,12 @@
                     </Frame>
 
                     <!-- Student Clubs Section -->
-                    <Frame BackgroundColor="Transparent"
+                    <Frame Grid.Column="5"
+                           BackgroundColor="Transparent"
                            CornerRadius="12"
-                           Padding="20,12,20,12"
-                           HasShadow="False">
+                           Padding="36,20,36,20"
+                           HasShadow="False"
+                           Margin="5,0,0,0">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnStudentClubsTapped" />
                         </Frame.GestureRecognizers>
@@ -198,7 +210,7 @@
                                              HorizontalOptions="Center"
                                              Spacing="18">
                             <Label Text="🎓"
-                                   FontSize="{OnPlatform Default=36, Android=28, iOS=36}"
+                                   FontSize="{OnPlatform Default=42, Android=32, iOS=42}"
                                    HorizontalOptions="Center" />
                             <Label Text="Clubs"
                                    FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
@@ -208,15 +220,14 @@
                         </VerticalStackLayout>
                     </Frame>
 
-                </HorizontalStackLayout>
+                </Grid>
             </Grid>
 
 
             <!-- ====================== RIGHT SIDE CONTAINER (spans both rows) ====================== -->
-            <!-- Makes Events a bit shorter and Announcements taller -->
-            <Grid Grid.Column="1" Grid.Row="0"
-                  RowDefinitions="1*,1.5*">
-                <!-- adjust ratios as you like -->
+            <!-- Events takes first half, Announcements takes second half -->
+            <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+                  RowDefinitions="1*,1*">
 
                 <!-- TOP-RIGHT: Upcoming Events (slightly smaller) -->
                 <Frame Grid.Row="0"
@@ -225,17 +236,19 @@
                        Padding="12"
                        HasShadow="True"
                        Margin="10,0,15,6">
-                    <ScrollView HorizontalScrollBarVisibility="Never"
-                                VerticalScrollBarVisibility="Default">
-                        <VerticalStackLayout Spacing="8"
-                                             HorizontalOptions="Fill">
-                            <Label Text="📅 Upcoming Events"
-                                   FontSize="{OnPlatform Default=14, Android=12, iOS=12}"
-                                   FontAttributes="Bold"
-                                   TextColor="White"
-                                   HorizontalOptions="Center"
-                                   HorizontalTextAlignment="Center" />
+                    <Grid RowDefinitions="Auto,*,Auto">
+                        <Label Grid.Row="0"
+                               Text="📅 Important Dates"
+                               FontSize="{OnPlatform Default=14, Android=12, iOS=12}"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               Margin="0,0,0,8" />
 
+                        <ScrollView Grid.Row="1"
+                                    HorizontalScrollBarVisibility="Never"
+                                    VerticalScrollBarVisibility="Default">
                             <VerticalStackLayout Spacing="6"
                                                  HorizontalOptions="Fill">
                                 <Frame BackgroundColor="#002a54" 
@@ -246,18 +259,14 @@
                                        Margin="0,0,9,0">
                                     <VerticalStackLayout Spacing="3"
                                                          HorizontalOptions="Fill">
-                                        <Label Text="Engineering Career Fair"
+                                        <Label Text="Classes end"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
                                                FontAttributes="Bold"
                                                TextColor="White"
                                                HorizontalOptions="Center"
                                                HorizontalTextAlignment="Center"
                                                LineBreakMode="WordWrap" />
-                                        <Label Text="Friday, Sep 27"
-                                               FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#FFD204"
-                                               HorizontalOptions="Center" />
-                                        <Label Text="10:00 AM"
+                                        <Label Text="December 8"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
                                                TextColor="#FFD204"
                                                HorizontalOptions="Center" />
@@ -272,18 +281,14 @@
                                        Margin="0,0,9,0">
                                     <VerticalStackLayout Spacing="3"
                                                          HorizontalOptions="Fill">
-                                        <Label Text="CS Department Meeting"
+                                        <Label Text="Last day to remove &quot;I&quot; grades from previous semester"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
                                                FontAttributes="Bold"
                                                TextColor="White"
                                                HorizontalOptions="Center"
                                                HorizontalTextAlignment="Center"
                                                LineBreakMode="WordWrap" />
-                                        <Label Text="Monday, Sep 30"
-                                               FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
-                                               TextColor="#f2b32e"
-                                               HorizontalOptions="Center" />
-                                        <Label Text="2:00 PM"
+                                        <Label Text="December 8"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
                                                TextColor="#f2b32e"
                                                HorizontalOptions="Center" />
@@ -298,34 +303,143 @@
                                        Margin="0,0,9,0">
                                     <VerticalStackLayout Spacing="3"
                                                          HorizontalOptions="Fill">
-                                        <Label Text="Student Club Expo"
+                                        <Label Text="Study Day"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
                                                FontAttributes="Bold"
                                                TextColor="White"
                                                HorizontalOptions="Center"
                                                HorizontalTextAlignment="Center"
                                                LineBreakMode="WordWrap" />
-                                        <Label Text="Wednesday, Oct 2"
+                                        <Label Text="December 9"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
                                                TextColor="#00aeef"
                                                HorizontalOptions="Center" />
-                                        <Label Text="1:00 PM"
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <Frame BackgroundColor="#002a54" 
+                                       CornerRadius="6" 
+                                       Padding="8" 
+                                       HasShadow="False"
+                                       HorizontalOptions="Fill"
+                                       Margin="0,0,9,0">
+                                    <VerticalStackLayout Spacing="3"
+                                                         HorizontalOptions="Fill">
+                                        <Label Text="Final exams begin"
+                                               FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
+                                        <Label Text="December 10"
+                                               FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
+                                               TextColor="#FFD204"
+                                               HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <Frame BackgroundColor="#002a54" 
+                                       CornerRadius="6" 
+                                       Padding="8" 
+                                       HasShadow="False"
+                                       HorizontalOptions="Fill"
+                                       Margin="0,0,9,0">
+                                    <VerticalStackLayout Spacing="3"
+                                                         HorizontalOptions="Fill">
+                                        <Label Text="Final exams end"
+                                               FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
+                                        <Label Text="December 13"
+                                               FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
+                                               TextColor="#f2b32e"
+                                               HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <Frame BackgroundColor="#002a54" 
+                                       CornerRadius="6" 
+                                       Padding="8" 
+                                       HasShadow="False"
+                                       HorizontalOptions="Fill"
+                                       Margin="0,0,9,0">
+                                    <VerticalStackLayout Spacing="3"
+                                                         HorizontalOptions="Fill">
+                                        <Label Text="Grades due at 8:30am for graduating students"
+                                               FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
+                                        <Label Text="December 15"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
                                                TextColor="#00aeef"
+                                               HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <Frame BackgroundColor="#002a54" 
+                                       CornerRadius="6" 
+                                       Padding="8" 
+                                       HasShadow="False"
+                                       HorizontalOptions="Fill"
+                                       Margin="0,0,9,0">
+                                    <VerticalStackLayout Spacing="3"
+                                                         HorizontalOptions="Fill">
+                                        <Label Text="Final grades due by 8:30 am for all remaining students"
+                                               FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
+                                        <Label Text="December 17"
+                                               FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
+                                               TextColor="#FFD204"
+                                               HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <Frame BackgroundColor="#002a54" 
+                                       CornerRadius="6" 
+                                       Padding="8" 
+                                       HasShadow="False"
+                                       HorizontalOptions="Fill"
+                                       Margin="0,0,9,0">
+                                    <VerticalStackLayout Spacing="3"
+                                                         HorizontalOptions="Fill">
+                                        <Label Text="Commencement"
+                                               FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
+                                        <Label Text="December 19"
+                                               FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
+                                               TextColor="#f2b32e"
                                                HorizontalOptions="Center" />
                                     </VerticalStackLayout>
                                 </Frame>
                             </VerticalStackLayout>
+                        </ScrollView>
 
-                            <Button Text="View All Events"
-                                    BackgroundColor="#002a54"
-                                    TextColor="White"
-                                    CornerRadius="6"
-                                    FontSize="{OnPlatform Default=9, Android=8, iOS=8}"
-                                    HorizontalOptions="Fill"
-                                    Clicked="OnViewAllEventsClicked" />
-                        </VerticalStackLayout>
-                    </ScrollView>
+                        <Button Grid.Row="2"
+                                Text="View All Dates"
+                                BackgroundColor="#FFD204"
+                                TextColor="#003087"
+                                CornerRadius="6"
+                                FontSize="{OnPlatform Default=9, Android=8, iOS=8}"
+                                HeightRequest="35"
+                                HorizontalOptions="Fill"
+                                Margin="0,8,0,0"
+                                Clicked="OnViewAllEventsClicked" />
+                    </Grid>
                 </Frame>
 
                 <!-- BOTTOM-RIGHT: Announcements (expanded upward) -->
@@ -335,17 +449,19 @@
                        Padding="12"
                        HasShadow="True"
                        Margin="10,6,10,0">
-                    <ScrollView HorizontalScrollBarVisibility="Never"
-                                VerticalScrollBarVisibility="Default">
-                        <VerticalStackLayout Spacing="12"
-                                             HorizontalOptions="Fill">
-                            <Label Text="📢 Announcements"
-                                   TextColor="White"
-                                   FontAttributes="Bold"
-                                   FontSize="{OnPlatform Default=16, Android=14, iOS=14}"
-                                   HorizontalOptions="Center"
-                                   HorizontalTextAlignment="Center" />
+                    <Grid RowDefinitions="Auto,*,Auto">
+                        <Label Grid.Row="0"
+                               Text="📢 Announcements"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               FontSize="{OnPlatform Default=16, Android=14, iOS=14}"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               Margin="0,0,0,12" />
 
+                        <ScrollView Grid.Row="1"
+                                    HorizontalScrollBarVisibility="Never"
+                                    VerticalScrollBarVisibility="Default">
                             <VerticalStackLayout Spacing="8"
                                                  HorizontalOptions="Fill">
                                 <Frame BackgroundColor="#002a54" 
@@ -355,19 +471,19 @@
                                        Margin="0,0,9,0">
                                     <VerticalStackLayout Spacing="4"
                                                          HorizontalOptions="Fill">
-                                        <Label Text="Spring 2024 Registration"
+                                        <Label Text="Grade Forgiveness for Previous Retakes"
                                                TextColor="#FFD204"
                                                FontSize="{OnPlatform Default=12, Android=10, iOS=10}"
                                                HorizontalOptions="Center"
                                                HorizontalTextAlignment="Center"
                                                LineBreakMode="WordWrap" />
-                                        <Label Text="Registration opens Nov 1st"
+                                        <Label Text="Submit form via email to Dr. Vasan by Oct 31"
                                                TextColor="White"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
                                                HorizontalOptions="Center"
                                                HorizontalTextAlignment="Center"
                                                LineBreakMode="WordWrap" />
-                                        <Label Text="2 hours ago"
+                                        <Label Text="Due: October 31, 2025"
                                                TextColor="#CCCCCC"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
                                                HorizontalOptions="Center" />
@@ -381,36 +497,64 @@
                                        Margin="0,0,9,0">
                                     <VerticalStackLayout Spacing="4"
                                                          HorizontalOptions="Fill">
-                                        <Label Text="Lab Equipment"
+                                        <Label Text="Spring 2026 Advising"
                                                TextColor="#f2b32e"
                                                FontSize="{OnPlatform Default=12, Android=10, iOS=10}"
                                                HorizontalOptions="Center"
                                                HorizontalTextAlignment="Center"
                                                LineBreakMode="WordWrap" />
-                                        <Label Text="High-performance workstations available"
+                                        <Label Text="Make appointment with faculty advisor now"
                                                TextColor="White"
                                                FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
                                                HorizontalOptions="Center"
                                                HorizontalTextAlignment="Center"
                                                LineBreakMode="WordWrap" />
-                                        <Label Text="1 day ago"
+                                        <Label Text="Registration opens: 11/6/2025 @ 1pm"
+                                               TextColor="#CCCCCC"
+                                               FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
+                                               HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <Frame BackgroundColor="#002a54" 
+                                       CornerRadius="8" 
+                                       Padding="10"
+                                       HorizontalOptions="Fill"
+                                       Margin="0,0,9,0">
+                                    <VerticalStackLayout Spacing="4"
+                                                         HorizontalOptions="Fill">
+                                        <Label Text="Fall 2025 Graduation Application"
+                                               TextColor="#00aeef"
+                                               FontSize="{OnPlatform Default=12, Android=10, iOS=10}"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
+                                        <Label Text="Submit application for degree ASAP"
+                                               TextColor="White"
+                                               FontSize="{OnPlatform Default=10, Android=9, iOS=9}"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap" />
+                                        <Label Text="To Department Head Office"
                                                TextColor="#CCCCCC"
                                                FontSize="{OnPlatform Default=8, Android=7, iOS=7}"
                                                HorizontalOptions="Center" />
                                     </VerticalStackLayout>
                                 </Frame>
                             </VerticalStackLayout>
+                        </ScrollView>
 
-                            <Button Text="View All Announcements"
-                                    BackgroundColor="#FFD204"
-                                    TextColor="#003087"
-                                    FontSize="{OnPlatform Default=9, Android=8, iOS=8}"
-                                    CornerRadius="6"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Fill"
-                                    Clicked="OnViewAllAnnouncementsClicked" />
-                        </VerticalStackLayout>
-                    </ScrollView>
+                        <Button Grid.Row="2"
+                                Text="View All Announcements"
+                                BackgroundColor="#FFD204"
+                                TextColor="#003087"
+                                FontSize="{OnPlatform Default=9, Android=8, iOS=8}"
+                                CornerRadius="6"
+                                HeightRequest="35"
+                                HorizontalOptions="Fill"
+                                Margin="0,12,0,0"
+                                Clicked="OnViewAllAnnouncementsClicked" />
+                    </Grid>
                 </Frame>
             </Grid>
             <!-- ====================== END RIGHT SIDE ====================== -->
