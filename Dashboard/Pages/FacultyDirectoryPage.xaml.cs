@@ -1,4 +1,6 @@
 using System.Collections.ObjectModel;
+using System.Linq;
+using Microsoft.Maui.ApplicationModel;
 using Dashboard.Models;
 using Dashboard.Services;
 
@@ -97,17 +99,24 @@ public partial class FacultyDirectoryPage : ContentPage
         }
     }
 
-    private void ShowResearchModal(string professorName)
+    private async void ShowResearchModal(string professorName)
     {
         try
         {
             ModalProfessorName.Text = professorName;
             ModalResearchContent.Children.Clear();
             
-            // Set professor image using the same URL as the faculty card
-            SetModalProfessorImage(professorName);
+            // Clear and load only this professor's research images FIRST
+            ResearchImages.Clear();
+            await LoadProfessorResearchImages(professorName);
             
-            // Populate content based on professor
+            // Ensure UI updates on main thread
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                // Set professor image using the same URL as the faculty card
+                SetModalProfessorImage(professorName);
+                
+                // Populate content based on professor (this creates the CollectionView)
             if (professorName.Contains("Lavergne"))
             {
                 PopulateLavergneResearchContent();
@@ -158,10 +167,84 @@ public partial class FacultyDirectoryPage : ContentPage
             }
             
             ResearchModalOverlay.IsVisible = true;
+            });
         }
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"Error showing research modal: {ex.Message}");
+        }
+    }
+
+    private async Task LoadProfessorResearchImages(string professorName)
+    {
+        try
+        {
+            // Get research image URLs from configuration
+            List<string> imageUrls = new List<string>();
+
+            if (professorName.Contains("Lavergne"))
+                imageUrls = ResearchImageConfig.LavergneResearchImages;
+            else if (professorName.Contains("Menon"))
+                imageUrls = ResearchImageConfig.MenonResearchImages;
+            else if (professorName.Contains("Anderson"))
+                imageUrls = ResearchImageConfig.AndersonResearchImages;
+            else if (professorName.Contains("Xie"))
+                imageUrls = ResearchImageConfig.XieResearchImages;
+            else if (professorName.Contains("Zeitoun"))
+                imageUrls = ResearchImageConfig.ZeitounResearchImages;
+            else if ((professorName.Contains("Ambatipati") || professorName.Contains("Ambatipani")) && !professorName.Contains("Zeitoun"))
+                imageUrls = ResearchImageConfig.AmbatipatiResearchImages;
+            else if (professorName.Contains("Garner"))
+                imageUrls = ResearchImageConfig.GarnerResearchImages;
+            else if (professorName.Contains("Singh"))
+                imageUrls = ResearchImageConfig.SinghResearchImages;
+            else if (professorName.Contains("Aghili"))
+                imageUrls = ResearchImageConfig.AghiliResearchImages;
+            else if (professorName.Contains("Dermisis"))
+                imageUrls = ResearchImageConfig.DermisisResearchImages;
+            else if (professorName.Contains("Li") && !professorName.Contains("Liu"))
+                imageUrls = ResearchImageConfig.LiResearchImages;
+            else if (professorName.Contains("Subramaniam"))
+                imageUrls = ResearchImageConfig.SubramaniamResearchImages;
+            else if (professorName.Contains("Guo"))
+                imageUrls = ResearchImageConfig.GuoResearchImages;
+            else if (professorName.Contains("Liu"))
+                imageUrls = ResearchImageConfig.LiuResearchImages;
+            else if (professorName.Contains("Rosti"))
+                imageUrls = ResearchImageConfig.RostiResearchImages;
+            else if (professorName.Contains("Zhang"))
+                imageUrls = ResearchImageConfig.ZhangResearchImages;
+
+            // Convert URLs to ResearchImage objects
+            System.Diagnostics.Debug.WriteLine($"[ResearchImages] Found {imageUrls.Count} URLs in config for {professorName}");
+            
+            foreach (var url in imageUrls)
+            {
+                if (!string.IsNullOrWhiteSpace(url))
+                {
+                    // Extract filename from URL for caption
+                    var fileName = url.Split('/').LastOrDefault() ?? "Research Image";
+                    var caption = System.IO.Path.GetFileNameWithoutExtension(fileName)
+                        .Replace("_", " ")
+                        .Replace("-", " ");
+
+                    var researchImage = new ResearchImage
+                    {
+                        ImageUrl = url,
+                        Caption = caption,
+                        FileName = fileName
+                    };
+                    
+                    ResearchImages.Add(researchImage);
+                    System.Diagnostics.Debug.WriteLine($"[ResearchImages] Added image: {url}");
+                }
+            }
+
+            System.Diagnostics.Debug.WriteLine($"[ResearchImages] Total loaded: {ResearchImages.Count} images for {professorName}");
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error loading research images for {professorName}: {ex.Message}");
         }
     }
 
@@ -426,15 +509,16 @@ public partial class FacultyDirectoryPage : ContentPage
         announcementStack.Children.Add(new Label 
         { 
             Text = "To be announced", 
-            FontSize = 16, 
+            FontSize = 12, 
             TextColor = Color.FromArgb("#FFD204"),
             HorizontalOptions = LayoutOptions.Center,
-            FontAttributes = FontAttributes.Italic
+            FontAttributes = FontAttributes.Italic,
+            LineBreakMode = LineBreakMode.WordWrap
         });
         announcementStack.Children.Add(new Label 
         { 
             Text = "Research details for this faculty member will be available soon.", 
-            FontSize = 14, 
+            FontSize = 10, 
             TextColor = Color.FromArgb("#CCCCCC"),
             HorizontalOptions = LayoutOptions.Center,
             HorizontalTextAlignment = TextAlignment.Center,

@@ -11,6 +11,8 @@ public partial class CampusMapPage : ContentPage
 {
     private double _mapWidth = 0;
     private double _mapHeight = 0;
+    private double _currentScale = 1.0;
+    private double _startScale = 1.0;
     
     // Campus location coordinates (relative: 0.0 to 1.0)
     private const double CampusLocationX = 0.50; // Center of campus map
@@ -158,6 +160,42 @@ public partial class CampusMapPage : ContentPage
         
         // Repeat the animation indefinitely - same as department map
         animation.Commit(marker, "Pulse", 16, 1000, Easing.Linear, (v, c) => marker.Scale = 1.0, () => true);
+    }
+    #endregion
+
+    #region Zoom Functionality
+    /// <summary>
+    /// Handles pinch gesture for zooming the campus map.
+    /// Also supports mouse wheel zoom on Windows.
+    /// </summary>
+    private void OnPinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
+    {
+        switch (e.Status)
+        {
+            case GestureStatus.Started:
+                _startScale = _currentScale;
+                break;
+            case GestureStatus.Running:
+                // Calculate new scale (clamp between 1.0 and 5.0)
+                _currentScale = _startScale * e.Scale;
+                _currentScale = Math.Max(1.0, Math.Min(5.0, _currentScale));
+                
+                // Apply scale to the image
+                CampusMapImage.Scale = _currentScale;
+                
+                // Adjust scroll view content size to enable scrolling when zoomed
+                if (CampusMapImage.Width > 0 && CampusMapImage.Height > 0)
+                {
+                    var baseWidth = CampusMapImage.Width / _startScale;
+                    var baseHeight = CampusMapImage.Height / _startScale;
+                    MapContainer.WidthRequest = baseWidth * _currentScale;
+                    MapContainer.HeightRequest = baseHeight * _currentScale;
+                }
+                break;
+            case GestureStatus.Completed:
+                _startScale = _currentScale;
+                break;
+        }
     }
     #endregion
 }

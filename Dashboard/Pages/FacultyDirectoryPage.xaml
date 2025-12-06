@@ -724,8 +724,8 @@ This code file gives UI for the faculty-->
                                     </Frame>
                                 </Grid>
                                 
-                                <!-- Row 4: Zeitoun, Singh (sorted by last name) -->
-                                <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                                <!-- Row 4: Zeitoun, Singh, Empty (sorted by last name) -->
+                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15">
                                     <!-- Dr. Zeyad Zeitoun -->
                                     <Frame Grid.Column="0" BackgroundColor="#002a54" CornerRadius="8" Padding="15" HasShadow="False">
                                         <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
@@ -790,6 +790,11 @@ This code file gives UI for the faculty-->
                                                     Clicked="OnSinghExpandButtonClicked" />
                                         </VerticalStackLayout>
                                     </Frame>
+                                    <!-- Empty space -->
+                                    <Frame Grid.Column="2" BackgroundColor="Transparent" CornerRadius="8" Padding="15" HasShadow="False">
+                                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                        </VerticalStackLayout>
+                                    </Frame>
                                 </Grid>
                             </VerticalStackLayout>
                         </Frame>
@@ -801,7 +806,8 @@ This code file gives UI for the faculty-->
 
         <!-- ====================== FULL-SCREEN RESEARCH DETAILS MODAL ====================== -->
         <Grid x:Name="ResearchModalOverlay"
-             
+              Grid.Row="0"
+              Grid.RowSpan="2"
               IsVisible="False"
               ZIndex="1000">
             <BoxView BackgroundColor="#80000000"
@@ -875,8 +881,7 @@ This code file gives UI for the faculty-->
                                 Padding="25"
                                 VerticalScrollBarVisibility="Default"
                                 HorizontalScrollBarVisibility="Never"
-                                VerticalOptions="FillAndExpand"
-                                Orientation="Vertical">
+                                VerticalOptions="FillAndExpand">
                         <VerticalStackLayout x:Name="ModalResearchContent" 
                                              Spacing="20">
                             <!-- Content will be populated dynamically -->

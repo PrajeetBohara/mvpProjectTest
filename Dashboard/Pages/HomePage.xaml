@@ -18,12 +18,6 @@
               RowDefinitions="3*,1*"
               ColumnDefinitions="3*,1*">
 
-            <!-- Background watermark -->
-            <Image Source="mcneeselogo.png"
-                   Aspect="AspectFill"
-                   Opacity="0.1"
-                  
-                   Grid.ColumnSpan="2" />
 
             <!-- ====================== TOP-LEFT: Slideshow ====================== -->
             <Grid Grid.Row="0" Grid.Column="0">
