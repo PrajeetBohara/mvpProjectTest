@@ -34,7 +34,7 @@
         <ShellContent Title="Senior Design Projects">
             <ContentPage>
                 <Grid RowDefinitions="Auto,*">
-                    <controls:TopBar Grid.Row="0" />
+                    <controls:TopBar ZIndex="10" Grid.Row="0" />
                     <Grid Grid.Row="1" Padding="24">
                         <Label Text="Senior Design Projects Page (placeholder)" TextColor="White" />
                     </Grid>

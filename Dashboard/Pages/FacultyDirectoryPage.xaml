@@ -10,7 +10,7 @@ This code file gives UI for the faculty-->
 
     <Grid RowDefinitions="Auto,*">
         <!-- Global TopBar -->
-        <controls:TopBar Grid.Row="0" />
+        <controls:TopBar ZIndex="10" Grid.Row="0" />
         
         <!-- Main Content Area -->
         <ScrollView Grid.Row="1" Padding="20">
@@ -748,7 +748,7 @@ This code file gives UI for the faculty-->
 
         <!-- ====================== FULL-SCREEN RESEARCH DETAILS MODAL ====================== -->
         <Grid x:Name="ResearchModalOverlay"
-              Grid.RowSpan="2"
+             
               BackgroundColor="#80000000"
               IsVisible="False"
               ZIndex="1000">

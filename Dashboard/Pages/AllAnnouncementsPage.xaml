@@ -10,7 +10,7 @@ This code file gives UI for the announcement page-->
 
     <Grid RowDefinitions="Auto,*">
         <!-- Global TopBar which is always visible on Top -->
-        <controls:TopBar Grid.Row="0" />
+        <controls:TopBar ZIndex="10" Grid.Row="0" />
         
         <!-- Main Content Area -->
         <Grid Grid.Row="1" Padding="20">

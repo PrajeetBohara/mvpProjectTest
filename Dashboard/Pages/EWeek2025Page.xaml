@@ -10,7 +10,7 @@ This code file gives UI for the EWeek 2025 page-->
 
     <Grid RowDefinitions="Auto,*">
         <!-- Global TopBar -->
-        <controls:TopBar Grid.Row="0" />
+        <controls:TopBar ZIndex="10" Grid.Row="0" />
         
         <!-- Main Content Area -->
         <ScrollView Grid.Row="1" Padding="20">

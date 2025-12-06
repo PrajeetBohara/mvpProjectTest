@@ -21,6 +21,14 @@
             // Register Campus Map route
             Routing.RegisterRoute("//CampusMap", typeof(Pages.CampusMapPage));
             
+            // Register general navigation routes
+            Routing.RegisterRoute("//Faculty", typeof(Pages.FacultyDirectoryPage));
+            Routing.RegisterRoute("//Labs", typeof(Pages.LabsPage));
+            Routing.RegisterRoute("//Contact", typeof(Pages.ContactPage));
+            Routing.RegisterRoute("//AllEvents", typeof(Pages.AllEventsPage));
+            Routing.RegisterRoute("//AllAnnouncements", typeof(Pages.AllAnnouncementsPage));
+            Routing.RegisterRoute("//EWeek", typeof(Pages.EWeekPage));
+            
             // Register Student Clubs routes
             Routing.RegisterRoute("//Clubs", typeof(Pages.StudentClubsPage));
             Routing.RegisterRoute("Clubs", typeof(Pages.StudentClubsPage)); // Relative route
