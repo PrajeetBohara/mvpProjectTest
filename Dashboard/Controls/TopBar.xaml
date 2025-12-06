@@ -23,7 +23,7 @@
             <!-- Hamburger Menu Icon -->
             <Grid Grid.Column="0"
                   WidthRequest="40"
-                  HeightRequest="40"
+                  HeightRequest="50"
                   VerticalOptions="Center">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnMenuTapped" />
@@ -50,17 +50,18 @@
             <!-- Home Icon -->
             <Grid Grid.Column="2"
                   WidthRequest="40"
-                  HeightRequest="40"
+                  HeightRequest="20"
                   VerticalOptions="Center"
                   HorizontalOptions="Center">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnHomeTapped" />
                 </Grid.GestureRecognizers>
-                <Label Text="🏠"
-                       FontSize="24"
+                <Image Source="home.png"
+                       WidthRequest="44"
+                       HeightRequest="35"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"
-                       TextColor="{DynamicResource TopBarForeground}" />
+                       Aspect="AspectFit" />
             </Grid>
 
             <!-- Department Branding -->
@@ -79,7 +80,7 @@
                        Text="Department of Engineering and Computer Science"
                        FontSize="20"
                        FontAttributes="Bold"
-                       TextColor="{DynamicResource TopBarForeground}"
+                       TextColor="{StaticResource Primary}"
                        VerticalTextAlignment="Center"
                        LineBreakMode="TailTruncation"
                        MaxLines="1"
@@ -148,7 +149,7 @@
                        Text="72°F • Partly Cloudy"
                        FontSize="14"
                        FontAttributes="Bold"
-                       TextColor="{DynamicResource TopBarForeground}"
+                       TextColor="{StaticResource Primary}"
                        VerticalTextAlignment="Center"
                        HorizontalTextAlignment="End" />
             </Grid>
@@ -159,7 +160,7 @@
                    Text="Sep 19 • 04:16:45 PM"
                    FontSize="14"
                    FontAttributes="Bold"
-                   TextColor="{DynamicResource TopBarForeground}"
+                   TextColor="{StaticResource Primary}"
                    VerticalTextAlignment="Center"
                    HorizontalTextAlignment="End" />
         </Grid>
