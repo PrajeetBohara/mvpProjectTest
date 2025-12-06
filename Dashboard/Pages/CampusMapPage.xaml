@@ -37,11 +37,15 @@
             <Grid x:Name="MapContainer"
                   BackgroundColor="#F5F5F5">
                 
-                <!-- Campus Map PNG Image -->
+                <!-- Campus Map PNG Image with zoom support -->
                 <Image x:Name="CampusMapImage"
                        Aspect="AspectFit"
                        HorizontalOptions="Fill"
-                       VerticalOptions="Fill" />
+                       VerticalOptions="Fill">
+                    <Image.GestureRecognizers>
+                        <PinchGestureRecognizer PinchUpdated="OnPinchUpdated" />
+                    </Image.GestureRecognizers>
+                </Image>
                 
                 <!-- Current Location Indicator Overlay -->
                 <!-- Same structure as department map for consistent marker display -->

@@ -242,18 +242,21 @@ public partial class HomePage : ContentPage
 
     #region Event Handlers
     /// <summary>
-    /// Handles slideshow tap to open image gallery.
-    /// Later on for Smart it will open full-screen image slideshow.
+    /// Handles slideshow tap to cycle to the next image.
     /// </summary>
-    private async void OnSlideshowTapped(object sender, EventArgs e)
+    private void OnSlideshowTapped(object sender, EventArgs e)
     {
         try
         {
-            await DisplayAlert("Slideshow", "Opening image gallery...", "OK");
+            if (_homePageImages.Count > 1)
+            {
+                NextImage();
+                ResetSlideshowTimer();
+            }
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Error opening slideshow: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Error cycling slideshow: {ex.Message}");
         }
     }
 

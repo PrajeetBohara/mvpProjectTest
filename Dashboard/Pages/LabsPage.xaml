@@ -16,7 +16,7 @@
             <VerticalStackLayout Spacing="25">
                 <!-- Page Header -->
                 <VerticalStackLayout Spacing="8" HorizontalOptions="Center" Margin="0,0,0,20">
-                    <Label Text="🔬"
+                    <Label Text="💻"
                            FontSize="48"
                            HorizontalOptions="Center" />
                     <Label Text="Labs"
