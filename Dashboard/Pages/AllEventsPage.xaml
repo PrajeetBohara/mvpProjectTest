@@ -6,168 +6,192 @@ This code file gives UI for the All events page-->
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Dashboard.Controls"
-    Title="All Events">
+    Title="All Important Dates">
 
     <Grid RowDefinitions="Auto,*">
         <!-- Global TopBar that is always visible on top -->
         <controls:TopBar ZIndex="10" Grid.Row="0" />
         
         <!-- Main Content Area -->
-        <Grid Grid.Row="1" Padding="20">
+        <Grid Grid.Row="1" RowDefinitions="Auto,*" Padding="20">
+            <Label Grid.Row="0"
+                   Text="📅 Important Dates"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20" />
             
-            <!-- Page Header -->
-            <VerticalStackLayout Spacing="20">
-                <Label Text="📅 All Upcoming Events"
-                       FontSize="24"
-                       FontAttributes="Bold"
-                       TextColor="White"
-                       HorizontalOptions="Center" />
-                
-                <!-- Events List (Hardcoded for now. We might fetch it from the backend later on -->
-                <ScrollView>
-                    <VerticalStackLayout Spacing="15">
+            <!-- Important Dates List -->
+            <ScrollView Grid.Row="1">
+                <VerticalStackLayout Spacing="15">
                         
-                        <!-- Event 1 -->
+                        <!-- Date 1 -->
                         <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
-                                <Label Text="Engineering Career Fair"
+                                <Label Text="Classes end"
                                        FontSize="20"
                                        FontAttributes="Bold"
                                        TextColor="White" />
-                                <Label Text="Friday, September 27, 2024 • 10:00 AM - 4:00 PM"
+                                <Label Text="December 8"
                                        FontSize="16"
                                        TextColor="#FFD204" />
-                                <Label Text="Main Campus Auditorium"
-                                       FontSize="14"
-                                       TextColor="#CCCCCC" />
-                                <Label Text="Join us for the annual Engineering Career Fair featuring top companies looking to hire engineering students. Bring your resume and dress professionally."
-                                       FontSize="14"
-                                       TextColor="White"
-                                       LineBreakMode="WordWrap" />
                             </VerticalStackLayout>
                         </Frame>
                         
-                        <!-- Event 2 -->
+                        <!-- Date 2 -->
                         <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
-                                <Label Text="CS Department Meeting"
+                                <Label Text="Last day to remove &quot;I&quot; grades from previous semester"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                                       TextColor="White" />
-                                <Label Text="Monday, September 30, 2024 • 2:00 PM - 3:30 PM"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                                <Label Text="December 8"
                                        FontSize="16"
                                        TextColor="#f2b32e" />
-                                <Label Text="Computer Science Building, Room 201"
-                                       FontSize="14"
-                                       TextColor="#CCCCCC" />
-                                <Label Text="Monthly department meeting to discuss curriculum updates, new courses, and student feedback."
-                                       FontSize="14"
-                                       TextColor="White"
-                                       LineBreakMode="WordWrap" />
                             </VerticalStackLayout>
                         </Frame>
                         
-                        <!-- Event 3 -->
+                        <!-- Date 3 -->
                         <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
-                                <Label Text="Student Club Expo"
+                                <Label Text="Study Day"
                                        FontSize="20"
                                        FontAttributes="Bold"
                                        TextColor="White" />
-                                <Label Text="Wednesday, October 2, 2024 • 1:00 PM - 5:00 PM"
+                                <Label Text="December 9"
                                        FontSize="16"
                                        TextColor="#00aeef" />
-                                <Label Text="Student Center, Main Hall"
-                                       FontSize="14"
-                                       TextColor="#CCCCCC" />
-                                <Label Text="Discover all the student clubs and organizations on campus. Sign up for clubs that interest you and meet new people."
-                                       FontSize="14"
-                                       TextColor="White"
-                                       LineBreakMode="WordWrap" />
                             </VerticalStackLayout>
                         </Frame>
                         
-                        <!-- Event 4 -->
+                        <!-- Date 4 -->
                         <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
-                                <Label Text="Guest Speaker: AI in Engineering"
+                                <Label Text="Final exams begin"
                                        FontSize="20"
                                        FontAttributes="Bold"
                                        TextColor="White" />
-                                <Label Text="Friday, October 4, 2024 • 3:00 PM - 4:30 PM"
+                                <Label Text="December 10"
                                        FontSize="16"
                                        TextColor="#FFD204" />
-                                <Label Text="Engineering Building, Lecture Hall A"
-                                       FontSize="14"
-                                       TextColor="#CCCCCC" />
-                                <Label Text="Dr. Sarah Johnson from TechCorp will discuss the latest developments in artificial intelligence and its applications in engineering."
-                                       FontSize="14"
-                                       TextColor="White"
-                                       LineBreakMode="WordWrap" />
                             </VerticalStackLayout>
                         </Frame>
                         
-                        <!-- Event 5 -->
+                        <!-- Date 5 -->
                         <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
-                                <Label Text="Hackathon 2024"
+                                <Label Text="Final exams end"
                                        FontSize="20"
                                        FontAttributes="Bold"
                                        TextColor="White" />
-                                <Label Text="Saturday, October 5, 2024 • 9:00 AM - 9:00 PM"
+                                <Label Text="December 13"
                                        FontSize="16"
                                        TextColor="#f2b32e" />
-                                <Label Text="Computer Science Building, Labs 1-4"
-                                       FontSize="14"
-                                       TextColor="#CCCCCC" />
-                                <Label Text="24-hour coding competition with prizes for the best projects. Teams of 2-4 students. Registration required."
-                                       FontSize="14"
-                                       TextColor="White"
-                                       LineBreakMode="WordWrap" />
                             </VerticalStackLayout>
                         </Frame>
                         
-                        <!-- Event 6 -->
+                        <!-- Date 6 -->
                         <Frame BackgroundColor="#003087"
                                CornerRadius="12"
                                Padding="20"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="10">
-                                <Label Text="Research Symposium"
+                                <Label Text="Grades due at 8:30am for graduating students"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                                <Label Text="December 15"
+                                       FontSize="16"
+                                       TextColor="#00aeef" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Date 7 -->
+                        <Frame BackgroundColor="#003087"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Final grades due by 8:30 am for all remaining students"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       LineBreakMode="WordWrap" />
+                                <Label Text="December 17"
+                                       FontSize="16"
+                                       TextColor="#FFD204" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Date 8 -->
+                        <Frame BackgroundColor="#003087"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Commencement"
                                        FontSize="20"
                                        FontAttributes="Bold"
                                        TextColor="White" />
-                                <Label Text="Tuesday, October 8, 2024 • 10:00 AM - 2:00 PM"
+                                <Label Text="December 19"
                                        FontSize="16"
-                                       TextColor="#00aeef" />
-                                <Label Text="Library Conference Center"
-                                       FontSize="14"
-                                       TextColor="#CCCCCC" />
-                                <Label Text="Showcase of student research projects and faculty presentations. Open to all students and faculty."
-                                       FontSize="14"
+                                       TextColor="#f2b32e" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Date 9 -->
+                        <Frame BackgroundColor="#003087"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Final grades available online"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
                                        TextColor="White"
                                        LineBreakMode="WordWrap" />
+                                <Label Text="December 19"
+                                       FontSize="16"
+                                       TextColor="#00aeef" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Date 10 -->
+                        <Frame BackgroundColor="#003087"
+                               CornerRadius="12"
+                               Padding="20"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="University closes"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                <Label Text="December 19"
+                                       FontSize="16"
+                                       TextColor="#FFD204" />
                             </VerticalStackLayout>
                         </Frame>
                         
                     </VerticalStackLayout>
                 </ScrollView>
-            </VerticalStackLayout>
         </Grid>
     </Grid>
 </ContentPage>

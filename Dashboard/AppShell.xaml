@@ -53,8 +53,8 @@
     </FlyoutItem>
 
     <!-- Additional routes for View All pages -->
-    <FlyoutItem Title="All Events" Route="AllEvents">
-        <ShellContent Title="All Events" ContentTemplate="{DataTemplate pages:AllEventsPage}" />
+    <FlyoutItem Title="All Important Dates" Route="AllEvents">
+        <ShellContent Title="All Important Dates" ContentTemplate="{DataTemplate pages:AllEventsPage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="All Announcements" Route="AllAnnouncements">
