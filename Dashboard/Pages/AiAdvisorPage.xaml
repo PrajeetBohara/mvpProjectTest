@@ -14,8 +14,10 @@
 
                 <!-- Header -->
                 <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
-                    <Label Text="🤖"
-                           FontSize="48"
+                    <Image Source="aiadvisor/ai.gif"
+                           WidthRequest="80"
+                           HeightRequest="80"
+                           Aspect="AspectFit"
                            HorizontalOptions="Center" />
                     <Label Text="AI Advisor"
                            FontSize="28"

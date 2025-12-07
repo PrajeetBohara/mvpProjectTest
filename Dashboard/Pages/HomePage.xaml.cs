@@ -337,20 +337,21 @@ public partial class HomePage : ContentPage
     }
 
     /// <summary>
-    /// Handles labs section tap to navigate to Labs page.
+    /// Handles AI Advisor section tap to navigate to AI Advisor page.
     /// </summary>
-    private async void OnLabsTapped(object sender, EventArgs e)
+    private async void OnAiAdvisorTapped(object sender, EventArgs e)
     {
         try
         {
             if (Shell.Current != null)
             {
-                await Shell.Current.GoToAsync("//Labs");
+                await Shell.Current.GoToAsync("//AIAdvisor");
             }
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Error opening labs: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Error opening AI Advisor: {ex.Message}");
+            await DisplayAlert("Error", "Unable to open AI Advisor. Please try again later.", "OK");
         }
     }
 

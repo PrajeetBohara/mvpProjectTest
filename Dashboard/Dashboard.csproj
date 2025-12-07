@@ -110,4 +110,9 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Resources\NewFolder1\" />
+	  <Folder Include="Resources\NewFolder\" />
+	</ItemGroup>
+
 </Project>

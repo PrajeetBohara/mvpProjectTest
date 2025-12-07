@@ -23,6 +23,9 @@ if openai_key:
 # In-memory transcript storage
 transcripts = defaultdict(list)
 
+# Track last update time per session (for efficient polling)
+last_updated = defaultdict(lambda: datetime.utcnow().isoformat())
+
 # Degree catalog links
 CATALOG_LINKS = [
     "https://catalog.mcneese.edu/preview_program.php?catoid=97&poid=59137&_gl=1*1mrh98w*_gcl_au*MTk4MjAwMzc3MS4xNzYwMTUwNjgx",
@@ -88,6 +91,9 @@ def chat():
         'Timestamp': datetime.utcnow().isoformat()
     })
     
+    # Update last updated timestamp when a message is sent
+    last_updated[session_id] = datetime.utcnow().isoformat()
+    
     return jsonify({'answer': answer, 'count': len(transcripts[session_id])})
 
 # Get transcript
@@ -104,12 +110,20 @@ def get_transcript():
         })
     return jsonify(result)
 
+# Get last updated timestamp
+@app.route('/api/last-updated')
+def get_last_updated():
+    session_id = request.args.get('sessionId', 'demo')
+    return jsonify({'lastUpdated': last_updated.get(session_id, datetime.utcnow().isoformat())})
+
 # Clear transcript
 @app.route('/api/transcript/clear', methods=['POST'])
 def clear_transcript():
     session_id = request.json.get('sessionId', 'demo') if request.json else 'demo'
     if session_id in transcripts:
         del transcripts[session_id]
+    if session_id in last_updated:
+        del last_updated[session_id]
     return jsonify({'ok': True, 'sessionId': session_id})
 
 if __name__ == '__main__':

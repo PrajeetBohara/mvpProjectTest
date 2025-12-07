@@ -13,7 +13,8 @@ public partial class AiAdvisorPage : ContentPage
     private readonly AiAdvisorMirrorService _mirrorService;
     private readonly AiAdvisorViewModel _vm;
     private CancellationTokenSource? _pollCts;
-    private const int RefreshIntervalMs = 2000; // Poll every 2 seconds
+    private const int CheckIntervalMs = 1000; // Check for updates every 1 second
+    private string? _lastKnownUpdateTime;
 
     public AiAdvisorPage()
     {
@@ -28,7 +29,8 @@ public partial class AiAdvisorPage : ContentPage
         base.OnAppearing();
         _pollCts?.Cancel();
         _pollCts = new CancellationTokenSource();
-        _ = _vm.StartAutoRefreshAsync(_pollCts.Token, RefreshIntervalMs);
+        _lastKnownUpdateTime = null;
+        _ = _vm.StartSmartRefreshAsync(_mirrorService, _pollCts.Token, CheckIntervalMs, (time) => _lastKnownUpdateTime = time);
         await _vm.RefreshAsync();
     }
 
@@ -71,11 +73,31 @@ public class AiAdvisorViewModel : BindableObject
         RefreshCommand = new Command(async () => await RefreshAsync());
     }
 
-    public async Task StartAutoRefreshAsync(CancellationToken token, int intervalMs)
+    public async Task StartSmartRefreshAsync(AiAdvisorMirrorService mirrorService, CancellationToken token, int intervalMs, Action<string?> updateLastKnownTime)
     {
+        string? lastKnownTime = null;
+        
         while (!token.IsCancellationRequested)
         {
-            await RefreshAsync();
+            try
+            {
+                // Check if there's a new update
+                var currentLastUpdated = await mirrorService.GetLastUpdatedAsync(token);
+                
+                // Only refresh if the timestamp changed
+                if (currentLastUpdated != null && currentLastUpdated != lastKnownTime)
+                {
+                    System.Diagnostics.Debug.WriteLine($"[ViewModel] Detected update: {lastKnownTime} -> {currentLastUpdated}");
+                    lastKnownTime = currentLastUpdated;
+                    updateLastKnownTime(currentLastUpdated);
+                    await RefreshAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"[ViewModel] Error in smart refresh: {ex.Message}");
+            }
+            
             try
             {
                 await Task.Delay(intervalMs, token);
