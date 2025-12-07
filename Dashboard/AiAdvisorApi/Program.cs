@@ -9,7 +9,9 @@ builder.Services.AddHttpClient(); // For fetching catalog links
 // Cloud providers (Railway, Render, etc.) set the port via PORT environment variable
 // For local dev, default to 5000
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+// Railway uses port 8080 by default, but respects PORT env var
+var listenPort = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://0.0.0.0:{listenPort}");
 
 builder.Services.AddCors(options =>
 {
