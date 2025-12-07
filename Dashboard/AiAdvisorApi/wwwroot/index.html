@@ -150,7 +150,12 @@
                 const response = await fetch(`${API_URL}/api/transcript?sessionId=${sessionId}`);
                 const messages = await response.json();
                 chatArea.innerHTML = '';
-                messages.forEach(msg => addMessageToUI(msg.role, msg.content));
+                messages.forEach(msg => {
+                    // Handle both PascalCase (from API) and lowercase (legacy)
+                    const role = msg.Role || msg.role || 'assistant';
+                    const content = msg.Content || msg.content || '';
+                    addMessageToUI(role, content);
+                });
             } catch (err) {
                 console.error('Error loading transcript:', err);
             }

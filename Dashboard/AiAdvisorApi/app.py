@@ -48,11 +48,11 @@ def chat():
     if not question:
         return jsonify({'error': 'Question required'}), 400
     
-    # Add user message
+    # Add user message (use PascalCase for C# compatibility)
     transcripts[session_id].append({
-        'role': 'user',
-        'content': question,
-        'timestamp': datetime.utcnow().isoformat()
+        'Role': 'user',
+        'Content': question,
+        'Timestamp': datetime.utcnow().isoformat()
     })
     
     # Get AI answer
@@ -68,8 +68,10 @@ def chat():
             
             # Add conversation history
             for msg in transcripts[session_id][-4:]:
-                if msg['role'] in ['user', 'assistant']:
-                    messages.append({"role": msg['role'], "content": msg['content']})
+                role = msg.get('Role', msg.get('role', ''))
+                content = msg.get('Content', msg.get('content', ''))
+                if role in ['user', 'assistant']:
+                    messages.append({"role": role.lower(), "content": content})
             
             response = openai_client.chat.completions.create(
                 model="gpt-4o-mini",
@@ -79,11 +81,11 @@ def chat():
         except Exception as e:
             answer = f"Error: {str(e)}"
     
-    # Add assistant message
+    # Add assistant message (use PascalCase for C# compatibility)
     transcripts[session_id].append({
-        'role': 'assistant',
-        'content': answer,
-        'timestamp': datetime.utcnow().isoformat()
+        'Role': 'assistant',
+        'Content': answer,
+        'Timestamp': datetime.utcnow().isoformat()
     })
     
     return jsonify({'answer': answer, 'count': len(transcripts[session_id])})
@@ -92,7 +94,15 @@ def chat():
 @app.route('/api/transcript')
 def get_transcript():
     session_id = request.args.get('sessionId', 'demo')
-    return jsonify(transcripts.get(session_id, []))
+    # Convert to PascalCase for C# compatibility
+    result = []
+    for msg in transcripts.get(session_id, []):
+        result.append({
+            'Role': msg.get('Role', msg.get('role', 'assistant')),
+            'Content': msg.get('Content', msg.get('content', '')),
+            'Timestamp': msg.get('Timestamp', msg.get('timestamp', datetime.utcnow().isoformat()))
+        })
+    return jsonify(result)
 
 # Clear transcript
 @app.route('/api/transcript/clear', methods=['POST'])
