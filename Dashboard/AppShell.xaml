@@ -60,6 +60,10 @@
         <ShellContent Title="Faculty Directory" ContentTemplate="{DataTemplate pages:FacultyDirectoryPage}" />
     </FlyoutItem>
 
+    <FlyoutItem Title="AI Advisor" Route="AIAdvisor">
+        <ShellContent Title="AI Advisor" ContentTemplate="{DataTemplate pages:AiAdvisorPage}" />
+    </FlyoutItem>
+
     <FlyoutItem Title="Sponsors and Donors" Route="SponsorsAndDonors">
         <ShellContent Title="Sponsors and Donors" ContentTemplate="{DataTemplate pages:SponsorsAndDonorsPage}" />
     </FlyoutItem>
