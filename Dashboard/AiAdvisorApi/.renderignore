@@ -1,0 +1,9 @@
+*.csproj
+*.cs
+Program.cs
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
