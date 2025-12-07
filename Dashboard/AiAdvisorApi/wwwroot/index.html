@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Advisor Chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #003087 0%, #001f5c 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #FFD204;
+        }
+        .subtitle {
+            text-align: center;
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        #chatArea {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            animation: fadeIn 0.3s;
+        }
+        .message.user {
+            background: rgba(255, 210, 4, 0.2);
+            border-left: 3px solid #FFD204;
+        }
+        .message.assistant {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #4CAF50;
+        }
+        .message-label {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            opacity: 0.8;
+        }
+        .message-content {
+            line-height: 1.6;
+        }
+        .input-area {
+            display: flex;
+            gap: 10px;
+        }
+        #questionInput {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+        }
+        #questionInput::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        #sendButton {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            background: #FFD204;
+            color: #003087;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        #sendButton:hover:not(:disabled) {
+            transform: scale(1.05);
+        }
+        #sendButton:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .status {
+            text-align: center;
+            margin-top: 10px;
+            color: #FFD204;
+            font-size: 14px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 AI Advisor</h1>
+        <p class="subtitle">Ask about degree plans and course requirements</p>
+        
+        <div id="chatArea"></div>
+        
+        <div class="input-area">
+            <input 
+                type="text" 
+                id="questionInput" 
+                placeholder="Type your question here..."
+                autocomplete="off"
+            />
+            <button id="sendButton">Send</button>
+        </div>
+        
+        <div class="status" id="status"></div>
+    </div>
+
+    <script>
+        // Use the same domain as the page (Railway will serve both API and HTML)
+        const API_URL = window.location.origin;
+        const sessionId = 'demo';
+        
+        const chatArea = document.getElementById('chatArea');
+        const questionInput = document.getElementById('questionInput');
+        const sendButton = document.getElementById('sendButton');
+        const status = document.getElementById('status');
+        
+        // Load existing transcript on page load
+        async function loadTranscript() {
+            try {
+                const response = await fetch(`${API_URL}/api/transcript?sessionId=${sessionId}`);
+                const messages = await response.json();
+                chatArea.innerHTML = '';
+                messages.forEach(msg => addMessageToUI(msg.role, msg.content));
+            } catch (err) {
+                console.error('Error loading transcript:', err);
+            }
+        }
+        
+        function addMessageToUI(role, content) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}`;
+            messageDiv.innerHTML = `
+                <div class="message-label">${role === 'user' ? 'You' : 'AI Advisor'}</div>
+                <div class="message-content">${escapeHtml(content)}</div>
+            `;
+            chatArea.appendChild(messageDiv);
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML.replace(/\n/g, '<br>');
+        }
+        
+        async function sendQuestion() {
+            const question = questionInput.value.trim();
+            if (!question) return;
+            
+            // Disable input
+            questionInput.disabled = true;
+            sendButton.disabled = true;
+            status.textContent = 'Sending...';
+            
+            // Add user message to UI immediately
+            addMessageToUI('user', question);
+            questionInput.value = '';
+            
+            try {
+                // Send to API - API will call OpenAI and store the response
+                const response = await fetch(`${API_URL}/api/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        sessionId, 
+                        question 
+                    })
+                });
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`API error: ${response.status} - ${errorText}`);
+                }
+                
+                const result = await response.json();
+                
+                // Add AI response to UI
+                if (result.answer) {
+                    addMessageToUI('assistant', result.answer);
+                } else {
+                    status.textContent = 'No answer received';
+                }
+                
+                status.textContent = '';
+            } catch (err) {
+                status.textContent = `Error: ${err.message}`;
+                console.error('Error sending question:', err);
+            } finally {
+                questionInput.disabled = false;
+                sendButton.disabled = false;
+                questionInput.focus();
+            }
+        }
+        
+        // Event listeners
+        sendButton.addEventListener('click', sendQuestion);
+        questionInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !sendButton.disabled) {
+                sendQuestion();
+            }
+        });
+        
+        // Load transcript on page load
+        loadTranscript();
+        
+        // Auto-refresh transcript every 2 seconds (in case MAUI app adds messages)
+        setInterval(loadTranscript, 2000);
+    </script>
+</think>
+Updating the API to handle OpenAI calls and serve the web page:
+<｜tool▁calls▁begin｜><｜tool▁call▁begin｜>
+read_file

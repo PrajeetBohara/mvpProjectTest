@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "buildCommand": "cd ai-advisor-web && npm install && npm run build",
+  "outputDirectory": "ai-advisor-web/.next",
+  "framework": "nextjs"
+}
+

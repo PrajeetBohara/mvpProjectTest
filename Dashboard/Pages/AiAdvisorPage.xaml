@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Dashboard.Pages.AiAdvisorPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Dashboard.Controls"
+    Title="AI Advisor">
+
+    <Grid RowDefinitions="Auto,*">
+        <controls:TopBar ZIndex="10" Grid.Row="0" />
+
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="20">
+
+                <!-- Header -->
+                <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                    <Label Text="🤖"
+                           FontSize="48"
+                           HorizontalOptions="Center" />
+                    <Label Text="AI Advisor"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#003087"
+                           HorizontalOptions="Center" />
+                    <Label Text="Scan the QR code on your phone to chat with the advisor. Responses can mirror here."
+                           FontSize="14"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <!-- QR + Info -->
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="16"
+                       HasShadow="True">
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="16"
+                          RowDefinitions="Auto,Auto,Auto"
+                          RowSpacing="10">
+                        <Image Grid.RowSpan="3"
+                               WidthRequest="160"
+                               HeightRequest="160"
+                               Aspect="AspectFit"
+                               Source="{Binding QrImageUrl}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+
+                        <Label Grid.Column="1"
+                               Text="Scan to start chatting"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#FFD204" />
+
+                        <Label Grid.Row="1" Grid.Column="1"
+                               Text="{Binding ChatUrl}"
+                               FontSize="14"
+                               TextColor="White"
+                               LineBreakMode="CharacterWrap" />
+
+                        <Label Grid.Row="2" Grid.Column="1"
+                               Text="Your phone opens the AI Advisor chat. It uses RAG over the CS catalog links to build personalized degree plans."
+                               FontSize="13"
+                               TextColor="#CCCCCC"
+                               LineBreakMode="WordWrap" />
+                    </Grid>
+                </Frame>
+
+                <!-- Mirrored transcript -->
+                <Frame BackgroundColor="#003087"
+                       CornerRadius="16"
+                       Padding="16"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="Live Transcript"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFD204" />
+                            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                               IsVisible="{Binding IsLoading}"
+                                               Color="#FFD204" />
+                        </HorizontalStackLayout>
+
+                        <CollectionView ItemsSource="{Binding Messages}"
+                                        HeightRequest="320">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame BackgroundColor="#002a54"
+                                           CornerRadius="12"
+                                           Padding="12"
+                                           Margin="0,6,0,0">
+                                        <VerticalStackLayout Spacing="4">
+                                            <Label Text="{Binding Role}"
+                                                   FontSize="12"
+                                                   TextColor="#00aeef" />
+                                            <Label Text="{Binding Content}"
+                                                   FontSize="14"
+                                                   TextColor="White"
+                                                   LineBreakMode="WordWrap" />
+                                            <Label Text="{Binding Timestamp, StringFormat='{0:G}'}"
+                                                   FontSize="11"
+                                                   TextColor="#CCCCCC" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <Button Text="Refresh"
+                                BackgroundColor="#FFD204"
+                                TextColor="#003087"
+                                CornerRadius="12"
+                                HeightRequest="42"
+                                Command="{Binding RefreshCommand}" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Safety note -->
+                <Label Text="Advising note: Always verify your plan with an official academic advisor. This AI uses the latest catalog links you provided."
+                       FontSize="12"
+                       TextColor="#CCCCCC"
+                       HorizontalTextAlignment="Center"
+                       LineBreakMode="WordWrap" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+
