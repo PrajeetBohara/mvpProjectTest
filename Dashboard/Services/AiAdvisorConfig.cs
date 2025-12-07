@@ -21,6 +21,12 @@ public static class AiAdvisorConfig
     public static string TranscriptEndpoint { get; set; } = "https://ai-advisor-api-wzez.onrender.com/api/transcript?sessionId=demo";
 
     /// <summary>
+    /// API endpoint to check last update timestamp for efficient polling.
+    /// Replace with your Render URL: https://your-app-name.onrender.com
+    /// </summary>
+    public static string LastUpdatedEndpoint { get; set; } = "https://ai-advisor-api-wzez.onrender.com/api/last-updated?sessionId=demo";
+
+    /// <summary>
     /// Endpoint to clear a transcript session when leaving the page.
     /// Replace with your Render URL: https://your-app-name.onrender.com
     /// </summary>
