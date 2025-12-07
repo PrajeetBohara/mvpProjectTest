@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using Dashboard.Models;
@@ -68,6 +69,33 @@ public class AiAdvisorMirrorService
             }
             return Array.Empty<AiAdvisorMessage>();
         }
+    }
+
+    public async Task<string?> GetLastUpdatedAsync(CancellationToken cancellationToken = default)
+    {
+        if (string.IsNullOrWhiteSpace(AiAdvisorConfig.LastUpdatedEndpoint))
+        {
+            return null;
+        }
+
+        try
+        {
+            var response = await _httpClient.GetAsync(AiAdvisorConfig.LastUpdatedEndpoint, cancellationToken);
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync(cancellationToken);
+                var doc = JsonDocument.Parse(json);
+                if (doc.RootElement.TryGetProperty("lastUpdated", out var lastUpdated))
+                {
+                    return lastUpdated.GetString();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[AiAdvisorMirrorService] Error fetching last updated: {ex.Message}");
+        }
+        return null;
     }
 
     public async Task ClearTranscriptAsync(CancellationToken cancellationToken = default)

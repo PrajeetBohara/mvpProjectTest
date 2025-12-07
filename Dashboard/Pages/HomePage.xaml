@@ -94,7 +94,7 @@
                         </VerticalStackLayout>
                     </Frame>
 
-                    <!-- Contact Section -->
+                    <!-- AI Advisor Section -->
                     <Frame Grid.Column="1"
                            BackgroundColor="Transparent"
                            CornerRadius="12"
@@ -102,39 +102,15 @@
                            HasShadow="False"
                            Margin="5,0,5,0">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnContactTapped" />
+                            <TapGestureRecognizer Tapped="OnAiAdvisorTapped" />
                         </Frame.GestureRecognizers>
                         <VerticalStackLayout VerticalOptions="Center"
                                              HorizontalOptions="Center"
                                              Spacing="18">
-                            <Label Text="📞"
+                            <Label Text="🤖"
                                    FontSize="{OnPlatform Default=42, Android=32, iOS=42}"
                                    HorizontalOptions="Center" />
-                            <Label Text="Contact"
-                                   FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
-                                   FontAttributes="Bold"
-                                   HorizontalOptions="Center"
-                                   TextColor="Black" />
-                        </VerticalStackLayout>
-                    </Frame>
-
-                    <!-- Labs Section -->
-                    <Frame Grid.Column="2"
-                           BackgroundColor="Transparent"
-                           CornerRadius="12"
-                           Padding="36,20,36,20"
-                           HasShadow="False"
-                           Margin="5,0,5,0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnLabsTapped" />
-                        </Frame.GestureRecognizers>
-                        <VerticalStackLayout VerticalOptions="Center"
-                                             HorizontalOptions="Center"
-                                             Spacing="18">
-                            <Label Text="💻"
-                                   FontSize="{OnPlatform Default=42, Android=32, iOS=42}"
-                                   HorizontalOptions="Center" />
-                            <Label Text="Labs"
+                            <Label Text="AI Advisor"
                                    FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
                                    FontAttributes="Bold"
                                    HorizontalOptions="Center"
@@ -143,7 +119,7 @@
                     </Frame>
 
                     <!-- Projects Section -->
-                    <Frame Grid.Column="3"
+                    <Frame Grid.Column="2"
                            BackgroundColor="Transparent"
                            CornerRadius="12"
                            Padding="36,20,36,20"
@@ -167,7 +143,7 @@
                     </Frame>
 
                     <!-- Faculty Directory Section -->
-                    <Frame Grid.Column="4"
+                    <Frame Grid.Column="3"
                            BackgroundColor="Transparent"
                            CornerRadius="12"
                            Padding="36,20,36,20"
@@ -191,12 +167,12 @@
                     </Frame>
 
                     <!-- Student Clubs Section -->
-                    <Frame Grid.Column="5"
+                    <Frame Grid.Column="4"
                            BackgroundColor="Transparent"
                            CornerRadius="12"
                            Padding="36,20,36,20"
                            HasShadow="False"
-                           Margin="5,0,0,0">
+                           Margin="5,0,5,0">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnStudentClubsTapped" />
                         </Frame.GestureRecognizers>
@@ -207,6 +183,30 @@
                                    FontSize="{OnPlatform Default=42, Android=32, iOS=42}"
                                    HorizontalOptions="Center" />
                             <Label Text="Clubs"
+                                   FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center"
+                                   TextColor="Black" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Contact Section -->
+                    <Frame Grid.Column="5"
+                           BackgroundColor="Transparent"
+                           CornerRadius="12"
+                           Padding="36,20,36,20"
+                           HasShadow="False"
+                           Margin="5,0,0,0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnContactTapped" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout VerticalOptions="Center"
+                                             HorizontalOptions="Center"
+                                             Spacing="18">
+                            <Label Text="📞"
+                                   FontSize="{OnPlatform Default=42, Android=32, iOS=42}"
+                                   HorizontalOptions="Center" />
+                            <Label Text="Contact"
                                    FontSize="{OnPlatform Default=14, Android=12, iOS=14}"
                                    FontAttributes="Bold"
                                    HorizontalOptions="Center"
