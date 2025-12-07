@@ -14,7 +14,7 @@
 
                 <!-- Header -->
                 <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
-                    <Image Source="aiadvisor/ai.gif"
+                    <Image Source="ai.gif"
                            WidthRequest="80"
                            HeightRequest="80"
                            Aspect="AspectFit"

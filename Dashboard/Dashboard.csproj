@@ -63,6 +63,9 @@
 		</MauiImage>
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 		
+		<!-- AI Advisor Images -->
+		<MauiImage Include="Resources\aiadvisor\*" />
+		
 		<!-- Degree Catalogue Images (as assets to preserve original filenames) -->
 		<MauiAsset Include="Resources\degree_catalogue\**\*.jpg" LogicalName="degree_catalogue\%(RecursiveDir)%(Filename)%(Extension)" />
 
