@@ -33,18 +33,21 @@ public class AiAdvisorMirrorService
         {
             System.Diagnostics.Debug.WriteLine($"[AiAdvisorMirrorService] Fetching transcript from: {AiAdvisorConfig.TranscriptEndpoint}");
             
-            // Configure JSON options to handle case-insensitive property names
+            // Get raw JSON first to debug
+            var response = await _httpClient.GetAsync(AiAdvisorConfig.TranscriptEndpoint, cancellationToken);
+            var jsonString = await response.Content.ReadAsStringAsync(cancellationToken);
+            System.Diagnostics.Debug.WriteLine($"[AiAdvisorMirrorService] Raw JSON response: {jsonString}");
+            
+            // Configure JSON options - use default (PascalCase matching)
             var jsonOptions = new JsonSerializerOptions
             {
-                PropertyNameCaseInsensitive = true
+                PropertyNameCaseInsensitive = false, // API returns PascalCase, model expects PascalCase
+                Converters = { new Models.DateTimeJsonConverter() }
             };
             
-            var result = await _httpClient.GetFromJsonAsync<List<AiAdvisorMessage>>(
-                AiAdvisorConfig.TranscriptEndpoint, 
-                jsonOptions,
-                cancellationToken);
+            var result = JsonSerializer.Deserialize<List<AiAdvisorMessage>>(jsonString, jsonOptions);
             
-            System.Diagnostics.Debug.WriteLine($"[AiAdvisorMirrorService] Received {result?.Count ?? 0} messages");
+            System.Diagnostics.Debug.WriteLine($"[AiAdvisorMirrorService] Deserialized {result?.Count ?? 0} messages");
             if (result != null)
             {
                 foreach (var msg in result)
