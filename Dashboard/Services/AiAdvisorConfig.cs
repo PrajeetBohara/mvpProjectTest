@@ -12,19 +12,19 @@ public static class AiAdvisorConfig
     /// Public web chat URL (Render.com) that the QR code will open.
     /// Replace with your Render URL: https://your-app-name.onrender.com
     /// </summary>
-    public static string ChatUrl { get; set; } = "https://ai-advisor-api-jzse.onrender.com";
+    public static string ChatUrl { get; set; } = "https://ai-advisor-api-wzez.onrender.com";
 
     /// <summary>
     /// API endpoint for transcript mirroring (Render.com).
     /// Replace with your Render URL: https://your-app-name.onrender.com
     /// </summary>
-    public static string TranscriptEndpoint { get; set; } = "https://ai-advisor-api-jzse.onrender.com/api/transcript?sessionId=demo";
+    public static string TranscriptEndpoint { get; set; } = "https://ai-advisor-api-wzez.onrender.com/api/transcript?sessionId=demo";
 
     /// <summary>
     /// Endpoint to clear a transcript session when leaving the page.
     /// Replace with your Render URL: https://your-app-name.onrender.com
     /// </summary>
-    public static string ClearTranscriptEndpoint { get; set; } = "https://ai-advisor-api-jzse.onrender.com/api/transcript/clear";
+    public static string ClearTranscriptEndpoint { get; set; } = "https://ai-advisor-api-wzez.onrender.com/api/transcript/clear";
 
     /// <summary>
     /// Degree catalog source URLs used for RAG (provided by the user).
