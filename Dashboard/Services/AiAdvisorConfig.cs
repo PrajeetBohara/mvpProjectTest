@@ -9,29 +9,22 @@ namespace Dashboard.Services;
 public static class AiAdvisorConfig
 {
     /// <summary>
-    /// Public web chat URL hosted on Vercel (or similar) that the QR code will open.
-    /// Example: https://your-ai-advisor.vercel.app
+    /// Public web chat URL (Render.com) that the QR code will open.
+    /// Replace with your Render URL: https://your-app-name.onrender.com
     /// </summary>
-    public static string ChatUrl { get; set; } = "https://ai-advisor-for-encs-lng-dashboard.vercel.app";
+    public static string ChatUrl { get; set; } = "https://ai-advisor-api-jzse.onrender.com";
 
     /// <summary>
-    /// Simple API endpoint for transcript mirroring (runs locally or on a simple host).
-    /// 
-    /// IMPORTANT: If running MAUI app on Android/phone, use your computer's IP address instead of localhost!
-    /// 
-    /// To find your IP:
-    /// - Windows: Run "ipconfig" in PowerShell, look for "IPv4 Address"
-    /// - Example: "http://192.168.1.100:5000/api/transcript?sessionId=demo"
-    /// 
-    /// If MAUI app runs on the same computer as the API, localhost works fine.
+    /// API endpoint for transcript mirroring (Render.com).
+    /// Replace with your Render URL: https://your-app-name.onrender.com
     /// </summary>
-    public static string TranscriptEndpoint { get; set; } = "http://192.168.1.11:5000/api/transcript?sessionId=demo";
+    public static string TranscriptEndpoint { get; set; } = "https://ai-advisor-api-jzse.onrender.com/api/transcript?sessionId=demo";
 
     /// <summary>
     /// Endpoint to clear a transcript session when leaving the page.
-    /// Use the same IP address as TranscriptEndpoint (replace localhost with your computer's IP if needed).
+    /// Replace with your Render URL: https://your-app-name.onrender.com
     /// </summary>
-    public static string ClearTranscriptEndpoint { get; set; } = "http://192.168.1.11:5000/api/transcript/clear";
+    public static string ClearTranscriptEndpoint { get; set; } = "https://ai-advisor-api-jzse.onrender.com/api/transcript/clear";
 
     /// <summary>
     /// Degree catalog source URLs used for RAG (provided by the user).
