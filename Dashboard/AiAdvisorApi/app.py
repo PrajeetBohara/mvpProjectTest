@@ -10,7 +10,15 @@ CORS(app)
 
 # OpenAI client
 openai_key = os.getenv('OPENAI_API_KEY')
-openai_client = OpenAI(api_key=openai_key) if openai_key else None
+openai_client = None
+
+if openai_key:
+    try:
+        # Initialize OpenAI client - use minimal parameters to avoid version conflicts
+        openai_client = OpenAI(api_key=openai_key)
+    except Exception as e:
+        print(f"Warning: Could not initialize OpenAI client: {e}")
+        openai_client = None
 
 # In-memory transcript storage
 transcripts = defaultdict(list)
