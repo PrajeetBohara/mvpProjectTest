@@ -25,7 +25,10 @@ CATALOG_LINKS = [
 # Serve HTML page
 @app.route('/')
 def index():
-    return send_from_directory('wwwroot', 'index.html')
+    try:
+        return send_from_directory('wwwroot', 'index.html')
+    except Exception as e:
+        return f"Error loading page: {str(e)}", 500
 
 # Chat endpoint
 @app.route('/api/chat', methods=['POST'])
