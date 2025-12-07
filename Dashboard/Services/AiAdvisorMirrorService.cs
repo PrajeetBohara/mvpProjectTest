@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Dashboard.Models;
@@ -31,8 +32,26 @@ public class AiAdvisorMirrorService
         try
         {
             System.Diagnostics.Debug.WriteLine($"[AiAdvisorMirrorService] Fetching transcript from: {AiAdvisorConfig.TranscriptEndpoint}");
-            var result = await _httpClient.GetFromJsonAsync<List<AiAdvisorMessage>>(AiAdvisorConfig.TranscriptEndpoint, cancellationToken);
+            
+            // Configure JSON options to handle case-insensitive property names
+            var jsonOptions = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            
+            var result = await _httpClient.GetFromJsonAsync<List<AiAdvisorMessage>>(
+                AiAdvisorConfig.TranscriptEndpoint, 
+                jsonOptions,
+                cancellationToken);
+            
             System.Diagnostics.Debug.WriteLine($"[AiAdvisorMirrorService] Received {result?.Count ?? 0} messages");
+            if (result != null)
+            {
+                foreach (var msg in result)
+                {
+                    System.Diagnostics.Debug.WriteLine($"[AiAdvisorMirrorService] Message: Role={msg.Role}, Content={msg.Content?.Substring(0, Math.Min(50, msg.Content?.Length ?? 0))}...");
+                }
+            }
             return result ?? new List<AiAdvisorMessage>();
         }
         catch (Exception ex)
