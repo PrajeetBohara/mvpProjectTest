@@ -30,10 +30,23 @@ public class DateTimeJsonConverter : JsonConverter<DateTime>
         if (reader.TokenType == JsonTokenType.String)
         {
             var dateString = reader.GetString();
-            if (DateTime.TryParse(dateString, out var date))
+            if (!string.IsNullOrEmpty(dateString))
             {
-                return date;
+                // Try parsing with different formats
+                if (DateTime.TryParse(dateString, null, System.Globalization.DateTimeStyles.RoundtripKind, out var date))
+                {
+                    // If no timezone info, assume UTC
+                    if (date.Kind == DateTimeKind.Unspecified)
+                    {
+                        return DateTime.SpecifyKind(date, DateTimeKind.Utc);
+                    }
+                    return date;
+                }
             }
+        }
+        else if (reader.TokenType == JsonTokenType.Null)
+        {
+            return DateTime.UtcNow;
         }
         return DateTime.UtcNow;
     }

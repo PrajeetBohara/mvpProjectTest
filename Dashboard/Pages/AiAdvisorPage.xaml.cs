@@ -94,11 +94,25 @@ public class AiAdvisorViewModel : BindableObject
         try
         {
             var transcript = await _mirrorService.GetTranscriptAsync();
-            Messages.Clear();
-            foreach (var m in transcript)
+            
+            System.Diagnostics.Debug.WriteLine($"[ViewModel] Received {transcript.Count} messages from service");
+            
+            // Update UI on main thread
+            await MainThread.InvokeOnMainThreadAsync(() =>
             {
-                Messages.Add(m);
-            }
+                Messages.Clear();
+                foreach (var m in transcript)
+                {
+                    System.Diagnostics.Debug.WriteLine($"[ViewModel] Adding message: Role={m.Role}, Content={m.Content?.Substring(0, Math.Min(50, m.Content?.Length ?? 0))}...");
+                    Messages.Add(m);
+                }
+                System.Diagnostics.Debug.WriteLine($"[ViewModel] Total messages in collection: {Messages.Count}");
+            });
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[ViewModel] Error in RefreshAsync: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"[ViewModel] Stack trace: {ex.StackTrace}");
         }
         finally
         {
