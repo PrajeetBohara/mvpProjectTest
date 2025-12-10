@@ -160,7 +160,7 @@ public class SponsorDonorService
             },
             new SponsorDonorImage
             {
-                ImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/sponsors/MarketBasket.jpg", // Placeholder - update with actual URL
+                ImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/sponsors/MarketBasket%20(1).jpg", // Placeholder - update with actual URL
                 Description = "The Market Basket Charitable Foundation has donated $10,000 to the McNeese State University Foundation for the Market Basket Academic Scholarship. The funds for the donation were raised at the Market Basket Golf Tournament recently held at The National Golf Club in Westlake, La. On hand for the presentation are from left: Greg Franz, Market Basket vice president of grocery operations; Jennifer Leger, McNeese Foundation director of operations; Russell Saleme, Market Basket vice president of sales and marketing; Skylar Thompson, Market Basket president/CEO; and David Thompson, Market Basket vice president of perishables."
             },
             new SponsorDonorImage
@@ -170,7 +170,7 @@ public class SponsorDonorService
             },
             new SponsorDonorImage
             {
-                ImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/sponsors/Grace.png", // Placeholder - update with actual URL
+                ImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/sponsors/Grace%20(1).png", // Placeholder - update with actual URL
                 Description = "The W.R. Grace Foundation has donated $9,500 to the McNeese State University Foundation for the engineering endowment within the College of Engineering and Sciences. On hand for the presentation are, from left, Dr. Nikos Kiritsis, McNeese College of Engineering and Sciences dean; GRACE employees: Mark Louviere, training coordinator; Greg Gray, plant manager; Colleen Shepherd, senior administrative assistant; Julie Morris, environmental health and safety manager; Keith Liles, information technology manager; Santana Badon, senior human resources generalist; Travis Griffin, site operations director; and Dr. Srinivasan Ambatipati, McNeese Engineering and Computer Science department head."
             },
             new SponsorDonorImage
@@ -190,12 +190,12 @@ public class SponsorDonorService
             },
             new SponsorDonorImage
             {
-                ImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/sponsors/Cheniere.png", // Placeholder - update with actual URL
+                ImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/sponsors/Cheniere_.png", // Placeholder - update with actual URL
                 Description = "Cheniere Energy has donated $64,950 to the McNeese State University Foundation for several initiatives including the Cheniere Energy Scholarship, H.C. Drew Center for Business and Economic Analysis; McNeese Automotive Engineering Club, McNeese Cowboy Energy Club, and the McNeese Department of Engineering and Computer Science. On hand for the presentation are, from left, Morgan Turpin, McNeese College of Business interim dean; Dr. Kay Zekany, McNeese College of Business associate professor; Dr. Charles Stewart, McNeese College of Science, Engineering and Mathematics dean; Stephanie Huck, Cheniere Energy representative for local government and community affairs; and Dr. Srinivasan Ambatipati, McNeese Engineering and Computer Science department head."
             },
             new SponsorDonorImage
             {
-                ImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/sponsors/CommonwealthLNG.jpg", // Placeholder - update with actual URL
+                ImageUrl = "https://kvvoooyijzvxxnejykjv.supabase.co/storage/v1/object/public/images/sponsors/Commonwealth_LNG%20.jpg", // Placeholder - update with actual URL
                 Description = "Commonwealth LNG has donated $205,000 to the McNeese State University Foundation for the Commonwealth LNG Scholarship. The scholarship is designated for engineering or business majors with priority consideration given to Cameron Parish High School graduates or a Cameron Parish resident. On hand for the presentation are, from left, Lyle Hanna, Commonwealth LNG vice president for corporate communications; Jamie Gray, Commonwealth LNG chief operating officer; Laura Bowers, McNeese Foundation executive director; and Jennifer Leger, McNeese Foundation director of operations."
             }
         };
