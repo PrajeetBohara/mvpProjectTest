@@ -24,6 +24,12 @@
                            FontAttributes="Bold"
                            TextColor="#003087"
                            HorizontalOptions="Center" />
+                    <Label Text="Advising note: Always verify your plan with an official academic advisor. This AI uses the latest catalog provided links from website."
+                           FontSize="18"
+                           TextColor="#FF3333"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           LineBreakMode="WordWrap" />
                     <Label Text="Scan the QR code on your phone to chat with the advisor. Responses can mirror here."
                            FontSize="14"
                            TextColor="White"
@@ -119,7 +125,7 @@
                 </Frame>
 
                 <!-- Safety note -->
-                <Label Text="Advising note: Always verify your plan with an official academic advisor. This AI uses the latest catalog links you provided."
+                <Label Text="Advising note: Always verify your plan with an official academic advisor. This AI uses the latest catalog provided links from website."
                        FontSize="12"
                        TextColor="#CCCCCC"
                        HorizontalTextAlignment="Center"

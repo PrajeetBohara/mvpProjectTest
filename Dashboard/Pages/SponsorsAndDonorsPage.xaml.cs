@@ -111,14 +111,36 @@ public partial class SponsorsAndDonorsPage : ContentPage
             Spacing = 0
         };
 
-        // Large Image
+        // Large Image with cache-busting to ensure updated images are loaded
+        var imageUrlWithCacheBust = image.ImageUrl;
+        if (!string.IsNullOrEmpty(imageUrlWithCacheBust))
+        {
+            var separator = imageUrlWithCacheBust.Contains('?') ? "&" : "?";
+            imageUrlWithCacheBust = $"{imageUrlWithCacheBust}{separator}v={DateTime.UtcNow.Ticks}";
+        }
+        
+        // Image container - using Border with fixed height for proper clipping
+        var imageContainer = new Border
+        {
+            HeightRequest = 400,
+            StrokeThickness = 0,
+            BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#001122"),
+            VerticalOptions = LayoutOptions.Start,
+            HorizontalOptions = LayoutOptions.Fill
+        };
+        
+        // Image control - MAUI handles string URLs automatically
+        // VerticalOptions.Start ensures image anchors to top
         var imageControl = new Image
         {
-            Source = image.ImageUrl,
+            Source = imageUrlWithCacheBust,
             Aspect = Aspect.AspectFill,
-            HeightRequest = 400,
+            VerticalOptions = LayoutOptions.Start,
+            HorizontalOptions = LayoutOptions.Fill,
             BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#001122")
         };
+        
+        imageContainer.Content = imageControl;
 
         // Description Frame
         var descriptionFrame = new Frame
@@ -140,7 +162,7 @@ public partial class SponsorsAndDonorsPage : ContentPage
 
         descriptionFrame.Content = descriptionLabel;
 
-        cardLayout.Children.Add(imageControl);
+        cardLayout.Children.Add(imageContainer);
         cardLayout.Children.Add(descriptionFrame);
 
         cardFrame.Content = cardLayout;
